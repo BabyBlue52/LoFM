@@ -1,0 +1,81 @@
+@import './variables/colors.scss';
+@import './variables/fonts.scss';
+
+body {
+    font-family: $roboto;
+}
+
+h3 {
+    font-family: $spartan;
+    font-weight: $superHeavy;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+marquee {
+    font-weight: $heavy;
+}
+/* Storybook Edits */
+.story-container {
+    margin: 20px;
+}
+/* Animation */
+.bar {
+    width: 5px;
+    margin: 1.25px;
+    border-radius: 10px;
+    background: $black;
+}
+/* Components */
+.channel-gradient {
+    height: 115px;
+    width: 115px;
+    border-radius: 50%;
+    background: $pbGradient;
+}
+
+.channel-profile,
+.channel-default {
+    position: relative;
+    left: 8px;
+    top: 8px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background: url('https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png');
+    background-size: contain;
+}
+
+.gif-holder {
+    border: 3px solid $black;
+}
+
+/* Layout */
+.d-flex {
+}
+.justify-center {
+    display: flex;
+    justify-content: center;
+}
+
+.justify-left {
+    display: flex;
+    justify-content: left;
+}
+
+.justify-right {
+    display: flex;
+    justify-content: right;
+}
+
+._dropShadow {
+    -webkit-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Ant Design Edits */
+.ant-col {
+    display: flex;
+    justify-content: center;
+}

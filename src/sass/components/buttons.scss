@@ -1,0 +1,80 @@
+button {
+    background: transparent; 
+}
+
+button.add-btn {
+    position: relative; 
+    top: -10px;
+    height: 25px;
+    width: 25px;
+    padding: 5px 0px 0px 0px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+}
+
+button.spotify {
+    display: block ;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: none;
+    transition: 300ms ease-in-out;
+    cursor: pointer;
+
+    &:active {
+        transform: scale(1.2);
+        fill: #1DB954;
+    }
+}
+
+button.youtube {
+    @extend .spotify;
+    &:active {
+        transform: scale(1.2);
+        fill: #c4302b;
+    }
+}
+
+button.soundcloud {
+    @extend .spotify;
+    &:active {
+        transform: scale(1.2);
+        fill: #f70;
+    }
+}
+
+button.chat-btn {
+    display: flex;
+    justify-content: center;
+    min-width: 280px;
+    max-width: 280px;
+    max-height: 50px;
+    padding: 20px 20px;
+    background: $purple;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: 300ms ease-in-out;
+    p {
+        margin: 0px 10px;
+        line-height: 0.8rem;
+        letter-spacing: .25px;
+        font-family: $spartan;
+        font-weight: $superHeavy;
+        font-size: $paragraph;
+        color: white;
+    }
+    svg.chat-bubble {
+        fill: white;
+        height: 20px;
+        width: 20px;
+        margin-top: -5px;
+    }
+
+    &:active {
+        transform: scale(0.95);
+        background: darken($purple, 10%);
+    } 
+}
