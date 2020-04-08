@@ -26,7 +26,7 @@ function ChannelHolder(){
     return (
         <>  
             <Row type="flex">
-                <Col span={8} offset={8}>
+                <Col span={8} offset={8} className="justify-center">
                     <div className="channel-gradient _dropShadow">
                         <div className={!channel ? 'channel-default' : ''}></div>
                     </div>
@@ -43,7 +43,7 @@ function ChannelHolder(){
                         <FaSpotify size="1.5rem"/> 
                     </button>
                 </Col>
-                <Col span={2}>
+                <Col span={2} className="justify-center">
                     <button className="youtube">
                         <FaYoutube size="1.5rem"/> 
                     </button>

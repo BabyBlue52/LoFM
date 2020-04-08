@@ -11,3 +11,7 @@ $superHeavy: 800;
 $paragraph: 1rem;
 $subhead: 1.4rem;
 $medium: 1.8rem;
+
+.thin {
+    font-weight: $light!important;
+}

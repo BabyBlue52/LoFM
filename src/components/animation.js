@@ -28,10 +28,10 @@ function SoundWave() {
      
     const noVariant = {
         start: {
-            height: "8px",
+            height: "0px",
         },
         end: {
-            height: "20px"
+            height: "0px"
         }
     }
 

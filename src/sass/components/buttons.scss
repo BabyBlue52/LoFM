@@ -1,5 +1,9 @@
 button {
-    background: transparent; 
+    background: transparent;
+    border: none; 
+
+    cursor: pointer;
+    transition: 300ms ease-in-out;
 }
 
 button.add-btn {
@@ -54,9 +58,7 @@ button.chat-btn {
     background: $purple;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-
-    transition: 300ms ease-in-out;
+    
     p {
         margin: 0px 10px;
         line-height: 0.8rem;
@@ -77,4 +79,13 @@ button.chat-btn {
         transform: scale(0.95);
         background: darken($purple, 10%);
     } 
+}
+button.play-btn {
+    svg {
+        height: 24px;
+        width: 24px;
+    }
+    &:active {
+        transform: scale(0.9);
+    }
 }
