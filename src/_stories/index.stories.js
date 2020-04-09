@@ -4,8 +4,9 @@ import { storiesOf } from '@storybook/react';
 //import { action } from '@storybook/addon-actions';
 import { ChannelHolder } from '../components/ChannelHolder';
 import { RecentUploads } from '../components/ChannelUploads';
+import Modal from '../components/Modal';
 import { GifHandler } from '../components/GifHandler'; 
-import { ChatButton, PlayButton } from '../components/Buttons/ChatButtons';
+import { ChatButton, PlayButton } from '../components/Button';
 import { SoundWave } from '../components/animation';
 
 storiesOf("App", module)
@@ -48,7 +49,13 @@ storiesOf("Components", module)
       <RecentUploads/>
     </div>
   ))
+  .add('Modal', () => (
+    <div className="story-container">
+      <Modal/>
+    </div>
+  ))
 
+  
 /*
 ================
     Buttons

@@ -1,0 +1,32 @@
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 300px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    h1.welcome {
+        font-family: $spartan;
+        font-weight: $light;
+        font-size: $paragraph;
+        text-align: center;    
+        
+        margin: 0 auto;
+        padding-bottom: 30px;
+    }
+    p.forgot {
+        margin-top: 10px;
+        margin-bottom: 30px;
+        line-height: 0.7rem;
+        font-size: $small;
+        color: $purple;
+    }
+    a {
+        transition: 300ms ease-in-out;
+        &:hover, &:active {
+           opacity: 50%
+        }
+    }
+}

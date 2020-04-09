@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import useAxios from 'axios-hooks';
 import { Row, Col, Spin } from 'antd';
-import { FaSpotify, FaYoutube, FaSoundcloud, FaPlus } from 'react-icons/fa';
+import { FaSpotify, FaYoutube, FaSoundcloud } from 'react-icons/fa';
 import 'antd/dist/antd.css'; 
 
-import { FavoriteButton } from './Buttons/FavoriteButton';
+import { FavoriteButton } from './Button';
 import '../../src/style.scss';
 
 

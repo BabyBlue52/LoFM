@@ -1,13 +1,40 @@
 button {
     background: transparent;
-    border: none; 
+    border: none;
 
     cursor: pointer;
     transition: 300ms ease-in-out;
 }
 
+button.default-btn {
+    display: flex;
+    justify-content: center;
+    min-width: 100%;
+    max-width: 280px;
+    max-height: 40px;
+    padding: 15px 20px;
+    background: $purple;
+    border: none;
+    border-radius: 5px;
+
+    p {
+        margin: 0px 10px;
+        line-height: 0.8rem;
+        letter-spacing: .25px;
+        font-family: $spartan;
+        font-weight: $superHeavy;
+        font-size: $paragraph;
+        color: white;
+    }
+
+    &:active {
+        transform: scale(0.95);
+        background: darken($purple, 10%);
+    }
+}
+
 button.add-btn {
-    position: relative; 
+    position: relative;
     top: -10px;
     height: 25px;
     width: 25px;
@@ -18,7 +45,7 @@ button.add-btn {
 }
 
 button.spotify {
-    display: block ;
+    display: block;
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
@@ -34,6 +61,7 @@ button.spotify {
 
 button.youtube {
     @extend .spotify;
+
     &:active {
         transform: scale(1.2);
         fill: #c4302b;
@@ -42,50 +70,39 @@ button.youtube {
 
 button.soundcloud {
     @extend .spotify;
+
     &:active {
         transform: scale(1.2);
         fill: #f70;
     }
 }
 
+
 button.chat-btn {
-    display: flex;
-    justify-content: center;
+    @extend .default-btn;
     min-width: 280px;
-    max-width: 280px;
-    max-height: 50px;
-    padding: 20px 20px;
-    background: $purple;
-    border: none;
-    border-radius: 5px;
-    
-    p {
-        margin: 0px 10px;
-        line-height: 0.8rem;
-        letter-spacing: .25px;
-        font-family: $spartan;
-        font-weight: $superHeavy;
-        font-size: $paragraph;
-        color: white;
-    }
     svg.chat-bubble {
         fill: white;
         height: 20px;
         width: 20px;
         margin-top: -5px;
     }
-
-    &:active {
-        transform: scale(0.95);
-        background: darken($purple, 10%);
-    } 
 }
+
 button.play-btn {
     svg {
         height: 24px;
         width: 24px;
     }
+
     &:active {
         transform: scale(0.9);
+    }
+}
+button.close {
+    padding-bottom: 20px;
+    svg {
+        height: 24px;
+        width: 24px;
     }
 }
