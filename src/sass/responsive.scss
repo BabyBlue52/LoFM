@@ -1,0 +1,45 @@
+/*
+================
+███╗   ███╗███████╗██████╗ ██╗ █████╗      ██████╗ ██╗   ██╗███████╗██████╗ ██╗███████╗███████╗
+████╗ ████║██╔════╝██╔══██╗██║██╔══██╗    ██╔═══██╗██║   ██║██╔════╝██╔══██╗██║██╔════╝██╔════╝
+██╔████╔██║█████╗  ██║  ██║██║███████║    ██║   ██║██║   ██║█████╗  ██████╔╝██║█████╗  ███████╗
+██║╚██╔╝██║██╔══╝  ██║  ██║██║██╔══██║    ██║▄▄ ██║██║   ██║██╔══╝  ██╔══██╗██║██╔══╝  ╚════██║
+██║ ╚═╝ ██║███████╗██████╔╝██║██║  ██║    ╚██████╔╝╚██████╔╝███████╗██║  ██║██║███████╗███████║
+╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═╝     ╚══▀▀═╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
+================
+*/
+$mobile: 320px;
+$tablet: 768px;
+
+@media screen and (min-width: $mobile) and (max-width: $tablet) {
+    #app {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        min-height: 100vh;
+        background: #505050;
+        .sunset-skin {
+            position: absolute;
+            height: 100vh;
+            width: inherit;
+            opacity: 50%;
+            background: rgb(98,4,96);
+            background: linear-gradient(30deg, rgba(98,4,96,1) 0%, rgba(4,73,100,1) 100%);
+        }
+    }
+}
+@media screen and (min-width: $tablet) {
+    #app {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 320px;
+        max-width: 320px;
+        min-height: 600px;
+        max-height: 600px;
+        border: 1px solid $black;
+    }
+}
+

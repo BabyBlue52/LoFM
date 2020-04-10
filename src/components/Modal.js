@@ -52,7 +52,7 @@ function Modal() {
                         </a>
                     </Col>                
                     <Col offset={2} span={20}>
-                        <Button name="login"/>
+                        <Button name="Login"/>
                     </Col>
                 </Row>
             </div>

@@ -104,5 +104,9 @@ button.close {
     svg {
         height: 24px;
         width: 24px;
+        transition: 300ms ease-in-out;
+        &:hover, &:active {
+            fill: $red;
+        }
     }
 }
