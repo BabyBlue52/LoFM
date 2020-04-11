@@ -86,4 +86,7 @@ marquee {
     min-width: 100vw;
     min-height: 100vh;
     background: transparent !important;
+    .ant-row {
+        margin: 20px 5px;
+    }
 }
