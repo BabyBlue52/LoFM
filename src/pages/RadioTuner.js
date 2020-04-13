@@ -1,33 +1,21 @@
 import React, { useState } from 'react';
-import { Row, Col } from 'antd';
-import { Frame, Page } from "framer";
-import { ChatButton } from '../components/Button';
+import { Page } from 'framer';
 
-export function RadioTuner() {
-    return(
+import { BootlegBoy } from './channels/BootlegBoy';
+
+export default function RadioTuner() {
+    const [state, setState] = useState();
+ 
+    return (
         <>
             <Page 
-                alignment="center"
-                defaultEffect={"none"}
-                currentPage={1}
-            >                
-                <Frame size={500}>
-                    <Row>
-                        <Col span={24}>
-                            <h1>Recently Uploaded</h1>                             
-                        </Col>
-                    </Row>  
-                </Frame>
-                <Frame size={500}>
-                    <Row>
-                        <Col span={18} className="justify-center"> 
-                            <ChatButton/>  
-                        </Col>
-                    </Row>  
-                </Frame>
-              
+                direction="vertical"
+                directionLock={true}
+                momentum
+            >
+                <BootlegBoy />
+                <BootlegBoy />
             </Page>
-                  
         </>
     )
 }

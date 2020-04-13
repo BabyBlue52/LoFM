@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MdChatBubble} from 'react-icons/md';
+import { Tooltip } from "antd";
 import { FaPlay, FaPause, FaPlus, FaCheck } from 'react-icons/fa';
 
 // Default Button 
@@ -17,7 +18,7 @@ function Button(props) {
 function ChatButton() {
     return (
         <>
-           <button className="chat-btn">
+           <button className="chat-btn" onClick={()=> console.log('action')}>
                     <MdChatBubble className="chat-bubble"/>
                     <p>Watch Chat</p>
            </button>
@@ -46,16 +47,29 @@ function PlayButton() {
 // Favorite Button
 function FavoriteButton() {
     const [icon, setIcon] = useState(false);
+    const favorited = 'Added to Favorites';
 
     function  handleClick() {
-        setIcon(!icon);
+        setIcon(!icon)
+    }
+   
+    function logged() {
+       console.log('added to playlist')
     }
 
     return (
         <div>
-            <button class="add-btn justify-center " onClick={handleClick}>
-                {icon ? <FaCheck/> : <FaPlus/> }
-            </button>
+            <Tooltip 
+                getPopUpContianer={() =>  document.getElementById('root')} 
+                title={icon ? favorited : 'Removed from Favorites'} 
+                placement="top"
+                trigger="click" 
+                onTouchEnd={logged}
+            >
+                <button className="add-btn justify-center " onClick={handleClick}>
+                    {icon ? <FaCheck/> : <FaPlus/> }
+                </button>
+            </Tooltip>
         </div>
     )
 }

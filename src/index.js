@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
-import { RadioTuner } from './pages/RadioTuner';
+import RadioTuner from './pages/RadioTuner';
 import Chat from './pages/Chat';
 import './style.scss';
 

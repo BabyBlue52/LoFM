@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { motion, useAnimation }from 'framer-motion';
-import { MdMoveToInbox } from 'react-icons/md';
+import { motion }from 'framer-motion';
 
 
 function SoundWave() {

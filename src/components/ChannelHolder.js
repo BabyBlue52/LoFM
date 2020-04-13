@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useAxios from 'axios-hooks';
-import { Row, Col, Spin } from 'antd';
+import { Row, Col, Spin, Tooltip } from 'antd';
 import { FaSpotify, FaYoutube, FaSoundcloud } from 'react-icons/fa';
 import 'antd/dist/antd.css'; 
 
@@ -15,6 +15,8 @@ function ChannelHolder(){
         setChannel("dummy-thick")
     }
     
+    const favorited = <p>Added to favorites</p>
+
     //api calls
     const [{data, loading, error }, refetch] = useAxios(
 
@@ -33,22 +35,24 @@ function ChannelHolder(){
                 </Col>
             </Row>
             <Row>
-                <Col span={1} offset={13}>
-                    <FavoriteButton/>
+                <Col span={1} offset={14}>
+                    <Tooltip placement="top" title={favorited}>
+                       <FavoriteButton />
+                    </Tooltip>
                 </Col>
             </Row> 
             <Row className="">
-                <Col span={1} offset={10}>
+                <Col span={2} offset={8} className="justify-center">
                     <button className="spotify">
                         <FaSpotify size="1.5rem"/> 
                     </button>
                 </Col>
-                <Col span={2} className="justify-center">
+                <Col span={4} className="justify-center">
                     <button className="youtube">
                         <FaYoutube size="1.5rem"/> 
                     </button>
                 </Col>
-                <Col span={1}>
+                <Col span={2}>
                     <button className="soundcloud">
                         <FaSoundcloud size="1.5rem"/> 
                     </button>

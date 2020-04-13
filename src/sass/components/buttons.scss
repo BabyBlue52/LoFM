@@ -27,7 +27,7 @@ button.default-btn {
         color: white;
     }
 
-    &:active {
+    &:active, &:focus {
         transform: scale(0.95);
         background: darken($purple, 10%);
     }
@@ -86,6 +86,10 @@ button.chat-btn {
         height: 20px;
         width: 20px;
         margin-top: -5px;
+    }
+    &:active, &:focus, &:hover {
+        transform: scale(0.95);
+        background: darken($purple, 10%);
     }
 }
 

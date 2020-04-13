@@ -87,6 +87,12 @@ marquee {
     min-height: 100vh;
     background: transparent !important;
     .ant-row {
-        margin: 20px 5px;
+        margin: 0px 5px;
     }
+}
+.ant-tooltip-inner {
+    min-height: max-content;
+}
+.ant-tooltip-content {
+    background: $black;
 }
