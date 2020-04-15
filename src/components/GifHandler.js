@@ -1,10 +1,10 @@
-import React, { useState }from 'react';
+import React, { useState } from 'react';
 import {Row, Col } from 'antd';
 import gif from '../img/gif/chilledCow.gif';
 
 
 
-function GifHandler(props) {
+export function GifHandler(props) {
     const [song, setSong] = useState({
         artist: 'OatMello',
         title: "Anxiety ft. drkmnd",
@@ -19,11 +19,11 @@ function GifHandler(props) {
                     <h3>Currently Playing </h3>
                     <marquee behavior="scroll" scrollamount="2">
                         <span style={{marginRight:'10px'}}>
-                            {song.artist}
+                            {props.artist}
                         </span>
                         -
                         <span style={{marginLeft:'10px'}}>
-                            {song.title}
+                            {props.title}
                         </span>
                     </marquee>
                 </Col>
@@ -33,4 +33,25 @@ function GifHandler(props) {
     )
 }
 
-export { GifHandler } ;
+export function SongHandler(props) {
+
+    return (
+        <>
+           <Row type="flex">
+                <Col span={20} offset={2} style={{display:'block',paddingTop:"20px"}}>
+                    <h3>Currently Playing </h3>
+                    <marquee behavior="scroll" scrollamount="2.5">
+                        <span style={{'marginRight':'10px'}}>
+                            {props.artist}
+                        </span>
+                        -
+                        <span style={{'marginLeft':'10px'}}>
+                            {props.title}
+                        </span>
+                    </marquee>
+                </Col>
+           </Row>
+           
+        </>
+    )
+}

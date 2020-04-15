@@ -27,9 +27,12 @@ $tablet: 768px;
             background: linear-gradient(30deg, rgba(98,4,96,0.5) 0%, rgba(4,73,100,0.5) 100%);
         }
     }
+    #app-desktop {
+        display: none;
+    }
 }
 @media screen and (min-width: $tablet) {
-    #app {
+    #app-desktop {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -39,6 +42,13 @@ $tablet: 768px;
         min-height: 600px;
         max-height: 600px;
         border: 1px solid $black;
+        .sunset-skin {
+            position: absolute;
+
+        }
+    }
+    #app {
+        display: none;
     }
 }
 

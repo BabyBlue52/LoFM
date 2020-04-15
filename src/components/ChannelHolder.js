@@ -5,10 +5,11 @@ import { FaSpotify, FaYoutube, FaSoundcloud } from 'react-icons/fa';
 import 'antd/dist/antd.css'; 
 
 import { FavoriteButton } from './Button';
+import { SongHandler } from './GifHandler';
 import '../../src/style.scss';
 
 
-function ChannelHolder(){
+function ChannelHolder(props){
     const [channel, setChannel] = useState();
 
     const getChannel = () => {
@@ -22,11 +23,17 @@ function ChannelHolder(){
 
     )
     
-    if (loading) return <div><Spin/></div>
+    if (loading) return (
+        <Row>
+            <Col span={24}>
+                <Spin/>
+            </Col>
+        </Row>
+    )
     // if (error) return <p>Error!</p>
 
     return (
-        <>  
+        <>  {/* Channel Profile */}
             <Row type="flex">
                 <Col span={8} offset={8} className="justify-center">
                     <div className="channel-gradient _dropShadow">
@@ -34,6 +41,7 @@ function ChannelHolder(){
                     </div>
                 </Col>
             </Row>
+
             <Row>
                 <Col span={1} offset={14}>
                     <Tooltip placement="top" title={favorited}>
@@ -41,22 +49,47 @@ function ChannelHolder(){
                     </Tooltip>
                 </Col>
             </Row> 
+
+            {/* Chanel Links */}
             <Row className="">
                 <Col span={2} offset={8} className="justify-center">
-                    <button className="spotify">
-                        <FaSpotify size="1.5rem"/> 
-                    </button>
+                    <a href={props.spotify} target="_blank">
+                        <button className="spotify" >
+                            <FaSpotify size="1.5rem" fill="white"/> 
+                        </button>
+                    </a>
                 </Col>
                 <Col span={4} className="justify-center">
-                    <button className="youtube">
-                        <FaYoutube size="1.5rem"/> 
-                    </button>
+                    <a href={props.youtube} target="_blank">
+                        <button className="youtube" >
+                            <FaYoutube size="1.5rem" fill="white"/> 
+                        </button>
+                    </a>
                 </Col>
                 <Col span={2}>
-                    <button className="soundcloud">
-                        <FaSoundcloud size="1.5rem"/> 
-                    </button>
+                    <a href={props.soundcloud} target="_blank">
+                        <button className="soundcloud" >
+                            <FaSoundcloud size="1.5rem" fill="white"/> 
+                        </button>
+                    </a>
                 </Col>  
+            </Row>
+            
+            {/* Channel Info */}
+            <Row className="justify-center">
+                <h1 className="channel">{props.channel}</h1>
+                <Col span={20} className="channel-bio" >                
+                    <p>{props.bio}</p>
+                </Col>
+            </Row>
+
+            {/* Marquee */}
+            <Row className="justify-center">
+                <Col span={18} style={{"flexDirection":"column"}}>
+                    <div className="divider"></div>
+                       <SongHandler artist={props.artist} title={props.title}/>
+                    <div className="divider"></div>
+                </Col>
             </Row>
         </>
     )

@@ -35,12 +35,12 @@ class App extends React.Component {
               </Switch>
               </Router>
             </div>
-          </div>   
-        </Mobile>
+          </div>
+      </Mobile>
 
        {/* Desktop Size */}
         <Desktop>
-          <div id="app">
+          <div id="app-desktop">
             <Router>
               <Switch>
                 <Route exact path="/">

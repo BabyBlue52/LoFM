@@ -21,7 +21,17 @@
 .gif-holder {
     border: 3px solid $black;
 }
-
+.vid-scroller {
+    position: fixed;
+    top: 40px;
+    overflow: hidden;
+    height: 100%;
+    transform:scale(0.9);
+}
+.vid-card {
+    padding-bottom: 20px;
+    transform: scale(0.95);
+}
 
 .vid-thumbnail {
     display: block;
@@ -37,10 +47,14 @@
     } 
 } 
 .vid-title {
+    position: relative;
+    left: 10%;
+    top: 10px;
     display: flex;
     justify-content: flex-start;
     line-height: 0.9rem;
     margin: 10px 0px 20px 0px;
+    width: 320px;
     p {
         font-family: $spartan;
         font-weight: $heavy;
@@ -68,4 +82,9 @@
     background: white;
     z-index: 99;
 
+}
+.channel-bio {
+    overflow: hidden;
+    max-height: 200px;
+    text-overflow: ellipsis;
 }
