@@ -8,6 +8,8 @@ import Modal from '../components/Modal';
 import { GifHandler } from '../components/GifHandler'; 
 import { ChatButton, PlayButton } from '../components/Button';
 import { SoundWave } from '../components/animation';
+import { Menu } from '../components/Menu';
+import { ChatBubble } from '../components/ChatBubble';
 
 storiesOf("App", module)
   .add('Mobile View', () => (
@@ -54,8 +56,17 @@ storiesOf("Components", module)
       <Modal/>
     </div>
   ))
+  .add('Menu', () => (
+    <div className="story-container" >
+      <Menu/>
+    </div>
+  ))
+  .add('Single Chat', () => (
+    <div className="story-container" >
+      <ChatBubble />
+    </div>
+  ))
 
-  
 /*
 ================
     Buttons

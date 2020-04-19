@@ -1,0 +1,43 @@
+.menu {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    min-height: 40px;
+    max-height: 40px;
+    background: white;
+}
+.menu-item {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: calc(100vw/5);
+    margin: 0px;
+    padding-top: 8px;
+    svg{
+        height: 24px;
+        width: 24px;
+        fill: $black;
+        stroke-width: 2;
+    }
+    &:hover, &:active {
+        background: rgba($black, 0.05)
+    }
+}
+.support {
+    @extend .menu-item; 
+    background: $green;
+    svg{
+        fill: white;
+    }
+    &:hover, &:active {
+        background: darken($green, 15);
+    }
+}
+.favorite {
+    @extend .menu-item; 
+    &:hover, &:active {
+        svg{
+            fill: $deepPurple;
+        }
+    }
+}

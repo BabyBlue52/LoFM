@@ -29,7 +29,8 @@ button.default-btn {
         background: none;
     }
 
-    &:active, &:focus {
+    &:active,
+    &:focus {
         transform: scale(0.95);
         background: darken($purple, 10%);
     }
@@ -85,20 +86,31 @@ button.soundcloud {
 button.chat-btn {
     @extend .default-btn;
     min-width: 280px;
+
     svg.chat-bubble {
         fill: white;
         height: 20px;
         width: 20px;
         margin-top: -5px;
     }
-    &:active, &:focus, &:hover {
+
+    &:active,
+    &:focus,
+    &:hover {
         transform: scale(0.95);
         background: darken($purple, 10%);
     }
 }
 
 button.play-btn {
+    height: 38px;
+    width: 38px;
+    margin-top: 10px;
+    margin-right: 10px;
+    background: transparent;
     svg {
+        position: relative;
+        top: 10px;
         height: 24px;
         width: 24px;
     }
@@ -107,14 +119,34 @@ button.play-btn {
         transform: scale(0.9);
     }
 }
+
 button.close {
     padding-bottom: 20px;
+
     svg {
         height: 24px;
         width: 24px;
         transition: 300ms ease-in-out;
-        &:hover, &:active {
-            fill: $red;
+
+        &:hover,
+        &:active {
+            fill: $purple;
+        }
+    }
+}
+
+button.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    svg {
+        height: 24px;
+        width: 24px;
+        transition: 300ms ease-in-out;
+
+        &:hover,
+        &:active {
+            fill: $purple;
         }
     }
 }

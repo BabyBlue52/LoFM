@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import { Frame, Page } from "framer";
 import { motion }from 'framer-motion';
 
+import Chat from '../../pages/Chat';
 import { ChatButton } from '../../components/Button';
 import { ChannelHolder } from '../../components/ChannelHolder';
 import { ChannelUploads } from '../../components/ChannelUploads';
+import { GifHandler } from '../../components/GifHandler';
+import gif from '../../img/gif/chilledCow.gif';
 import DataFetching from '../../apis/Youtube';
 
 
-export function BootlegBoy() {
+export function BootlegBoy(props) {
     const [data, setData] = useState({
-            title:"",
-            artist:"",
+            title:"All Your Gyals Belong to us",
+            artist:"Inteus",
             videos:[],
-            channel:"The Bootleg Boy",
+            snippet:"The Bootleg Boy",
             bio:"I'm baby helvetica forage distillery +1 sriracha, bitters vaporware sartorial kale chips polaroid pour-over. Typewriter messenger bag meditation, tacos tilde biodiesel palo santo hexagon post-ironic freegan gochujang."
     });
 
@@ -24,19 +28,20 @@ export function BootlegBoy() {
         youtube: 'https://www.youtube.com/channel/UC0fiLCwTmAukotCXYnqfj0A'
     };
     const song = {
-        title:'uhuhDo Something',
+        title:'Do Something',
         artist:'Bob'
     }
+
     return(
         <>
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
-                currentPage={0}
+                currentPage={1}
             >                
                 <Frame size={500}>
                     <Row className="justify-center">
-                        <Col span={24} style={{'flexDirection':'column'}}>
+                        <Col span={20} style={{'flexDirection':'column'}}>
                             <ChannelUploads/>                             
                         </Col>
                     </Row>  
@@ -44,8 +49,10 @@ export function BootlegBoy() {
                 <Frame size={500}>
                     <div className="spacer"></div>
                     <Row className="justify-center">
-                        <Col className="justify-center" > 
-                            <ChatButton/>
+                        <Col className="justify-center" >
+                            <Link to="/chat"> 
+                                <ChatButton />
+                            </Link>
                         </Col>
                     </Row>  
                     <div className="spacer"></div>
@@ -61,10 +68,21 @@ export function BootlegBoy() {
                     <div className="spacer"></div>
                     
                 </Frame>
-              
+                <Frame size={500}>
+                    <Row style={{"paddingTop": "40px"}}>
+                        <Chat snippet={data.snippet} />
+                    </Row>
+                    <Row className="justify-center gif-player-row">
+                        <Col span={24} style={{"paddingTop": "20px"}}>
+                            <GifHandler
+                                gif={gif}
+                                artist={data.artist}
+                                title={data.title}
+                            />
+                        </Col>
+                    </Row>   
+                </Frame>
             </Page>
-            
-                  
         </>
     )
 }

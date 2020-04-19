@@ -25,15 +25,6 @@ function SoundWave() {
         }
     }
      
-    const noVariant = {
-        start: {
-            height: "0px",
-        },
-        end: {
-            height: "0px"
-        }
-    }
-
     const barTransition = {
         duration: 0.9,
         yoyo: Infinity,
@@ -45,9 +36,10 @@ function SoundWave() {
           initial="start"
           animate="end"
           variants={containerTransition}
-          style={{display:"flex",transform:"scaleY(-1)", maxHeight:"20px",minHeight:"20px"}}
+          className="bar-container"
         >
           <motion.div className="bar" variants={barVariant} transition={barTransition}  />
+          <motion.div className="bar" variants={barVariant} transition={barTransition} />
           <motion.div className="bar" variants={barVariant} transition={barTransition} />
           <motion.div className="bar" variants={barVariant} transition={barTransition} />
           <motion.div className="bar" variants={barVariant} transition={barTransition} />

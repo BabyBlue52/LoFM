@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { MdChatBubble} from 'react-icons/md';
+import { useHistory } from 'react-router-dom';
+import { MdChatBubble } from 'react-icons/md';
 import { Tooltip } from "antd";
-import { FaPlay, FaPause, FaPlus, FaCheck } from 'react-icons/fa';
+import { FaPlay, FaPlus, FaCheck } from 'react-icons/fa';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+
+import { SoundWave } from './animation';
 
 // Default Button 
 function Button(props) {
@@ -37,7 +41,7 @@ function PlayButton() {
     return(
         <>
             <button className="play-btn" onClick={handleClick}>
-                {!state ? <FaPlay/> : <FaPause/> }
+                {!state ? <FaPlay /> : <SoundWave/> }
                 
             </button>
         </>
@@ -73,6 +77,21 @@ function FavoriteButton() {
         </div>
     )
 }
+// Back Button
+function BackButton() {
+    let history = useHistory();
+    
+    function handleBack() {
+        history.goBack();
+    }
 
+    return (
+        <>
+            <button className="back-btn" onClick={handleBack}>
+                <AiOutlineArrowLeft />
+            </button>
+        </>
+    )
+}
 
-export { Button, ChatButton, PlayButton, FavoriteButton };
+export { Button, ChatButton, PlayButton, FavoriteButton, BackButton };

@@ -19,7 +19,8 @@ export function VideoContainer() {
                 publishedAt: '6 Days ago'
             },      
     ]);
-
+    
+    {/* Map uploads */}
     return(
         <>
             {videos.slice(0,2).map((video, index) => (
@@ -32,10 +33,10 @@ export function VideoContainer() {
                         </Col>
                     </Row>
                     <Row className="vid-title">
-                        <Col span={24}>
+                        <Col span={20}>
                             <p><span>{video.title}</span></p>
                         </Col>
-                        <Col span={24}>
+                        <Col span={20}>
                             <p className="thin">
                                 <NumberFormat displayType={'text'} value={video.views} thousandSeparator={true} />
                                 views

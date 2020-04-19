@@ -5,6 +5,8 @@ import { useMediaQuery } from 'react-responsive';
 
 import RadioTuner from './pages/RadioTuner';
 import Chat from './pages/Chat';
+import SearchPage from './pages/Search';
+import { Menu } from './components/Menu';
 import './style.scss';
 
 const Desktop = ({ children }) => {
@@ -25,15 +27,13 @@ class App extends React.Component {
           <div id="app">
             <div className="sunset-skin">
               <Router>
-              <Switch>
-                <Route exact path="/">
-                  <RadioTuner />
-                </Route>
-                <Route path="/chat">
-                  <Chat />
-                </Route>
-              </Switch>
+                <Switch>
+                  <Route exact path="/" component={RadioTuner}/>
+                  <Route path="/chat" component={Chat}/>
+                  <Route path="/search" component={SearchPage}/>
+                </Switch>
               </Router>
+              <Menu/>
             </div>
           </div>
       </Mobile>
