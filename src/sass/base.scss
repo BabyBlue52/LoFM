@@ -108,8 +108,8 @@ marquee {
 .temps {
     overflow-x: hidden;
     overflow-y: scroll;
-    min-height: 470px;
-    max-height: 470px;
+    min-height: 465px;
+    max-height: 465px;
     width: 100%;
     
     background: rgba(white, 0.5);
@@ -160,4 +160,22 @@ marquee {
 .ant-tooltip-content {
     background: transparent;
     color: $black;
+}
+
+.ant-badge {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 10px;
+	padding: 10px;
+	/* color: rgba(0, 0, 0, 0.65); */
+	font-size: 14px;
+	font-variant: tabular-nums;
+	/* line-height: 1.5715; */
+	list-style: none;
+	-webkit-font-feature-settings: 'tnum';
+	font-feature-settings: 'tnum', "tnum";
+	position: relative;
+	display: inline-block;
+	color: unset;
+	line-height: 1;
 }

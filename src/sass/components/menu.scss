@@ -12,8 +12,12 @@
     height: 40px;
     width: calc(100vw/5);
     margin: 0px;
-    padding-top: 8px;
     svg{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+     
         height: 24px;
         width: 24px;
         fill: $black;

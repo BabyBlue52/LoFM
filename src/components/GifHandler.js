@@ -12,10 +12,10 @@ export function GifHandler(props) {
                 <Col span={2}>
                     <PlayButton/>
                 </Col>
-                <Col span={2} offset={2}>
-                    <img src={props.gif} class="gif-holder _dropShadow"/>
+                <Col span={2} offset={1}>
+                    <img src={props.gif} className="gif-holder _dropShadow"/>
                 </Col>
-                <Col span={10} offset={6} style={{'display':'block','paddingTop':"20px"}}>
+                <Col span={10} offset={8} style={{'display':'block','paddingTop':"20px"}}>
                     <h3>Currently Playing </h3>
                     <marquee behavior="scroll" scrollamount="2">
                         <span style={{marginRight:'10px'}}>

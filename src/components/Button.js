@@ -22,7 +22,7 @@ function Button(props) {
 function ChatButton() {
     return (
         <>
-           <button className="chat-btn" onClick={()=> console.log('action')}>
+           <button className="chat-btn">
                     <MdChatBubble className="chat-bubble"/>
                     <p>Watch Chat</p>
            </button>

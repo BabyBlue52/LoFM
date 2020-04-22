@@ -9,6 +9,7 @@ import SearchPage from './pages/Search';
 import { Menu } from './components/Menu';
 import './style.scss';
 
+
 const Desktop = ({ children }) => {
   const isDesktop = useMediaQuery({ minWidth: 768 })
   return isDesktop ? children : null
@@ -18,12 +19,15 @@ const Mobile = ({ children }) => {
   return isMobile ? children : null
 }
 
-class App extends React.Component {
-  render() {
+
+function App() {
+
     return(
       <>
-      {/* Mobile Size */}
-      <Mobile>
+
+      )}
+        {/* Mobile Size */}
+        <Mobile>
           <div id="app">
             <div className="sunset-skin">
               <Router>
@@ -38,7 +42,7 @@ class App extends React.Component {
           </div>
       </Mobile>
 
-       {/* Desktop Size */}
+        {/* Desktop Size */}
         <Desktop>
           <div id="app-desktop">
             <Router>
@@ -56,6 +60,5 @@ class App extends React.Component {
       </>
     )
   }
-}
 
-ReactDOM.render( <App/>, document.getElementById('root'));
+ReactDOM.render( <App/>, document.getElementById('root')); 

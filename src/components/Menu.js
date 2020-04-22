@@ -1,6 +1,6 @@
 import React from 'react';
 import {Row, Col, Badge } from 'antd';
-import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineMenu, AiFillHome } from 'react-icons/ai';
+import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiFillHome } from 'react-icons/ai';
 import { GiSoundWaves } from 'react-icons/gi';
 
 
@@ -19,7 +19,7 @@ export function Menu(props) {
             </Col>
             <Col>
                 <a href="/">
-                <div className="menu-item">
+                <div className="menu-item" style={{"marginTop":"-2px"}}>
                     <AiFillHome />    
                 </div>
                 </a>    
@@ -34,7 +34,7 @@ export function Menu(props) {
             <Col>
                 <button className="menu-item">
                     <Badge dot={props}>
-                        <AiOutlineMenu/>
+                        <AiOutlineInbox/>
                     </Badge>            
                 </button>
             </Col>
