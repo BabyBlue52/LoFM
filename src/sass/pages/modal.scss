@@ -1,32 +1,59 @@
+.modal-container {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+}
 .modal {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 400px;
     width: 300px;
     border-radius: 20px;
     padding: 10px 20px;
+    background: white;
+    animation: 300ms ease-in-out slideUpLogin alternate;
+
     h1.welcome {
         font-family: $spartan;
         font-weight: $light;
         font-size: $paragraph;
         text-align: center;    
-        
         margin: 0 auto;
         padding-bottom: 30px;
+        color: $black;
+        text-shadow: none;
+    }
+    h3 {
+        color: $black;
     }
     p.forgot {
-        margin-top: 10px;
+        margin-top: 5px;
         margin-bottom: 30px;
         line-height: 0.7rem;
         font-size: $small;
         color: $purple;
+        background: none;
     }
     a {
+        
         transition: 300ms ease-in-out;
         &:hover, &:active {
            opacity: 50%
         }
     }
+    svg {
+        fill: $red;
+    }
+}
+@keyframes slideUpLogin {
+    from { 
+        top: 0;
+     }
+    to { 
+        top: 45%; 
+    }  
 }

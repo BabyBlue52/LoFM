@@ -4,6 +4,9 @@ import { MdChatBubble } from 'react-icons/md';
 import { Tooltip } from "antd";
 import { FaPlay, FaPlus, FaCheck } from 'react-icons/fa';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import {PortalWithState } from 'react-portal';
+
+import Modal from '../components/Modal';
 
 import { SoundWave } from './animation';
 
@@ -20,12 +23,23 @@ function Button(props) {
 
 // Chat button
 function ChatButton() {
+
     return (
         <>
-           <button className="chat-btn">
+        <PortalWithState closeOnOutsideClick closeOnEsc>
+            {({ openPortal, closePortal, isOpen, portal }) => (
+                <React.Fragment>
+                <button className="chat-btn" onClick={openPortal}>
                     <MdChatBubble className="chat-bubble"/>
-                    <p>Watch Chat</p>
-           </button>
+                    <p>Join Chat</p>
+                 </button>
+                {portal(
+                    <Modal onClose={closePortal}/>
+                )}
+                </React.Fragment>
+            )}
+        </PortalWithState> 
+           
         </>
     )
 }
@@ -77,21 +91,5 @@ function FavoriteButton() {
         </div>
     )
 }
-// Back Button
-function BackButton() {
-    let history = useHistory();
-    
-    function handleBack() {
-        history.goBack();
-    }
 
-    return (
-        <>
-            <button className="back-btn" onClick={handleBack}>
-                <AiOutlineArrowLeft />
-            </button>
-        </>
-    )
-}
-
-export { Button, ChatButton, PlayButton, FavoriteButton, BackButton };
+export { Button, ChatButton, PlayButton, FavoriteButton };

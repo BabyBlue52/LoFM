@@ -2,7 +2,9 @@ import React from 'react';
 import {Row, Col, Badge } from 'antd';
 import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiFillHome } from 'react-icons/ai';
 import { GiSoundWaves } from 'react-icons/gi';
+import { PortalWithState } from 'react-portal';
 
+import SearchPage from '../pages/Search';
 
 export function Menu(props) { 
     return(
@@ -25,11 +27,20 @@ export function Menu(props) {
                 </a>    
             </Col>
             <Col>
-                <a href="/search">
-                <button className="menu-item">
-                    <AiOutlineSearch/>    
-                </button>
-                </a>
+                <PortalWithState closeOnOutsideClick closeOnEsc>
+                {({ openPortal, closePortal, isOpen, portal }) => (
+                    <React.Fragment>
+                        <button className="menu-item" onClick={openPortal}>
+                            <AiOutlineSearch/>    
+                        </button>
+                        {portal(
+                            <SearchPage onReturn={closePortal}/>
+                        )}
+                    </React.Fragment>
+                )}
+            </PortalWithState> 
+                
+                
             </Col>
             <Col>
                 <button className="menu-item">

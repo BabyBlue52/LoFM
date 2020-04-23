@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, AutoComplete, Input } from 'antd';
-import { AiOutlineArrowLeft, AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
  
 const options = [
   { value: 'Ryan Celcuis Sounds' },
@@ -8,28 +8,28 @@ const options = [
   { value: 'The Chilled Cow' },
 ];
 
-export default function SearchPage (){
+export default function SearchPage(props){
   return (
-    <>  
-        <Row>
-            <div>
-            <a href="/">
-                <AiOutlineArrowLeft/>
-            </a>
-            </div>
-        </Row>
-        <Row className="justify-center">
-            <div className="spacer"></div>
-            <AutoComplete
-            options={options}
-            placeholder="Search Channels"
-            filterOption={(inputValue, option) =>
-                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-            }>
-                <Input.Search size="large"/>
-            </AutoComplete>
-        </Row>
-        
-    </>
+      <div className="search-backdrop">
+      <div className="search-container"> 
+          <Row>
+            <button className="back-btn" onClick={props.onReturn}>
+                <AiOutlineArrowLeft />
+            </button>
+          </Row>
+          <div className="spacer"></div>
+          <Row className="justify-center">
+              <div className="spacer"></div>
+              <AutoComplete
+              options={options}
+              placeholder="Search Channels"
+              filterOption={(inputValue, option) =>
+                  option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+              }>
+                  <Input.Search size="large"/>
+              </AutoComplete>
+          </Row>
+      </div>
+      </div>
   );
 }

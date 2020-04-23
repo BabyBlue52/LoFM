@@ -33,7 +33,6 @@ function App() {
               <Router>
                 <Switch>
                   <Route exact path="/" component={RadioTuner}/>
-                  <Route path="/chat" component={Chat}/>
                   <Route path="/search" component={SearchPage}/>
                 </Switch>
               </Router>

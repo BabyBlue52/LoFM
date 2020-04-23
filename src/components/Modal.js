@@ -3,16 +3,21 @@ import { Row, Col, Input } from  'antd';
 import { MdClose } from 'react-icons/md'
 import { Button } from './Button';
 
-function Modal() {
+function Modal(props) {
     const [state, setState] = useState({
 
     })
 
      return(
+            <div class="modal-container">
             <div className="modal _dropShadow">
                 <Row>
                     <Col span={6}>
-                        <button className="close" style={{marginLeft:"-10px",marginTop:"10px"}}>
+                        <button 
+                        className="close" 
+                        style={{marginLeft:"-10px",marginTop:"10px"}}
+                        onClick={props.onClose}
+                        >
                             <MdClose/>
                         </button>  
                     </Col>
@@ -30,18 +35,19 @@ function Modal() {
                         <h3>Email</h3>
                     </Col>
                     <Col offset={2} span={20}>
-                        <Input type="email"/>
+                        <Input type="email" placeholder="Enter Email"/>
                     </Col>
                 </Row>
                 <div className="spacer"></div>
 
                 <Row>
+
                 {/* Password input */}
                 `<Col offset={2} span={20}>
                         <h3>Password</h3>
                     </Col>
                     <Col offset={2} span={20}>
-                        <Input type="password"/>
+                        <Input type="password" placeholder="Enter Password"/>
                     </Col>
                 </Row>
                 {/* */}
@@ -55,6 +61,7 @@ function Modal() {
                         <Button name="Login"/>
                     </Col>
                 </Row>
+            </div>
             </div>
         )
     }

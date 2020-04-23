@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import { Frame, Page } from "framer";
 import { motion }from 'framer-motion';
@@ -33,12 +32,13 @@ export function BootlegBoy(props) {
     }
 
     return(
-        <>
+        <>  
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
                 currentPage={1}
             >                
+                {/* Recent Uploads */}
                 <Frame size={500}>
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
@@ -46,15 +46,16 @@ export function BootlegBoy(props) {
                         </Col>
                     </Row>  
                 </Frame>
+
+                {/* Channel Page */}
                 <Frame size={500}>
                     <div className="spacer"></div>
                     <Row className="justify-center">
                         <Col className="justify-center" >
-                            <Link to="/chat"> 
-                                <ChatButton />
-                            </Link>
+                            <ChatButton/>
                         </Col>
-                    </Row>  
+                    </Row> 
+            
                     <div className="spacer"></div>
                         <ChannelHolder
                             soundcloud={links.soundcloud} 
@@ -68,6 +69,7 @@ export function BootlegBoy(props) {
                     <div className="spacer"></div>
                     
                 </Frame>
+                {/* Chat Feature */}
                 <Frame size={500}>
                     <Row style={{"paddingTop": "40px"}}>
                         <Chat snippet={data.snippet} />
