@@ -15,7 +15,7 @@
     border-radius: 20px;
     padding: 10px 20px;
     background: white;
-    animation: 300ms ease-in-out slideUpLogin alternate;
+    animation: 300ms ease-in-out slideDownLogin alternate;
 
     h1.welcome {
         font-family: $spartan;
@@ -49,7 +49,7 @@
         fill: $red;
     }
 }
-@keyframes slideUpLogin {
+@keyframes slideDownLogin {
     from { 
         top: 0;
      }

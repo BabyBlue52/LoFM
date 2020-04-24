@@ -1,0 +1,16 @@
+.fave-backdrop {
+    @extend .search-backdrop;
+    animation: 300ms ease-in-out fadeIn alternate !important;
+}
+.fave-container {
+    @extend .search-container;
+}
+.fave-header {
+    h3 {
+        width: 100%;
+        text-align: center;
+        font-size: $header;
+        font-family: $spartan;
+        font-weight: $light;
+    }
+}

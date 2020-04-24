@@ -1,12 +1,12 @@
 .search-backdrop {
     background: rgb(98,4,96);
     background: linear-gradient(30deg, rgba(98,4,96,0.5) 0%, rgba(4,73,100,0.5) 100%);
-    height: 100%;
+    height: calc(100% - 40px);
     width: 100%;
     position: absolute;
     top: 0px;
     z-index: 0;
-    animation: 300ms ease-in-out slideUp alternate;
+    animation: 300ms ease-in-out fadeIn alternate;
 }
 
 .search-container {
@@ -116,5 +116,26 @@
     to { 
         top: 0; 
         height: 100%;
+    }  
+}
+
+@keyframes slideLeft {
+    from { 
+        left: 100%;
+        width: 0;
+     }
+    to { 
+        left: 0; 
+        width: 100%;
+    }  
+}
+
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+     }
+    to { 
+        opacity: 1;
     }  
 }

@@ -1,24 +1,49 @@
 import React from 'react';
 import {Row, Col, Badge } from 'antd';
 import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiFillHome } from 'react-icons/ai';
-import { GiSoundWaves } from 'react-icons/gi';
 import { PortalWithState } from 'react-portal';
 
 import SearchPage from '../pages/Search';
+import InboxPage from '../pages/Inbox';
+import FavePage from '../pages/Favorites';
+import SupportPage from '../pages/Support';
 
 export function Menu(props) { 
     return(
         <Row type="flex" className="menu">
+            {/* Support the Troops */}
             <Col>
-                <button className="support">
-                    <AiOutlineSmile />
-                </button>            
+                <PortalWithState closeOnOutsideClick closeOnEsc>
+                {({ openPortal, closePortal, isOpen, portal }) => (
+                    <React.Fragment>
+                        <button className="support" onClick={openPortal}>
+                            <AiOutlineSmile />
+                        </button>     
+                        {portal(
+                            <SupportPage onCloseSupport={closePortal}/>
+                        )}
+                    </React.Fragment>
+                )}
+                </PortalWithState> 
             </Col>
+            
+            {/* Favorites Playlist */}
             <Col>
-                <button className="favorite">
-                    <AiFillHeart/>
-                </button>
+                <PortalWithState closeOnOutsideClick closeOnEsc>
+                {({ openPortal, closePortal, isOpen, portal }) => (
+                    <React.Fragment>
+                        <button className="favorite" onClick={openPortal}>
+                            <AiFillHeart/>
+                        </button>
+                        {portal(
+                            <FavePage onReturn={closePortal}/>
+                        )}
+                    </React.Fragment>
+                )}
+                </PortalWithState> 
             </Col>
+
+             {/* Home */}
             <Col>
                 <a href="/">
                 <div className="menu-item" style={{"marginTop":"-2px"}}>
@@ -26,6 +51,8 @@ export function Menu(props) {
                 </div>
                 </a>    
             </Col>
+
+            {/* Search Portal */}
             <Col>
                 <PortalWithState closeOnOutsideClick closeOnEsc>
                 {({ openPortal, closePortal, isOpen, portal }) => (
@@ -38,16 +65,25 @@ export function Menu(props) {
                         )}
                     </React.Fragment>
                 )}
-            </PortalWithState> 
-                
-                
+                </PortalWithState> 
             </Col>
+
+             {/* Inbox Portal */}
             <Col>
-                <button className="menu-item">
-                    <Badge dot={props}>
-                        <AiOutlineInbox/>
-                    </Badge>            
-                </button>
+                <PortalWithState closeOnOutsideClick closeOnEsc>
+                {({ openPortal, closePortal, isOpen, portal }) => (
+                    <React.Fragment>
+                        <button className="menu-item" onClick={openPortal}>
+                            <Badge dot={props}>
+                                <AiOutlineInbox/>
+                            </Badge>            
+                        </button>
+                        {portal(
+                            <InboxPage onCloseInbox={closePortal}/>
+                        )}
+                    </React.Fragment>
+                )}
+                </PortalWithState> 
             </Col>
         </Row>
     )

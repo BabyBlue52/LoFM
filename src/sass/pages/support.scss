@@ -1,0 +1,7 @@
+.support-container {
+    @extend .inbox-container;
+    animation: 350ms ease-in-out slideUp alternate;
+}
+.support-header {
+    @extend .inbox-header;
+}

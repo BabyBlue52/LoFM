@@ -1,0 +1,26 @@
+.inbox-container {
+    position: absolute;
+    top: 0px;
+    height: calc(100% - 40px);
+    width: 100%;
+    background: $offWhite;
+    animation: 300ms ease-in-out slideLeft alternate;
+    h3 {
+        width:100%;
+        margin: 40px 0;
+        text-align: center;
+        color: $black;
+    }
+    .back-btn {
+        z-index: 10;
+        svg {fill: $black}
+    }
+}
+.inbox-header {
+    position: fixed;
+    top: 0px;
+    height: 80px;
+    width: 100%;
+    background: white;
+    animation: 320ms ease-in-out slideLeft alternate;
+}
