@@ -26,6 +26,9 @@ $tablet: 768px;
             background: rgb(98,4,96);
             background: linear-gradient(30deg, rgba(98,4,96,0.5) 0%, rgba(4,73,100,0.5) 100%);
         }
+        .menu {
+            bottom: 55px;
+        }
     }
     #app-desktop {
         display: none;

@@ -20,7 +20,7 @@ export function Menu(props) {
                             <AiOutlineSmile />
                         </button>     
                         {portal(
-                            <SupportPage onCloseSupport={closePortal}/>
+                            <SupportPage onClose={closePortal}/>
                         )}
                     </React.Fragment>
                 )}
@@ -36,7 +36,7 @@ export function Menu(props) {
                             <AiFillHeart/>
                         </button>
                         {portal(
-                            <FavePage onReturn={closePortal}/>
+                            <FavePage onCloseFave={closePortal}/>
                         )}
                     </React.Fragment>
                 )}

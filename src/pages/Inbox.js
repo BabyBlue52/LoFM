@@ -6,13 +6,11 @@ export default function InboxPage(props) {
     const [state, setState ] = useState();
     return (
         <div className="inbox-container">
-            <Row>
-                <button className="back-btn" onClick={props.onCloseSupport}>
+            <Row type="flex" className="justify-center">
+                <Col span={24} className="inbox-header _dropShadow">
+                <button className="back-btn" onClick={props.onCloseInbox}>
                     <AiOutlineArrowLeft />
                 </button>
-            </Row>
-            <Row type="flex">
-                <Col span={24} className="inbox-header _dropShadow">
                     <h3> Direct Messages</h3>
                 </Col>
             </Row>

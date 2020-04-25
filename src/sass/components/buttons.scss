@@ -145,6 +145,7 @@ button.back-btn {
     position: absolute;
     top: 30px;
     left: 10px;
+    z-index: 99;
     svg {
         opacity: 0.5;
         height: 24px;

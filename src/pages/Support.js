@@ -6,12 +6,10 @@ export default function SupportPage(props) {
     const [state, setState ] = useState();
     return (
         <div className="support-container">
-            <Row>
-                <button className="back-btn"onClick={props.onCloseInbox}>
+            <Row type="flex">
+                <button className="back-btn" onClick={props.onClose}>
                     <MdClose style={{'fill':'red'}}/>
                 </button>
-            </Row>
-            <Row type="flex">
                 <Col span={24}>
                     <h3> Please support us</h3>
                 </Col>

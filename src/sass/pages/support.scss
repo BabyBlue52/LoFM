@@ -4,4 +4,7 @@
 }
 .support-header {
     @extend .inbox-header;
+    button {
+        z-index: 1;
+    }
 }

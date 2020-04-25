@@ -1,7 +1,7 @@
 .inbox-container {
     position: absolute;
     top: 0px;
-    height: calc(100% - 40px);
+    height: calc(100% - 50px);
     width: 100%;
     background: $offWhite;
     animation: 300ms ease-in-out slideLeft alternate;
@@ -11,10 +11,6 @@
         text-align: center;
         color: $black;
     }
-    .back-btn {
-        z-index: 10;
-        svg {fill: $black}
-    }
 }
 .inbox-header {
     position: fixed;
@@ -23,4 +19,9 @@
     width: 100%;
     background: white;
     animation: 320ms ease-in-out slideLeft alternate;
+    z-index: 99;
+    .back-btn {
+        z-index: inherit;
+        svg {fill: $black}
+    }
 }

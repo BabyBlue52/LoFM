@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import { Provider } from 'react-redux';
+import store from './store';
 
 import RadioTuner from './pages/RadioTuner';
-import Chat from './pages/Chat';
-import SearchPage from './pages/Search';
 import { Menu } from './components/Menu';
 import './style.scss';
 
@@ -23,40 +22,25 @@ const Mobile = ({ children }) => {
 function App() {
 
     return(
-      <>
-
-      )}
+      <Provider store={store}>
         {/* Mobile Size */}
         <Mobile>
           <div id="app">
             <div className="sunset-skin">
-              <Router>
-                <Switch>
-                  <Route exact path="/" component={RadioTuner}/>
-                  <Route path="/search" component={SearchPage}/>
-                </Switch>
-              </Router>
+              <RadioTuner/>
               <Menu/>
             </div>
           </div>
-      </Mobile>
+        </Mobile>
 
         {/* Desktop Size */}
         <Desktop>
           <div id="app-desktop">
-            <Router>
-              <Switch>
-                <Route exact path="/">
-                  <RadioTuner />
-                </Route>
-                <Route path="/chat">
-                  <Chat />
-                </Route>
-              </Switch>
-            </Router>
+            <RadioTuner/>
+            <Menu/>
           </div>
         </Desktop>
-      </>
+      </Provider>
     )
   }
 
