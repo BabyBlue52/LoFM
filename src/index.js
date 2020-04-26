@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useMediaQuery } from 'react-responsive';
 import { Provider } from 'react-redux';
-import store from './store';
 
 import RadioTuner from './pages/RadioTuner';
 import { Menu } from './components/Menu';
@@ -22,7 +21,7 @@ const Mobile = ({ children }) => {
 function App() {
 
     return(
-      <Provider store={store}>
+      <>
         {/* Mobile Size */}
         <Mobile>
           <div id="app">
@@ -40,7 +39,7 @@ function App() {
             <Menu/>
           </div>
         </Desktop>
-      </Provider>
+      </>
     )
   }
 

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import { Frame, Page } from "framer";
 import { motion }from 'framer-motion';
+import axios from 'axios';
 
 import Chat from '../../pages/Chat';
 import { ChatButton } from '../../components/Button';
@@ -9,8 +10,10 @@ import { ChannelHolder } from '../../components/ChannelHolder';
 import { ChannelUploads } from '../../components/ChannelUploads';
 import { GifHandler } from '../../components/GifHandler';
 import gif from '../../img/gif/chilledCow.gif';
-import DataFetching from '../../apis/Youtube';
 
+const api = axios.create({
+    baseUrl: 'https://randomuser.me/api/'
+})
 
 export function BootlegBoy(props) {
     const [data, setData] = useState({
@@ -18,9 +21,11 @@ export function BootlegBoy(props) {
             artist:"Inteus",
             videos:[],
             snippet:"The Bootleg Boy",
-            bio:"I'm baby helvetica forage distillery +1 sriracha, bitters vaporware sartorial kale chips polaroid pour-over. Typewriter messenger bag meditation, tacos tilde biodiesel palo santo hexagon post-ironic freegan gochujang."
+            bio:"I'm baby helvetica forage distillery +1 sriracha, bitters vaporware sartorial kale chips polaroid pour-over. Typewriter messenger bag meditation, tacos tilde biodiesel palo santo hexagon post-ironic freegan gochujang.",
     });
-
+    const [profile, setProfile] = useState({
+        channel: ""
+    });
     const links ={
         spotify:'https://open.spotify.com/playlist/71019EDcRamfMmOEEoTdEu?si=XePP-REWQDSuzJT6-SXwSQ',
         soundcloud: 'https://soundcloud.com/dabootlegboy',
@@ -30,6 +35,20 @@ export function BootlegBoy(props) {
         title:'Do Something',
         artist:'Bob'
     }
+
+    //api calls
+    useEffect(async () => {
+      await axios.get('https://randomuser.me/api')
+      .then((res) => {
+        setProfile({
+            channel: res.data.results[0].picture.large,
+            name: res.data.results[0].name.first
+        });
+        console.log(res.data.results[0].picture.large);
+        console.log(profile)
+      })
+     
+    }, []);
 
     return(
         <>  
@@ -61,9 +80,10 @@ export function BootlegBoy(props) {
                             soundcloud={links.soundcloud} 
                             spotify={links.spotify}
                             youtube={links.youtube}
-                            artist={song.artist}
+                            artist={song.title}
                             title={song.title}
-                            channel={data.channel}
+                            channel={profile.channel}
+                            name={profile.name}
                             bio={data.bio}
                         />
                     <div className="spacer"></div>

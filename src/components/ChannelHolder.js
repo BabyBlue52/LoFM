@@ -1,43 +1,25 @@
-import React, { useState } from 'react';
-import useAxios from 'axios-hooks';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, Spin, Tooltip } from 'antd';
 import { FaSpotify, FaYoutube, FaSoundcloud } from 'react-icons/fa';
-import 'antd/dist/antd.css'; 
+import 'antd/dist/antd.css';
+import axios from 'axios'; 
 
 import { FavoriteButton, PlayButton } from './Button';
 import { SongHandler } from './GifHandler';
 import '../../src/style.scss';
 
-
 function ChannelHolder(props){
-    const [channel, setChannel] = useState();
 
-    const getChannel = () => {
-        setChannel("dummy-thick")
-    }
-    
+
     const favorited = <p>Added to favorites</p>
 
-    //api calls
-    const [{data, loading, error }, refetch] = useAxios(
-
-    )
-    
-    if (loading) return (
-        <Row>
-            <Col span={24}>
-                <Spin/>
-            </Col>
-        </Row>
-    )
-    // if (error) return <p>Error!</p>
 
     return (
         <>  {/* Channel Profile */}
             <Row type="flex">
                 <Col span={8} offset={8} className="justify-center">
                     <div className="channel-gradient _dropShadow">
-                        <div className={!channel ? 'channel-default' : ''}></div>
+                        <img src={props.channel} className="channel-default"/>
                     </div>
                 </Col>
             </Row>
@@ -50,7 +32,7 @@ function ChannelHolder(props){
                 </Col>
             </Row> 
 
-            {/* Chanel Links */}
+            {/* Channel Links */}
             <Row className="">
                 <Col span={2} offset={8} className="justify-center">
                     <a href={props.spotify} target="_blank">
@@ -76,8 +58,8 @@ function ChannelHolder(props){
             </Row>
             
             {/* Channel Info */}
-            <Row className="justify-center">
-                <h1 className="channel">{props.channel}</h1>
+            <Row type="flex" className="justify-center">
+                <h1 className="channel">{props.name}</h1>
                 <Col span={20} className="channel-bio" >                
                     <p>{props.bio}</p>
                 </Col>
