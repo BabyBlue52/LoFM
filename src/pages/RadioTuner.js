@@ -9,11 +9,12 @@ export default function RadioTuner() {
     return (
         <>
             <Page 
+                className="scaling"
                 direction="vertical"
-                directionLock={true}
-                momentum
+                directionLock={true} 
             >
                 <BootlegBoy />
+                <Page > <h1>The Chilled Cow</h1></Page>
                 <BootlegBoy />
             </Page>
         </>

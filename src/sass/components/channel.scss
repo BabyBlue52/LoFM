@@ -1,7 +1,7 @@
 /* Components */
 .channel-gradient {
-    height: 115px;
-    width: 115px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     background: $pbGradient;
 }
@@ -9,10 +9,10 @@
 .channel-profile,
 .channel-default {
     position: relative;
-    left: 8px;
-    top: 8px;
-    height: 100px;
-    width: 100px;
+    left: 5px;
+    top: 5px;
+    height: 90px;
+    width: 90px;
     border-radius: 50%;
     background: url('https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png');
     background-size: contain;

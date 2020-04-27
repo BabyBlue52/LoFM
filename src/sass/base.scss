@@ -2,6 +2,7 @@
 @import './variables/fonts.scss';
 
 body {
+    height: 100vh;
     font-family: $roboto;
     color: white;
 }
@@ -58,6 +59,8 @@ marquee {
     background: white;
 }
 .bar-container {
+    position: relative;
+    top: 10px;
     display: flex;
     max-height: 20px;
     min-height: 20px;
@@ -91,7 +94,9 @@ marquee {
     border-radius: 2px;
     background: white;
 }
-
+.scaling {
+    overflow-y: hidden;
+}
 /* Incidentals */
 
 .spacer {
@@ -113,8 +118,8 @@ marquee {
 .temps {
     overflow-x: hidden;
     overflow-y: scroll;
-    min-height: 465px;
-    height: 67vh;
+    min-height: max-content;
+    height: 60vh;
     width: 100%;
     
     background: rgba(white, 0.5);

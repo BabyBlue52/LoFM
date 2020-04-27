@@ -55,3 +55,8 @@ $tablet: 768px;
     }
 }
 
+@media screen and (max-height: 700px) {
+    .channel-bio {
+        display: none;
+    }
+}

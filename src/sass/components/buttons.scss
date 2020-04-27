@@ -92,7 +92,7 @@ button.soundcloud {
 button.chat-btn {
     @extend .default-btn;
     min-width: 280px;
-
+    margin-bottom: 20px;
     svg.chat-bubble {
         fill: white;
         height: 20px;

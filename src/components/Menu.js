@@ -10,6 +10,7 @@ import SupportPage from '../pages/Support';
 
 export function Menu(props) { 
     return(
+        <div className="menu-container">
         <Row type="flex" className="menu">
             {/* Support the Troops */}
             <Col>
@@ -86,5 +87,6 @@ export function Menu(props) {
                 </PortalWithState> 
             </Col>
         </Row>
+        </div>
     )
 }
