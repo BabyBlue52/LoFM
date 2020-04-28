@@ -15,7 +15,6 @@ export default function RadioTuner() {
             >
                 <BootlegBoy />
                 <Page > <h1>The Chilled Cow</h1></Page>
-                <BootlegBoy />
             </Page>
         </>
     )

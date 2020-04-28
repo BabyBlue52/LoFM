@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col } from 'antd'; 
-import NumberFormat from 'react-number-format';
+import { Row, Col } from 'antd';
 
 
 export function ChannelUploads(props) {
@@ -20,13 +19,13 @@ export function ChannelUploads(props) {
             publishedAt: '6 Days ago'
         },      
     ]);
-
+    const videoAnchor = `https://www.youtube.com/watch?v=${props.link}`
     return(
         <>  
           <div className="vid-card">
                 <Row>
                     <Col span={24} className="justify-center">
-                        <a href={props.link} className="overlay">
+                        <a href={videoAnchor} className="overlay">
                             <img className="vid-thumbnail _dropShadow" src={props.videoThumbnail} alt=""/>
                         </a>
                     </Col>
@@ -34,12 +33,6 @@ export function ChannelUploads(props) {
                 <Row className="vid-title">
                     <Col span={20}>
                         <p><span>{props.videoTitle}</span></p>
-                    </Col>
-                    <Col span={20}>
-                        <p className="thin">
-                            <NumberFormat displayType={'text'} value={props.videoViews} thousandSeparator={true} />
-                            views
-                        </p>
                     </Col>
                     <Col span={24}>
                         <p className="thin"><span>Posted:</span><span>{props.publishedAt}</span></p>

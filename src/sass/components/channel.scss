@@ -26,8 +26,9 @@
 .vid-scroller {
     position: relative;
     top: 10px;
-    overflow: hidden;
-    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 80vh;
     transform:scale(0.95);
 }
 .vid-card {

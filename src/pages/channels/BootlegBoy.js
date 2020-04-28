@@ -14,22 +14,18 @@ import config from '../../apis';
 
 
 export function BootlegBoy(props) {
+    const [state,setState] = useState();
     const [data, setData] = useState({
-            title:"All Your Gyals Belong to us",
-            artist:"Inteus",
-            videos:[],
-            bio:"I'm baby helvetica forage distillery +1 sriracha, bitters vaporware sartorial kale chips polaroid pour-over. Typewriter messenger bag meditation, tacos tilde biodiesel palo santo hexagon post-ironic freegan gochujang.",
+        title:"All Your Gyals Belong to us",
+        artist:"Inteus",
+        videos:[],
+        bio:"I'm baby helvetica forage distillery +1 sriracha, bitters vaporware sartorial kale chips polaroid pour-over. Typewriter messenger bag meditation, tacos tilde biodiesel palo santo hexagon post-ironic freegan gochujang.",
     });
     const [profile, setProfile] = useState({
         name:'bingus',
         thumbnail:'',
         bio:'',
-        videos:[
-            {
-                thumbnails:'',
-            },
-            {}
-        ]
+        videos:[]
     });
     const links ={
         spotify:'https://open.spotify.com/playlist/71019EDcRamfMmOEEoTdEu?si=XePP-REWQDSuzJT6-SXwSQ',
@@ -57,16 +53,18 @@ export function BootlegBoy(props) {
             });
         })
         
-        // const searchAPI = `https://www.googleapis.com/youtube/v3/search?key=${api_key}&id=${channel_id_1}&part=snippet,id&order=date&maxResults=2`
-        // fetch(searchAPI)
-        // .then(result  => result.json()) 
-        // .then( data => {
-        //     setProfile({
-        //         videos: data.items
-        //     });
-        // })
+        const searchAPI = `https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=${channel_id_1}&maxResults=2&key=${api_key}`
+        fetch(searchAPI)
+        .then(result  => result.json()) 
+        .then( data => {
+            setData({
+                videos: data.items,
 
+            });
+        })
     }, []);
+    // JSON.stringify(data.videos)
+    // console.log(data.videos);
 
     return(
         <>  
@@ -82,12 +80,18 @@ export function BootlegBoy(props) {
                         <div className="spacer"></div>
                         <h3>Latest Uploads</h3>
                         <div className="vid-scroller">
-                            {profile.videos.map((profile, i) => {
+                            {data.videos.map((data, i) => {
                                 return(
                                     <div className="vid-card" key={i}>
                                         <ChannelUploads
-                                            videoThumbnail={profile.videoThumbnails}
+                                            videoThumbnail={data.snippet.thumbnails.medium.url}
+                                            videoTitle={data.snippet.title}
+                                            videoViews={data.snippet.views}
+                                            publishedAt={data.snippet.publishedAt}
+                                            link={data.id.videoId}
                                         />
+                                        {/* <p>{data.id.videoId}</p> */}
+                                        
                                     </div>
                             )})}
                         </div>

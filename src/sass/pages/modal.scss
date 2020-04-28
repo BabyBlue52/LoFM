@@ -19,7 +19,7 @@
 
     h1.welcome {
         font-family: $spartan;
-        font-weight: $light;
+        font-weight: $heavy;
         font-size: $paragraph;
         text-align: center;    
         margin: 0 auto;
@@ -35,6 +35,7 @@
         margin-bottom: 30px;
         line-height: 0.7rem;
         font-size: $small;
+        font-weight: $heavy;
         color: $purple;
         background: none;
     }
