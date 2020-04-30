@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import { Frame, Page } from "framer";
 import { motion }from 'framer-motion';
-import axios from 'axios';
+
 
 import Chat from '../../pages/Chat';
 import { ChatButton } from '../../components/Button';
@@ -14,7 +14,12 @@ import config from '../../apis';
 
 
 export function BootlegBoy(props) {
-    const [state,setState] = useState();
+    const [live,setLive] = useState({
+        video: null,
+        audio:'',
+        song:'',
+        artist:'',
+    });
     const [data, setData] = useState({
         title:"All Your Gyals Belong to us",
         artist:"Inteus",
@@ -30,7 +35,7 @@ export function BootlegBoy(props) {
     const links ={
         spotify:'https://open.spotify.com/playlist/71019EDcRamfMmOEEoTdEu?si=XePP-REWQDSuzJT6-SXwSQ',
         soundcloud: 'https://soundcloud.com/dabootlegboy',
-        youtube: 'https://www.youtube.com/channel/UC0fiLCwTmAukotCXYnqfj0A'
+        youtube: `https://www.youtube.com/channel/UC0fiLCwTmAukotCXYnqfj0A`
     };
     const song = {
         title:'Do Something',
@@ -59,19 +64,26 @@ export function BootlegBoy(props) {
         .then( data => {
             setData({
                 videos: data.items,
-
             });
+        })
+        const liveAPI = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channel_id_1}&eventType=live&maxResults=1&type=video&key=${api_key}`
+        fetch(liveAPI)
+        .then(result => result.json())
+        .then( data => {
+            setLive({
+                videoId: data.items[0].id.videoId,
+            })
         })
     }, []);
     // JSON.stringify(data.videos)
-    // console.log(data.videos);
+    // console.log(live);
 
     return(
         <>  
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
-                currentPage={0}
+                currentPage={1}
             >                
                 {/* Recent Uploads */}
                 <Frame size={500}>
@@ -117,6 +129,7 @@ export function BootlegBoy(props) {
                         name={profile.name}
                         bio={profile.bio}
                         viewers={data.view}
+                        videoId={live.videoId}
                     />
                     
                 </Frame>

@@ -19,7 +19,9 @@ export function ChannelUploads(props) {
             publishedAt: '6 Days ago'
         },      
     ]);
-    const videoAnchor = `https://www.youtube.com/watch?v=${props.link}`
+
+    const videoAnchor = `https://www.youtube.com/watch?v=${props.link}`;
+    
     return(
         <>  
           <div className="vid-card">
