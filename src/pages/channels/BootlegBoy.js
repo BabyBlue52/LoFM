@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import { Frame, Page } from "framer";
 import { motion }from 'framer-motion';
-
+import ReactPlayer from 'react-player';
 
 import Chat from '../../pages/Chat';
-import { ChatButton } from '../../components/Button';
+import { ChatButton, PlayButton } from '../../components/Button';
 import { ChannelHolder } from '../../components/ChannelHolder';
 import { ChannelUploads } from '../../components/ChannelUploads';
 import { GifHandler } from '../../components/GifHandler';
@@ -14,6 +14,8 @@ import config from '../../apis';
 
 
 export function BootlegBoy(props) {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [hasError, setHasError] = useState(false);
     const [live,setLive] = useState({
         video: null,
         audio:'',
@@ -57,6 +59,9 @@ export function BootlegBoy(props) {
                 videos: data.items
             });
         })
+        .catch( err => {
+            setHasError(true)
+        })
         
         const searchAPI = `https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=${channel_id_1}&maxResults=2&key=${api_key}`
         fetch(searchAPI)
@@ -66,6 +71,10 @@ export function BootlegBoy(props) {
                 videos: data.items,
             });
         })
+        .catch( err => {
+            setHasError(true)
+        })
+
         const liveAPI = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channel_id_1}&eventType=live&maxResults=1&type=video&key=${api_key}`
         fetch(liveAPI)
         .then(result => result.json())
@@ -74,10 +83,22 @@ export function BootlegBoy(props) {
                 videoId: data.items[0].id.videoId,
             })
         })
-    }, []);
+        .catch( err => {
+            setHasError(true)
+        })
+
+    }, [{channel_id_1},{api_key}]);
+
+    const res = useFetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channel_id_1}&key=${api_key}`)
     // JSON.stringify(data.videos)
     // console.log(live);
 
+    function handlePlay(){
+        setIsPlaying(!isPlaying);
+        console.log('playing')
+    }
+    
+    const url = `http://youtube.com/watch?v=${live.videoId}`
     return(
         <>  
             <Page 
@@ -132,6 +153,19 @@ export function BootlegBoy(props) {
                         videoId={live.videoId}
                     />
                     
+                    {/* Play Content */}
+                    <Row className="justify-center">
+                        <Col span={18} className="justify-center">
+                            <PlayButton />    
+                            <ReactPlayer 
+                                url={url} 
+                                playing = {!isPlaying ? false : true}
+                                className="yt-player"
+                                light
+                            />
+                        </Col>
+                    </Row>
+                        
                 </Frame>
                 {/* Chat Feature */}
                 <Frame size={500}>

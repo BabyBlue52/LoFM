@@ -51,7 +51,7 @@ function PlayButton() {
     function  handleClick() {
         setState(!state);
     }
-
+    
     return(
         <>
             <button className="play-btn" onClick={handleClick}>

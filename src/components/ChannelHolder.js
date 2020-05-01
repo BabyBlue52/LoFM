@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col, Spin, Tooltip } from 'antd';
 import { FaSpotify, FaYoutube, FaSoundcloud } from 'react-icons/fa';
 import 'antd/dist/antd.css';
-import Youtube from 'react-youtube';
 
 import { FavoriteButton, PlayButton } from './Button';
 import { SongHandler } from './GifHandler';
@@ -11,8 +10,10 @@ import '../../src/style.scss';
 
 function ChannelHolder(props){
     const favorited = <p>Added to favorites</p>
-
    
+    useEffect(() =>{
+        
+    },[])
     return (
         <>  {/* Channel Profile */}
             <Row type="flex">
@@ -73,13 +74,7 @@ function ChannelHolder(props){
                     <div className="divider"></div>
                 </Col>
             </Row>
-             {/* Play Content */}
-             <Row className="justify-center">
-                <Col span={18} className="justify-center">
-                    <PlayButton/>
-                    
-                </Col>
-            </Row>
+ 
         </>
     )
 }

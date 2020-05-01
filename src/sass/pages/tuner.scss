@@ -17,6 +17,8 @@
     }
 }
 .yt-player {
-    height: 60px;
-    width: 100px;
+    height: 60px !important;
+    width: 100px !important;
+    z-index: 99;
+
 }
