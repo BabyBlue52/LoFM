@@ -19,6 +19,14 @@
 .yt-player {
     height: 60px !important;
     width: 100px !important;
-    z-index: 99;
+    visibility: hidden;
 
+}
+.example-loader {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 30px 50px;
+    margin: 20px 0;
 }

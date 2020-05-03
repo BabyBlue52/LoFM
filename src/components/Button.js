@@ -47,11 +47,11 @@ function ChatButton() {
 // Play Button
 function PlayButton() {
     const [state, setState] = useState(false);
-
+    
     function  handleClick() {
         setState(!state);
     }
-    
+
     return(
         <>
             <button className="play-btn" onClick={handleClick}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Spin } from 'antd';
 import { Frame, Page } from "framer";
 import { motion }from 'framer-motion';
 import ReactPlayer from 'react-player';
@@ -17,22 +17,21 @@ export function BootlegBoy(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [hasError, setHasError] = useState(false);
     const [live,setLive] = useState({
-        video: null,
-        audio:'',
+        videoId: null,
         song:'',
         artist:'',
     });
-    const [data, setData] = useState({
-        title:"All Your Gyals Belong to us",
-        artist:"Inteus",
+    const [uploads, setUploads] = useState({
+        title:"",
+        artist:"",
         videos:[],
-        bio:"I'm baby helvetica forage distillery +1 sriracha, bitters vaporware sartorial kale chips polaroid pour-over. Typewriter messenger bag meditation, tacos tilde biodiesel palo santo hexagon post-ironic freegan gochujang.",
+        bio:"",
     });
     const [profile, setProfile] = useState({
-        name:'bingus',
-        thumbnail:'',
-        bio:'',
-        videos:[]
+            name:'bingus',
+            thumbnail:'',
+            bio:'',
+            videos:[]
     });
     const links ={
         spotify:'https://open.spotify.com/playlist/71019EDcRamfMmOEEoTdEu?si=XePP-REWQDSuzJT6-SXwSQ',
@@ -44,67 +43,57 @@ export function BootlegBoy(props) {
         artist:'Bob'
     }
 
-    //api calls
-    useEffect(() => {
-        const { api_key, channel_id_1 } = config;
-        
-        const apiCall = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channel_id_1}&key=${api_key}`
-        fetch(apiCall)
-        .then(result  => result.json()) 
-        .then( data => {
-            setProfile({
-                name: data.items[0].snippet.title,
-                thumbnail: data.items[0].snippet.thumbnails.default.url,
-                bio: data.items[0].snippet.description,
-                videos: data.items
-            });
-        })
-        .catch( err => {
-            setHasError(true)
-        })
-        
-        const searchAPI = `https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=${channel_id_1}&maxResults=2&key=${api_key}`
-        fetch(searchAPI)
-        .then(result  => result.json()) 
-        .then( data => {
-            setData({
-                videos: data.items,
-            });
-        })
-        .catch( err => {
-            setHasError(true)
-        })
-
-        const liveAPI = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channel_id_1}&eventType=live&maxResults=1&type=video&key=${api_key}`
-        fetch(liveAPI)
-        .then(result => result.json())
-        .then( data => {
-            setLive({
-                videoId: data.items[0].id.videoId,
-            })
-        })
-        .catch( err => {
-            setHasError(true)
-        })
-
-    }, [{channel_id_1},{api_key}]);
-
-    const res = useFetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channel_id_1}&key=${api_key}`)
-    // JSON.stringify(data.videos)
-    // console.log(live);
-
     function handlePlay(){
         setIsPlaying(!isPlaying);
         console.log('playing')
     }
+    const { api_key, channel_id_1 } = config;
+    
+    //api calls
+    useEffect(() => {
+        const urls = [
+            `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channel_id_1}&key=${api_key}`,
+            `https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=${channel_id_1}&maxResults=2&key=${api_key}`,
+            `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channel_id_1}&eventType=live&maxResults=1&type=video&key=${api_key}`
+        ]
+        
+        Promise.all(urls.map(url =>
+            fetch(url)
+            .then(res => res.json()))
+        )           
+        .then(data => {
+            setProfile({
+                name: data[0].items[0].snippet.title,
+                bio: data[0].items[0].snippet.description,
+                thumbnail: data[0].items[0].snippet.thumbnails.default.url,
+                videos: data.items
+            })
+            setUploads({
+                videos: data[1].items
+            })
+            setLive({
+                videoId: data[2].items[0].id.videoId
+            })
+        })   
+        .catch(
+            <h1>Error</h1>
+        )
+    }, [ api_key ]);
+
+    // JSON.stringify(data.videos)
+    
     
     const url = `http://youtube.com/watch?v=${live.videoId}`
+    console.log(live)
     return(
         <>  
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
                 currentPage={1}
+                direction="horizontal"
+                directionLock={true}
+                dragEnabled={true}
             >                
                 {/* Recent Uploads */}
                 <Frame size={500}>
@@ -113,7 +102,7 @@ export function BootlegBoy(props) {
                         <div className="spacer"></div>
                         <h3>Latest Uploads</h3>
                         <div className="vid-scroller">
-                            {data.videos.map((data, i) => {
+                            {uploads.videos.map((data, i) => {
                                 return(
                                     <div className="vid-card" key={i}>
                                         <ChannelUploads
@@ -122,11 +111,10 @@ export function BootlegBoy(props) {
                                             videoViews={data.snippet.views}
                                             publishedAt={data.snippet.publishedAt}
                                             link={data.id.videoId}
-                                        />
-                                        {/* <p>{data.id.videoId}</p> */}
-                                        
+                                        /> 
                                     </div>
-                            )})}
+                                )
+                            })}
                         </div>
                         </Col>
                     </Row>  
@@ -149,35 +137,39 @@ export function BootlegBoy(props) {
                         channel={profile.thumbnail}
                         name={profile.name}
                         bio={profile.bio}
-                        viewers={data.view}
+                        viewers={uploads.view}
                         videoId={live.videoId}
                     />
                     
                     {/* Play Content */}
                     <Row className="justify-center">
                         <Col span={18} className="justify-center">
-                            <PlayButton />    
+                            <button onClick={handlePlay}>
+                                <PlayButton/>
+                            </button>
+                        </Col>
+                        <Col span={18} className="justify-center">
                             <ReactPlayer 
                                 url={url} 
                                 playing = {!isPlaying ? false : true}
                                 className="yt-player"
-                                light
                             />
                         </Col>
                     </Row>
                         
                 </Frame>
+                
                 {/* Chat Feature */}
                 <Frame size={500}>
                     <Row style={{"paddingTop": "40px"}}>
-                        <Chat snippet={data.snippet} />
+                        <Chat snippet={uploads.snippet} />
                     </Row>
                     <Row className="justify-center gif-player-row">
                         <Col span={24} style={{"paddingTop": "20px"}}>
                             <GifHandler
                                 gif={gif}
-                                artist={data.artist}
-                                title={data.title}
+                                artist={live.artist}
+                                title={live.title}
                             />
                         </Col>
                     </Row>   
