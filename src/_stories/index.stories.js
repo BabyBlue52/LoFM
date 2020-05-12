@@ -6,7 +6,7 @@ import { ChannelHolder } from '../components/ChannelHolder';
 import { RecentUploads } from '../components/ChannelUploads';
 import Modal from '../components/Modal';
 import { GifHandler } from '../components/GifHandler'; 
-import { ChatButton, PlayButton } from '../components/Button';
+import { ChatButton, PlayButton, GoogleButton } from '../components/Button';
 import { SoundWave } from '../components/animation';
 import { Menu } from '../components/Menu';
 import { ChatBubble } from '../components/ChatBubble';
@@ -81,5 +81,10 @@ storiesOf("Buttons", module)
 .add('PlayButton', () => (
   <div class="story-container">
       <PlayButton/>
+  </div>
+))
+.add('GoogleButton', () => (
+  <div class="story-container">
+      <GoogleButton/>
   </div>
 ))

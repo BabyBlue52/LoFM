@@ -1,7 +1,7 @@
 import React, { useState }from 'react';
 import { Row, Col, Input } from  'antd';
 import { MdClose } from 'react-icons/md'
-import { Button } from './Button';
+import { Button, GoogleButton } from './Button';
 
 function Modal(props) {
     const [state, setState] = useState({
@@ -59,6 +59,9 @@ function Modal(props) {
                     </Col>                
                     <Col offset={2} span={20}>
                         <Button name="Login"/>
+                    </Col>
+                    <Col offset={2} span={20}>
+                        <GoogleButton  onSuccess={props.onClose}/>
                     </Col>
                 </Row>
             </div>

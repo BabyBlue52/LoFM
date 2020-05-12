@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { useMediaQuery } from 'react-responsive';
 import { Provider } from 'react-redux';
 
+import { Loader } from './components/Loader';
 import RadioTuner from './pages/RadioTuner';
 import { Menu } from './components/Menu';
 import './style.scss';
@@ -19,9 +20,17 @@ const Mobile = ({ children }) => {
 
 
 function App() {
-
-    return(
-      <>
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    setTimeout(function(){
+      setLoading(false);
+    }, 3000);
+  }, []);
+  
+    return (
+      loading ? <Loader/> : 
+      <React.Fragment>
         {/* Mobile Size */}
         <Mobile>
           <div id="app">
@@ -39,7 +48,7 @@ function App() {
             <Menu/>
           </div>
         </Desktop>
-      </>
+      </React.Fragment>
     )
   }
 

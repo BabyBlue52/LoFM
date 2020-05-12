@@ -12,7 +12,7 @@ button.default-btn {
     min-width: 100%;
     max-width: 280px;
     max-height: 40px;
-    padding: 15px 20px;
+    padding: 10px 20px;
     background: $purple;
     border: none;
     border-radius: 5px;
@@ -97,9 +97,11 @@ button.chat-btn {
         fill: white;
         height: 20px;
         width: 20px;
-        margin-top: -5px;
+        margin-top: 0px;
     }
-
+    p{
+        margin-top: 5px;
+    }
     &:active,
     &:focus,
     &:hover {
@@ -155,6 +157,35 @@ button.back-btn {
         &:hover,
         &:active {
             fill: $purple;
+        }
+    }
+}
+.google-btn {
+    button {
+        min-width: 215px !important;
+        max-width: 280px !important;
+        margin-top: 10px;
+        span {
+            width: 100%;
+            color: $black;
+            margin-top: 2px;
+            text-transform: uppercase;
+            font-family: $spartan;
+            font-weight: $heavy !important;
+            font-size: 0.67rem;
+            text-align: center;
+        }
+        div {
+            margin: 0px !important;
+        }
+        svg {
+            transform: scale(1.25);
+            margin: 2px 10px;
+        }
+        &:active,
+        &:focus {
+            transform: scale(0.95);
+            background: darken(white, 5%);
         }
     }
 }

@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { MdChatBubble } from 'react-icons/md';
 import { Tooltip } from "antd";
-import { FaPlay, FaPlus, FaCheck } from 'react-icons/fa';
+import { FaPlay, FaPlus, FaCheck, FaWindowRestore } from 'react-icons/fa';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import {PortalWithState } from 'react-portal';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
 import Modal from '../components/Modal';
-
+import config from '../apis';
 import { SoundWave } from './animation';
 
 // Default Button 
@@ -92,4 +93,55 @@ function FavoriteButton() {
     )
 }
 
-export { Button, ChatButton, PlayButton, FavoriteButton };
+// Google Sign on page
+function GoogleButton(props) {
+    const { client_id } = config;
+    const [state, setState] = useState({
+        isLoggedIn: false,
+        accessToken: ''
+    })
+
+    const responseGoogle = (response) => {
+        console.log(response);
+    }
+   
+  function login (response, props) {
+    if(response){
+      setState(state => ({
+        isLogined: true,
+        accessToken: response.accessToken
+      })
+      );
+    }
+  }
+
+  function logout () {
+    setState(state => ({
+      isLogined: false,
+      accessToken: ''
+    }));
+    console.log('logout')
+  }
+
+    return(
+        <div className='google-btn'>
+            {state.isLoggedIn ? 
+            <GoogleLogout
+            clientId={client_id}
+            buttonText="Logout"
+            onSuccess={logout}
+            />
+            :
+            <GoogleLogin
+            clientId= {client_id}
+            buttonText="Sign in wih Google"
+            onSuccess={login}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+            responseType='code,token'
+            />  
+          }
+        </div>
+    )
+}
+export { Button, ChatButton, PlayButton, FavoriteButton, GoogleButton };

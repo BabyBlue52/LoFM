@@ -51,22 +51,6 @@ marquee {
     margin: 20px;
 }
 
-/* Animation */
-.bar {
-    width: 7px;
-    margin: 1.25px;
-    border-radius: 10px;
-    background: white;
-}
-.bar-container {
-    position: relative;
-    top: 10px;
-    display: flex;
-    max-height: 20px;
-    min-height: 20px;
-    transform: scaleY(-1.25);
-}
-
 /* Layout */
 .d-flex {
     display: flex;
