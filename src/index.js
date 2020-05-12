@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { useMediaQuery } from 'react-responsive';
 import { Provider } from 'react-redux';
 
-import { Loader } from './components/Loader';
+import { Loader } from './components/animation';
 import RadioTuner from './pages/RadioTuner';
 import { Menu } from './components/Menu';
 import './style.scss';

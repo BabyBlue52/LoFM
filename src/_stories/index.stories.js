@@ -7,7 +7,7 @@ import { RecentUploads } from '../components/ChannelUploads';
 import Modal from '../components/Modal';
 import { GifHandler } from '../components/GifHandler'; 
 import { ChatButton, PlayButton, GoogleButton } from '../components/Button';
-import { SoundWave } from '../components/animation';
+import { SoundWave, Loader } from '../components/animation';
 import { Menu } from '../components/Menu';
 import { ChatBubble } from '../components/ChatBubble';
 
@@ -28,6 +28,12 @@ storiesOf("Animations", module)
       <SoundWave/>
     </div>
   ))
+  .add('Loader', () =>(
+    <div className="" style={{'maxHeight':'100%'}}>
+      <Loader/>
+    </div>
+  ))
+
 
 /*
 ===============

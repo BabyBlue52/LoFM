@@ -16,22 +16,60 @@
 
 /* Loader */
 .animation-backdrop {
+    display:flex;
+    overflow: hidden;
     position: absolute;
     top: 0px;
     height: 100vh;
     width: 100vw;
-    background: lighten($black, 5%);
+    background: white;
     .logo {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         h3 {
-            padding-top: 20px;
+            padding-top: 10px;
             font-size: 1.2rem;
+            color: $black;
         }
         img {
             width: 200px;
+            height: 200px;
         }
     }
+}
+.border-animation {
+    position: absolute;
+    background: $deepPurple;
+}
+.border-bot {
+    @extend .border-animation;
+    bottom: 55px;
+    left: 0;
+    width: 0;
+    height: 30px;
+   
+}
+.border-right {
+    @extend .border-animation;
+    right: 0;
+    bottom: 55px;
+    width: 20px;
+    height: 0;
+    transform: scale(-1);
+}
+.border-top {
+    @extend .border-animation;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 20px;
+    transform: scale(-1);
+}
+.border-left {
+    @extend .border-animation;
+    left: 0;
+    top: 0;
+    width: 20px; 
 }
