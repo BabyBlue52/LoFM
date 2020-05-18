@@ -112,6 +112,7 @@ function GoogleButton(props) {
         accessToken: response.accessToken
       })
       );
+      console.log(response);
     }
   }
 

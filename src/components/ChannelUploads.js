@@ -20,6 +20,9 @@ export function ChannelUploads(props) {
         },      
     ]);
 
+    const fixed = {
+        minWidth: '250px'
+    }
     const videoAnchor = `https://www.youtube.com/watch?v=${props.link}`;
     
     return(
@@ -33,10 +36,10 @@ export function ChannelUploads(props) {
                     </Col>
                 </Row>
                 <Row className="vid-title">
-                    <Col span={20}>
+                    <Col offset={1}>
                         <p><span>{props.videoTitle}</span></p>
                     </Col>
-                    <Col span={24}>
+                    <Col offset={1}>
                         <p className="thin"><span>Posted:</span><span>{props.publishedAt}</span></p>
                     </Col>
                 </Row>

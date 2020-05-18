@@ -40,8 +40,8 @@
     display: block;
     border: 2px solid $black;
     outline: none;
-    height: 125px;
-    width:  250px;
+    height: 140px;
+    min-width:  250px;
     opacity: 0.9;
     object-fit: cover;
     &:hover, &active {

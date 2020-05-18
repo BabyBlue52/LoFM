@@ -7,10 +7,9 @@ function Modal(props) {
     const [state, setState] = useState({
 
     })
-
      return(
-            <div class="modal-container">
-            <div className="modal _dropShadow">
+            <div className="modal-container">
+            <form className="modal _dropShadow" onSubmit={handleSubmit}>
                 <Row>
                     <Col span={6}>
                         <button 
@@ -64,7 +63,7 @@ function Modal(props) {
                         <GoogleButton  onSuccess={props.onClose}/>
                     </Col>
                 </Row>
-            </div>
+            </form>
             </div>
         )
     }
