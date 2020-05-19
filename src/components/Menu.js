@@ -1,6 +1,6 @@
-import React from 'react';
-import {Row, Col, Badge } from 'antd';
-import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiFillHome } from 'react-icons/ai';
+import React, { useState, useEffect} from 'react';
+import {Row, Col, Badge, Drawer} from 'antd';
+import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiFillHome, AiOutlineMenu, AiOutlineClose, AiOutlineUser } from 'react-icons/ai';
 import { PortalWithState } from 'react-portal';
 
 import SearchPage from '../pages/Search';
@@ -8,85 +8,157 @@ import InboxPage from '../pages/Inbox';
 import FavePage from '../pages/Favorites';
 import SupportPage from '../pages/Support';
 
-export function Menu(props) { 
+
+function PushMenu(props) {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [visible, setVisible] = useState(false);
+    const [placement,setPlacement] = useState('bottom');
+    
+    function openDrawer(){
+        setMenuOpen(true)
+        setVisible(true)
+    }
+
+    function closeDrawer(){
+        setMenuOpen(false)
+        setVisible(false)
+        console.log('bitch where')
+    }
     return(
-        <div className="menu-container">
-        <Row type="flex" className="menu">
-            {/* Support the Troops */}
-            <Col>
-                <PortalWithState closeOnOutsideClick closeOnEsc>
-                {({ openPortal, closePortal, isOpen, portal }) => (
-                    <React.Fragment>
-                        <button className="support" onClick={openPortal}>
-                            <AiOutlineSmile />
-                        </button>     
-                        {portal(
-                            <SupportPage onClose={closePortal}/>
-                        )}
-                    </React.Fragment>
-                )}
-                </PortalWithState> 
-            </Col>
-            
-            {/* Favorites Playlist */}
-            <Col>
-                <PortalWithState closeOnOutsideClick closeOnEsc>
-                {({ openPortal, closePortal, isOpen, portal }) => (
-                    <React.Fragment>
-                        <button className="favorite" onClick={openPortal}>
-                            <AiFillHeart/>
-                        </button>
-                        {portal(
-                            <FavePage onCloseFave={closePortal}/>
-                        )}
-                    </React.Fragment>
-                )}
-                </PortalWithState> 
-            </Col>
+        <div>
+            <Row id="menu-floaty">
+                <Col span={2}>
+                {!menuOpen ?
+                    <button className="menu-btn _dropShadow" onClick={openDrawer}>
+                        <AiOutlineMenu />
+                    </button>
+                        :
+                    <button className="menu-btn-closed _dropShadow" onClick={closeDrawer}>
+                        <AiOutlineClose />
+                    </button>
+                    }
+                </Col>
+            </Row>
+            <Row>
 
-             {/* Home */}
-            <Col>
-                <a href="/">
-                <div className="menu-item" style={{"marginTop":"-2px"}}>
-                    <AiFillHome />    
-                </div>
-                </a>    
-            </Col>
+            </Row>
+            <Drawer
+                placement={placement}
+                closable={false}
+                onClose={closeDrawer}
+                visible={visible}
+                key={placement}
+            >
+                <Row className="drawer-end ">
+                     {/* Log In Portal */}
+                     <Row>
+                        <Col>
+                            <p>Log In</p>
+                        </Col>
+                        <Col onClick={closeDrawer}>
+                            <PortalWithState closeOnOutsideClick closeOnEsc>
+                            {({ openPortal, closePortal, isOpen, portal }) => (
+                                <React.Fragment>
+                                    <button className="menu-round" onClick={openPortal}>
+                                        <AiOutlineUser/>
+                                    </button>
+                                    {portal(
+                                        <SupportPage onCloseInbox={closePortal}/>
+                                    )}
+                                </React.Fragment>
+                            )}
+                            </PortalWithState> 
+                        </Col>
+                    </Row>
+                     {/* Inbox Portal */}
+                    <Row>
+                        <Col>
+                            <p>Messages</p>
+                        </Col>
+                        <Col onClick={closeDrawer}>
+                            <PortalWithState closeOnOutsideClick closeOnEsc>
+                            {({ openPortal, closePortal, isOpen, portal }) => (
+                                <React.Fragment>
+                                    <button className="menu-round" onClick={openPortal}>
+                                        <Badge dot={props}>
+                                            <AiOutlineInbox/>
+                                        </Badge>            
+                                    </button>
+                                    {portal(
+                                        <InboxPage onCloseInbox={closePortal}/>
+                                    )}
+                                </React.Fragment>
+                            )}
+                            </PortalWithState> 
+                        </Col>
+                    </Row>
+                    
+                    {/* Search Portal */}
+                    <Row > 
+                        <Col>
+                            <p>Search</p>
+                        </Col>
+                        <Col onClick={closeDrawer}>
+                            <PortalWithState closeOnOutsideClick closeOnEsc>
+                            {({ openPortal, closePortal, isOpen, portal }) => (
+                                <React.Fragment>
+                                    <button className="menu-round" onClick={openPortal}>
+                                        <AiOutlineSearch/>    
+                                    </button>
+                                    {portal(
+                                        <SearchPage onReturn={closePortal}/>
+                                    )}
+                                </React.Fragment>
+                            )}
+                            </PortalWithState> 
+                        </Col>
+                    </Row>
 
-            {/* Search Portal */}
-            <Col>
-                <PortalWithState closeOnOutsideClick closeOnEsc>
-                {({ openPortal, closePortal, isOpen, portal }) => (
-                    <React.Fragment>
-                        <button className="menu-item" onClick={openPortal}>
-                            <AiOutlineSearch/>    
-                        </button>
-                        {portal(
-                            <SearchPage onReturn={closePortal}/>
+                    {/* Favorites Playlist */}
+                    <Row>
+                        <Col>
+                            <p>Favorites</p>
+                        </Col>
+                        <Col onClick={closeDrawer}>
+                        <PortalWithState closeOnOutsideClick closeOnEsc>
+                        {({ openPortal, closePortal, isOpen, portal }) => (
+                            <React.Fragment>
+                                <button className="favorite-round" onClick={openPortal}>
+                                    <AiFillHeart/>
+                                </button>
+                                {portal(
+                                    <FavePage onCloseFave={closePortal}/>
+                                )}
+                            </React.Fragment>
                         )}
-                    </React.Fragment>
-                )}
-                </PortalWithState> 
-            </Col>
-
-             {/* Inbox Portal */}
-            <Col>
-                <PortalWithState closeOnOutsideClick closeOnEsc>
-                {({ openPortal, closePortal, isOpen, portal }) => (
-                    <React.Fragment>
-                        <button className="menu-item" onClick={openPortal}>
-                            <Badge dot={props}>
-                                <AiOutlineInbox/>
-                            </Badge>            
-                        </button>
-                        {portal(
-                            <InboxPage onCloseInbox={closePortal}/>
-                        )}
-                    </React.Fragment>
-                )}
-                </PortalWithState> 
-            </Col>
-        </Row>
+                        </PortalWithState> 
+                    </Col>
+                    </Row>
+              
+                    {/* Support the Troops */}
+                    <Row>  
+                        <Col>
+                            <p>Support Us</p>
+                        </Col>
+                        <Col onClick={closeDrawer}>
+                            <PortalWithState closeOnOutsideClick closeOnEsc>
+                            {({ openPortal, closePortal, isOpen, portal }) => (
+                                <React.Fragment>
+                                    <button className="support-round" onClick={openPortal}>
+                                        <AiOutlineSmile />
+                                    </button>     
+                                    {portal(
+                                        <SupportPage onClose={closePortal}/>
+                                    )}
+                                </React.Fragment>
+                            )}
+                            </PortalWithState> 
+                        </Col>
+                    </Row>
+        
+                </Row>
+            </Drawer>
         </div>
     )
 }
+export { PushMenu }

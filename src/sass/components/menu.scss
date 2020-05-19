@@ -1,18 +1,17 @@
-.menu {
+#menu-floaty {
     position: absolute;
-    bottom: 0px;
-    width: 100vw;
-    min-height: 50px;
-    max-height: 50px;
-    background: white;
-    z-index: 999;
+    right: 20px;
+    bottom: 5%;
 }
-.menu-item {
+.menu-round {
     display: flex;
     justify-content: center;
     height: 50px;
-    width: calc(100vw/5);
-    margin: 0px;
+    min-width: 50px;
+    max-width: 50px;
+    margin: 0px 20px;
+    background: white;
+    border-radius: 50%;
     svg{
         position: absolute;
         top: 50%;
@@ -25,24 +24,46 @@
         stroke-width: 2;
     }
     &:hover, &:active {
-        background: rgba($black, 0.05)
+        background: darken(white, 0.5);
+        transform: scale(0.95);
     }
 }
-.support {
-    @extend .menu-item; 
+.drawer-end {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    .ant-row {
+        align-self: flex-end;
+        justify-content: flex-end;
+        margin: 6px 0px;
+    }
+    p {
+        margin: auto 0;
+        padding: 0;
+        background: none;
+        text-shadow: 1px 1px 1px $black;
+    }
+}
+.support-round {
+    @extend .menu-round; 
     background: $green;
+
     svg{
         fill: white;
     }
     &:hover, &:active {
-        background: darken($green, 15);
+        background: darken($green, 0.15);
     }
 }
-.favorite {
-    @extend .menu-item; 
+.favorite-round {
+    @extend .menu-round; 
+    background: white;
+
+    svg{
+        fill: $purple;
+    }
     &:hover, &:active {
-        svg{
-            fill: $deepPurple;
-        }
+        background: darken(white, 0.05)
     }
 }
+

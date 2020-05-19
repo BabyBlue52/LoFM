@@ -1,7 +1,7 @@
 .inbox-container {
     position: absolute;
     top: 0px;
-    height: calc(100% - 100px);
+    height: calc(100% - 10px);
     width: 100%;
     background: $offWhite;
     animation: 300ms ease-in-out slideLeft alternate;

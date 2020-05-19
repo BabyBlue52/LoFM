@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { Loader } from './components/animation';
 import RadioTuner from './pages/RadioTuner';
-import { Menu } from './components/Menu';
+import { PushMenu } from './components/Menu';
 import './style.scss';
 
 
@@ -36,7 +36,7 @@ function App() {
           <div id="app">
             <div className="sunset-skin">
               <RadioTuner/>
-              <Menu/>
+              <PushMenu/>
             </div>
           </div>
         </Mobile>
@@ -45,7 +45,7 @@ function App() {
         <Desktop>
           <div id="app-desktop">
             <RadioTuner/>
-            <Menu/>
+            <PushMenu/>
           </div>
         </Desktop>
       </React.Fragment>

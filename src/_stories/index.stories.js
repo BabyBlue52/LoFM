@@ -8,7 +8,7 @@ import Modal from '../components/Modal';
 import { GifHandler } from '../components/GifHandler'; 
 import { ChatButton, PlayButton, GoogleButton } from '../components/Button';
 import { SoundWave, Loader } from '../components/animation';
-import { Menu } from '../components/Menu';
+import { Menu, PushMenu } from '../components/Menu';
 import { ChatBubble } from '../components/ChatBubble';
 
 storiesOf("App", module)
@@ -65,6 +65,11 @@ storiesOf("Components", module)
   .add('Menu', () => (
     <div className="story-container" >
       <Menu/>
+    </div>
+  ))
+  .add('Push Menu', () => (
+    <div className="story-container" >
+      <PushMenu/>
     </div>
   ))
   .add('Single Chat', () => (
