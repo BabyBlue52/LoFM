@@ -7,6 +7,7 @@ import SearchPage from '../pages/Search';
 import InboxPage from '../pages/Inbox';
 import FavePage from '../pages/Favorites';
 import SupportPage from '../pages/Support';
+import { LoginPage } from '../pages/Login';
 
 
 function PushMenu(props) {
@@ -63,7 +64,7 @@ function PushMenu(props) {
                                         <AiOutlineUser/>
                                     </button>
                                     {portal(
-                                        <SupportPage onCloseInbox={closePortal}/>
+                                        <LoginPage onCloseLogin={closePortal}/>
                                     )}
                                 </React.Fragment>
                             )}
@@ -148,7 +149,7 @@ function PushMenu(props) {
                                         <AiOutlineSmile />
                                     </button>     
                                     {portal(
-                                        <SupportPage onClose={closePortal}/>
+                                        <SupportPage onCloseSupport={closePortal}/>
                                     )}
                                 </React.Fragment>
                             )}

@@ -7,7 +7,7 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import {PortalWithState } from 'react-portal';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
-import Modal from '../components/Modal';
+import { LoginPage } from '../pages/Login';
 import config from '../apis';
 import { SoundWave } from './animation';
 
@@ -35,7 +35,7 @@ function ChatButton() {
                     <p>Join Chat</p>
                  </button>
                 {portal(
-                    <Modal onClose={closePortal}/>
+                    <LoginPage onCloseLogin={closePortal}/>
                 )}
                 </React.Fragment>
             )}
