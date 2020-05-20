@@ -8,8 +8,9 @@ import Modal from '../components/Modal';
 import { GifHandler } from '../components/GifHandler'; 
 import { ChatButton, PlayButton, GoogleButton } from '../components/Button';
 import { SoundWave, Loader } from '../components/animation';
-import { Menu, PushMenu } from '../components/Menu';
+import { PushMenu } from '../components/Menu';
 import { ChatBubble } from '../components/ChatBubble';
+import { LoginPage } from '../pages/Login';
 
 storiesOf("App", module)
   .add('Mobile View', () => (
@@ -34,7 +35,18 @@ storiesOf("Animations", module)
     </div>
   ))
 
-
+/*
+================
+    Pages
+================
+*/
+storiesOf("Pages", module)
+.add('Login Page', () =>(
+    <div className="" style={{'maxHeight':'100%'}}>
+      <LoginPage/>
+    </div>
+  ))
+  
 /*
 ===============
     Components
@@ -60,11 +72,6 @@ storiesOf("Components", module)
   .add('Modal', () => (
     <div className="story-container">
       <Modal/>
-    </div>
-  ))
-  .add('Menu', () => (
-    <div className="story-container" >
-      <Menu/>
     </div>
   ))
   .add('Push Menu', () => (
