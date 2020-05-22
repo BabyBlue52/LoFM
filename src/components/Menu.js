@@ -7,7 +7,8 @@ import SearchPage from '../pages/Search';
 import InboxPage from '../pages/Inbox';
 import FavePage from '../pages/Favorites';
 import SupportPage from '../pages/Support';
-import { LoginPage } from '../pages/Login';
+
+import fire from '../base';
 
 
 function PushMenu(props) {
@@ -51,24 +52,15 @@ function PushMenu(props) {
                 key={placement}
             >
                 <Row className="drawer-end ">
-                     {/* Log In Portal */}
+                     {/* Log In */}
                      <Row>
                         <Col>
                             <p>Log In</p>
                         </Col>
                         <Col onClick={closeDrawer}>
-                            <PortalWithState closeOnOutsideClick closeOnEsc>
-                            {({ openPortal, closePortal, isOpen, portal }) => (
-                                <React.Fragment>
-                                    <button className="menu-round" onClick={openPortal}>
-                                        <AiOutlineUser/>
-                                    </button>
-                                    {portal(
-                                        <LoginPage onCloseLogin={closePortal}/>
-                                    )}
-                                </React.Fragment>
-                            )}
-                            </PortalWithState> 
+                            <button className="menu-round" onClick={() => fire.auth().signOut()}>
+                                <AiOutlineUser/>
+                            </button>
                         </Col>
                     </Row>
                      {/* Inbox Portal */}

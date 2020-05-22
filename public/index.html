@@ -42,4 +42,28 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+    
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDulEDmlpBWfoo0AHDDecwUhCEWKQ3e2wM",
+        authDomain: "civic-radio-273819.firebaseapp.com",
+        databaseURL: "https://civic-radio-273819.firebaseio.com",
+        projectId: "civic-radio-273819",
+        storageBucket: "civic-radio-273819.appspot.com",
+        messagingSenderId: "889818305253",
+        appId: "1:889818305253:web:f4471a786b435dcfb7fa0c",
+        measurementId: "G-N8SQFHG96B"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
 </html>

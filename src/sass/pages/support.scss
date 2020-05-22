@@ -8,3 +8,18 @@
         z-index: 1;
     }
 }
+.login-container {
+    @extend .inbox-container;
+    animation: none;
+}
+.support-header {
+    @extend .inbox-header;
+    button {
+        z-index: 1;
+    }
+}
+.login-form {
+    input.ant-input {
+        color: $black;
+    }
+}

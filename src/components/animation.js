@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion }from 'framer-motion';
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
 import Logo from '../img/logo.svg';
 
@@ -135,5 +137,9 @@ function Loader() {
             </motion.div>
         </>
     )
-} 
-export { SoundWave, Loader };
+}
+
+
+const Spinner = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
+export { SoundWave, Loader, Spinner };

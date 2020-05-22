@@ -6,15 +6,15 @@ import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
 import fire from '../base';
 import { AuthContext } from "../components/Auth";
 
-export function LoginPage({ history }) {
-    const handleLogin = useCallback(
+export function SignUpPage({ history }) {
+    const handleSignUp = useCallback(
       async event => {
         event.preventDefault();
         const { email, password } = event.target.elements;
         try {
           await fire
             .auth()
-            .signInWithEmailAndPassword(email.value, password.value);
+            .createUserWithEmailAndPassword(email.value, password.value);
           history.push("/");
         } catch (error) {
           alert(error);
@@ -31,7 +31,7 @@ export function LoginPage({ history }) {
   
     return (
       <Row type="flex">
-        <form onSubmit={handleLogin} className="sign-up">
+        <form onSubmit={handleSignUp} className="sign-up">
           <Col>
             Email
             <input name="email" type="email" placeholder="Email" />

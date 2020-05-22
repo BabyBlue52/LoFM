@@ -11,6 +11,7 @@ import { SoundWave, Loader } from '../components/animation';
 import { PushMenu } from '../components/Menu';
 import { ChatBubble } from '../components/ChatBubble';
 import { LoginPage } from '../pages/Login';
+import { SignUpPage } from '../pages/SignUp';
 
 storiesOf("App", module)
   .add('Mobile View', () => (
@@ -41,12 +42,16 @@ storiesOf("Animations", module)
 ================
 */
 storiesOf("Pages", module)
-.add('Login Page', () =>(
+  .add('Login Page', () =>(
     <div className="" style={{'maxHeight':'100%'}}>
       <LoginPage/>
     </div>
   ))
-  
+  .add('Sign Up Page', () =>(
+    <div className="" style={{'maxHeight':'100%'}}>
+      <SignUpPage/>
+    </div>
+  ))
 /*
 ===============
     Components
