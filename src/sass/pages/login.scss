@@ -1,41 +1,42 @@
-.modal-container {
+.login-modal {
     position: absolute;
     top: 0px;
     height: 100%;
     width: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.4);
 }
-.modal {
+form.login {
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 450px;
-    width: 300px;
+    height: 70%;
+    width: 90%;
     border-radius: 20px;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 20px;
     background: white;
-    animation: 300ms ease-in-out slideDownLogin alternate;
 
     h1.welcome {
         font-family: $spartan;
         font-weight: $heavy;
-        font-size: $paragraph;
+        font-size: 1.2rem;
         text-align: center;    
         margin: 0 auto;
-        padding-bottom: 30px;
+        padding-bottom: 25px;
         color: $black;
         text-shadow: none;
+        text-transform: capitalize;
     }
     h3 {
         color: $black;
     }
     p.forgot {
-        margin-top: 5px;
-        margin-bottom: 30px;
+        margin-top: -15px;
+        margin-left: 5px;
+        margin-bottom: 5px;
         line-height: 0.7rem;
-        font-size: $small;
-        font-weight: $heavy;
+        font-size: 0.7rem;
+        font-weight: $superHeavy;
         color: $purple;
         background: none;
     }
@@ -49,6 +50,19 @@
     svg {
         fill: $red;
     }
+    input[type=text], input[type=password], input[type=email] {
+        width: 100%;
+        margin-bottom: 20px;
+        padding-left: 10px;
+        border: 0.25px solid $black;
+        border-radius: 2px;
+        color: $black;
+        line-height: 25px;
+        outline: none;
+        &:focus {
+            outline: 1px solid $purple;
+        }
+    }
 }
 @keyframes slideDownLogin {
     from { 
@@ -57,4 +71,8 @@
     to { 
         top: 45%; 
     }  
+}
+.lofm-small {
+    width: 80px;
+    margin: 5px auto;
 }

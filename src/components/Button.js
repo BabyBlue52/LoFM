@@ -21,7 +21,15 @@ function Button(props) {
         </>
     )
 }
-
+function SecondaryButton(props) {
+    return(
+        <>
+            <button className="secondary-btn"> 
+                <p>{props.name}</p>
+            </button>
+        </>
+    )
+}
 // Chat button
 function ChatButton() {
 
@@ -145,4 +153,4 @@ function GoogleButton(props) {
         </div>
     )
 }
-export { Button, ChatButton, PlayButton, FavoriteButton, GoogleButton };
+export { Button, SecondaryButton, ChatButton, PlayButton, FavoriteButton, GoogleButton };

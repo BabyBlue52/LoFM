@@ -27,12 +27,12 @@ const Mobile = ({ children }) => {
 
 function App() {
   const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
+  const cache = 1;
+  useEffect((cache) => {
     setTimeout(function(){
       setLoading(false);
     }, 0);
-  }, []);
+  }, [cache ]);
   
     return (
       loading ? <Loader/> : 
@@ -43,7 +43,7 @@ function App() {
             <Router>
               <div id="app">
                 <div className="sunset-skin">
-                  <PrivateRoute exact path="/" component={RadioTuner}/>
+                  <Route exact path="/" component={RadioTuner}/>
                   <Route exact path="/login" component={LoginPage} />
                   <Route exact path="/signup" component={SignUpPage}/>
                 </div>

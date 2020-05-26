@@ -58,9 +58,11 @@ function PushMenu(props) {
                             <p>Log In</p>
                         </Col>
                         <Col onClick={closeDrawer}>
+                            <a href="/login">
                             <button className="menu-round" onClick={() => fire.auth().signOut()}>
                                 <AiOutlineUser/>
                             </button>
+                            </a>
                         </Col>
                     </Row>
                      {/* Inbox Portal */}

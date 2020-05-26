@@ -219,8 +219,3 @@ marquee {
     transition: opacity 0.3s linear, height 0s ease 0.3s;
     z-index: 1;
 }
-form.sign-up {
-    input[type=text], input[type=password], input[type=email] {
-        color: $black;
-    }
-}
