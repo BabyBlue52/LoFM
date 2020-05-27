@@ -35,16 +35,26 @@ button.default-btn {
         background: darken($purple, 10%);
     }
 }
-button.secondary-btn {
-    @extend .default-btn;
-    background: white;
-    border: 2px solid $purple;
-    padding: 20px 40px;
-    
-    visibility: hidden;
+button.signin-btn {
+    width: 100%;
+    margin:10px 0px;
+    padding: 0px 20px;
+    border-radius: 5px;
+    background: lighten($purple, 5%);
     p {
-        color: $purple;
+        margin: 0;
+        padding:10px;
+        background: none;
+        color: $offWhite;
+        font-family: $spartan;
+        font-size: 0.7rem;
+        font-weight: $heavy;
+        text-transform: capitalize;
         width: 100%;
+    }
+    &:focus {
+        background:darken($purple, 5%);
+        transform: scale(0.95);
     }
 }
 button.add-btn {
@@ -153,16 +163,21 @@ button.close {
 }
 
 button.back-btn {
+    display: inline-flex;
     position: absolute;
     top: 30px;
-    left: 10px;
+    left: 20px;
+    color: $black;
     z-index: 99;
     svg {
+        fill: $black;
         opacity: 0.5;
         height: 24px;
         width: 24px;
+        padding-right: 10px;
+        transform: scale(1.67);
         transition: 300ms ease-in-out;
-
+        
         &:hover,
         &:active {
             fill: $purple;

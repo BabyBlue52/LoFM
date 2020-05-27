@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { MdChatBubble } from 'react-icons/md';
 import { Tooltip } from "antd";
-import { FaPlay, FaPlus, FaCheck, FaWindowRestore } from 'react-icons/fa';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { FaPlay, FaPlus, FaCheck } from 'react-icons/fa';
+import { AiFillHome } from 'react-icons/ai';
 import {PortalWithState } from 'react-portal';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
@@ -21,15 +21,29 @@ function Button(props) {
         </>
     )
 }
-function SecondaryButton(props) {
+
+//Sign In Button
+function SignInButton(props) {
     return(
         <>
-            <button className="secondary-btn"> 
+            <button className="signin-btn"> 
                 <p>{props.name}</p>
             </button>
         </>
     )
 }
+
+//Back Button
+function BackButton(props) {
+    return(
+        <>
+            <button className="back-btn">
+                <AiFillHome/>{props.label}
+            </button>
+        </>
+    )
+}
+
 // Chat button
 function ChatButton() {
 
@@ -153,4 +167,5 @@ function GoogleButton(props) {
         </div>
     )
 }
-export { Button, SecondaryButton, ChatButton, PlayButton, FavoriteButton, GoogleButton };
+
+export { Button, BackButton, SignInButton, ChatButton, PlayButton, FavoriteButton, GoogleButton };

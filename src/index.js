@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { useMediaQuery } from 'react-responsive';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Loader } from './components/animation';
 import { PushMenu } from './components/Menu';
@@ -27,12 +27,12 @@ const Mobile = ({ children }) => {
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const cache = 1;
+  const cache = 1
   useEffect((cache) => {
     setTimeout(function(){
       setLoading(false);
     }, 0);
-  }, [cache ]);
+  }, [cache]);
   
     return (
       loading ? <Loader/> : 
@@ -41,13 +41,15 @@ function App() {
         <Mobile>
           <AuthProvider>
             <Router>
-              <div id="app">
-                <div className="sunset-skin">
-                  <Route exact path="/" component={RadioTuner}/>
-                  <Route exact path="/login" component={LoginPage} />
-                  <Route exact path="/signup" component={SignUpPage}/>
+              <Switch>
+                <div id="app">
+                  <div className="sunset-skin">
+                    <Route exact path="/" component={RadioTuner}/>
+                    <Route exact path="/login" component={LoginPage} />
+                    <Route exact path="/signup" component={SignUpPage}/>
+                  </div>
                 </div>
-              </div>
+              </Switch>
             </Router>
             <PushMenu/>
           </AuthProvider>

@@ -1,6 +1,6 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import {Row, Col, Badge, Drawer} from 'antd';
-import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiFillHome, AiOutlineMenu, AiOutlineClose, AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiOutlineMenu, AiOutlineClose, AiOutlineUser } from 'react-icons/ai';
 import { PortalWithState } from 'react-portal';
 
 import SearchPage from '../pages/Search';
@@ -15,7 +15,7 @@ function PushMenu(props) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [visible, setVisible] = useState(false);
     const [placement,setPlacement] = useState('bottom');
-    
+        
     function openDrawer(){
         setMenuOpen(true)
         setVisible(true)
@@ -24,10 +24,13 @@ function PushMenu(props) {
     function closeDrawer(){
         setMenuOpen(false)
         setVisible(false)
-        console.log('bitch where')
     }
-    return(
-        <div>
+
+    if(window.location.pathname === '/login') {
+      return null;
+    } else 
+        return (
+            <React.Fragment>
             <Row id="menu-floaty">
                 <Col span={2}>
                 {!menuOpen ?
@@ -41,9 +44,6 @@ function PushMenu(props) {
                     }
                 </Col>
             </Row>
-            <Row>
-
-            </Row>
             <Drawer
                 placement={placement}
                 closable={false}
@@ -52,8 +52,8 @@ function PushMenu(props) {
                 key={placement}
             >
                 <Row className="drawer-end ">
-                     {/* Log In */}
-                     <Row>
+                    {/* Log In */}
+                    <Row>
                         <Col>
                             <p>Log In</p>
                         </Col>
@@ -65,7 +65,8 @@ function PushMenu(props) {
                             </a>
                         </Col>
                     </Row>
-                     {/* Inbox Portal */}
+                        
+                    {/* Inbox Portal */}
                     <Row>
                         <Col>
                             <p>Messages</p>
@@ -129,7 +130,7 @@ function PushMenu(props) {
                         </PortalWithState> 
                     </Col>
                     </Row>
-              
+                
                     {/* Support the Troops */}
                     <Row>  
                         <Col>
@@ -153,7 +154,7 @@ function PushMenu(props) {
         
                 </Row>
             </Drawer>
-        </div>
+        </React.Fragment>
     )
 }
 export { PushMenu }
