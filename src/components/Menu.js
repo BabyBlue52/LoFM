@@ -26,7 +26,7 @@ function PushMenu(props) {
         setVisible(false)
     }
 
-    if(window.location.pathname === '/login') {
+    if(window.location.pathname === '/login' || '/sign-up') {
       return null;
     } else 
         return (

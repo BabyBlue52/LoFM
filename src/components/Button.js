@@ -37,8 +37,10 @@ function SignInButton(props) {
 function BackButton(props) {
     return(
         <>
-            <button className="back-btn">
-                <AiFillHome/>{props.label}
+            <button className="home-btn">
+                <a href="/">
+                <AiFillHome/><p>{props.label}</p>
+                </a>
             </button>
         </>
     )

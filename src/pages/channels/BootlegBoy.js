@@ -45,7 +45,6 @@ export function BootlegBoy(props) {
 
     function handlePlay(){
         setIsPlaying(!isPlaying);
-        console.log('playing')
     }
     const { api_key, channel_id_1 } = config;
     
@@ -82,9 +81,7 @@ export function BootlegBoy(props) {
 
     // JSON.stringify(data.videos)
     
-    
     const url = `http://youtube.com/watch?v=${live.videoId}`
-    console.log(live)
     return(
         <>  
             <Page 
@@ -132,7 +129,7 @@ export function BootlegBoy(props) {
                         soundcloud={links.soundcloud} 
                         spotify={links.spotify}
                         youtube={links.youtube}
-                        artist={song.title}
+                        artist={song.artist}
                         title={song.title}
                         channel={profile.thumbnail}
                         name={profile.name}
@@ -144,9 +141,9 @@ export function BootlegBoy(props) {
                     {/* Play Content */}
                     <Row className="justify-center">
                         <Col span={18} className="justify-center">
-                            <button onClick={handlePlay}>
+                            <div onClick={handlePlay}>
                                 <PlayButton/>
-                            </button>
+                            </div>
                         </Col>
                         <Col span={18} className="justify-center">
                             <ReactPlayer 

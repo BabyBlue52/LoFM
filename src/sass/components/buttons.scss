@@ -162,16 +162,20 @@ button.close {
     }
 }
 
-button.back-btn {
-    display: inline-flex;
+button.home-btn {
+    display: inline;
     position: absolute;
     top: 30px;
     left: 20px;
     color: $black;
     z-index: 99;
+    a{
+        display: inline-flex;
+        color: $black;
+        opacity: 0.5;
+    }
     svg {
         fill: $black;
-        opacity: 0.5;
         height: 24px;
         width: 24px;
         padding-right: 10px;
@@ -182,6 +186,12 @@ button.back-btn {
         &:active {
             fill: $purple;
         }
+    }
+    p {
+        background: none;
+        padding:0;
+        margin-top: 2.5px;
+        font-size:0.8rem;
     }
 }
 .google-btn {

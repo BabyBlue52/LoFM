@@ -1,7 +1,7 @@
 import React, { useContext, useCallback } from 'react';
 import { withRouter, Redirect } from 'react-router';
 import { Row, Col} from 'antd';
-import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
+import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
 import { MdClose } from 'react-icons/md';
 
 import Logo from '../img/logo.svg';
@@ -48,7 +48,7 @@ export function LoginPage({ history }) {
             {/* Email Input */}
             <Row>
             <Col offset={2} span={1} className="login-icon">
-                <AiOutlineUser/>
+                <AiOutlineMail/>
               </Col>
               <Col span={1}>
                 <h3>Email</h3>

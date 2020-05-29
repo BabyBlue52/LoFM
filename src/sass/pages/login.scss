@@ -27,14 +27,21 @@ form.login {
 
     h3 {
         position: relative;
-        top: 5px;
-        z-index: 2;
+        top: 4px;
         left: 25px;
+        height: 0px;
+        margin: 0;
         color: $black;
         font-size: 0.5rem;
-
+        white-space: nowrap;
+        z-index: 2;
     }
-
+    h4 {
+        width: 100%;
+        font-size: 0.8rem;
+        text-align: center;
+        color: inherit;
+    }
     p.forgot {
         margin-top: -5px;
         margin-left: 5px;
@@ -67,10 +74,10 @@ form.login {
         height: 45px;
         margin-bottom: 10px;
         padding-top: 10px;
-        padding-left: 10px;
+        padding-left: 20px;
         border: none;
         border-radius: 2px;
-        background: darken($offWhite, 5%);
+        background:darken(#f0f0f0, 5%);
         color: $black;
         line-height: 25px;
         outline: none;
