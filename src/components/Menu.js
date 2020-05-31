@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Row, Col, Badge, Drawer} from 'antd';
 import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiOutlineMenu, AiOutlineClose, AiOutlineUser } from 'react-icons/ai';
 import { PortalWithState } from 'react-portal';
+import Draggable from 'react-draggable'
 
 import SearchPage from '../pages/Search';
 import InboxPage from '../pages/Inbox';
@@ -26,24 +27,26 @@ function PushMenu(props) {
         setVisible(false)
     }
 
-    if(window.location.pathname === '/login') {
+    if(window.location.pathname === '/login' && 'signup') {
       return null;
     } else 
         return (
             <React.Fragment>
-            <Row id="menu-floaty">
-                <Col span={2}>
-                {!menuOpen ?
-                    <button className="menu-btn _dropShadow" onClick={openDrawer}>
-                        <AiOutlineMenu />
-                    </button>
-                        :
-                    <button className="menu-btn-closed _dropShadow" onClick={closeDrawer}>
-                        <AiOutlineClose />
-                    </button>
-                    }
-                </Col>
-            </Row>
+            <Draggable handle="#menu-floaty">
+                <Row id="menu-floaty">
+                    <Col span={2}>
+                    {!menuOpen ?
+                        <button className="menu-btn _dropShadow" onClick={openDrawer}>
+                            <AiOutlineMenu />
+                        </button>
+                            :
+                        <button className="menu-btn-closed _dropShadow" onClick={closeDrawer}>
+                            <AiOutlineClose />
+                        </button>
+                        }
+                    </Col>
+                </Row>
+            </Draggable>
             <Drawer
                 placement={placement}
                 closable={false}
