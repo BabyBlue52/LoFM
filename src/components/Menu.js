@@ -27,12 +27,16 @@ function PushMenu(props) {
         setVisible(false)
     }
 
+
     if(window.location.pathname === '/login' && 'signup') {
       return null;
     } else 
         return (
             <React.Fragment>
-            <Draggable handle="#menu-floaty">
+            <Draggable 
+                handle="#menu-floaty"
+                scale={2}
+            >
                 <Row id="menu-floaty">
                     <Col span={2}>
                     {!menuOpen ?
