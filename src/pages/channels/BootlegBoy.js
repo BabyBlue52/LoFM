@@ -28,9 +28,9 @@ export function BootlegBoy(props) {
         bio:"",
     });
     const [profile, setProfile] = useState({
-            name:'bingus',
+            name:'loading',
             thumbnail:'',
-            bio:'',
+            bio:'Loading...',
             videos:[]
     });
     const links ={

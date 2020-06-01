@@ -27,13 +27,14 @@ const Mobile = ({ children }) => {
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const cache = 1
+  const cache = 1;
+
   useEffect((cache) => {
     setTimeout(function(){
       setLoading(false);
     }, 0);
   }, [cache]);
-  
+
     return (
       loading ? <Loader/> : 
       <React.Fragment>
@@ -46,8 +47,8 @@ function App() {
                   <div className="sunset-skin">
                     <Route exact path="/" component={RadioTuner}/>
                     <Route exact path="/login" component={LoginPage} />
-                    <Route exact path="/signup" component={SignUpPage}/>
-                  </div>
+                    <Route exact path="/sign-up" component={SignUpPage}/>
+                  </div> 
                 </div>
               </Switch>
             </Router>
