@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Row, Col, Badge, Drawer} from 'antd';
 import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiOutlineMenu, AiOutlineClose, AiOutlineUser } from 'react-icons/ai';
 import { PortalWithState } from 'react-portal';
@@ -16,6 +16,7 @@ function PushMenu(props) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [visible, setVisible] = useState(false);
     const [placement,setPlacement] = useState('bottom');
+    const [login, setLogin] = useState(false);
         
     function openDrawer(){
         setMenuOpen(true)
@@ -26,6 +27,17 @@ function PushMenu(props) {
         setMenuOpen(false)
         setVisible(false)
     }
+
+    useEffect(()=>{
+        fire.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              setLogin(!login);
+            } else {
+
+            }
+            });
+    },[])
 
     if(window.location.pathname === '/login' && 'signup') {
       return null;
@@ -48,7 +60,7 @@ function PushMenu(props) {
                 </Row>
             </Draggable>
             <Drawer
-                placement={placement}
+                placement= {placement}
                 closable={false}
                 onClose={closeDrawer}
                 visible={visible}
@@ -58,7 +70,7 @@ function PushMenu(props) {
                     {/* Log In */}
                     <Row>
                         <Col>
-                            <p>Log In</p>
+                            { login === login ? <p>Log Out</p> : <p>Log In</p> }
                         </Col>
                         <Col onClick={closeDrawer}>
                             <a href="/login">

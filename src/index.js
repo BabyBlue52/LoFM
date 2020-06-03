@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { useMediaQuery } from 'react-responsive';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { Loader } from './components/animation';
 import { PushMenu } from './components/Menu';
 import { AuthProvider } from './components/Auth';
 import PrivateRoute from "./components/PrivateRoute";
@@ -26,17 +25,7 @@ const Mobile = ({ children }) => {
 
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const cache = 1;
-
-  useEffect((cache) => {
-    setTimeout(function(){
-      setLoading(false);
-    }, 0);
-  }, [cache]);
-
     return (
-      loading ? <Loader/> : 
       <React.Fragment>
         {/* Mobile Size */}
         <Mobile>

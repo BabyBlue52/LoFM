@@ -10,6 +10,7 @@ export default function RadioTuner() {
         isLoggedIn: null,
         displayName: ''
     });
+
     const user = fire.auth().currentUser;
 
     const welcomeNotification = () => {
@@ -22,10 +23,16 @@ export default function RadioTuner() {
       };
 
     useEffect(() => {
-        setState(state.displayName = user.displayName);
-        setTimeout(function(){
-            welcomeNotification();
-        }, 2500);
+        if(user !== null) {
+            setState( state.displayName = user.displayName );
+            setTimeout(function(){
+                welcomeNotification();
+            }, 2500);
+        }
+        else(
+            window.location.href = '/login'
+        )
+       
     }, []);
 
     return( 

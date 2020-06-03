@@ -70,7 +70,11 @@ export function LoginPage({ history }) {
                 <input name="password" type="password" />
               </Col>
             </Row>
-            
+            <Row>
+              <Col offset={4}>
+                <a className="forgot">Forgot password?</a>
+              </Col>
+            </Row>
             {/* Submit */}
             <Row>
               <Col offset={4} span={16}>
@@ -78,7 +82,7 @@ export function LoginPage({ history }) {
               </Col>
             </Row>
             <Row>
-              <Col offset={6} span={16}>
+              <Col offset={4} span={16}>
                 <a href="/sign-up">
                   Don't have an account? Sign Up
                 </a>
