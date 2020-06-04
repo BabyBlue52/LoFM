@@ -1,34 +1,47 @@
-import React, { useContext, useCallback } from 'react';
-import { withRouter, Redirect } from 'react-router';
-import { Row, Col} from 'antd';
+import React, { useState, useCallback } from 'react';
+import { Redirect } from 'react-router';
+import { Row, Col } from 'antd';
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
-import { MdClose } from 'react-icons/md';
+import axios from 'axios';
 
 import Logo from '../img/logo.svg';
 import { SignInButton, BackButton } from '../components/Button';
-import fire from '../base';
-import { AuthContext } from "../components/Auth";
+import { useAuth } from '../components/Auth'
 
 export function LoginPage({ history }) {
-    const handleLogin = useCallback(
-      async event => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+    const { setAuthTokens } = useAuth();
+
+    const handleLogin = function(event) {
         event.preventDefault();
         const { email, password } = event.target.elements;
-        try {
-          await fire
-            .auth()
-            .signInWithEmailAndPassword(email.value, password.value);
-          history.push("/");
-        } catch (error) {
-          alert(error);
-        }
-      },
-      [history]
-    );
+        axios({
+          method: 'post',
+          url: 'https://dev.lofifm.com/api/login',
+          data: {
+              email: email.value,
+              password: password.value
+          }})
+          .then( res => {
+              if (res. status === 200){
+                setAuthTokens(res.data);
+                setIsLoggedIn(!isLoggedIn);
+                console.log('successful login')
+              } else {
+                  setIsError(!isError);
+              }    
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      
+    
+}
   
-    const { currentUser } = useContext(AuthContext);
-  
-    if (currentUser) {
+    if ( isLoggedIn ) {
       return <Redirect to="/" />;
     }
   
@@ -88,8 +101,8 @@ export function LoginPage({ history }) {
                 </a>
               </Col>
             </Row>
-            
         </form>
+        { isError &&<>The username or password provided were incorrect!</> }
         </div>
     );
   };

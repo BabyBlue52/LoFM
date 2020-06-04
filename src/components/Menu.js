@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {Row, Col, Badge, Drawer} from 'antd';
 import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiOutlineMenu, AiOutlineClose, AiOutlineUser } from 'react-icons/ai';
 import { PortalWithState } from 'react-portal';
@@ -9,7 +9,7 @@ import InboxPage from '../pages/Inbox';
 import FavePage from '../pages/Favorites';
 import SupportPage from '../pages/Support';
 
-import fire from '../base';
+import { AuthContext } from '../components/Auth'; 
 
 
 function PushMenu(props) {
@@ -28,23 +28,29 @@ function PushMenu(props) {
         setVisible(false)
     }
 
-    useEffect(()=>{
-        fire.auth().onAuthStateChanged(function(user) {
-            if (user) {
-              // User is signed in.
-              setLogin(!login);
-            } else {
 
-            }
-            });
+    function logOut() {
+        console.log('log out')
+    }
+
+    useEffect(()=>{
+        let auth;
+        if (auth == null) {
+            // User is signed in.
+            setLogin(!login);
+        } else {
+
+        }
     },[])
 
-    if(window.location.pathname === '/login' && 'signup') {
+    if(window.location.pathname === '/login') {
       return null;
+    }
+    if(window.location.pathname === '/sign-up') {
+        return null;
     } else 
         return (
             <React.Fragment>
-            <Draggable handle="#menu-floaty">
                 <Row id="menu-floaty">
                     <Col span={2}>
                     {!menuOpen ?
@@ -58,13 +64,11 @@ function PushMenu(props) {
                         }
                     </Col>
                 </Row>
-            </Draggable>
             <Drawer
                 placement= {placement}
                 closable={false}
                 onClose={closeDrawer}
                 visible={visible}
-                key={placement}
             >
                 <Row className="drawer-end ">
                     {/* Log In */}
@@ -73,11 +77,11 @@ function PushMenu(props) {
                             { login === login ? <p>Log Out</p> : <p>Log In</p> }
                         </Col>
                         <Col onClick={closeDrawer}>
-                            <a href="/login">
-                            <button className="menu-round" onClick={() => fire.auth().signOut()}>
-                                <AiOutlineUser/>
+                            <button className="menu-round" onClick={logOut}>
+                                <a href="/login" >
+                                    <AiOutlineUser/>
+                                </a>
                             </button>
-                            </a>
                         </Col>
                     </Row>
                         

@@ -1,41 +1,52 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Redirect } from 'react-router';
-import { Row, Col} from 'antd';
+import { Row, Col } from 'antd';
 import { AiOutlineMail, AiOutlineLock, AiOutlineSmile } from 'react-icons/ai';
+import axios from 'axios';
 
-import { BackButton, SignInButton } from '../components/Button';
 import Logo from '../img/logo.svg';
-import fire from '../base';
-import { AuthContext } from "../components/Auth";
+import { SignInButton, BackButton } from '../components/Button';
+import { useAuth } from '../components/Auth'
 
 export function SignUpPage({ history }) {
-    const handleSignUp = useCallback(
+    const [user, setUser] = useState({
+        isLoggedIn: false,
+        isError: false,
+        userName: '',
+        password: ''
+      });
+
+      const { setAuthTokens } = useAuth();
+      
+      const handleSignUp = useCallback(
       async event => {
         event.preventDefault();
         const { email, password, display } = event.target.elements;
-        try {
-          await fire
-            .auth()
-            .createUserWithEmailAndPassword(email.value, password.value)
-            .then(function(result) {
-                return result.user.updateProfile({
-                    displayName: display.value
-                })              
+        axios({
+            method: 'post',
+            url: 'https://dev.lofifm.com/api/user/create/',
+            data: {
+                username: display.value,
+                email: email.value,
+                password: password.value
+            }})
+            .then( res => {
+                if (res. status === 200){
+                    setAuthTokens(res.data);
+                    setUser(user.isLoggedIn = true);
+                  } else {
+                      setUser(user.isError = true);
+                  }    
             })
-          history.push("/");
-        } catch (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log(errorCode);
-            alert(errorMessage);
-        }
+            .catch(error => {
+                setUser(user.isError = true);
+                console.log(error);
+            })
       },
       [history]
     );
-
-    const { currentUser } = useContext(AuthContext);
   
-    if (currentUser) {
+    if (user.isLoggedIn) {
       return <Redirect to="/" />;
     }
   
@@ -114,7 +125,7 @@ export function SignUpPage({ history }) {
                 {/* Go to Log In */}
                 <Row>
                 <Col offset={4} span={16}>
-                    <a href="/log-in">
+                    <a href="/login">
                     <h4>Already have an account? Login</h4>
                     </a>
                 </Col>

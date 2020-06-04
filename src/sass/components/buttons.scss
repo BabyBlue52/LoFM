@@ -52,7 +52,7 @@ button.signin-btn {
         text-transform: capitalize;
         width: 100%;
     }
-    &:focus {
+    &:active, &:focus {
         background:darken($purple, 5%);
         transform: scale(0.95);
     }

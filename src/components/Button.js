@@ -48,15 +48,14 @@ function BackButton(props) {
 
 // Chat button
 function ChatButton(props) {
-    const openChat = () => {
-        window.location.href('/login')
-    }
     return ( 
         <React.Fragment>
-            <button className="chat-btn" onClick={openChat}>
+            <a href="/chat">
+            <button className="chat-btn">
                 <MdChatBubble className="chat-bubble"/>
                 <p>Join Chat</p>
             </button>
+            </a>
         </React.Fragment>
     )
 }
