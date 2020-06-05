@@ -5,7 +5,7 @@ import { BackButton } from '../components/Button';
 
 
 
-export default function Chat(props) {
+export function Chat(props) {
     return(
         <>  
             <Row style={{'width':'100%'}}>

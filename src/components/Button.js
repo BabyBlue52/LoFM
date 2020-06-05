@@ -47,25 +47,16 @@ function BackButton(props) {
 }
 
 // Chat button
-function ChatButton() {
-
-    return (
-        <>
-        <PortalWithState closeOnOutsideClick closeOnEsc>
-            {({ openPortal, closePortal, isOpen, portal }) => (
-                <React.Fragment>
-                <button className="chat-btn" onClick={openPortal}>
-                    <MdChatBubble className="chat-bubble"/>
-                    <p>Join Chat</p>
-                 </button>
-                {portal(
-                    <LoginPage onCloseLogin={closePortal}/>
-                )}
-                </React.Fragment>
-            )}
-        </PortalWithState> 
-           
-        </>
+function ChatButton(props) {
+    return ( 
+        <React.Fragment>
+            <a href="/chat">
+            <button className="chat-btn">
+                <MdChatBubble className="chat-bubble"/>
+                <p>Join Chat</p>
+            </button>
+            </a>
+        </React.Fragment>
     )
 }
 

@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import { useMediaQuery } from 'react-responsive';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { Loader } from './components/animation';
 import { PushMenu } from './components/Menu';
-import { AuthProvider } from './components/Auth';
+import { AuthContext } from './components/Auth';
 import PrivateRoute from "./components/PrivateRoute";
 
 import RadioTuner from './pages/RadioTuner';
 import { LoginPage } from './pages/Login';
 import { SignUpPage } from './pages/SignUp';
+import { Chat } from './pages/Chat'
 
 import './style.scss';
 
@@ -25,22 +25,20 @@ const Mobile = ({ children }) => {
 }
 
 
-function App() {
-  const [loading, setLoading] = useState(true);
-  const cache = 1;
-
-  useEffect((cache) => {
-    setTimeout(function(){
-      setLoading(false);
-    }, 0);
-  }, [cache]);
-
+function App(props) {
+    const existingTokens = JSON.parse(localStorage.getItem("tokens"));
+    const [authTokens, setAuthTokens] = useState(existingTokens);
+    
+    const setTokens = (data) => {
+      localStorage.setItem("tokens", JSON.stringify(data));
+      setAuthTokens(data);
+    }
     return (
-      loading ? <Loader/> : 
       <React.Fragment>
+      
         {/* Mobile Size */}
         <Mobile>
-          <AuthProvider>
+          <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
             <Router>
               <Switch>
                 <div id="app">
@@ -48,14 +46,14 @@ function App() {
                     <Route exact path="/" component={RadioTuner}/>
                     <Route exact path="/login" component={LoginPage} />
                     <Route exact path="/sign-up" component={SignUpPage}/>
+                    <PrivateRoute exact path="/chat" component={Chat}/>
                   </div> 
                 </div>
               </Switch>
             </Router>
             <PushMenu/>
-          </AuthProvider>
+          </AuthContext.Provider>
         </Mobile>
-
         {/* Desktop Size */}
         <Desktop>
           <div id="app-desktop">
