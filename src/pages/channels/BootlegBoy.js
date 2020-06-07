@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player';
 
 import { Chat } from '../../pages/Chat';
 import { ChatButton, PlayButton } from '../../components/Button';
-import { ChannelHolder } from '../../components/ChannelHolder';
+import ChannelHolder from '../../components/ChannelHolder';
 import { ChannelUploads } from '../../components/ChannelUploads';
 import { GifHandler } from '../../components/GifHandler';
 import gif from '../../img/gif/chilledCow.gif';
@@ -28,6 +28,7 @@ export function BootlegBoy(props) {
         bio:"",
     });
     const [profile, setProfile] = useState({
+            id: 'BootLeg Boy',
             name:'loading',
             thumbnail:'',
             bio:'Loading...',
@@ -132,6 +133,7 @@ export function BootlegBoy(props) {
                         artist={song.artist}
                         title={song.title}
                         channel={profile.thumbnail}
+                        id={profile.id}
                         name={profile.name}
                         bio={profile.bio}
                         viewers={uploads.view}

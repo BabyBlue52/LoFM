@@ -83,13 +83,11 @@ function FavoriteButton() {
     const [icon, setIcon] = useState(false);
     const favorited = 'Added to Favorites';
 
-    function  handleClick() {
-        setIcon(!icon)
+    function  handleFavorite() {
+        setIcon(!icon);
+
     }
    
-    function logged() {
-       console.log('added to playlist')
-    }
 
     return (
         <div>
@@ -98,9 +96,8 @@ function FavoriteButton() {
                 title={icon ? favorited : 'Removed from Favorites'} 
                 placement="top"
                 trigger="click" 
-                onTouchEnd={logged}
             >
-                <button className="add-btn justify-center " onClick={handleClick}>
+                <button className="add-btn justify-center " onClick={handleFavorite}>
                     {icon ? <FaCheck/> : <FaPlus/> }
                 </button>
             </Tooltip>
