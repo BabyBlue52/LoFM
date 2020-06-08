@@ -28,7 +28,7 @@ export function BootlegBoy(props) {
         bio:"",
     });
     const [profile, setProfile] = useState({
-            id: 'BootLeg Boy',
+            id: {channel:'BootLeg Boy',id: 1},
             name:'loading',
             thumbnail:'',
             bio:'Loading...',
@@ -80,7 +80,6 @@ export function BootlegBoy(props) {
         )
     }, [ api_key ]);
 
-    // JSON.stringify(data.videos)
     
     const url = `http://youtube.com/watch?v=${live.videoId}`
     return(

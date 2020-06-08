@@ -1,22 +1,20 @@
 import actionTypes from '../actionTypes';
-  
-let nextChannelId = 0
+let nextChannel = 0
+
 export default {
-    addChannel: (channel) => ({
+    addChannel: (playlist, id) => ({
         type: actionTypes.ADD_CHANNEL,
-        payload: {
-            id: ++nextChannelId,
-            channel 
-        }
+        playlist,
+        id: nextChannel++
     }),
-    updateFavorite: (index, favorite) => ({
+    updateFavorite: (index, channel) => ({
         type: actionTypes.UPDATE_FAVORITES,
         index,
-        favorite,
-    }),
-    deleteChannel: (index, channel) => ({
-        type: actionTypes.DELETE_CHANNEL,
-        index,
         channel,
+    }),
+    deleteChannel: (playlist, id) => ({     // looks for channel id as field
+        type: actionTypes.DELETE_CHANNEL,
+        playlist,
+        id
     })
 }

@@ -7,24 +7,28 @@ import 'antd/dist/antd.css';
 import { FavoriteButton } from './Button';
 import { SongHandler } from './GifHandler';
 import favoriteAction from '../_redux/actions/favoriteAction';
-import store from '../_redux/createStore';
+import playlistAction from '../_redux/actions/playlistAction';
 import '../../src/style.scss';
-
+import actionTypes from '../_redux/actionTypes';
+import store from '../_redux/createStore';
 
 function ChannelHolder(props){
     const checkFave = useSelector(state => state.favorited);   
     const dispatch = useDispatch();
+
     // Change REDUX state of channel in playlist
-
-    
-
-    function handleFavorite(){
-        if (checkFave == false) {
+    function handleFavorite(channel, index){
+        if (checkFave === false) {
             dispatch(favoriteAction.addFavorite());
-            console.log('added');
+            dispatch(playlistAction.addChannel(props.id));
+            console.log(store.getState());
+
         } else {
             dispatch(favoriteAction.deleteFavorite());
+            dispatch(playlistAction.deleteChannel(index));
+            
             console.log('removed');
+            console.log(store.getState());
         }
         
     }
@@ -45,7 +49,7 @@ function ChannelHolder(props){
             <Row>
                 <Col span={1} offset={14}>
                     <div onClick={handleFavorite}>
-                        <FavoriteButton channelName={props.name}/>
+                        <FavoriteButton channelName={props.id}/>
                     </div>
                 </Col>
             </Row> 
@@ -97,7 +101,18 @@ function ChannelHolder(props){
     )
 }
 
+const mapStateToProps = ({state, ownProps}) => {
+    return {
+        favorited: true,
+        channel: state
+    }
+}
+
+const mapDispatchToProps = {
+    ...actionTypes,
+}
+
 export default connect(
-    null, 
-    favoriteAction)
+    mapStateToProps, 
+    mapDispatchToProps)
     (ChannelHolder);

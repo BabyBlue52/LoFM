@@ -1,41 +1,21 @@
 import actionTypes from '../actionTypes';
 
-const initialState = {
-  favorites: []
-}
+const initialState = []
 
-export default (state = initialState, action) => {
+const playlistReducer = (state = initialState, action) => {
   switch(action.type) {
-    case actionTypes.ADD_CHANNEL: {
-      const playlist = [...state.playlist];
-      playlist.push(action.favorites);
-      return {
-        playlist,
-      }
+    // ADD Channel to Playlist
+    case actionTypes.ADD_CHANNEL:
+      return [...state, action.playlist]; //adds channel name to playlist array 
+
+    // DELETE Channel from Playlist    
+    case actionTypes.DELETE_CHANNEL: {
+      return state.filter(({id}) => id !== action.id);
     }
 
-    case actionTypes.UPDATE_FAVORITES: {
-      const { index, favorite } = action;
-      const playlist = [...state.playlist];
-      playlist[index] = favorite;
-      return {
-        playlist,
-      }
-    }
-    
-    case actionTypes.DELETE_CHANNEL: {
-      const { index } = action;
-      const playlist = [];
-      state.playlist.forEach((favorite, i) => {
-        if(index !== i) {
-          playlist.push(favorite)
-        }
-      })      
-      return {
-        playlist,
-      }
-    }
     default:
       return state;
   }
 }
+
+export default playlistReducer;
