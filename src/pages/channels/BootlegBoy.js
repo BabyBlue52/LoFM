@@ -28,7 +28,7 @@ export function BootlegBoy(props) {
         bio:"",
     });
     const [profile, setProfile] = useState({
-            id: {channel:'BootLeg Boy',id: 1},
+            id: {channel:'The BootLeg Boy',id: 1},
             name:'loading',
             thumbnail:'',
             bio:'Loading...',
