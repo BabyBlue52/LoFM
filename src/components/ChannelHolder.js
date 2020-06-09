@@ -1,16 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Tooltip } from 'antd';
+import { Row, Col } from 'antd';
 import { FaSpotify, FaYoutube, FaSoundcloud } from 'react-icons/fa';
+import { connect, useSelector, useDispatch } from 'react-redux'; 
 import 'antd/dist/antd.css';
 
 import { FavoriteButton } from './Button';
 import { SongHandler } from './GifHandler';
+import playlistAction from '../_redux/actions/playlistAction';
 import '../../src/style.scss';
-
+import actionTypes from '../_redux/actionTypes';
+import store from '../_redux/createStore';
 
 function ChannelHolder(props){
-    const favorited = <p>Added to favorites</p>
-   
+    const [isFavorited,setIsFavorited] = useState(false)    
+    const dispatch = useDispatch();
+
+    // Change REDUX state of channel in playlist
+    function handleFavorite(channel, index){
+        if (isFavorited === false) {
+            setIsFavorited(!isFavorited);
+            dispatch(playlistAction.addChannel(props.id));
+            console.log(store.getState());
+
+        } else {
+            setIsFavorited(!isFavorited);
+            dispatch(playlistAction.deleteChannel(index));
+            
+            console.log('removed');
+            console.log(store.getState());
+        }
+        
+    }
+
     useEffect(() =>{
         
     },[])
@@ -26,9 +47,9 @@ function ChannelHolder(props){
 
             <Row>
                 <Col span={1} offset={14}>
-                    <Tooltip placement="top" title={favorited}>
-                       <FavoriteButton />
-                    </Tooltip>
+                    <div onClick={handleFavorite}>
+                        <FavoriteButton channelName={props.id}/>
+                    </div>
                 </Col>
             </Row> 
 
@@ -37,21 +58,21 @@ function ChannelHolder(props){
                 <Col span={2} offset={8} className="justify-center">
                     <a href={props.spotify} target="_blank">
                         <button className="spotify" >
-                            <FaSpotify size="1.5rem" fill="white"/> 
+                            <FaSpotify size="24px" fill="white"/> 
                         </button>
                     </a>
                 </Col>
                 <Col span={4} className="justify-center">
                     <a href={props.youtube} target="_blank">
                         <button className="youtube" >
-                            <FaYoutube size="1.5rem" fill="white"/> 
+                            <FaYoutube size="24px" fill="white"/> 
                         </button>
                     </a>
                 </Col>
                 <Col span={2}>
                     <a href={props.soundcloud} target="_blank">
                         <button className="soundcloud" >
-                            <FaSoundcloud size="1.5rem" fill="white"/> 
+                            <FaSoundcloud size="24px" fill="white"/> 
                         </button>
                     </a>
                 </Col>  
@@ -79,4 +100,18 @@ function ChannelHolder(props){
     )
 }
 
-export { ChannelHolder };
+const mapStateToProps = ({state, ownProps}) => {
+    return {
+        favorited: true,
+        channel: state
+    }
+}
+
+const mapDispatchToProps = {
+    ...actionTypes,
+}
+
+export default connect(
+    mapStateToProps, 
+    mapDispatchToProps)
+    (ChannelHolder);

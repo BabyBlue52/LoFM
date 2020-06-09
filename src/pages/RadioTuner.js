@@ -11,7 +11,6 @@ export default function RadioTuner() {
         displayName: null
     });
 
-   
 
     const welcomeNotification = () => {
         notification.open({
@@ -30,7 +29,7 @@ export default function RadioTuner() {
             console.log(res);
         })
         .catch(err => {
-            console.log(err);
+            console.log('');
         }) 
         // if(state.displayName !== null) {
         //     setState(state.displayName = state.displayName)

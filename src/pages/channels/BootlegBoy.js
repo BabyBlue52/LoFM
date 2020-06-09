@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player';
 
 import { Chat } from '../../pages/Chat';
 import { ChatButton, PlayButton } from '../../components/Button';
-import { ChannelHolder } from '../../components/ChannelHolder';
+import ChannelHolder from '../../components/ChannelHolder';
 import { ChannelUploads } from '../../components/ChannelUploads';
 import { GifHandler } from '../../components/GifHandler';
 import gif from '../../img/gif/chilledCow.gif';
@@ -28,6 +28,7 @@ export function BootlegBoy(props) {
         bio:"",
     });
     const [profile, setProfile] = useState({
+            id: {channel:'The BootLeg Boy',id: 1},
             name:'loading',
             thumbnail:'',
             bio:'Loading...',
@@ -79,7 +80,6 @@ export function BootlegBoy(props) {
         )
     }, [ api_key ]);
 
-    // JSON.stringify(data.videos)
     
     const url = `http://youtube.com/watch?v=${live.videoId}`
     return(
@@ -132,6 +132,7 @@ export function BootlegBoy(props) {
                         artist={song.artist}
                         title={song.title}
                         channel={profile.thumbnail}
+                        id={profile.id}
                         name={profile.name}
                         bio={profile.bio}
                         viewers={uploads.view}
