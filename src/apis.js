@@ -3,6 +3,7 @@ const config = {
     api_key: "AIzaSyDL5traLbawY1rqELw4xWL4-ACh498Yu1o",
 
     channel_id_1:"UC0fiLCwTmAukotCXYnqfj0A", //Bootleg Boy
+    channel_id_2:"UCsIg9WMfxjZZvwROleiVsQg", //STEEZYASFUCK
 }
 
 export default config;

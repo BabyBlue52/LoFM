@@ -29,7 +29,7 @@ export default function RadioTuner() {
             console.log(res);
         })
         .catch(err => {
-            console.log('');
+            console.log(err);
         }) 
         // if(state.displayName !== null) {
         //     setState(state.displayName = state.displayName)

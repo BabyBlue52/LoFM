@@ -8,6 +8,7 @@ import { PushMenu } from './components/Menu';
 import { AuthContext } from './components/Auth';
 import PrivateRoute from "./components/PrivateRoute";
 import store from './_redux/createStore';
+import { loadUser } from './_redux/actions/authAction';
 
 import RadioTuner from './pages/RadioTuner';
 import { LoginPage } from './pages/Login';
@@ -27,20 +28,17 @@ const Mobile = ({ children }) => {
 }
 
 
-function App(props) {
-    const existingTokens = JSON.parse(localStorage.getItem("tokens"));
-    const [authTokens, setAuthTokens] = useState(existingTokens);
-    
-    const setTokens = (data) => {
-      localStorage.setItem("tokens", JSON.stringify(data));
-      setAuthTokens(data);
-    }
+function App() {
+   useEffect( async () => {
+    await store.dispatch(loadUser());
+   }, [])
+
     return (
       <React.Fragment>
         <Provider store={store} >
           {/* Mobile Size */}
           <Mobile>
-            <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+            <AuthContext.Provider>
               <Router>
                 <Switch>
                   <div id="app">

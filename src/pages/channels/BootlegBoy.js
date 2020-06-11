@@ -30,7 +30,7 @@ export function BootlegBoy(props) {
     const [profile, setProfile] = useState({
             id: {channel:'The BootLeg Boy',id: 1},
             name:'loading',
-            thumbnail:'',
+            thumbnail:'https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png',
             bio:'Loading...',
             videos:[]
     });
@@ -131,7 +131,7 @@ export function BootlegBoy(props) {
                         youtube={links.youtube}
                         artist={song.artist}
                         title={song.title}
-                        channel={profile.thumbnail}
+                        thumbnail={profile.thumbnail}
                         id={profile.id}
                         name={profile.name}
                         bio={profile.bio}

@@ -1,47 +1,35 @@
-import React, { useState, useCallback } from 'react';
-import { Redirect } from 'react-router';
+import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
-import axios from 'axios';
+import { connect, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Logo from '../img/logo.svg';
 import { SignInButton, BackButton } from '../components/Button';
-import { useAuth } from '../components/Auth'
+import { login } from '../_redux/actions/authAction';
 
-export function LoginPage({ history }) {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [isError, setIsError] = useState(false);
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
-    const { setAuthTokens } = useAuth();
+export function LoginPage(props) {
+   const [state, setState] = useState({
+      isError: false,
+      username: '',
+      password:'',
+   });
+   // Properly load dispatch REDUX
+   const dispatch = useDispatch();
 
-    const handleLogin = function(event) {
-        event.preventDefault();
-        const { email, password } = event.target.elements;
-        axios({
-          method: 'post',
-          url: 'https://dev.lofifm.com/api/login',
-          data: {
-              email: email.value,
-              password: password.value
-          }})
-          .then( res => {
-              if (res. status === 200){
-                setAuthTokens(res.data);
-                setIsLoggedIn(!isLoggedIn);
-                console.log('successful login')
-              } else {
-                  setIsError(!isError);
-              }    
-          })
-          .catch(error => {
-            console.log(error);
-          })
-      
-    
-}
+   const propTypes = {
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
+  };
+
+    const handleLogin = function(e) {
+        e.preventDefault();
+        //const { email, password } = event.target.elements;
+        dispatch(login(state.username, state.password));
+    }
   
-    if ( isLoggedIn ) {
+    if ( props.isAuthenticated ) {
       return <Redirect to="/" />;
     }
   
@@ -96,13 +84,19 @@ export function LoginPage({ history }) {
             </Row>
             <Row>
               <Col offset={4} span={16}>
-                <a href="/sign-up">
+                <Link to="/sign-up">
                   Don't have an account? Sign Up
-                </a>
+                </Link>
               </Col>
             </Row>
         </form>
-        { isError &&<>The username or password provided were incorrect!</> }
+        { state.isError &&<>The username or password provided were incorrect!</> }
         </div>
     );
   };
+
+  const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+  });
+  
+  export default connect(mapStateToProps, { login })(LoginPage); 

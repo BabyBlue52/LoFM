@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import { FaSpotify, FaYoutube, FaSoundcloud } from 'react-icons/fa';
-import { connect, useSelector, useDispatch } from 'react-redux'; 
+import { connect, useDispatch } from 'react-redux'; 
 import 'antd/dist/antd.css';
 
 import { FavoriteButton } from './Button';
@@ -19,7 +19,7 @@ function ChannelHolder(props){
     function handleFavorite(channel, index){
         if (isFavorited === false) {
             setIsFavorited(!isFavorited);
-            dispatch(playlistAction.addChannel(props.id));
+            dispatch(playlistAction.addChannel(props.name));
             console.log(store.getState());
 
         } else {
@@ -40,7 +40,7 @@ function ChannelHolder(props){
             <Row type="flex">
                 <Col span={8} offset={8} className="justify-center">
                     <div className="channel-gradient _dropShadow">
-                        <img src={props.channel} className="channel-default"/>
+                        <img src={props.thumbnail} className="channel-default"/>
                     </div>
                 </Col>
             </Row>

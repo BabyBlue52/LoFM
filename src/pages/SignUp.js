@@ -1,55 +1,47 @@
 import React, { useState, useCallback } from 'react';
-import { Redirect } from 'react-router';
+import { Link, Redirect } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import { AiOutlineMail, AiOutlineLock, AiOutlineSmile } from 'react-icons/ai';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Logo from '../img/logo.svg';
 import { SignInButton, BackButton } from '../components/Button';
-import { useAuth } from '../components/Auth'
+import { register } from '../_redux/actions/authAction';
+import { createMessage } from '../_redux/actions/messageAction';
 
-export function SignUpPage({ history }) {
+export function SignUpPage(props) {
     const [user, setUser] = useState({
         isLoggedIn: false,
         isError: false,
         userName: '',
-        password: ''
+        email: '',
+        password: '',
+        password2:''
       });
 
-      const { setAuthTokens } = useAuth();
-      
-      const handleSignUp = useCallback(
-      async event => {
-        event.preventDefault();
-        const { email, password, display } = event.target.elements;
-        axios({
-            method: 'post',
-            url: 'https://dev.lofifm.com/api/user/create/',
-            data: {
-                username: display.value,
-                email: email.value,
-                password: password.value
-            }})
-            .then( res => {
-                if (res. status === 200){
-                    setAuthTokens(res.data);
-                    setUser(user.isLoggedIn = true);
-                  } else {
-                      setUser(user.isError = true);
-                  }    
-            })
-            .catch(error => {
-                setUser(user.isError = true);
-                console.log(error);
-            })
-      },
-      [history]
-    );
-  
-    if (user.isLoggedIn) {
-      return <Redirect to="/" />;
+    const propTypes = {
+        register: PropTypes.func.isRequired,
+        isAuthenticated: PropTypes.bool,
+      };
+
+      const handleSignUp = function(e) {
+        e.preventDefault();
+        const { username, email, password, password2 } = user;
+        if (password !== password2) {
+            props.createMessage({ passwordNotMatch: 'Passwords do not match' });
+          } else {
+            const newUser = {
+              username,
+              password,
+              email,
+            };
+            props.register(newUser);
+          }
+      }
+    if (props.isAuthenticated) {
+        return <Redirect to="/" />;
     }
-  
     return (
         <div className="form-container"> 
             <BackButton label="Return Home" />
@@ -125,12 +117,18 @@ export function SignUpPage({ history }) {
                 {/* Go to Log In */}
                 <Row>
                 <Col offset={4} span={16}>
-                    <a href="/login">
+                    <Link to="/login">
                     <h4>Already have an account? Login</h4>
-                    </a>
+                    </Link>
                 </Col>
                 </Row>
             </form>
         </div>
     );
   };
+
+  const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+  });
+  
+  export default connect(mapStateToProps, { register, createMessage })(SignUpPage);
