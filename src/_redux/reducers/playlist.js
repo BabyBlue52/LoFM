@@ -18,7 +18,7 @@ const playlistReducer = (state = initialState, action) => {
         ...state,
         playlist: {
           ...state.playlist,
-          [action.id]: [...state.playlist[action.index]].filter((x, index) => index !== action.index)
+          [action.id]: [...state.playlist[action.id]].filter((x, index) => index !== action.id)
         },
       }
     }

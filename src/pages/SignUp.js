@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import { AiOutlineMail, AiOutlineLock, AiOutlineSmile } from 'react-icons/ai';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Logo from '../img/logo.svg';
@@ -19,6 +19,8 @@ export function SignUpPage(props) {
         password: '',
         password2:''
       });
+    // Properly load dispatch REDUX
+    const dispatch = useDispatch();
 
     const propTypes = {
         register: PropTypes.func.isRequired,
@@ -29,14 +31,14 @@ export function SignUpPage(props) {
         e.preventDefault();
         const { username, email, password, password2 } = user;
         if (password !== password2) {
-            props.createMessage({ passwordNotMatch: 'Passwords do not match' });
+            dispatch(createMessage({ passwordNotMatch: 'Passwords do not match' }));
           } else {
             const newUser = {
               username,
               password,
               email,
             };
-            props.register(newUser);
+            dispatch(register(newUser));
           }
       }
     if (props.isAuthenticated) {

@@ -23,10 +23,16 @@ export function LoginPage(props) {
     isAuthenticated: PropTypes.bool,
   };
 
+    const handleChange = function(e) {
+      setState({
+        [e.target.name]: e.target.value
+      })
+        console.log(state);
+    }
+
     const handleLogin = function(e) {
         e.preventDefault();
-        //const { email, password } = event.target.elements;
-        dispatch(login(state.username, state.password));
+        dispatch(login(state.username, state.password));   
     }
   
     if ( props.isAuthenticated ) {
@@ -55,7 +61,7 @@ export function LoginPage(props) {
                 <h3>Email</h3>
               </Col>
               <Col span={18}>
-                <input name="email" type="email" />
+                <input name="email" type="email" onChange={handleChange}/>
               </Col>
             </Row>
 
@@ -68,7 +74,7 @@ export function LoginPage(props) {
                 <h3>Password</h3>
               </Col>
               <Col span={18}>
-                <input name="password" type="password" />
+                <input name="password" type="password" onChange={handleChange} />
               </Col>
             </Row>
             <Row>

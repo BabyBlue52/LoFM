@@ -26,11 +26,11 @@ const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 })
   return isMobile ? children : null
 }
-
+  
 
 function App() {
-   useEffect( async () => {
-    await store.dispatch(loadUser());
+   useEffect(() => {
+    store.dispatch(loadUser());
    }, [])
 
     return (
