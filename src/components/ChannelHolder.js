@@ -12,19 +12,19 @@ import actionTypes from '../_redux/actionTypes';
 import store from '../_redux/createStore';
 
 function ChannelHolder(props){
-    const [isFavorited,setIsFavorited] = useState(false)    
+    const [isFavorited,setIsFavorited] = useState(false); 
     const dispatch = useDispatch();
 
     // Change REDUX state of channel in playlist
-    function handleFavorite(channel, index){
+    function handleFavorite(){
         if (isFavorited === false) {
             setIsFavorited(!isFavorited);
-            dispatch(playlistAction.addChannel(props.name));
+            dispatch(playlistAction.addChannel(props.id));
             console.log(store.getState());
 
         } else {
             setIsFavorited(!isFavorited);
-            dispatch(playlistAction.deleteChannel(index));
+            //dispatch(playlistAction.deleteChannel(props.id));
             
             console.log('removed');
             console.log(store.getState());
