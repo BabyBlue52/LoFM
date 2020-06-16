@@ -265,3 +265,24 @@ button.menu-btn-closed {
         background: lighten($black, 15%);
     }
 }
+button.playlist-btn {
+    min-width: 220px;
+    max-width: 220px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 25px;
+    background: $deepPurple;
+    p { 
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: none;
+        font-size: 0.75rem;
+        font-family: $spartan;
+        font-weight: $heavy;
+    }
+    &:hover, &:focus {
+        transform: scale(0.95);
+        background: darken($deepPurple, 15%);
+    }
+}

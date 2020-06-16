@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { MdChatBubble } from 'react-icons/md';
 import { Tooltip } from "antd";
 import { FaPlay, FaPlus, FaCheck } from 'react-icons/fa';
@@ -7,7 +6,6 @@ import { AiFillHome } from 'react-icons/ai';
 import {PortalWithState } from 'react-portal';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
-import { LoginPage } from '../pages/Login';
 import config from '../apis';
 import { SoundWave } from './animation';
 
@@ -77,6 +75,16 @@ function PlayButton() {
         </>
     )
 }
+// Playlist Button 
+function PlaylistButton(props) {
+    return (
+        <>  
+            <button className="playlist-btn" href={props.playlist}>
+                <p>Listen on Spotify</p>
+            </button>
+        </>
+    )
+} 
 
 // Favorite Button
 function FavoriteButton() {
@@ -158,4 +166,4 @@ function GoogleButton(props) {
     )
 }
 
-export { Button, BackButton, SignInButton, ChatButton, PlayButton, FavoriteButton, GoogleButton };
+export { Button, BackButton, SignInButton, ChatButton, PlayButton, FavoriteButton, GoogleButton, PlaylistButton };

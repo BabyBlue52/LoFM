@@ -3,7 +3,7 @@ import { Page } from 'framer';
 import { notification } from 'antd';
 import axios from 'axios';
 import { BootlegBoy } from './channels/BootlegBoy';
-import fire from '../base';
+
 
 export default function RadioTuner() {
     const [state, setState] = useState({

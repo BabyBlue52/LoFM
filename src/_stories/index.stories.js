@@ -3,6 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 //import { action } from '@storybook/addon-actions';
 import { ChannelHolder } from '../components/ChannelHolder';
+import { ChannelPlaylist } from '../components/ChannelPlaylist';
 import { RecentUploads } from '../components/ChannelUploads';
 import Modal from '../components/Modal';
 import { GifHandler } from '../components/GifHandler'; 
@@ -63,7 +64,11 @@ storiesOf("Components", module)
       <ChannelHolder/>
     </div>
   ))
-
+  .add('Channel Playlist', () => (
+    <div className="story-container">
+      <ChannelPlaylist/>
+    </div>
+  ))
   .add('Gif Handler', () => (
     <div className="story-container">
       <GifHandler/>

@@ -7,6 +7,7 @@ import ReactPlayer from 'react-player';
 import { Chat } from '../../pages/Chat';
 import { ChatButton, PlayButton } from '../../components/Button';
 import ChannelHolder from '../../components/ChannelHolder';
+import { ChannelPlaylist } from '../../components/ChannelPlaylist';
 import { ChannelUploads } from '../../components/ChannelUploads';
 import { GifHandler } from '../../components/GifHandler';
 import gif from '../../img/gif/chilledCow.gif';
@@ -87,11 +88,22 @@ export function BootlegBoy(props) {
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
-                currentPage={1}
+                currentPage={0}
                 direction="horizontal"
                 directionLock={true}
                 dragEnabled={true}
-            >                
+            >       
+                {/* Spotify Playlists */}
+                <Frame size={500}>
+                    <Row className="justify-center">
+                        <Col span={20} style={{'flexDirection':'column'}}>
+                        <div className="spacer"></div>
+                        <h3>Spotify Playlists</h3>
+                        <ChannelPlaylist/>
+                        </Col>
+                    </Row>  
+                </Frame>        
+                 
                 {/* Recent Uploads */}
                 <Frame size={500}>
                     <Row className="justify-center">
