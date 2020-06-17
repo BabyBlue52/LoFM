@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { Row, Col } from 'antd';
+import { Row, Col, notification } from 'antd';
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
 import { connect, useDispatch } from 'react-redux';
+
 import * as Yup from "yup";
 
 import Logo from '../img/logo.svg';
 import { SignInButton, BackButton } from '../components/Button';
 import { login } from '../_redux/actions/authAction';
+import { returnErrors } from '../_redux/actions/messageAction';
 import store from '../_redux/createStore';
 
+
 export function LoginPage(props) {
+   const [error, setError] = useState(false);
    const [state, setState] = useState({
       isAuthenticated: false,
       isError: false,
@@ -29,17 +33,34 @@ export function LoginPage(props) {
         email: '',
         password: '',
       }
-    })
-
+    });
+    // Handle Login
     const handleLogin = function(e) {
       e.preventDefault();
       dispatch(login(formik.values.email, formik.values.password));
-      console.log(store.getState());
-      setTimeout(function(){
-        setState({
-          isAuthenticated: true
-        })}, 2500);
+
+      if ( store.getState().auth.isAuthenticated === true ) {
+        setTimeout(function(){
+          setState({
+            isAuthenticated: true
+          })}, 2500);
+      } else {
+        dispatch(returnErrors());
+        LoginFail();
+      }  
     }
+
+    const LoginFail = () => {
+      setError(!error);
+      notification.open({
+        message: 'Wrong Email/Password',
+        className: 'lo-error',
+        placement: 'bottomRight',
+        duration: 4.5
+      })
+        
+    }
+
     if ( state.isAuthenticated ) {
       return <Redirect to="/" />;
     }
@@ -49,7 +70,7 @@ export function LoginPage(props) {
             <form className="login" onSubmit={handleLogin}>
               <Row>
                 <Col span={24}>
-                  <img src={Logo} className="lofm-small"/>
+                  <img src={Logo} className="lofm-small" alt="logo"/>
                 </Col>
                 <Col span={24}>
                     <h1 className="welcome">Login</h1>
@@ -57,7 +78,7 @@ export function LoginPage(props) {
               </Row> 
             
               {/* Email Input */}
-              <Row>
+              <Row >
                 <Col offset={2} span={1} className="login-icon">
                   <AiOutlineMail/>
                 </Col>
@@ -65,7 +86,7 @@ export function LoginPage(props) {
                   <h3>Email</h3>
                 </Col>
                 <Col span={18}>
-                  <input type="email" name="email" onChange={formik.handleChange} value={formik.values.email}/>
+                  <input type="email" name="email" onChange={formik.handleChange} value={formik.values.email} className={error ? 'error-input' : ''}/>
                 </Col>
               </Row>
 
@@ -78,7 +99,7 @@ export function LoginPage(props) {
                   <h3>Password</h3>
                 </Col>
                 <Col span={18}>
-                  <input name="password" type="password" onChange={formik.handleChange} value={formik.values.password}/>
+                  <input name="password" type="password" onChange={formik.handleChange} value={formik.values.password} className={error ? 'error-input' : ''}/>
                 </Col>
               </Row>
               <Row>
@@ -86,7 +107,6 @@ export function LoginPage(props) {
                   <a className="forgot">Forgot password?</a>
                 </Col>
               </Row>  
-            
               {/* Submit */}
               <Row>
                 <Col offset={4} span={16}>

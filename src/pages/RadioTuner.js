@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Page } from 'framer';
-import { notification } from 'antd';
 import axios from 'axios';
+import { notification } from 'antd';
+
 import { BootlegBoy } from './channels/BootlegBoy';
 
 
 export default function RadioTuner() {
-    const [state, setState] = useState({
-        isLoggedIn: null,
-        displayName: null
-    });
-
-
-    const welcomeNotification = () => {
+    const welcome = () => {
         notification.open({
-          message: `Welcome back, @${state.displayName}`,
+          message: `Welcome back,`,
           className: 'lo-welcome',
           placement: 'topRight',
           duration: 4.5,
         });
       };
-
+    
     useEffect(() => {    
         axios.get('https://dev.lofifm.com/api/info',{
             header: { Authorization: "Bearer " }
@@ -30,7 +25,9 @@ export default function RadioTuner() {
         })
         .catch(err => {
             console.log(err);
-        }) 
+        })
+
+        
         // if(state.displayName !== null) {
         //     setState(state.displayName = state.displayName)
         //     setTimeout(function(){

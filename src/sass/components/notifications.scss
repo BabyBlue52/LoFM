@@ -1,6 +1,8 @@
-.ant-notification-topRight {
+.ant-notification-topRight,
+.ant-notification-bottomRight {
     right: -10% !important;
 }
+
 .lo-welcome {
     @extend ._dropShadow;
     width: 90%;
@@ -28,3 +30,7 @@
     }
 }
 
+.lo-error {
+    @extend .lo-welcome;
+    background: $red;
+}

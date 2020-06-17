@@ -73,3 +73,42 @@
     top: 0;
     width: 20px; 
 }
+/* Transistions */
+
+@keyframes slideUp {
+    from { 
+        top: 100%;
+        height: 0;
+     }
+    to { 
+        top: 0; 
+        height: 100%;
+    }  
+}
+
+@keyframes slideLeft {
+    from { 
+        left: 100%;
+        width: 0;
+     }
+    to { 
+        left: 0; 
+        width: 100%;
+    }  
+}
+
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+     }
+    to { 
+        opacity: 1;
+    }  
+}
+@keyframes shakeOff {
+    0% { left: 10px }
+    33% { left: 0px }
+    67% { left: 10px }
+    100% { left: 0px }
+}

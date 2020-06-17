@@ -73,6 +73,7 @@ form.login {
     input[type=text],
     input[type=password],
     input[type=email] {
+        position: relative;
         width: 100%;
         height: 45px;
         margin-bottom: 10px;
