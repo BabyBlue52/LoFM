@@ -25,19 +25,24 @@ export const loadUser = () => (dispatch, getState) => {
   };
 
 // LOGIN USER
-export const login = (username, password) => (dispatch) => {
+export const login = (email, password) => (dispatch) => {
     // Headers
     const config = {
       headers: {
         'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        Accept: "application/json"
       },
     };
   
     // Request Body
-    const body = JSON.stringify({ username, password });
-  
+    const body = {
+      email: email,
+      password: password
+    }
     axios
       .post('https://dev.lofifm.com/api/login', body, config)
+      .then(console.log(body))
       .then((res) => {
         dispatch({
           type: actionTypes.LOGIN_SUCCESS,

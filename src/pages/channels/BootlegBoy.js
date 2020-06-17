@@ -88,7 +88,7 @@ export function BootlegBoy(props) {
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
-                currentPage={0}
+                currentPage={2}
                 direction="horizontal"
                 directionLock={true}
                 dragEnabled={true}

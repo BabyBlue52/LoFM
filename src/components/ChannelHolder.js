@@ -19,7 +19,7 @@ function ChannelHolder(props){
     function handleFavorite(){
         if (isFavorited === false) {
             setIsFavorited(!isFavorited);
-            dispatch(playlistAction.addChannel(props.id));
+            dispatch(playlistAction.addChannel(props.name));
             console.log(store.getState());
 
         } else {

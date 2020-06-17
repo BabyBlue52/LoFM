@@ -2,22 +2,25 @@ import React, { useState, useEffect, useContext } from 'react';
 import {Row, Col, Badge, Drawer} from 'antd';
 import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiOutlineMenu, AiOutlineClose, AiOutlineUser } from 'react-icons/ai';
 import { PortalWithState } from 'react-portal';
-import Draggable from 'react-draggable'
+import { connect, useDispatch } from 'react-redux';
 
 import SearchPage from '../pages/Search';
 import InboxPage from '../pages/Inbox';
 import FavePage from '../pages/Favorites';
 import SupportPage from '../pages/Support';
+import { logout, loadUser } from '../_redux/actions/authAction';
+import store from '../_redux/createStore';
 
-import { AuthContext } from '../components/Auth'; 
-
-
-function PushMenu(props) {
+export function PushMenu(props) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [visible, setVisible] = useState(false);
     const [placement,setPlacement] = useState('bottom');
     const [login, setLogin] = useState(false);
-        
+    
+    // Using Redux
+    const dispatch = useDispatch();
+    var token = localStorage.getItem("token")
+
     function openDrawer(){
         setMenuOpen(true)
         setVisible(true)
@@ -28,14 +31,12 @@ function PushMenu(props) {
         setVisible(false)
     }
 
-
     function logOut() {
-        console.log('log out')
+        dispatch(logout(token));
     }
 
     useEffect(()=>{
-        let auth;
-        if (auth == null) {
+        if (token == null) {
             // User is signed in.
             setLogin(!login);
         } else {
@@ -74,7 +75,7 @@ function PushMenu(props) {
                     {/* Log In */}
                     <Row>
                         <Col>
-                            { login === login ? <p>Log Out</p> : <p>Log In</p> }
+                            <p>{ login === false ? 'Log Out' : 'Log In' }</p>
                         </Col>
                         <Col onClick={closeDrawer}>
                             <button className="menu-round" onClick={logOut}>
@@ -176,4 +177,8 @@ function PushMenu(props) {
         </React.Fragment>
     )
 }
-export { PushMenu }
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+  });
+  
+export default connect(mapStateToProps, { logout })(PushMenu); 
