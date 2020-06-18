@@ -44,17 +44,18 @@ export const login = (email, password) => (dispatch) => {
       .post('https://dev.lofifm.com/api/login', body, config)
       .then(console.log(body))
       .then((res) => {
-        if ( res.status === '200' ) {
+        if ( res.status === 200 ) {
           dispatch({
             type: actionTypes.LOGIN_SUCCESS,
             payload: res.data,
-          });
+          })
+          return res
         } else {
           dispatch(returnErrors(res.data, res.status))
           dispatch({
             type: actionTypes.LOGIN_FAIL,
           })
-          console.log(res)
+          return res
         }
       }) 
 };

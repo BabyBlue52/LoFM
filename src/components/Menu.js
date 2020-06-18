@@ -45,7 +45,7 @@ export function PushMenu(props) {
     },[])
 
     if(window.location.pathname === '/login') {
-      return null;
+        return null;
     }
     if(window.location.pathname === '/sign-up') {
         return null;

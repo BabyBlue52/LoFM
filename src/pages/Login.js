@@ -9,6 +9,7 @@ import * as Yup from "yup";
 
 import Logo from '../img/logo.svg';
 import { SignInButton, BackButton } from '../components/Button';
+import { Loader } from '../components/animation';
 import { login } from '../_redux/actions/authAction';
 import { returnErrors } from '../_redux/actions/messageAction';
 import store from '../_redux/createStore';
@@ -34,35 +35,53 @@ export function LoginPage(props) {
         password: '',
       }
     });
-    // Handle Login
+
+    // Handle Login dispatch
     const handleLogin = function(e) {
       e.preventDefault();
       dispatch(login(formik.values.email, formik.values.password));
-
-      if ( store.getState().auth.isAuthenticated === true ) {
-        setTimeout(function(){
-          setState({
-            isAuthenticated: true
-          })}, 2500);
-      } else {
-        dispatch(returnErrors());
-        LoginFail();
-      }  
+      setTimeout(() => {
+        checkLogin();
+      }, 500)
     }
 
-    const LoginFail = () => {
-      setError(!error);
+    const checkLogin = () => {
+        if ( store.getState().auth.token !== null ) {
+          setTimeout(function(){
+            setState({
+              isAuthenticated: true,
+            })}, 2500);
+        } else {
+          setState({
+            isLoading: false
+          })
+          setTimeout(function(){
+            dispatch(returnErrors());
+            loginFail();
+          }, 100)
+        } 
+    }
+
+    //Login Error
+    const loginFail = () => {
       notification.open({
         message: 'Wrong Email/Password',
         className: 'lo-error',
         placement: 'bottomRight',
         duration: 4.5
       })
-        
+    }
+
+    if ( state.isLoading ) {
+      return (
+        <div className="form-container">
+          <Loader/>
+        </div>
+      )
     }
 
     if ( state.isAuthenticated ) {
-      return <Redirect to="/" />;
+      return <Redirect exact push to="/" />;
     }
     return (
       <div className="form-container"> 
