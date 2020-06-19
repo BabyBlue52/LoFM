@@ -34,3 +34,8 @@
     @extend .lo-welcome;
     background: $red;
 }
+
+.lo-success {
+    @extend .lo-welcome;
+    background: $green;
+}

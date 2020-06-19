@@ -50,10 +50,14 @@ export function SignUpPage(props) {
                 email : formik.values.email,
             };
             dispatch(register(newUser));
-            console.log(store.getState())
-            // setState({
-            //     isAuthenticated: true
-            // })
+            setTimeout(function(){
+                dispatch(returnErrors());
+                registerSuccess();
+            }, 250)
+            
+            setState({
+                isAuthenticated: true
+            })
         } else {
             setState({
                 isLoading: false
@@ -64,7 +68,16 @@ export function SignUpPage(props) {
             }, 100)
         }
     }
-    
+
+    //Register Error
+    const registerSuccess = () => {
+        notification.open({
+            message: `Thanks for joining ${formik.values.username}`,
+            className: 'lo-success',
+            placement: 'bottomRight',
+            duration: 4.5
+        })
+    }
     
     //Register Error
     const registerFail = () => {
@@ -101,7 +114,7 @@ export function SignUpPage(props) {
                     <h3>Display Name</h3>
                 </Col>
                 <Col span={18}>
-                    <input name="display" type="text" onChange={formik.handleChange} values={formik.values.username}/>
+                    <input name="username" type="text" onChange={formik.handleChange} value={formik.values.username} />
                 </Col>
                 </Row>
 

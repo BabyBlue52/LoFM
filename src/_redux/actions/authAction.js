@@ -51,6 +51,7 @@ export const login = (email, password) => (dispatch) => {
           })
           return res
         } else {
+          console.log(res)
           dispatch(returnErrors(res.data, res.status))
           dispatch({
             type: actionTypes.LOGIN_FAIL,
@@ -66,6 +67,8 @@ export const register = ({ username, password, email }) => (dispatch) => {
     const config = {
       headers: {
         'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*",
+        Accept: "application/json"
       },
     };
   
@@ -79,18 +82,21 @@ export const register = ({ username, password, email }) => (dispatch) => {
     axios
       .post('https://dev.lofifm.com/api/user/create', body, config)
       .then((res) => {
-        dispatch({
-          type: actionTypes.REGISTER_SUCCESS,
-          payload: res.data,
-        });
+        if ( res.status === 201 ) {
+          dispatch({
+            type: actionTypes.REGISTER_SUCCESS,
+            payload: res.data,
+          });
+          return res
+        } else {
+          console.log(res)
+          dispatch(returnErrors(res.data, res.status));
+          dispatch({
+            type: actionTypes.REGISTER_FAIL,
+          });
+          return res
+        }
       })
-      .catch((err) => {
-        console.log(err)
-        // dispatch(returnErrors(err.response.data, err.response.status));
-        // dispatch({
-        //   type: actionTypes.REGISTER_FAIL,
-        // });
-      });
   };
 
 // LOGOUT USER

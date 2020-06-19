@@ -16,7 +16,7 @@ export function PushMenu(props) {
     const [visible, setVisible] = useState(false);
     const [placement,setPlacement] = useState('bottom');
     const [login, setLogin] = useState(false);
-    
+    const [load, setLoad] = useState(false);
     // Using Redux
     const dispatch = useDispatch();
     var token = localStorage.getItem("token")
@@ -36,9 +36,10 @@ export function PushMenu(props) {
     }
 
     useEffect(()=>{
-        if (token == null) {
+        if (token === null) {
             // User is signed in.
             setLogin(!login);
+            setLoad(load === true);
         } else {
 
         }

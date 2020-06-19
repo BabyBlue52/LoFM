@@ -4,7 +4,8 @@ import axios from 'axios';
 import { notification } from 'antd';
 
 import { BootlegBoy } from './channels/BootlegBoy';
-
+import store from '../_redux/createStore';
+import { loadUser } from '../_redux/actions/authAction';
 
 export default function RadioTuner() {
     const welcome = () => {
@@ -17,6 +18,7 @@ export default function RadioTuner() {
       };
     
     useEffect(() => {    
+        store.dispatch(loadUser());
         axios.get('https://dev.lofifm.com/api/info',{
             header: { Authorization: "Bearer " }
         })

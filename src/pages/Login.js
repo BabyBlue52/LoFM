@@ -81,7 +81,7 @@ export function LoginPage(props) {
     }
 
     if ( state.isAuthenticated ) {
-      return <Redirect exact push to="/" />;
+      return <Redirect push to={{pathname:'/'}} />;
     }
     return (
       <div className="form-container"> 
