@@ -70,7 +70,11 @@ export const register = ({ username, password, email }) => (dispatch) => {
     };
   
     // Request Body
-    const body = JSON.stringify({ username, email, password });
+    const body = { 
+      username: username, 
+      email: email, 
+      password: password 
+    };
   
     axios
       .post('https://dev.lofifm.com/api/user/create', body, config)

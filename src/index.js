@@ -27,7 +27,6 @@ const Mobile = ({ children }) => {
   return isMobile ? children : null
 }
   
-
 function App() {
    useEffect(() => {
     store.dispatch(loadUser());
@@ -43,7 +42,7 @@ function App() {
                 <Switch>
                   <div id="app">
                     <div className="sunset-skin">
-                      <Route exact path="/" component={RadioTuner}/>
+                      <Route exact path="/" component={RadioTuner} />
                       <Route exact path="/login" component={LoginPage} />
                       <Route exact path="/sign-up" component={SignUpPage}/>
                       <PrivateRoute exact path="/chat" component={Chat}/>

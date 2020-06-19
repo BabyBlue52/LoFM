@@ -132,14 +132,17 @@ export function LoginPage(props) {
                   <SignInButton type="submit" name="sign in" />
                 </Col>
               </Row>
+              {/** Go to Sign Up */}
               <Row>
               <Col offset={4} span={16}>
                 <Link to="/sign-up">
                   Don't have an account? Sign Up
                 </Link>
               </Col>
+            </Row>
+            <Row>
               <Col offset={4} span={16}>
-                {state.isLoading ? "Please Wait" : ''}
+                <p className="_blank">{state.isLoading ? "Please Wait" : ''}</p>
               </Col>
             </Row>
         </form>

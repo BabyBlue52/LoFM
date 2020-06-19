@@ -1,47 +1,82 @@
 import React, { useState, useCallback } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Row, Col } from 'antd';
+import { useFormik } from 'formik';
+import { Row, Col, notification } from 'antd';
 import { AiOutlineMail, AiOutlineLock, AiOutlineSmile } from 'react-icons/ai';
 import { connect, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 
 import Logo from '../img/logo.svg';
 import { SignInButton, BackButton } from '../components/Button';
 import { register } from '../_redux/actions/authAction';
-import { createMessage } from '../_redux/actions/messageAction';
+import { returnErrors } from '../_redux/actions/messageAction';
+import store from '../_redux/createStore';
 
 export function SignUpPage(props) {
-    const [user, setUser] = useState({
-        isLoggedIn: false,
+    const [state, setState] = useState({
+        isAuthenticated: false,
         isError: false,
         userName: '',
         email: '',
         password: '',
         password2:''
-      });
+    });
+
     // Properly load dispatch REDUX
     const dispatch = useDispatch();
 
-    const propTypes = {
-        register: PropTypes.func.isRequired,
-        isAuthenticated: PropTypes.bool,
-      };
+    // Hook for formik 
+    const formik = useFormik({
+        initialValues: {
+            username: '',
+            email: '',
+            password: '',
+            password2:'',
+        }
+    });
 
-      const handleSignUp = function(e) {
+    // Handle SignUp dispatch
+    const handleSignUp = function(e) {
         e.preventDefault();
-        const { username, email, password, password2 } = user;
-        if (password !== password2) {
-            dispatch(createMessage({ passwordNotMatch: 'Passwords do not match' }));
-          } else {
+        setTimeout(()=> {
+            checkRegister();
+        }, 500)
+    }
+
+    const checkRegister = () => {
+        if (formik.values.password === formik.values.password2) {
             const newUser = {
-              username,
-              password,
-              email,
+                username : formik.values.username,
+                password : formik.values.password,
+                email : formik.values.email,
             };
             dispatch(register(newUser));
-          }
+            console.log(store.getState())
+            // setState({
+            //     isAuthenticated: true
+            // })
+        } else {
+            setState({
+                isLoading: false
+              })
+            setTimeout(function(){
+                dispatch(returnErrors());
+                registerFail();
+            }, 100)
+        }
+    }
+    
+    
+    //Register Error
+    const registerFail = () => {
+        notification.open({
+          message: 'Passwords do not match',
+          className: 'lo-error',
+          placement: 'bottomRight',
+          duration: 4.5
+        })
       }
-    if (props.isAuthenticated) {
+
+    if (state.isAuthenticated) {
         return <Redirect to="/" />;
     }
     return (
@@ -66,7 +101,7 @@ export function SignUpPage(props) {
                     <h3>Display Name</h3>
                 </Col>
                 <Col span={18}>
-                    <input name="display" type="text" />
+                    <input name="display" type="text" onChange={formik.handleChange} values={formik.values.username}/>
                 </Col>
                 </Row>
 
@@ -79,7 +114,7 @@ export function SignUpPage(props) {
                     <h3>Email</h3>
                 </Col>
                 <Col span={18}>
-                    <input name="email" type="email" />
+                    <input name="email" type="email" onChange={formik.handleChange} value={formik.values.email} />
                 </Col>
                 </Row>
 
@@ -92,7 +127,7 @@ export function SignUpPage(props) {
                     <h3>Password</h3>
                 </Col>
                 <Col span={18}>
-                    <input name="password" type="password" />
+                    <input name="password" type="password" onChange={formik.handleChange} value={formik.values.password} />
                 </Col>
                 </Row>
                 
@@ -105,7 +140,7 @@ export function SignUpPage(props) {
                     <h3>Confirm Password</h3>
                 </Col>
                 <Col span={18}>
-                    <input name="confirm" type="password" id="confirm" />
+                    <input name="password2" type="password" id="confirm" onChange={formik.handleChange} value={formik.values.password2}/>
                 </Col>
                 </Row>
                 
@@ -124,6 +159,11 @@ export function SignUpPage(props) {
                     </Link>
                 </Col>
                 </Row>
+                <Row>
+                    <Col offset={4} span={16}>
+                        <p className="_blank">{state.isLoading ? "Please Wait" : ''}</p>
+                    </Col>
+                </Row>
             </form>
         </div>
     );
@@ -133,4 +173,4 @@ export function SignUpPage(props) {
     isAuthenticated: state.auth.isAuthenticated,
   });
   
-  export default connect(mapStateToProps, { register, createMessage })(SignUpPage);
+  export default connect(mapStateToProps, { register, returnErrors })(SignUpPage);
