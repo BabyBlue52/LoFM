@@ -18,7 +18,7 @@ $tablet: 768px;
         left: 0px;
         width: 100vw;
         min-height: 100vh;
-        background: #505050;
+        background: $black;
         .sunset-skin {
             position: absolute;
             height: 100vh;
@@ -37,17 +37,18 @@ $tablet: 768px;
 @media screen and (min-width: $tablet) {
     #app-desktop {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        min-width: 320px;
-        max-width: 320px;
-        min-height: 600px;
-        max-height: 600px;
-        border: 1px solid $black;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: $black;
         .sunset-skin {
             position: absolute;
-
+            height: 100vh;
+            width: inherit;
+            background: rgb(98,4,96);
+            background: linear-gradient(30deg, rgba(98,4,96,0.33) 0%, rgba(4,73,100,0.33) 100%);
         }
     }
     #app {

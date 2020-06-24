@@ -12,8 +12,8 @@ button.default-btn {
     min-width: 100%;
     max-width: 280px;
     max-height: 40px;
-    margin: 10px 0px;
-    padding: 10px 20px;
+    margin: 0px;
+    padding: 15px 20px;
     background: $purple;
     border: none;
     border-radius: 5px;
@@ -285,4 +285,9 @@ button.playlist-btn {
         transform: scale(0.95);
         background: darken($deepPurple, 15%);
     }
+}
+
+button.support-btn {
+    @extend button.default-btn; 
+    background: $green;
 }

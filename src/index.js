@@ -11,6 +11,7 @@ import store from './_redux/createStore';
 import { loadUser } from './_redux/actions/authAction';
 
 import RadioTuner from './pages/RadioTuner';
+import Dashboard from './pages/Dashboard';
 import { LoginPage } from './pages/Login';
 import { SignUpPage } from './pages/SignUp';
 import { Chat } from './pages/Chat'
@@ -56,10 +57,17 @@ function App() {
         
           {/* Desktop Size */}
           <Desktop>
-          <div id="app-desktop">
-            <RadioTuner/>
-            <PushMenu/>
-          </div>
+          <Router>
+                <Switch>
+                  <div id="app-desktop">
+                    <div className="sunset-skin">
+                      <Route exact path="/" component={Dashboard} />
+                      <Route exact path="/login" component={LoginPage} />
+                      <Route exact path="/sign-up" component={SignUpPage}/>
+                    </div> 
+                  </div>
+                </Switch>
+              </Router>
         </Desktop>
         </Provider>
       </React.Fragment>

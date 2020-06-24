@@ -1,0 +1,55 @@
+.dashboard-header {
+    height: 70px;
+    width: 100vw;
+    padding: 15px 30px 20px 30px;
+    border-bottom: 1.25px solid #000;
+    .dashboard-search {
+        height: 40px;
+        width: 400px;
+        margin: 0 auto;
+        padding-left: 20px;
+        background: #1b1b1b;
+        color: white;
+        outline: none;
+        border: none;
+        border-radius: 20px;
+        font-family: $spartan;
+        svg {
+            height: 24px;
+            width: 24px;
+            margin-right: 5px;
+        }
+    }
+    .profile-icon {
+        position: relative;
+        top: 0px;
+        height: 40px;
+        width: 40px;
+        padding:0;
+        border-radius: 50%;
+        background: white;
+        svg {
+            fill: $black;
+            height: 40px;
+            width: 38px;
+        }
+    }
+    .dashboard-inbox{
+        @extend .menu-round;
+        position: absolute;
+        right: 0px;
+        top: -5px;
+        min-height: 40px;
+        max-height: 40px;
+        min-width: 40px;
+        max-width: 40px;
+        svg {
+            top: 15px;
+        }
+    }
+}
+h1.channel-header {
+    font-weight: $superHeavy;
+    text-align:center;
+    text-shadow: none;
+}
