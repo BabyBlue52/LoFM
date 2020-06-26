@@ -9,16 +9,16 @@ button {
 button.default-btn {
     display: flex;
     justify-content: center;
-    min-width: 100%;
     max-width: 280px;
-    max-height: 40px;
+    max-height: 35px;
     margin: 0px;
-    padding: 15px 20px;
+    padding: 12px 20px;
     background: $purple;
     border: none;
     border-radius: 5px;
 
     p {
+        white-space: nowrap;
         margin: 0px 10px;
         padding: 0px;
         line-height: 0.8rem;
@@ -34,16 +34,24 @@ button.default-btn {
         transform: scale(0.95);
         background: darken($purple, 10%);
     }
+
+    &:focus,
+    &:focus-within {
+        box-shadow: none;
+        outline: none;
+    }
 }
+
 button.signin-btn {
     width: 100%;
-    margin:10px 0px;
+    margin: 10px 0px;
     padding: 0px 20px;
     border-radius: 5px;
     background: lighten($purple, 5%);
+
     p {
         margin: 0;
-        padding:10px;
+        padding: 10px;
         background: none;
         color: $offWhite;
         font-family: $spartan;
@@ -52,11 +60,14 @@ button.signin-btn {
         text-transform: capitalize;
         width: 100%;
     }
-    &:active, &:focus {
-        background:darken($purple, 5%);
+
+    &:active,
+    &:focus {
+        background: darken($purple, 5%);
         transform: scale(0.95);
     }
 }
+
 button.add-btn {
     position: relative;
     top: -10px;
@@ -67,6 +78,7 @@ button.add-btn {
     border-radius: 50%;
     background: white;
     color: $black;
+
     svg {
         position: absolute;
         top: 50%;
@@ -114,15 +126,18 @@ button.chat-btn {
     @extend .default-btn;
     min-width: 280px;
     margin-bottom: 20px;
+
     svg.chat-bubble {
         fill: white;
         height: 20px;
         width: 20px;
         margin-top: 0px;
     }
-    p{
+
+    p {
         margin-top: 5px;
     }
+
     &:active,
     &:focus,
     &:hover {
@@ -137,6 +152,7 @@ button.play-btn {
     margin-top: 10px;
     margin-right: 10px;
     background: transparent;
+
     svg {
         position: relative;
         top: 10px;
@@ -169,11 +185,13 @@ button.home-btn {
     left: 20px;
     color: $black;
     z-index: 99;
-    a{
+
+    a {
         display: inline-flex;
         color: $black;
         opacity: 0.5;
     }
+
     svg {
         fill: $black;
         height: 24px;
@@ -181,24 +199,27 @@ button.home-btn {
         padding-right: 10px;
         transform: scale(1.67);
         transition: 300ms ease-in-out;
-        
+
         &:hover,
         &:active {
             fill: $purple;
         }
     }
+
     p {
         background: none;
-        padding:0;
+        padding: 0;
         margin-top: 2.5px;
-        font-size:0.8rem;
+        font-size: 0.8rem;
     }
 }
+
 .google-btn {
     button {
         min-width: 215px !important;
         max-width: 280px !important;
         margin-top: 10px;
+
         span {
             width: 100%;
             color: $black;
@@ -209,13 +230,16 @@ button.home-btn {
             font-size: 0.67rem;
             text-align: center;
         }
+
         div {
             margin: 0px !important;
         }
+
         svg {
             transform: scale(1.25);
             margin: 2px 10px;
         }
+
         &:active,
         &:focus {
             transform: scale(0.95);
@@ -223,6 +247,7 @@ button.home-btn {
         }
     }
 }
+
 button.menu-btn {
     position: relative;
     height: 50px;
@@ -231,6 +256,7 @@ button.menu-btn {
     background: $purple;
     border-radius: 50%;
     z-index: 8;
+
     svg {
         height: 20px;
         width: 20px;
@@ -240,16 +266,19 @@ button.menu-btn {
         left: 50%;
         fill: white;
     }
+
     &:active,
     &:focus {
         transform: scale(0.95);
         background: lighten($black, 15%);
     }
 }
+
 button.menu-btn-closed {
     @extend button.menu-btn;
     background: white;
     transform: scale(0.95);
+
     svg {
         height: 20px;
         width: 20px;
@@ -259,12 +288,14 @@ button.menu-btn-closed {
         left: 50%;
         fill: $red;
     }
+
     &:active,
     &:focus {
         transform: scale(0.95);
         background: lighten($black, 15%);
     }
 }
+
 button.playlist-btn {
     min-width: 220px;
     max-width: 220px;
@@ -272,7 +303,8 @@ button.playlist-btn {
     padding: 10px;
     border-radius: 25px;
     background: $deepPurple;
-    p { 
+
+    p {
         width: 100%;
         margin: 0;
         padding: 0;
@@ -281,13 +313,66 @@ button.playlist-btn {
         font-family: $spartan;
         font-weight: $heavy;
     }
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
         transform: scale(0.95);
         background: darken($deepPurple, 15%);
     }
 }
 
 button.support-btn {
-    @extend button.default-btn; 
+    @extend button.default-btn;
     background: $green;
+    max-width: 150px !important;
+    margin-right: 15px; 
+    &:active {
+        transform: scale(0.9);
+        background: darken($green, 15%);
+    }
+}
+
+button.chat-toggle {
+    z-index: 9;
+    position: relative;
+    top: 2px;
+    left: -15px;
+    height: 50px;
+    width: 100px;
+    background: $black;
+    border: none;
+    box-shadow: none;
+    border-radius: 25px 0px 0px 25px;
+    transition: 300ms ease-in-out;
+    &:focus,
+    &:focus-within {
+        box-shadow: none;
+        outline: none;
+    }
+
+    p {
+        margin-left: 5px;
+        margin-top: 8px;
+        background: none;
+        font-weight: $superHeavy;
+        font-size: $small;
+        span {
+            padding-left: 5px;
+            svg {
+                position: relative;
+                top: 2px;
+                transform: scale(1.2);
+                margin: 0px 10px 0px 0px;
+            }
+        }
+    }
+}
+button.chat-toggle-closed {
+    @extend button.chat-toggle;
+    position: relative;
+    left: -70px !important;
+    width: 140px;
+    p {
+        margin-left: -30px;
+    }
 }

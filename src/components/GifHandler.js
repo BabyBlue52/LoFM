@@ -54,3 +54,15 @@ export function SongHandler(props) {
         </>
     )
 }
+
+export function GifHandlerDesktop(props) {
+    return (
+        <>
+           <Row className="gif-player-desktop">
+                <Col>
+                    <img src={props.gif} className="gif-holder-desktop _dropShadow"/>
+                </Col>
+            </Row>
+        </>
+    )
+}
