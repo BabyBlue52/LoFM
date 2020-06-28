@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'redux';
-import { Row, Col, Input, Badge } from 'antd';
+import { Row, Col, notification } from 'antd';
 import { MdClose } from 'react-icons/md';
 import { BsFillChatSquareFill } from 'react-icons/bs'
 
-import { Button } from '../components/Button';
+import { Button, PlayButton } from '../components/Button';
 import { GifHandlerDesktop } from '../components/GifHandler';
 import { DashboardHeader } from '../components/DashboardHeader';
 import { DashboardTuner } from '../components/DashoboardTuner';
@@ -14,9 +14,24 @@ import gif from '../img/gif/chilledCow.gif';
 export default function Dashboard(props){
     const [isOpen, setIsOpen] = useState(false)
     
+    const openNotification = () => {
+        notification.open({
+            className: "lo-playing",
+            message: 'Now Playing:',
+            description: <PlayButton/>,
+            duration: 0,
+            placement: "bottomLeft"
+        });
+      };
+
     const toggleChatDrawer = () => {
         setIsOpen(!isOpen);
     }
+    useEffect(() => {
+        setTimeout(function(){
+            openNotification()
+          }, 2500);
+    }, [])
     return(
         <React.Fragment>
             {/** Header bar */}
@@ -25,25 +40,24 @@ export default function Dashboard(props){
             </Row>
             {/** Dashboard Content */}
             <Row className="dashboard-container">
-                <Col span={!isOpen ? 14 : 23}>
-                    <Row style={{'width':'100%',}}>
-                        <Col span={6} style={{'maxWidth':'300px'}}> 
+                <Col span={!isOpen ? 16 : 23}>
+                    <Row>
+                        <Col span={6} className="static-content"> 
                             <div className="channel-container">
                                 <h1 className="channel-header">#Channels</h1>
                                 <div className="favorites-list"></div>
                                 <GifHandlerDesktop gif={gif} />
                             </div>
                         </Col>
-                        <Col span={24} style={{'maxWidth':'calc(100% - 300px)'}}>
-                            <DashboardTuner span={!isOpen ? 13 : 10} offset={isOpen ? 1 : 4}/>
+                        <Col span={18} className="static-content-center">
+                            <DashboardTuner span={!isOpen ? 13 : 10} offset={isOpen ? 1 : 0}/>
                         </Col>
                     </Row>
                 </Col>
                 
                 
                 {/** Chat Section */}
-                <Col span={!isOpen ? 10 : 1} style={{'paddingLeft':'10px'}}>
-                    <div style={{'marginRight':'-16px'}}>
+                <Col span={!isOpen ? 8 : 1} className="chat-container">
                         <button onClick={toggleChatDrawer} className={isOpen ? "chat-toggle-closed" : "chat-toggle"}>
                             {!isOpen ? 
                                 <div>
@@ -55,9 +69,11 @@ export default function Dashboard(props){
                                 </div>                                 
                             }
                         </button>
+                    <div>
+                        {/* <p>Got it</p> */}
                     </div>
-                    <div style={{'width':'100%', 'background':'#26262b','height': '100%'}}></div>
                 </Col>
+
             </Row>
         </React.Fragment>
 

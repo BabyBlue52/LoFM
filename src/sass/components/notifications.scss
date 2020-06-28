@@ -39,3 +39,12 @@
     @extend .lo-welcome;
     background: $green;
 }
+
+.lo-playing {
+    @extend .lo-welcome;
+    max-height: 150px;
+    max-width: 260px;
+    background: lighten($black, 10);
+    border-bottom: 2px solid $purple;
+    svg { fill: $offWhite }
+}

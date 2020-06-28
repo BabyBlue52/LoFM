@@ -131,11 +131,7 @@ button.chat-btn {
         fill: white;
         height: 20px;
         width: 20px;
-        margin-top: 0px;
-    }
-
-    p {
-        margin-top: 5px;
+        margin-top: -5px;
     }
 
     &:active,
@@ -334,12 +330,13 @@ button.support-btn {
 
 button.chat-toggle {
     z-index: 9;
-    position: relative;
+    position: absolute;
     top: 2px;
-    left: -15px;
+    left: 0px;
     height: 50px;
-    width: 100px;
+    min-width: 130px;
     background: $black;
+    margin-right: -16px;
     border: none;
     box-shadow: none;
     border-radius: 25px 0px 0px 25px;

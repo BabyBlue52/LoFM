@@ -10,19 +10,20 @@ export function DashboardTuner(props) {
 
     return (
         <React.Fragment>
-            <div className="card-container" style={{'background':'#beeeef'}}>
-            <div className="spacer"></div>
+            <div className="card-container">
+                <div className="super-spacer"></div>
                 <Row justify="start" >
                 {channels.map((item, i) => {
                     return (
                         <Col span={props.span} offset={props.offset}>
-                            <div key={i} className="channel-card">
+                            <div key={i} className="artist-card _dropShadow">
                                 <h2>{item.title}</h2>
                             </div>
                         </Col>
                     )
                 })}
                 </Row>
+                <div className="super-spacer"></div>
             </div>
         </React.Fragment>
     )

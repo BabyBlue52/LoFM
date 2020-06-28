@@ -1,6 +1,9 @@
 @import './variables/colors.scss';
 @import './variables/fonts.scss';
 
+html {
+    overflow: hidden;
+}
 body {
     height: 100vh;
     font-family: $openSans;
