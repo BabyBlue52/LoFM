@@ -94,8 +94,7 @@ function FavoriteButton() {
     function  handleFavorite() {
         setIcon(!icon);
 
-    }
-   
+    } 
 
     return (
         <div>

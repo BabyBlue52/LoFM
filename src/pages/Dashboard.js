@@ -45,7 +45,27 @@ export default function Dashboard(props){
                         <Col span={6} className="static-content"> 
                             <div className="channel-container">
                                 <h1 className="channel-header">#Channels</h1>
-                                <div className="favorites-list"></div>
+                                <div className="favorites-container">
+                                    <div className="favorites-list">
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                        <h2>Bang</h2>
+                                    </div>
+                                </div>
                                 <GifHandlerDesktop gif={gif} />
                             </div>
                         </Col>

@@ -52,10 +52,21 @@ $desktop: 1200px;
             background: rgb(98,4,96);
             background: linear-gradient(30deg, rgba(98,4,96,0.33) 0%, rgba(4,73,100,0.33) 100%);
         }
+        /* Sleek Button*/
+        button.add-btn {
+            margin-top: 5px;
+            background: none;
+            svg {
+                height: 20px;
+                width: 20px;
+                fill: white;
+            }
+        }
     }
     #app {
         display: none;
     }
+
 }
 
 @media screen and (max-height: 700px) {

@@ -7,7 +7,6 @@ import 'antd/dist/antd.css';
 import { FavoriteButton } from './Button';
 import { SongHandler } from './GifHandler';
 import playlistAction from '../_redux/actions/playlistAction';
-import '../../src/style.scss';
 import actionTypes from '../_redux/actionTypes';
 import store from '../_redux/createStore';
 

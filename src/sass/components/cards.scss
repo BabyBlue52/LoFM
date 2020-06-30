@@ -1,0 +1,61 @@
+/* Cards */
+
+.card-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.artist-card {
+    min-width: 300px;
+    width: 100%;
+    max-width: 400px;
+    height: 160px;
+    margin: 5px auto 20px auto;
+    border-radius: 15px;
+    background: $purple;
+
+    h2 {
+        font-family: $spartan;
+        font-weight: $superHeavy;
+        color: $offWhite;
+        margin: 0;
+        padding-left: 10px;
+    }
+
+    p {
+        margin-top: -5px;
+        font-family: $spartan;
+        font-weight: $light;
+        color: $offWhite;
+        background: none;
+
+        span {
+            padding-left: 10px;
+        }
+    }
+
+    img.card-default {
+        opacity: 0.67;
+        height: 60px;
+        width: 60px;
+        margin-bottom: 10px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+}
+
+._lightGradient {
+    height: inherit;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(135deg, rgba(255, 255, 255, .33) 0%, rgba(0, 0, 0, 0.33) 100%);
+    transition: 300ms ease-in-out;
+
+    &:hover,
+    &:focus {
+        background: $black;
+    }
+}
