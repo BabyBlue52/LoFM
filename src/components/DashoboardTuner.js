@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Row, Col, notification } from 'antd';
 import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai' 
 import { connect, useDispatch } from 'react-redux'; 
+import _ from 'lodash';
 
 import playlistAction from '../_redux/actions/playlistAction';
 import actionTypes from '../_redux/actionTypes';
@@ -14,48 +15,41 @@ export function DashboardTuner(props) {
             title:'The Bootleg Boy',
             thumbnail:'https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png',
             subscriberCount: 23,
-            favorited: true,
         },
         {
             title:'The Bootleg Boy',
             thumbnail:'https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png',
             subscriberCount: 23,
-            favorited: false
         },
         {
             title:'The Bootleg Boy',
             thumbnail:'https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png',
             subscriberCount: 23,
-            favorited: false
         },
         {
             title:'The Bootleg Boy',
             thumbnail:'https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png',
             subscriberCount: 23,
-            favorited: false
         },
         {
             title:'The Bootleg Boy',
             thumbnail:'https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png',
             subscriberCount: 23,
-            favorited: false
         },
     ])
     const dispatch = useDispatch();
-    const favoriteNotification = () => {
-        notification.open({
-            className: "lo-welcome",
-            message: 'Now Playing:',
-            description: '',
-            duration: 0,
-            placement: "bottomLeft"
-        });
-      };
-   
-    const handleFavorite = () => {
-     
-    }       
-    
+
+    const handleFavorite = (i) => {
+        let path = 'favorited'
+        _.set(channels, path, (!channels[i].favorited));
+
+        console.log(i);
+        console.log(_.get(channels[i], path))
+
+    }    
+    useEffect(() => {
+        console.log(store.getState());
+    }, [])    
     return (
         <React.Fragment>
             <div className="card-container">
@@ -63,16 +57,16 @@ export function DashboardTuner(props) {
                 <Row justify="start" >
                 {channels.map((item, i) => {
                     return (
-                        <Col span={props.span} offset={props.offset}>
+                        <Col span={props.span} >
                             <div key={i} className="artist-card _dropShadow">
                                 <div className="_lightGradient">
                                     <Row>
                                         <Col span={2}>
-                                            <button onClick={handleFavorite} className="add-btn">
+                                            <button onClick={() => handleFavorite(i)} className="add-btn">
                                                 {item.favorited ? <AiOutlineCheck/> : <AiOutlinePlus/> }
-                                            </button>
+                                              </button>
                                         </Col>
-                                        <Col offset={16} span={4}>
+                                        <Col offset={17} span={4}>
                                             <img src={item.thumbnail} className="card-default" alt=""/>
                                         </Col>
                                     </Row>

@@ -9,8 +9,13 @@
 ================
 */
 $mobile: 320px;
-$tablet: 768px;
-$desktop: 1200px;
+$tablet: 1024px;
+
+@media screen and (max-width: $mobile) {
+    html{
+        display: none;
+    }
+}
 
 @media screen and (min-width: $mobile) and (max-width: $tablet) {
     #app {
@@ -42,7 +47,7 @@ $desktop: 1200px;
         left: 0;
         right: -1px;
         width: calc(100vw + 1px);
-        height: 100vh;
+        height: calc(100vh + 1px);
         overflow: hidden;
         background: $black;
         .sunset-skin {
@@ -61,6 +66,20 @@ $desktop: 1200px;
                 width: 20px;
                 fill: white;
             }
+        }
+        /* Centered Form */
+        form.login {
+            background: $offWhite;
+            max-height: 75%;
+            border: .5px solid rgba(15,15,15,0.1);
+            -webkit-box-shadow: 0px 6px 8px 0px rgba($purple, 0.2);
+            -moz-box-shadow: 0px 6px 8px 0px rgba($purple, 0.2);
+            box-shadow: 0px 6px 8px 0px rgba($purple, 0.2);
+            
+        }
+        /* Adjusted Notifications */
+        .ant-notification-bottomRight {
+            right: -5% !important;
         }
     }
     #app {

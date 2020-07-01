@@ -9,11 +9,16 @@ export function DashboardHeader(props){
     return (
         <React.Fragment>
             <Row className="dashboard-header">
-                <Col span={6}>
+                <Col span={6} style={{'justifyContent':'space-around'}}>
                     <button className="profile-icon">
                         <AiOutlineSmile/>
                     </button>
-                    <Button name="Log In"></Button>
+                    <a href="/login" style={{'marginRight':'20px'}}>
+                        <Button name="Log In"></Button>
+                    </a>
+                    <a href="/sign-up">
+                        <Button name="Sign Up"></Button>
+                    </a>
                 </Col>
                 <Col span={12}>
                     <Input className="dashboard-search" prefix={<AiOutlineSearch/>} size="middle" />

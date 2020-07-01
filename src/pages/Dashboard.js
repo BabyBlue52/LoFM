@@ -70,7 +70,7 @@ export default function Dashboard(props){
                             </div>
                         </Col>
                         <Col span={18} className="static-content-center">
-                            <DashboardTuner span={!isOpen ? 13 : 10} offset={isOpen ? 1 : 0}/>
+                            <DashboardTuner span={!isOpen ? 13 : 10} />
                         </Col>
                     </Row>
                 </Col>
