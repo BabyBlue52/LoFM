@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'redux';
 import { Row, Col, notification } from 'antd';
 import { MdClose } from 'react-icons/md';
 import { BsFillChatSquareFill } from 'react-icons/bs'
+import axios from 'axios';
 
-import { Button, PlayButton } from '../components/Button';
+import { PlayButton } from '../components/Button';
 import { GifHandlerDesktop } from '../components/GifHandler';
 import { DashboardHeader } from '../components/DashboardHeader';
 import { DashboardTuner } from '../components/DashoboardTuner';
+import store from '../_redux/createStore';
+import { loadUser } from '../_redux/actions/authAction';
 
 import gif from '../img/gif/chilledCow.gif';
 
@@ -17,7 +19,7 @@ export default function Dashboard(props){
     const openNotification = () => {
         notification.open({
             className: "lo-playing",
-            message: 'Now Playing:',
+            message: "What's Playing:",
             description: <PlayButton/>,
             duration: 0,
             placement: "bottomLeft"
@@ -27,11 +29,25 @@ export default function Dashboard(props){
     const toggleChatDrawer = () => {
         setIsOpen(!isOpen);
     }
+
     useEffect(() => {
+        store.dispatch(loadUser());
+
         setTimeout(function(){
             openNotification()
           }, 2500);
+
+        axios.get('https://dev.lofifm.com/api/info',{
+            header: { Authorization: "Bearer " }
+        })
+        .then( res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }, [])
+
     return(
         <React.Fragment>
             {/** Header bar */}

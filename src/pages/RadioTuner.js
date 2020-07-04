@@ -42,15 +42,15 @@ export default function RadioTuner() {
        
     }, []);
     return( 
-        <>
+        <div>
             <Page 
                 className="scaling"
                 direction="vertical"
-                directionLock={true} 
+                directionLock={true}
             >
                 <BootlegBoy />
                 <Page > <h1>The Chilled Cow</h1></Page>
             </Page>
-        </>
+        </div>
     )
 }

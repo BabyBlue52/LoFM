@@ -1,13 +1,12 @@
 import React, { useState,useEffect } from 'react';
 import { Row, Col, notification } from 'antd';
 import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai' 
-import { connect, useDispatch } from 'react-redux'; 
+import { connect } from 'react-redux'; 
 import _ from 'lodash';
+import axios from 'axios';
 
-import playlistAction from '../_redux/actions/playlistAction';
-import actionTypes from '../_redux/actionTypes';
 import store from '../_redux/createStore';
-
+import { loadUser } from '../_redux/actions/authAction';
 
 export function DashboardTuner(props) {
     const [channels,setChannels] = useState([
@@ -37,7 +36,6 @@ export function DashboardTuner(props) {
             subscriberCount: 23,
         },
     ])
-    const dispatch = useDispatch();
 
     const handleFavorite = (i) => {
         let path = 'favorited'
@@ -48,8 +46,29 @@ export function DashboardTuner(props) {
 
     }    
     useEffect(() => {
+        store.dispatch(loadUser());
+        axios.get('https://dev.lofifm.com/api/info',{
+            header: { Authorization: "Bearer " }
+        })
+        .then( res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err);
+        })
         console.log(store.getState());
-    }, [])    
+    }, [])   
+
+    const favoriteNotification = () => {
+        notification.open({
+            className: "lo-welcome",
+            message: 'Now Playing:',
+            description: '',
+            duration: 0,
+            placement: "bottomLeft"
+        });
+      };     
+    
     return (
         <React.Fragment>
             <div className="card-container">

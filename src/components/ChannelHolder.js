@@ -35,7 +35,7 @@ function ChannelHolder(props){
         
     },[])
     return (
-        <>  {/* Channel Profile */}
+        < div style={{'maxWidth':'400px','margin':'auto'}}>  {/* Channel Profile */}
             <Row type="flex">
                 <Col span={8} offset={8} className="justify-center">
                     <div className="channel-gradient _dropShadow">
@@ -94,8 +94,7 @@ function ChannelHolder(props){
                     <div className="divider"></div>
                 </Col>
             </Row>
- 
-        </>
+        </div>
     )
 }
 

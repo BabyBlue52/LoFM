@@ -40,7 +40,7 @@ export function ChannelPlaylist(props) {
                     <Col span={24}>
                         <h3>Bob, Do Something</h3>
                     </Col>
-                    <Col span={12} offset={2}>
+                    <Col span={24}>
                         <PlaylistButton playlist={link}/>
                     </Col>
                 </Row>

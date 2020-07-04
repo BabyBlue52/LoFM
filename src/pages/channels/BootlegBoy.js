@@ -92,6 +92,7 @@ export function BootlegBoy(props) {
                 direction="horizontal"
                 directionLock={true}
                 dragEnabled={true}
+                contentWidth={300}
             >       
                 {/* Spotify Playlists */}
                 <Frame size={500}>
@@ -105,7 +106,7 @@ export function BootlegBoy(props) {
                 </Frame>        
                  
                 {/* Recent Uploads */}
-                <Frame size={500}>
+                <Frame size={300}>
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
                         <div className="spacer"></div>
@@ -130,7 +131,7 @@ export function BootlegBoy(props) {
                 </Frame>
 
                 {/* Channel Page */}
-                <Frame size={500}>
+                <Frame size={300}>
                     <div className="spacer"></div>
                     <Row className="justify-center">
                         <Col className="justify-center" >

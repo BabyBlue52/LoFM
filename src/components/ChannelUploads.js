@@ -16,10 +16,10 @@ export function ChannelUploads(props) {
                     </Col>
                 </Row>
                 <Row className="vid-title">
-                    <Col offset={1}>
+                    <Col>
                         <p><span>{props.videoTitle}</span></p>
                     </Col>
-                    <Col offset={1}>
+                    <Col>
                         <p className="thin"><span>Posted:</span><span>{postDate}</span></p>
                     </Col>
                 </Row>

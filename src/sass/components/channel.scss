@@ -28,7 +28,9 @@
     overflow-x: hidden;
     overflow-y: auto;
     max-height: 80vh;
-    transform:scale(0.95);
+    max-width: 400px;
+    margin: 0 auto;
+    transform: scale(0.95);
 }
 .vid-card {
     padding-bottom: 40px;
@@ -50,13 +52,12 @@
 } 
 .vid-title {
     position: relative;
-    left: 5%;
     top: 10px;
     display: flex;
     justify-content: flex-start;
     line-height: 0.9rem;
-    margin: 10px 0px 20px 0px;
-    width: 100%;
+    margin: 0 auto !important;
+    width: 70%;
     text-overflow: ellipsis;
     white-space: nowrap;
     p {
