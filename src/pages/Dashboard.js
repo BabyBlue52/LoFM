@@ -3,11 +3,12 @@ import { Row, Col, notification } from 'antd';
 import { MdClose } from 'react-icons/md';
 import { BsFillChatSquareFill } from 'react-icons/bs'
 import axios from 'axios';
+import { Page, Frame } from 'framer';
 
 import { PlayButton } from '../components/Button';
 import { GifHandlerDesktop } from '../components/GifHandler';
 import { DashboardHeader } from '../components/DashboardHeader';
-import { DashboardTuner } from '../components/DashoboardTuner';
+import { DashboardList } from '../components/DashoboardList';
 import store from '../_redux/createStore';
 import { loadUser } from '../_redux/actions/authAction';
 
@@ -86,7 +87,19 @@ export default function Dashboard(props){
                             </div>
                         </Col>
                         <Col span={18} className="static-content-center">
-                            <DashboardTuner span={!isOpen ? 13 : 10} />
+                            <Page 
+                                className="scaling"
+                                direction="vertical"
+                                directionLock={true}
+                                dragEnabled={false}
+                            >
+                                <Page>
+                                    <DashboardList span={!isOpen ? 15 : 9} row={!isOpen ? '': 'left-marg'}/>
+                                </Page>
+                               <Page>
+                                    <h1>Bang outside</h1>
+                               </Page>
+                            </Page>    
                         </Col>
                     </Row>
                 </Col>

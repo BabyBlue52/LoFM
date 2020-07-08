@@ -98,11 +98,18 @@ $tablet: 1024px;
     }
 }
 
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 767px) and (max-width: 1400px){
     #app {
         transform: scale(1.4);
     }
-    .scaling {
-        top: 15vh;
+    .artist-card {
+        transform: scale(0.9);
+    }
+}
+
+
+@media screen and (min-width: 767px) {
+    #app {
+        transform: scale(1.4);
     }
 }
