@@ -3,12 +3,11 @@ import { Row, Col, notification } from 'antd';
 import { MdClose } from 'react-icons/md';
 import { BsFillChatSquareFill } from 'react-icons/bs'
 import axios from 'axios';
-import { Page, Frame } from 'framer';
 
 import { PlayButton } from '../components/Button';
 import { GifHandlerDesktop } from '../components/GifHandler';
 import { DashboardHeader } from '../components/DashboardHeader';
-import { DashboardList } from '../components/DashoboardList';
+import { DashboardContent } from '../components/DashboardContent';
 import store from '../_redux/createStore';
 import { loadUser } from '../_redux/actions/authAction';
 
@@ -30,6 +29,7 @@ export default function Dashboard(props){
     const toggleChatDrawer = () => {
         setIsOpen(!isOpen);
     }
+
 
     useEffect(() => {
         store.dispatch(loadUser());
@@ -87,19 +87,7 @@ export default function Dashboard(props){
                             </div>
                         </Col>
                         <Col span={18} className="static-content-center">
-                            <Page 
-                                className="scaling"
-                                direction="vertical"
-                                directionLock={true}
-                                dragEnabled={false}
-                            >
-                                <Page>
-                                    <DashboardList span={!isOpen ? 15 : 9} row={!isOpen ? '': 'left-marg'}/>
-                                </Page>
-                               <Page>
-                                    <h1>Bang outside</h1>
-                               </Page>
-                            </Page>    
+                            <DashboardContent span={!isOpen ? 15 : 9} row={!isOpen ? '': 'left-marg'}/>   
                         </Col>
                     </Row>
                 </Col>

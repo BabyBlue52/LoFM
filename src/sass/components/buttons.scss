@@ -91,12 +91,20 @@ button.spotify {
     fill: white;
     display: block;
     height: 3rem;
-    width: 3rem;
+    width: max-content;
     border-radius: 50%;
     border: none;
     transition: 300ms ease-in-out;
     cursor: pointer;
 
+    h3 {
+        display: inline-flex;
+        font-size: $paragraph;
+        text-transform: none;
+        padding-left: 20px;
+        position: relative;
+        top: -10px;
+    }
     &:active {
         transform: scale(1.2);
         fill: #1DB954;

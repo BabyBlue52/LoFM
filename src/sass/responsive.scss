@@ -85,6 +85,13 @@ $tablet: 1024px;
         .ant-notification-bottomRight {
             right: -5% !important;
         }
+        /* Channel Pages */
+        .channel-gradient {
+            transform: scale(1.5);
+        }
+        button.spotify {
+            margin-bottom: 5px;
+        }
     }
     #app {
         display: none;
@@ -104,6 +111,9 @@ $tablet: 1024px;
     }
     .artist-card {
         transform: scale(0.9);
+    }
+    .scaling {
+        top: 150px;
     }
 }
 

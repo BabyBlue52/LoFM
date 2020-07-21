@@ -4,6 +4,7 @@
 html {
     overflow: hidden;
 }
+
 body {
     height: 100vh;
     font-family: $openSans;
@@ -47,6 +48,21 @@ p {
 
 marquee {
     font-weight: $heavy;
+    background: rgba($black, 0.2);
+    p {
+        text-transform: lowercase;
+        padding: 0 ;
+        margin: 0;
+        padding-top: 15px;
+        background: none;
+        font-weight: $light;
+        font-family: $spartan;
+        font-size: 0.8rem;
+    }
+    span {
+        padding: 0px 10px;
+        font-size: 1.2rem;
+    }
 }
 
 /* Storybook Edits */
@@ -130,6 +146,10 @@ marquee {
 .error-input {
     border: 1px solid $red !important;
     animation: 300ms ease-in-out shakeOff !important;
+}
+
+.d-inline {
+    display: inline !important; 
 }
 
 /* Framer */
