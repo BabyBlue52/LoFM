@@ -16,6 +16,7 @@ import { LoginPage } from './pages/Login';
 import { SignUpPage } from './pages/SignUp';
 import { Chat } from './pages/Chat'
 
+import 'antd/dist/antd.css';
 import './style.scss';
 
 

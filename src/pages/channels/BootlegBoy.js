@@ -6,10 +6,12 @@ import ReactPlayer from 'react-player';
 
 import { Chat } from '../../pages/Chat';
 import { ChatButton, PlayButton } from '../../components/Button';
-import ChannelHolder from '../../components/ChannelHolder';
+import ChannelLinks from '../../components/ChannelLinks';
 import { ChannelPlaylist } from '../../components/ChannelPlaylist';
 import { ChannelUploads } from '../../components/ChannelUploads';
+import ChannelBio from '../../components/ChannelBio';
 import { GifHandler } from '../../components/GifHandler';
+
 import gif from '../../img/gif/chilledCow.gif';
 import config from '../../apis';
 
@@ -138,7 +140,7 @@ export function BootlegBoy(props) {
                             <ChatButton/>
                         </Col>
                     </Row> 
-                    <ChannelHolder
+                    <ChannelLinks
                         soundcloud={links.soundcloud} 
                         spotify={links.spotify}
                         youtube={links.youtube}
@@ -146,12 +148,14 @@ export function BootlegBoy(props) {
                         title={song.title}
                         thumbnail={profile.thumbnail}
                         id={profile.id}
+
+                        videoId={live.videoId}
+                    />
+                    <ChannelBio
                         name={profile.name}
                         bio={profile.bio}
                         viewers={uploads.view}
-                        videoId={live.videoId}
                     />
-                    
                     {/* Play Content */}
                     <Row className="justify-center">
                         <Col span={18} className="justify-center">

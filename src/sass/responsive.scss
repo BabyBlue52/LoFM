@@ -12,7 +12,7 @@ $mobile: 320px;
 $tablet: 1024px;
 
 @media screen and (max-width: $mobile) {
-    html{
+    html {
         display: none;
     }
 }
@@ -25,22 +25,26 @@ $tablet: 1024px;
         width: 100vw;
         min-height: 100vh;
         background: $black;
+
         .sunset-skin {
             position: absolute;
             height: 100vh;
             width: inherit;
-            background: rgb(98,4,96);
-            background: linear-gradient(30deg, rgba(98,4,96,0.5) 0%, rgba(4,73,100,0.5) 100%);
+            background: rgb(98, 4, 96);
+            background: linear-gradient(30deg, rgba(98, 4, 96, 0.5) 0%, rgba(4, 73, 100, 0.5) 100%);
         }
+
         .menu {
             bottom: 55px;
         }
     }
+
     #app-desktop {
         display: none;
     }
 }
-@media screen and (min-width: $tablet){
+
+@media screen and (min-width: $tablet) {
     #app-desktop {
         position: absolute;
         top: 0;
@@ -50,49 +54,165 @@ $tablet: 1024px;
         height: calc(100vh + 1px);
         overflow: hidden;
         background: $black;
+
         .sunset-skin {
             position: absolute;
             height: 100vh;
             width: inherit;
-            background: rgb(98,4,96);
-            background: linear-gradient(30deg, rgba(98,4,96,0.33) 0%, rgba(4,73,100,0.33) 100%);
+            background: rgb(98, 4, 96);
+            background: linear-gradient(30deg, rgba(98, 4, 96, 0.33) 0%, rgba(4, 73, 100, 0.33) 100%);
         }
+
         /* Sleek Button*/
         button.add-btn {
             margin-top: 5px;
             background: none;
+
             svg {
                 height: 20px;
                 width: 20px;
                 fill: white;
             }
         }
+
         /* Centered Form */
         form.login {
             top: 40%;
             background: $offWhite;
             max-height: 600px;
-            border: .5px solid rgba(15,15,15,0.1);
+            border: .5px solid rgba(15, 15, 15, 0.1);
             -webkit-box-shadow: 0px 6px 8px 0px rgba($purple, 0.2);
             -moz-box-shadow: 0px 6px 8px 0px rgba($purple, 0.2);
             box-shadow: 0px 6px 8px 0px rgba($purple, 0.2);
         }
+
         button.home-btn {
             top: 50px;
             left: 50px;
         }
+
         /* Adjusted Notifications */
         .ant-notification-bottomRight {
             right: -5% !important;
         }
+
         /* Channel Pages */
         .channel-gradient {
             transform: scale(1.5);
+            position: relative;
+            left: 100px;
         }
+
         button.spotify {
             margin-bottom: 5px;
         }
+
+        button.back-btn {
+            svg {
+                height: 20px;
+                width: 20px;
+            }
+
+            p span {
+                position: relative;
+                top: -5px;
+                left: 10px;
+            }
+
+            &hover {
+                opacity: .75;
+            }
+
+            &active {
+                transform: scale(0.95);
+            }
+        }
+
+        .channel-info {
+            height: max-content;
+            border-bottom: 1px solid white;
+
+            h1 {
+                text-align: left;
+                font-family: $spartan;
+                font-weight: $heavy;
+                font-size: 2rem;
+                margin: 0;
+                padding: 0px;
+            }
+
+            .channel-bio p {
+                margin: 0;
+                padding: 0;
+                font-size: 1.05rem;
+            }
+        }
+
+        /* Video Uploads */
+        .vid-scroller {
+            overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            margin-top: 25px;
+
+            h3 {
+                padding-bottom: 10px;
+                font-size: 1.25rem;
+                text-align: left;
+            }
+
+            a.overlay {
+                margin-bottom: 10px;
+            }
+
+            p.thin {
+                span {
+                    padding-right: 10px;
+                }
+            }
+
+            .vid-card {
+                width: 100%;
+                margin: 0;
+                padding-bottom: 20px;
+            }
+
+            .vid-thumbnail {
+                min-width: 300px;
+            }
+        }
+
+        .playlist-container {
+            margin: 0;
+            width: 100%;
+            h3 {
+                margin: 0 auto;
+                padding-bottom: 10px;
+                font-size: 1.2rem;
+                text-align: left;
+            }
+            .playlist-card {
+                max-width: 250px;
+
+                h3.playlist-title {
+                    padding: 0;
+                    font-size: 1rem;
+                    text-align: center;
+                }
+
+                img.playlist-thumbnail {
+                    margin: 5px auto 15px auto;
+                }
+
+                button {
+                    margin: 10px auto;
+                }
+            }
+
+        }
     }
+
     #app {
         display: none;
     }
@@ -105,15 +225,13 @@ $tablet: 1024px;
     }
 }
 
-@media screen and (min-width: 767px) and (max-width: 1400px){
+@media screen and (min-width: 767px) and (max-width: 1400px) {
     #app {
         transform: scale(1.4);
     }
+
     .artist-card {
         transform: scale(0.9);
-    }
-    .scaling {
-        top: 150px;
     }
 }
 
@@ -122,4 +240,15 @@ $tablet: 1024px;
     #app {
         transform: scale(1.4);
     }
+
+    .scaling {
+        top: 50px;
+    }
+
+    #clear-fix {
+        position: absolute;
+        left: -250px;
+        max-width: calc(100% - 410px);
+    }
+
 }

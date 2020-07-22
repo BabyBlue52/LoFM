@@ -30,15 +30,34 @@ export function ChannelPlaylist(props) {
         })
        
     }, [])
-    return (
+    if (window.innerWidth < 400 ) {
+        return (
+            <React.Fragment>
+                <div className="playlist-container">
+                    <Row >
+                        <Col span={24}>
+                        <img className="playlist-thumbnail"/>
+                        </Col>
+                        <Col span={24}>
+                            <h3>Bob, Do Something</h3>
+                        </Col>
+                        <Col span={24}>
+                            <PlaylistButton playlist={link}/>
+                        </Col>
+                    </Row>
+                </div>
+            </React.Fragment>
+        )
+    } return (
         <React.Fragment>
-            <div className="playlist-container">
-                <Row >
+              <div className="playlist-container">
+              <h3> Spotify Playlists</h3>
+                <Row className="playlist-card">
                     <Col span={24}>
                     <img className="playlist-thumbnail"/>
                     </Col>
                     <Col span={24}>
-                        <h3>Bob, Do Something</h3>
+                        <h3 className="playlist-title">Bob, Do Something</h3>
                     </Col>
                     <Col span={24}>
                         <PlaylistButton playlist={link}/>
@@ -47,4 +66,5 @@ export function ChannelPlaylist(props) {
             </div>
         </React.Fragment>
     )
+
 }

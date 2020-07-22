@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import { FaSpotify, FaYoutube, FaSoundcloud } from 'react-icons/fa';
 import { connect, useDispatch } from 'react-redux'; 
-import 'antd/dist/antd.css';
 
 import { FavoriteButton } from './Button';
 import { SongHandler } from './GifHandler';
@@ -10,7 +9,7 @@ import playlistAction from '../_redux/actions/playlistAction';
 import actionTypes from '../_redux/actionTypes';
 import store from '../_redux/createStore';
 
-function ChannelHolder(props){
+function ChannelLinks(props){
     const [isFavorited,setIsFavorited] = useState(false); 
     const dispatch = useDispatch();
     
@@ -87,25 +86,16 @@ function ChannelHolder(props){
                         <p>{props.bio}</p>
                     </Col>
                 </Row>
-
-                {/* Marquee */}
-                <Row className="justify-center">
-                    <Col span={18} style={{"flexDirection":"column"}}>
-                        <div className="divider"></div>
-                        <marquee scrollamount={2}> <p>T h a n k s &nbsp; f o r &nbsp; L i s t e  n i n g <span>😏</span></p> </marquee>
-                        <div className="divider"></div>
-                    </Col>
-                </Row>
             </div>
         )
     }
         return (
             <React.Fragment>
                 <Row justify="start" >
-                    <Col span={8} className="d-inline">
+                    <Col className="d-inline">
                             {/* Channel Profile */}
-                            <div >
-                                <div className="channel-gradient _dropShadow" style={{"margin":"0 auto"}}>
+                            <div className="d-inline">
+                                <div className="channel-gradient _dropShadow">
                                     <img src={props.thumbnail} className="channel-default"/>
                                 </div>
                                 <div onClick={handleFavorite} className="favorite-dash">
@@ -135,16 +125,6 @@ function ChannelHolder(props){
                                 </a>
                             </div>
                     </Col>
-                    <Col span={16}>
-                         {/* Channel Info */}
-                        <div>
-                            <h1 className="channel">{props.name}</h1>
-                            <h3>{props.viewers}</h3>
-                            <div className="channel-bio" >                
-                                <p>{props.bio}</p>
-                            </div>
-                        </div>
-                    </Col>
                 </Row>
             </React.Fragment>
         )
@@ -165,4 +145,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps, 
     mapDispatchToProps)
-    (ChannelHolder);
+    (ChannelLinks);
