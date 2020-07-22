@@ -51,7 +51,6 @@ export function ChannelPlaylist(props) {
     } return (
         <React.Fragment>
               <div className="playlist-container">
-              <h3> Spotify Playlists</h3>
                 <Row className="playlist-card">
                     <Col span={24}>
                     <img className="playlist-thumbnail"/>

@@ -4,6 +4,11 @@ button {
 
     cursor: pointer;
     transition: 300ms ease-in-out;
+    &:focus,
+    &:focus-within {
+        box-shadow: none;
+        outline: none;
+    }
 }
 
 button.default-btn {
@@ -33,12 +38,6 @@ button.default-btn {
     &:active {
         transform: scale(0.95);
         background: darken($purple, 10%);
-    }
-
-    &:focus,
-    &:focus-within {
-        box-shadow: none;
-        outline: none;
     }
 }
 
@@ -106,8 +105,10 @@ button.spotify {
         top: -10px;
     }
     &:active {
-        transform: scale(1.2);
-        fill: #1DB954;
+        transform: scale(0.95);
+        svg {
+            fill: #1DB954;
+        }
     }
 }
 
@@ -115,8 +116,9 @@ button.youtube {
     @extend .spotify;
 
     &:active {
-        transform: scale(1.2);
-        fill: #c4302b;
+        transform: scale(0.95);
+        svg {fill: #c4302b;}
+        
     }
 }
 
@@ -124,8 +126,8 @@ button.soundcloud {
     @extend .spotify;
 
     &:active {
-        transform: scale(1.2);
-        fill: #f70;
+        transform: scale(0.95);
+        svg{fill: #f70;}
     }
 }
 

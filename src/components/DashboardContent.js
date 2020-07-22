@@ -36,7 +36,7 @@ export function DashboardContent(props) {
                     videoId:"",
                     videoThumbnail:"",  
                     publishedAt: "2 Days ago",
-                },{}
+                },{},{},{},{}
             ]
         },
         {
@@ -124,7 +124,10 @@ export function DashboardContent(props) {
                 </Page>
 
                 {/**  Find out how to change the 0 programmatically */}
-                <Page >
+                <Page                 
+                    directionLock={true}
+                    dragEnabled={false}
+                >
                     <div id="clear-fix" className="page-container">
                         <Row>
                             <Col span={24}>
@@ -141,7 +144,7 @@ export function DashboardContent(props) {
                                     thumbnail={channels[0].thumbnail} 
                                 />
                             </Col>
-                            <Col span={16} className="d-inline" style={{"overflowX":"hidden","overflowY":"scroll"}}>
+                            <Col span={16} className="d-inline" style={{"overflowX":"hidden","overflowY":"scroll","paddingRight":"10px"}}>
                                 {/** Channel Bio */}
                                 <ChannelBio
                                     bio={channels[0].bio}
@@ -169,7 +172,7 @@ export function DashboardContent(props) {
                                     })}
                                     </Row>
                                 </div>
-                                <div className="super-spacer"></div>
+                                <div className="spacer"></div>
                                 {/** Spotify Uploads*/}
                                  <ChannelPlaylist
                                     station={channels[0].spotify}
