@@ -8,6 +8,7 @@ import { PlayButton } from '../components/Button';
 import { GifHandlerDesktop } from '../components/GifHandler';
 import { DashboardHeader } from '../components/DashboardHeader';
 import { DashboardContent } from '../components/DashboardContent';
+import { Chat } from '../pages/Chat';
 import store from '../_redux/createStore';
 import { loadUser } from '../_redux/actions/authAction';
 
@@ -57,7 +58,7 @@ export default function Dashboard(props){
             </Row>
             {/** Dashboard Content */}
             <Row className="dashboard-container">
-                <Col span={!isOpen ? 16 : 23}>
+                <Col span={isOpen ? 23 : 16}>
                     <Row>
                         <Col span={6} className="static-content"> 
                             <div className="channel-container">
@@ -87,16 +88,17 @@ export default function Dashboard(props){
                             </div>
                         </Col>
                         <Col span={18} className="static-content-center">
-                            <DashboardContent span={!isOpen ? 15 : 9} row={!isOpen ? '': 'left-marg'}/>   
+                            <DashboardContent span={isOpen ? 15 : 9} row={isOpen ? '': 'left-marg'}/>   
                         </Col>
                     </Row>
                 </Col>
                 
                 
                 {/** Chat Section */}
-                <Col span={!isOpen ? 8 : 1} className="chat-container">
-                        <button onClick={toggleChatDrawer} className={isOpen ? "chat-toggle-closed" : "chat-toggle"}>
-                            {!isOpen ? 
+                <Col span={isOpen ? 8 : 1} className="chat-container">
+                    <div className="chat-header">
+                        <button onClick={toggleChatDrawer} className={isOpen ? "chat-toggle" : "chat-toggle-closed"}>
+                            {isOpen ? 
                                 <div>
                                     <p><span><MdClose/>Close</span></p>
                                 </div>
@@ -106,9 +108,11 @@ export default function Dashboard(props){
                                 </div>                                 
                             }
                         </button>
-                    <div>
-                        {/* <p>Got it</p> */}
                     </div>
+                    <div className={isOpen ? '' :'chat-box-closed'}>
+                        <Chat/>
+                    </div>
+                      
                 </Col>
 
             </Row>

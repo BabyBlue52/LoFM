@@ -11,7 +11,7 @@ import ChannelBio from './ChannelBio'
 import { ChannelPlaylist } from './ChannelPlaylist';
 
 export function DashboardContent(props) {
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(0)
     const [channels,setChannels] = useState([
         {
             id: 1,
