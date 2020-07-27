@@ -4,7 +4,7 @@ import { Frame, Page } from "framer";
 import { motion }from 'framer-motion';
 import ReactPlayer from 'react-player';
 
-import { Chat } from '../../pages/Chat';
+import { Chat } from '../../components/Chat';
 import { ChatButton, PlayButton } from '../../components/Button';
 import ChannelLinks from '../../components/ChannelLinks';
 import { ChannelPlaylist } from '../../components/ChannelPlaylist';

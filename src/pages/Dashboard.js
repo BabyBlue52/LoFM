@@ -8,7 +8,7 @@ import { PlayButton } from '../components/Button';
 import { GifHandlerDesktop } from '../components/GifHandler';
 import { DashboardHeader } from '../components/DashboardHeader';
 import { DashboardContent } from '../components/DashboardContent';
-import { Chat } from '../pages/Chat';
+import { Chat } from '../components/Chat';
 import store from '../_redux/createStore';
 import { loadUser } from '../_redux/actions/authAction';
 

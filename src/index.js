@@ -14,7 +14,7 @@ import RadioTuner from './pages/RadioTuner';
 import Dashboard from './pages/Dashboard';
 import { LoginPage } from './pages/Login';
 import { SignUpPage } from './pages/SignUp';
-import { Chat } from './pages/Chat'
+import { Chat } from './components/Chat'
 
 import 'antd/dist/antd.css';
 import './style.scss';

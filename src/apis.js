@@ -7,6 +7,12 @@ const config = {
     
     channel_id_1:"UC0fiLCwTmAukotCXYnqfj0A", //Bootleg Boy
     channel_id_2:"UCsIg9WMfxjZZvwROleiVsQg", //STEEZYASFUCK
+
+    app_ID: '1045189',  // Pusher API
+    key: "aaf4dce1df508744a0f9",
+    pusher_secret: '264e3e75fedb40ac62f5',
+    app_cluster: "us2",
+
 }
 
 export default config;
