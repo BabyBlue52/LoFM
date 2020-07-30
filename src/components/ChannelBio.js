@@ -2,14 +2,14 @@ import React from 'react';
 import { Row, Col } from 'antd';
 
 export default function ChannelBio(props) {
-    if (window.innerWidth < 400 ) {
+    if (window.innerWidth < 1024 ) {
         return (
-            <React.Fragment>
+            <div style={{"maxWidth":"500px","margin":"0 auto"}}>
                 {/** Bio */}
                 <Row type="flex" className="justify-center">
-                    <h1 className="channel">{props.name}</h1>
-                    <h3>{props.viewers}</h3>
-                    <Col span={20} className="channel-bio" >                
+                    <Col span={18} className="channel-bio" >  
+                        <h1 className="channel">{props.name}</h1>
+                        <h3>{props.viewers}</h3>              
                         <p>{props.bio}</p>
                     </Col>
                 </Row>
@@ -22,7 +22,7 @@ export default function ChannelBio(props) {
                         <div className="divider"></div>
                     </Col>
                 </Row>
-            </React.Fragment>
+            </div>
         )
     } return (
         <React.Fragment>

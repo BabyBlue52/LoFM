@@ -33,9 +33,9 @@ function ChannelLinks(props){
     useEffect(() =>{
         
     },[])
-    if (window.innerWidth < 400) {
+    if (window.innerWidth < 1024) {
         return (
-            < div style={{'maxWidth':'400px','margin':'auto'}}>  
+            <div style={{'maxWidth':'400px','margin':'auto'}}>  
                 {/* Channel Profile */}
                 <Row type="flex">
                     <Col span={8} className="justify-center" style={{"margin":"0 auto"}}>
@@ -91,11 +91,11 @@ function ChannelLinks(props){
     }
         return (
             <React.Fragment>
-                <Row justify="start" >
-                    <Col className="d-inline">
+                <Row justify="start">
+                    <Col span={24} className="d-inline">
                             {/* Channel Profile */}
-                            <div className="d-inline">
-                                <div className="channel-gradient _dropShadow">
+                            <div>
+                                <div className="channel-gradient _dropShadow" style={{"margin":"0 auto"}}>
                                     <img src={props.thumbnail} className="channel-default"/>
                                 </div>
                                 <div onClick={handleFavorite} className="favorite-dash">

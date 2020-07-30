@@ -95,6 +95,7 @@ export function BootlegBoy(props) {
                 directionLock={true}
                 dragEnabled={true}
                 contentWidth={300}
+                //className={( 768 < window.width && window.width < 1024 )? "_adjustKit": "" }
             >       
                 {/* Spotify Playlists */}
                 <Frame size={500}>
