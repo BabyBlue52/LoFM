@@ -13,6 +13,8 @@ const config = {
     pusher_secret: '264e3e75fedb40ac62f5',
     app_cluster: "us2",
 
+    giphy_id: 'gyN3sadiLntdUgaveF4pGgoUlZmBuKda' //Giphy
+
 }
 
 export default config;

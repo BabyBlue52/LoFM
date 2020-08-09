@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 //import { action } from '@storybook/addon-actions';
-import { ChannelHolder } from '../components/ChannelHolder';
+import { ChannelBio } from '../components/ChannelBio';
 import { ChannelPlaylist } from '../components/ChannelPlaylist';
 import { RecentUploads } from '../components/ChannelUploads';
 import Modal from '../components/Modal';
@@ -11,6 +11,7 @@ import { ChatButton, PlayButton, GoogleButton } from '../components/Button';
 import { SoundWave, Loader } from '../components/animation';
 import { PushMenu } from '../components/Menu';
 import { ChatBubble } from '../components/ChatBubble';
+import { GiphyKeyboard } from '../components/GiphyKeyboard';
 import { LoginPage } from '../pages/Login';
 import { SignUpPage } from '../pages/SignUp';
 
@@ -59,9 +60,9 @@ storiesOf("Pages", module)
 ===============
 */
 storiesOf("Components", module)
-  .add('Channel Holder', () => (
+  .add('Channel Bio', () => (
     <div className="story-container">
-      <ChannelHolder/>
+      <ChannelBio/>
     </div>
   ))
   .add('Channel Playlist', () => (
@@ -92,6 +93,11 @@ storiesOf("Components", module)
   .add('Single Chat', () => (
     <div className="story-container" >
       <ChatBubble />
+    </div>
+  ))
+  .add('Giphy Keyboard', () => (
+    <div className="story-container" >
+      <GiphyKeyboard />
     </div>
   ))
 

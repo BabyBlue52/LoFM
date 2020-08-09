@@ -109,7 +109,7 @@ export function BootlegBoy(props) {
                 </Frame>        
                  
                 {/* Recent Uploads */}
-                <Frame size={300}>
+                <Frame size={500}>
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
                         <div className="spacer"></div>
@@ -134,7 +134,7 @@ export function BootlegBoy(props) {
                 </Frame>
 
                 {/* Channel Page */}
-                <Frame size={300}>
+                <Frame size={500}>
                     <div className="spacer"></div>
                     <Row className="justify-center">
                         <Col className="justify-center" >
@@ -177,18 +177,9 @@ export function BootlegBoy(props) {
                 
                 {/* Chat Feature */}
                 <Frame size={500}>
-                    <Row style={{"paddingTop": "40px"}}>
+                    <div style={{"paddingTop": "40px"}} >
                         <Chat snippet={uploads.snippet} />
-                    </Row>
-                    <Row className="justify-center gif-player-row">
-                        <Col span={24} style={{"paddingTop": "20px"}}>
-                            <GifHandler
-                                gif={gif}
-                                artist={live.artist}
-                                title={live.title}
-                            />
-                        </Col>
-                    </Row>   
+                    </div>
                 </Frame>
             </Page>
         </>

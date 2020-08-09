@@ -383,3 +383,38 @@ button.chat-toggle-closed {
         margin-left: -30px;
     }
 }
+button.gif-btn {
+   margin: 0px 10px;
+   height: 40px;
+   width: 40px;
+   background: $black;
+   border-radius: 50%;
+   .keyboard-icon {
+       background: none;
+        svg {
+            position: relative;
+            left: -1.5px;
+            top: 1px;
+            height: 28px;
+            width: 28px;
+            fill: $offWhite;
+            background: none;
+        }
+    }
+    .send-icon {
+        @extend .keyboard-icon;
+        svg {
+            left: 1px;
+            height: 20px;
+            width: 20px;
+            fill: $grey;
+        }
+        font-family: $spartan;
+        font-weight: $heavy;
+        font-size: 8px;
+        color: #999;
+    }
+}
+button.send {
+    background: none;
+}

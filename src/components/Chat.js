@@ -53,8 +53,9 @@ export function Chat(props) {
             </>
         )
     }
-    return (
-        <>
+    else { 
+        return (
+        <> 
             <Row>
                 <Col span={24} className="justify-center">
                     <h3 className="chat-title">{props.channelName} chat</h3>
@@ -78,5 +79,6 @@ export function Chat(props) {
                 </Col>
             </Row>
         </>
-    )
+        )
+    }
 }
