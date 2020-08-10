@@ -110,7 +110,7 @@ export default function Dashboard(props){
                         </button>
                     </div>
                     <div className={isOpen ? '' :'chat-box-closed'}>
-                        <Chat/>
+                        <Chat animate={isOpen ? 24 : 1 }/>
                     </div>
                       
                 </Col>

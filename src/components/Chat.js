@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import { Row, Col } from 'antd';
+import { MdSend } from 'react-icons/md';
+
 import { ChatBubble } from './ChatBubble';
 import { ChatInput } from './ChatInput';
-
-import config from '../apis';
-
+import { GiphyKeyboard } from './GiphyKeyboard';
 
 export function Chat(props) {
     const [user, setUser] = useState({
@@ -28,7 +28,10 @@ export function Chat(props) {
         
         // console.log(messages)
     }
-    
+    const sendMessage = () => {
+        console.log('send it')
+    }
+
     useEffect(() => {    
         connection.onmessage = (message) => {
             const data = JSON.parse(message.data)
@@ -55,7 +58,7 @@ export function Chat(props) {
     }
     else { 
         return (
-        <> 
+        <div > 
             <Row>
                 <Col span={24} className="justify-center">
                     <h3 className="chat-title">{props.channelName} chat</h3>
@@ -73,12 +76,22 @@ export function Chat(props) {
                 )}
                 </Col>
             </Row>
-            <Row className="chat-modifier">
-                <Col span={24}>
+
+            <Row >
+                <Col span={props.animate} className="chat-modifier">
+                    <div className="chat-gif">
+                        <GiphyKeyboard sendGif={sendMessage}/>
+                    </div>
                     <ChatInput getMessage={getMessage}/>
+                    <button className="gif-btn send">
+                        <div className="send-icon">
+                            <MdSend/>
+                            SEND
+                        </div>
+                    </button>
                 </Col>
             </Row>
-        </>
+        </div>
         )
     }
 }

@@ -95,7 +95,7 @@ function ChannelLinks(props){
                     <Col span={24} className="d-inline">
                             {/* Channel Profile */}
                             <div>
-                                <div className="channel-gradient _dropShadow" style={{"margin":"0 auto"}}>
+                                <div className="channel-gradient _dropShadow" style={{"margin":"0 auto  0 20px"}}>
                                     <img src={props.thumbnail} className="channel-default"/>
                                 </div>
                                 <div onClick={handleFavorite} className="favorite-dash">

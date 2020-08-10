@@ -387,7 +387,7 @@ button.gif-btn {
    margin: 0px 10px;
    height: 40px;
    width: 40px;
-   background: $black;
+   background: none;
    border-radius: 50%;
    .keyboard-icon {
        background: none;
@@ -397,7 +397,7 @@ button.gif-btn {
             top: 1px;
             height: 28px;
             width: 28px;
-            fill: $offWhite;
+            fill: $grey;
             background: none;
         }
     }
@@ -412,7 +412,13 @@ button.gif-btn {
         font-family: $spartan;
         font-weight: $heavy;
         font-size: 8px;
-        color: #999;
+        color: $grey;
+    }
+    &:active {
+        color: $offWhite;
+        svg {
+            fill: $offWhite;
+        }
     }
 }
 button.send {

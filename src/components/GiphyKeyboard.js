@@ -5,11 +5,10 @@ import ReactGiphySearchbox from 'react-giphy-searchbox';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { MdKeyboard, MdSend } from 'react-icons/md';
 
-import giphy from '../img/icons8-gif-24.png'
+import giphy from '../img/gif.png'
 import config from '../apis';
-import '../style.scss';
 
-export function GiphyKeyboard() {
+export function GiphyKeyboard(props) {
     const [clipboard, setClipboard] = useState({
         img: ''
     });
@@ -28,10 +27,12 @@ export function GiphyKeyboard() {
     const toggleGifKeyboard = () => {
         setIsOpen(!isOpen);
     }
-
-    const copyGif = (item) => {
+    
+    //connect gif keyboard to chat channel 
+    const sendGif = (item) => {
         setClipboard({ video: item});
         console.log(clipboard.img)
+        toggleGifKeyboard();
     }
 
     return(
@@ -54,30 +55,24 @@ export function GiphyKeyboard() {
                 {isOpen ?  
                 <ReactGiphySearchbox
                     apiKey={giphy_id}
-                    onSelect={copyGif}
+                    onSelect={sendGif}
+                    poweredByGiphy={false}
                     loadingImage={loading}
                     masonryConfig={[
                         { columns: 2, imageWidth: 110, gutter: 5 },
-                        { mq: "700px", columns: 3, imageWidth: 90, gutter: 5 }
+                        { mq: "400px", columns: 2, imageWidth: 200, gutter: 5 },
+                        { mq: "1024px", columns: 3, imageWidth: 125, gutter: 5}
                     ]}
                     className={isOpen ? "gif-keyboard-open" : "gif-keyboard-closed"}
                 />
                 : 
                 <div>
-                    <input style={{'width':'270px'}} type="text"/>
+                    {/* <input style={{'width':'270px'}} type="text"/> */}
                 </div>
                 }
             </Col>
-            <Col>
-                <button className="gif-btn send">
-                    <div className="send-icon">
-                        <MdSend/>
-                        SEND
-                    </div>
-                </button>
-            </Col>
-        </Row>
-       
+           
+        </Row>    
       </>
     )
 }
