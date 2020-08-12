@@ -92,7 +92,7 @@ export function DashboardContent(props) {
             >
                 <Page>
                     <div className="card-container">
-                    <div className="super-spacer"></div>
+                        <div className="super-spacer"></div>
                     
                         <Row justify="start" className={props.row}>
                         {channels.map((item, i) => {
@@ -129,6 +129,7 @@ export function DashboardContent(props) {
                     dragEnabled={false}
                 >
                     <div id="clear-fix" className="page-container">
+                        <div className="super-spacer"></div>
                         <Row>
                             <Col span={24}>
                             <button onClick={goBack} className="back-btn">
