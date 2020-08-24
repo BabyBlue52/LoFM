@@ -92,7 +92,7 @@ export function DashboardContent(props) {
             >
                 <Page>
                     <div className="card-container">
-                    <div className="super-spacer"></div>
+                        <div className="super-spacer"></div>
                     
                         <Row justify="start" className={props.row}>
                         {channels.map((item, i) => {

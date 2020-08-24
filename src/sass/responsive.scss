@@ -242,14 +242,14 @@ $tablet: 1024px;
     .artist-card {
         transform: scale(0.9);
     }
+
+    .scaling {
+        top: 0px;
+    }
 }
 
 
 @media screen and (min-width: 767px) {
-    .scaling {
-        top: 0px;
-    }
-
     #clear-fix {
         position: absolute;
         left: -250px;
