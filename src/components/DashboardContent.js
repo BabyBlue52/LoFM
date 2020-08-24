@@ -128,7 +128,9 @@ export function DashboardContent(props) {
                     directionLock={true}
                     dragEnabled={false}
                 >
+                    
                     <div id="clear-fix" className="page-container">
+                        <div className="super-spacer"></div>
                         <Row>
                             <Col span={24}>
                             <button onClick={goBack} className="back-btn">

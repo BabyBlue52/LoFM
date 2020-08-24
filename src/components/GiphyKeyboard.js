@@ -61,7 +61,7 @@ export function GiphyKeyboard(props) {
                     masonryConfig={[
                         { columns: 2, imageWidth: 110, gutter: 5 },
                         { mq: "400px", columns: 2, imageWidth: 200, gutter: 5 },
-                        { mq: "1024px", columns: 3, imageWidth: 125, gutter: 5}
+                        { mq: "1024px", columns: 3, imageWidth: 110, gutter: 5}
                     ]}
                     className={isOpen ? "gif-keyboard-open" : "gif-keyboard-closed"}
                 />
