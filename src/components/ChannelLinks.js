@@ -77,15 +77,6 @@ function ChannelLinks(props){
                         </a>
                     </Col>  
                 </Row>
-                
-                {/* Channel Info */}
-                <Row type="flex" className="justify-center">
-                    <h1 className="channel">{props.name}</h1>
-                    <h3>{props.viewers}</h3>
-                    <Col span={20} className="channel-bio" >                
-                        <p>{props.bio}</p>
-                    </Col>
-                </Row>
             </div>
         )
     }

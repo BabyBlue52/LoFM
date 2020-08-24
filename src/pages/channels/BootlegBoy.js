@@ -51,7 +51,7 @@ export function BootlegBoy(props) {
         setIsPlaying(!isPlaying);
     }
     const { api_key, channel_id_1 } = config;
-    
+    const width = window.innerWidth
     //api calls
     useEffect(() => {
         const urls = [
@@ -81,6 +81,7 @@ export function BootlegBoy(props) {
         .catch(
             <h1>Error</h1>
         )
+        console.log(width)
     }, [ api_key ]);
 
     
@@ -90,7 +91,7 @@ export function BootlegBoy(props) {
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
-                currentPage={2}
+                currentPage={3}
                 direction="horizontal"
                 directionLock={true}
                 dragEnabled={true}
@@ -98,7 +99,7 @@ export function BootlegBoy(props) {
                 //className={( 768 < window.width && window.width < 1024 )? "_adjustKit": "" }
             >       
                 {/* Spotify Playlists */}
-                <Frame size={500}>
+                <Frame size={width}>
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
                         <div className="spacer"></div>
@@ -109,7 +110,7 @@ export function BootlegBoy(props) {
                 </Frame>        
                  
                 {/* Recent Uploads */}
-                <Frame size={500}>
+                <Frame size={width}>
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
                         <div className="spacer"></div>
@@ -133,8 +134,8 @@ export function BootlegBoy(props) {
                     </Row>  
                 </Frame>
 
-                {/* Channel Page */}
-                <Frame size={500}>
+                {/* Main Page */}
+                <Frame size={width}>
                     <div className="spacer"></div>
                     <Row className="justify-center">
                         <Col className="justify-center" >
@@ -149,7 +150,6 @@ export function BootlegBoy(props) {
                         title={song.title}
                         thumbnail={profile.thumbnail}
                         id={profile.id}
-
                         videoId={live.videoId}
                     />
                     <ChannelBio
@@ -176,9 +176,9 @@ export function BootlegBoy(props) {
                 </Frame>
                 
                 {/* Chat Feature */}
-                <Frame size={500}>
+                <Frame size={width}>
                     <div style={{"paddingTop": "40px"}} >
-                        <Chat snippet={uploads.snippet} />
+                        <Chat/>
                     </div>
                 </Frame>
             </Page>

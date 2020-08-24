@@ -53,6 +53,20 @@ export function Chat(props) {
                         <div className="temps"></div>   
                     </Col>
                 </Row>
+                <Row style={{'width':'90%','margin':'0 auto'}}>
+                    <Col span={24} className="chat-modifier">
+                        <div className="chat-gif">
+                            <GiphyKeyboard sendGif={sendMessage}/>
+                        </div>
+                        <ChatInput getMessage={getMessage}/>
+                        <button className="gif-btn send">
+                            <div className="send-icon">
+                                <MdSend/>
+                                SEND
+                            </div>
+                        </button>
+                    </Col>
+                </Row>
             </>
         )
     }

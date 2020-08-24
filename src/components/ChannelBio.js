@@ -9,7 +9,9 @@ export default function ChannelBio(props) {
                 <Row type="flex" className="justify-center">
                     <Col span={18} className="channel-bio" >  
                         <h1 className="channel">{props.name}</h1>
-                        <h3>{props.viewers}</h3>              
+                        <h3>{props.viewers}</h3>
+                    </Col>
+                    <Col span={18} className="channel-bio" >           
                         <p>{props.bio}</p>
                     </Col>
                 </Row>
