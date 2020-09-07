@@ -115,3 +115,8 @@ form.login {
         fill: $purple !important;
     }
 }
+.login-form {
+    input.ant-input {
+        color: $black;
+    }
+}

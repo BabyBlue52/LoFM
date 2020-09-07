@@ -14,6 +14,7 @@ import RadioTuner from './pages/RadioTuner';
 import Dashboard from './pages/Dashboard';
 import { LoginPage } from './pages/Login';
 import { SignUpPage } from './pages/SignUp';
+import SupportPage from './pages/Support';
 import { Chat } from './components/Chat'
 
 import 'antd/dist/antd.css';
@@ -48,6 +49,7 @@ function App() {
                       <Route exact path="/login" component={LoginPage} />
                       <Route exact path="/sign-up" component={SignUpPage}/>
                       <PrivateRoute exact path="/chat" component={Chat}/>
+                      <Route exact path="/support-us" component={SupportPage}/>
                     </div> 
                   </div>
                 </Switch>
@@ -65,6 +67,7 @@ function App() {
                       <Route exact path="/" component={Dashboard} />
                       <Route exact path="/login" component={LoginPage} />
                       <Route exact path="/sign-up" component={SignUpPage}/>
+                      <Route exact path="/support-us" component={SupportPage}/>
                     </div> 
                   </div>
                 </Switch>
