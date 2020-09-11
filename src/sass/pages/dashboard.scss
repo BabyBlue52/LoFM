@@ -1,6 +1,6 @@
 .dashboard-header {
     position: fixed;
-    top:0;
+    top: 0;
     height: 70px;
     width: 100vw;
     padding: 15px 30px 20px 30px;
@@ -26,6 +26,7 @@
             width: 24px;
             margin-right: 5px;
         }
+
         .ant-input:hover {
             box-shadow: none;
         }
@@ -68,10 +69,12 @@
     top: 70px;
     overflow-y: auto;
     height: calc(100vh - 70px);
+
     div.ant-col {
         transition: 300ms ease-in-out;
     }
 }
+
 .page-container {
     @extend .card-container;
     position: fixed !important;
@@ -83,6 +86,7 @@
     //border: 2px solid white;
     z-index: 9;
 }
+
 h1.channel-header {
     font-size: $header;
     font-weight: $superHeavy;
@@ -95,8 +99,9 @@ h1.channel-header {
     position: relative;
     left: 255px;
     transform: scale(1.2);
-    
+
 }
+
 .favorites-container {
     overflow-y: auto;
     height: 40%;
@@ -106,8 +111,11 @@ h1.channel-header {
     border-radius: 2px;
     background: rgba(#1b1b1b, 1);
 }
+
 .favorites-list {
-    h2{ color: white;}
+    h2 {
+        color: white;
+    }
 }
 
 .gif-player-desktop {
@@ -145,4 +153,65 @@ h1.channel-header {
     left: 150px;
     height: 100%;
     max-width: calc(100% - 300px);
+}
+
+/* Mobile */
+.mobile-dashboard {
+    padding: 20px 0px 20px 0px;
+    
+
+    h1 {
+        margin-left: 30px;
+        text-transform: capitalize;
+        font-weight: $superHeavy;
+        font-size: 1.3rem;
+    }
+
+    .channel-cover {
+        min-height: 150px;
+        max-height: max-content;
+        min-width: 100px;
+        margin: 10px;
+        a {
+            height: inherit;
+            width: inherit;
+            color: white;
+        }
+        img {
+            height: 120px;
+            width: inherit;
+            outline: none;
+            background: url('https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png');
+            background-size: cover;
+        }
+
+        p {
+            margin: 10px 0px 0px 0px;
+            font-family: $spartan;
+            font-size: 0.8rem;
+            font-weight: $superHeavy;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        p.followers {
+            font-weight: $light;
+
+            span {
+                margin-left: 5px;
+            }
+        }
+    
+    }
+    .mobile-header {
+        width: 100%;
+        margin: 0;
+        margin-top: 5vh;
+        text-align: center;
+        font-size: 1.5rem;
+
+    }
+    .starter {
+        width: 10px !important;
+    }
 }

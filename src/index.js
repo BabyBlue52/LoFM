@@ -10,6 +10,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import store from './_redux/createStore';
 import { loadUser } from './_redux/actions/authAction';
 
+import MobileDashboard from './pages/MobileDashboard';
 import RadioTuner from './pages/RadioTuner';
 import Dashboard from './pages/Dashboard';
 import { LoginPage } from './pages/Login';
@@ -45,7 +46,8 @@ function App() {
                 <Switch>
                   <div id="app">
                     <div className="sunset-skin">
-                      <Route exact path="/" component={RadioTuner} />
+                      <Route exact path="/" component={MobileDashboard} />
+                      <Route exact path="/radio" component={RadioTuner} />
                       <Route exact path="/login" component={LoginPage} />
                       <Route exact path="/sign-up" component={SignUpPage}/>
                       <PrivateRoute exact path="/chat" component={Chat}/>
