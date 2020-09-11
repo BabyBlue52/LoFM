@@ -27,7 +27,7 @@ export default function MobileDashboard(){
         },
         {
             id:"4",
-            name:"The Bootleg Boy",
+            name:"Rare",
             thumbnail:""
         },
     ]) 
@@ -38,61 +38,65 @@ export default function MobileDashboard(){
     },[])
     
     return (
-        <div className="mobile-dashboard">
+        <React.Fragment>
             <Row>
                 <h1 className='mobile-header'>Who's Playing</h1>
                 <div className="spacer"></div>
             </Row>
-            {/** Most Popular */}
-            <Row>
-                <h1>Most Popular</h1>
-            </Row>
-            <Swiper
-                spaceBetween={10}
-                slidesPerView={adjustable}
-            >
-                <SwiperSlide className="starter"></SwiperSlide>
-                {channels.slice(0, 9).map((channel, i) => {
-                    return(
-                        <SwiperSlide key={i} className="channel-cover">
-                             <Link to='/radio' >
-                                <img src={channel.thumbnail} />
-                                <p>{channel.name}</p>
-                                <p className="followers">
-                                    {channel.followers}
-                                    <span>followers</span>
-                                </p>
-                            </Link>
-                        </SwiperSlide>
-                    )
-                })}
-            </Swiper>
+            <div className="mobile-dashboard">
+                
+                {/** Most Popular */}
+                <Row>
+                    <h1>Most Popular</h1>
+                </Row>
+                <Swiper
+                    spaceBetween={10}
+                    slidesPerView={adjustable}
+                >
+                    <SwiperSlide className="starter"></SwiperSlide>
+                    {channels.slice(0, 9).map((channel, i) => {
+                        return(
+                            <SwiperSlide key={i} className="channel-cover">
+                                <Link to='/radio' >
+                                    <img src={channel.thumbnail} />
+                                    <p>{channel.name}</p>
+                                    <p className="followers">
+                                        {channel.followers}
+                                        <span>followers</span>
+                                    </p>
+                                </Link>
+                            </SwiperSlide>
+                        )
+                    })}
+                </Swiper>
+                    <div className="spacer"></div>
+                
+                {/** Trending */}
+                <Row>
+                    <h1>Trending Channels</h1>
+                </Row>
+                <Swiper
+                    spaceBetween={10}
+                    slidesPerView={adjustable}
+                >
+                    <SwiperSlide className="starter"></SwiperSlide>
+                    {channels.slice(0, 9).map((channel, i) => {
+                        return(
+                            <SwiperSlide key={i} className="channel-cover">
+                                <Link to='/radio' >
+                                    <img src={channel.thumbnail} />
+                                    <p>{channel.name}</p>
+                                    <p className="followers">
+                                        {channel.followers}
+                                        <span>followers</span>
+                                    </p>
+                                </Link>
+                            </SwiperSlide>
+                        )
+                    })}
+                </Swiper>
                 <div className="spacer"></div>
-            
-            {/** Trending */}
-            <Row>
-                <h1>Trending Channels</h1>
-            </Row>
-            <Swiper
-                spaceBetween={10}
-                slidesPerView={adjustable}
-            >
-                <SwiperSlide className="starter"></SwiperSlide>
-                {channels.slice(0, 9).map((channel, i) => {
-                    return(
-                        <SwiperSlide key={i} className="channel-cover">
-                            <Link to='/radio' >
-                                <img src={channel.thumbnail} />
-                                <p>{channel.name}</p>
-                                <p className="followers">
-                                    {channel.followers}
-                                    <span>followers</span>
-                                </p>
-                            </Link>
-                        </SwiperSlide>
-                    )
-                })}
-            </Swiper>
-        </div>
+            </div>
+        </React.Fragment>
     )
 }
