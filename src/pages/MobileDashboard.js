@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../img/logo.svg';
 
 import 'swiper/swiper.scss';
+import { HeartFilled } from '@ant-design/icons';
 
 export default function MobileDashboard(){
 
@@ -26,13 +27,17 @@ export default function MobileDashboard(){
             thumbnail:""
         },
         {
-            id:"4",
+            id:"71231",
             name:"Rare",
             thumbnail:""
         },
     ]) 
     const adjustable = 3
-    
+
+    const channelSelect = i => e => {
+
+        console.log(i)
+    }
     useEffect(()=> {
         console.log('Make API request')
     },[])
@@ -57,7 +62,7 @@ export default function MobileDashboard(){
                     {channels.slice(0, 9).map((channel, i) => {
                         return(
                             <SwiperSlide key={i} className="channel-cover">
-                                <Link to='/radio' >
+                                <Link to={`/radio/${channel.id}`} >
                                     <img src={channel.thumbnail} />
                                     <p>{channel.name}</p>
                                     <p className="followers">
@@ -83,7 +88,7 @@ export default function MobileDashboard(){
                     {channels.slice(0, 9).map((channel, i) => {
                         return(
                             <SwiperSlide key={i} className="channel-cover">
-                                <Link to='/radio' >
+                                <Link to={`/radio/${channel.id}`}>
                                     <img src={channel.thumbnail} />
                                     <p>{channel.name}</p>
                                     <p className="followers">

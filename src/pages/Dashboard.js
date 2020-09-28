@@ -16,12 +16,12 @@ import gif from '../img/gif/chilledCow.gif';
 
 export default function Dashboard(props){
     const [isOpen, setIsOpen] = useState(true)
-    
+    const channel = <marquee>"Bob, do something"</marquee>
     const openNotification = () => {
         notification.open({
             className: "lo-playing",
-            message: "What's Playing:",
-            description: <PlayButton/>,
+            message: <PlayButton/>,
+            description: `${channel}`,
             duration: 0,
             placement: "bottomLeft"
         });
@@ -30,7 +30,6 @@ export default function Dashboard(props){
     const toggleChatDrawer = () => {
         setIsOpen(!isOpen);
     }
-
 
     useEffect(() => {
         store.dispatch(loadUser());
