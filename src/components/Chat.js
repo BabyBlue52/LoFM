@@ -1,10 +1,17 @@
 import React, { useState, useEffect} from 'react';
 import { Row, Col } from 'antd';
 import { MdSend } from 'react-icons/md';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import { ChatBubble } from './ChatBubble';
-import { ChatInput } from './ChatInput';
 import { GiphyKeyboard } from './GiphyKeyboard';
+import firebaseConfig from '../config';
+
+firebase.initializeApp(firebaseConfig)
+
+const firestore = firebase.firestore();
 
 export function Chat(props) {
     const [user, setUser] = useState({
@@ -16,27 +23,34 @@ export function Chat(props) {
         timeStamp:'July 24th 2020',
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut tortor accumsan, eleifend justo at, sodales lectus. Donec metus risus, tristique sit amet leo faucibus, posuere posuere ipsum.'
     })
-    const [messages,setMessages] = useState([])
+    const [isOpen, setIsOpen] = useState(false);
+    const [formValue, setFormValue] = useState('')
+    const messagesRef = firestore.collection('messages');
+    const query = messagesRef.orderBy('createdAt').limit(25); 
 
-    var connection = new WebSocket('ws://localhost:9090/') 
+    const [messages] = useCollectionData(query);
 
-    const getMessage = (message) => {
-        setTimeout(()=> {
-            var data = {username: 'Chris', content: message}
-            connection.send(JSON.stringify(data))
-        }, 250)
+    const sendMessage = async(e) => {
+        console.log(formValue);
+        setFormValue();
+        await messagesRef.add({
+            text: formValue,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        })
         
-        // console.log(messages)
-    }
-    const sendMessage = () => {
-        console.log('send it')
     }
 
+    const handleKeyPress = (e) => {
+        if (e.charCode === 13) {
+            sendMessage();
+            toggleOpen();
+        }
+    }
+    function toggleOpen() {
+        setIsOpen(!isOpen);
+    }
     useEffect(() => {    
-        connection.onmessage = (message) => {
-            const data = JSON.parse(message.data)
-            setMessages([...messages, data])
-        } 
+
     },[])
 
     if (window.innerWidth < 400 ) {
@@ -56,15 +70,20 @@ export function Chat(props) {
                 <Row style={{'width':'90%','margin':'0 auto'}}>
                     <Col span={24} className="chat-modifier">
                         <div className="chat-gif">
-                            <GiphyKeyboard sendGif={sendMessage}/>
+                            <GiphyKeyboard sendGif/>
                         </div>
-                        <ChatInput getMessage={getMessage}/>
-                        <button className="gif-btn send">
+
+                        {/** Input **/}
+                        <div className="message">
+                            <textarea onKeyPress={handleKeyPress} value={formValue} placeholder="Type Something..." onChange={(e) => setFormValue(e.target.value)} onClick={toggleOpen}/>
+                        </div>
+                        <button className="gif-btn send" onClick={sendMessage}>
                             <div className="send-icon">
                                 <MdSend/>
                                 SEND
                             </div>
                         </button>
+                        
                     </Col>
                 </Row>
             </>
@@ -80,24 +99,22 @@ export function Chat(props) {
             </Row>
             <Row className="broadcast">
                 <Col span={24}>
-                 {messages.map(message => 
-                    <div>
-                        <ChatBubble
-                        userName={message.username}
-                        content={message.content} 
-                        />
-                    </div>
-                )}
+                    {messages && messages.map(msg => 
+                        <ChatBubble  key={msg.id} message={msg}/>
+                    )}
                 </Col>
             </Row>
 
             <Row >
-                <Col span={props.animate} className="chat-modifier">
+                <Col span={props.animate} className={isOpen ? "open chat-modifier" : "chat-modifier"}>
                     <div className="chat-gif">
-                        <GiphyKeyboard sendGif={sendMessage}/>
+                        <GiphyKeyboard sendGif />
                     </div>
-                    <ChatInput getMessage={getMessage}/>
-                    <button className="gif-btn send">
+                    {/** Input **/}
+                    <div className="message">
+                        <textarea onKeyPress={handleKeyPress} value={formValue} placeholder="Type Something..." onChange={(e) => setFormValue(e.target.value)} onClick={toggleOpen}/>
+                    </div>
+                    <button className="gif-btn send" onClick={sendMessage}>
                         <div className="send-icon">
                             <MdSend/>
                             SEND

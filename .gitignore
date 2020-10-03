@@ -24,3 +24,4 @@ yarn-error.log*
 
 /src/apis.js
 /src/base.js
+/src/.config

@@ -90,6 +90,7 @@
 }
 
 .chat-modifier {
+    display: flex;
     position: fixed;
     bottom: 0;
     right: 0;
@@ -107,34 +108,43 @@
         background: none;
     }
 
-    textarea {
+    div.message {
         overflow-y: auto;
         overflow-x: hidden;
-        width: calc(100% - 5px);
+        width: calc(100% - 75px);
         max-width: 500px;
         height: 100%;
-        margin: 0 auto 5px auto;
         padding: 8px 10px 8px 15px;
         border: none;
         border-radius: 15px;
         background: rgba(black, 5%);
         color: $offWhite;
 
-        ::placeholder {
-            font-weight: $heavy;
-            font-size: 0.8rem;
-        }
-
-        &:focus {
+        textarea {
+            position: relative;
+            background: transparent;
+            color: $offWhite;
+            margin: 0;
             border: none;
             outline: none;
+            width: calc( 100% - 5px);
+            height: inherit;
+            overflow-x: hidden;
+    
+            ::placeholder {
+                font-weight: $heavy;
+                font-size: 0.8rem;
+            }
+    
+            &:focus {
+                border: none;
+                outline: none;
+            }
         }
     }
-
-    &:focus-within {
-        height: 120px;
-    }
-
+}
+.chat-modifier.open {
+    height: 120px;
 }
 
 .broadcast {

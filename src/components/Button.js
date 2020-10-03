@@ -4,7 +4,6 @@ import { Tooltip } from "antd";
 import { FaPlay, FaPlus, FaCheck } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import {PortalWithState } from 'react-portal';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
 import config from '../apis';
 import { SoundWave } from './animation';
@@ -112,57 +111,5 @@ function FavoriteButton() {
     )
 }
 
-// Google Sign on page
-function GoogleButton(props) {
-    const { client_id } = config;
-    const [state, setState] = useState({
-        isLoggedIn: false,
-        accessToken: ''
-    })
 
-    const responseGoogle = (response) => {
-        console.log(response);
-    }
-   
-  function login (response, props) {
-    if(response){
-      setState(state => ({
-        isLogined: true,
-        accessToken: response.accessToken
-      })
-      );
-      console.log(response);
-    }
-  }
-
-  function logout () {
-    setState(state => ({
-      isLogined: false,
-      accessToken: ''
-    }));
-    console.log('logout')
-  }
-
-    return(
-        <div className='google-btn'>
-            {state.isLoggedIn ? 
-            <GoogleLogout
-            clientId={client_id}
-            buttonText="Logout"
-            onSuccess={logout}
-            />
-            :
-            <GoogleLogin
-            clientId= {client_id}
-            buttonText="Sign in wih Google"
-            onSuccess={login}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-            responseType='code,token'
-            />  
-          }
-        </div>
-    )
-}
-
-export { Button, BackButton, SignInButton, ChatButton, PlayButton, FavoriteButton, GoogleButton, PlaylistButton };
+export { Button, BackButton, SignInButton, ChatButton, PlayButton, FavoriteButton, PlaylistButton };
