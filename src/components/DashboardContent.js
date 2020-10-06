@@ -14,6 +14,7 @@ import store from '../_redux/createStore';
 
 export function DashboardContent(props) {
     const [currentPage, setCurrentPage] = useState(0)
+    const first = 1
     const [channels,setChannels] = useState([
         {
             id: 1,
@@ -80,7 +81,10 @@ export function DashboardContent(props) {
     }
 
     const handleClick = i => e => {
-        console.log(i)
+        if (i < 1 ) {
+            console.log(i);
+            setCurrentPage(currentPage = first);
+        }
         setCurrentPage(i)
     }
     
@@ -133,7 +137,6 @@ export function DashboardContent(props) {
                 </div>
                 </Page>
 
-                {/**  Find out how to change the 0 programmatically */}
                 <Page                 
                     directionLock={true}
                     dragEnabled={false}

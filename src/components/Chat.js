@@ -24,32 +24,36 @@ export function Chat(props) {
         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut tortor accumsan, eleifend justo at, sodales lectus. Donec metus risus, tristique sit amet leo faucibus, posuere posuere ipsum.'
     })
     const [isOpen, setIsOpen] = useState(false);
-    const [formValue, setFormValue] = useState('')
+    const [formValue, setFormValue] = useState('');
+
     const messagesRef = firestore.collection('messages');
     const query = messagesRef.orderBy('createdAt').limit(25); 
 
     const [messages] = useCollectionData(query);
-
+    
     const sendMessage = async(e) => {
-        console.log(formValue);
-        setFormValue();
-        await messagesRef.add({
-            text: formValue,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        })
-        
+        if (formValue != '') {
+            setFormValue('');
+            toggleOpen();
+            console.log('giffed')
+            await messagesRef.add({
+                text: formValue,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            })            
+        }
     }
 
     const handleKeyPress = (e) => {
         if (e.charCode === 13) {
             sendMessage();
-            toggleOpen();
+          
         }
     }
     function toggleOpen() {
         setIsOpen(!isOpen);
     }
     useEffect(() => {    
+        console.log(messagesRef)
 
     },[])
 
@@ -98,21 +102,26 @@ export function Chat(props) {
                 </Col>
             </Row>
             <Row className="broadcast">
+                {messages && messages.map(msg => 
                 <Col span={24}>
-                    {messages && messages.map(msg => 
-                        <ChatBubble  key={msg.id} message={msg}/>
-                    )}
+                        <ChatBubble  key={msg.id} message={msg} content={props.text} userName={user.userName}/>
                 </Col>
+                )}
             </Row>
 
             <Row >
                 <Col span={props.animate} className={isOpen ? "open chat-modifier" : "chat-modifier"}>
                     <div className="chat-gif">
-                        <GiphyKeyboard sendGif />
+                        <GiphyKeyboard sendGif={sendMessage} />
                     </div>
                     {/** Input **/}
                     <div className="message">
-                        <textarea onKeyPress={handleKeyPress} value={formValue} placeholder="Type Something..." onChange={(e) => setFormValue(e.target.value)} onClick={toggleOpen}/>
+                        <textarea 
+                            value={formValue} 
+                            placeholder="Type Something..." 
+                            onKeyPress={handleKeyPress}                     
+                            onChange={(e) => setFormValue(e.target.value)} 
+                           />
                     </div>
                     <button className="gif-btn send" onClick={sendMessage}>
                         <div className="send-icon">

@@ -32,7 +32,6 @@
     margin: 0px 1px;
     padding: 5px 20px;
     background: $black;
-
 }
 
 .post {
@@ -46,21 +45,22 @@
 
     .op {
         display: inline-flex;
-        width: 35px;
+        width: 30px;
         margin: 5px;
-        margin-right: 5px;
+        margin-right: 10px;
 
         img {
-            height: 35px;
-            width: 35px;
+            height: 30px;
+            width: 30px;
             border-radius: 50%;
             border: 2px solid;
+            background: salmon;
         }
     }
 
     .post-content {
-        padding-top: 7px;
-        padding-bottom: 10px;
+        padding: 7px 5px 10px 5px;
+        border-radius: 10px;
 
         p {
             width: max-content;
@@ -69,6 +69,7 @@
             background: none;
             font-family: $spartan;
             font-weight: $heavy;
+            
         }
 
         .post-timestamp {
@@ -83,10 +84,50 @@
         }
 
         .post-body {
-            width: calc(100% -50px);
+            width: max-content;
+            max-width: 100%;
             height: max-content;
+            padding: 7px 10px;
+            border-radius: 10px;
+            background: rgba(100, 100, 100, 0.25);
         }
     }
+}
+
+.message-container.sent {
+    @extend .message-container;
+    position: relative;
+    width: 90%;
+    right: -10%;
+    .post {
+        justify-content: end;
+        position: relative;
+        right: 0px;
+        left: 0px;
+        background: rgba(255,255,255, 0.05);
+        .op {
+            justify-content: flex-end;
+
+            img {
+                background: $green;
+            }
+        }
+        .post-content {
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            min-width: 80%;
+            max-width:80%;
+            p {
+                min-width: 100%;
+                text-align: right;
+            }
+        }
+        .post-body {
+            margin-left: auto;
+        }
+    }
+
 }
 
 .chat-modifier {
@@ -127,29 +168,30 @@
             margin: 0;
             border: none;
             outline: none;
-            width: calc( 100% - 5px);
+            width: calc(100% - 5px);
             height: inherit;
             overflow-x: hidden;
-    
+
             ::placeholder {
                 font-weight: $heavy;
                 font-size: 0.8rem;
             }
-    
+
             &:focus {
                 border: none;
                 outline: none;
             }
         }
     }
-}
-.chat-modifier.open {
-    height: 120px;
+
+    &:focus-within {
+        height: 120px;
+    }
 }
 
+
 .broadcast {
-    display: flex;
-    height: calc(100vh - 50px);
+    max-height: calc(100vh - 50px);
     width: 100%;
 }
 

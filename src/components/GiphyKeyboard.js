@@ -10,7 +10,7 @@ import config from '../apis';
 
 export function GiphyKeyboard(props) {
     const [clipboard, setClipboard] = useState({
-        img: ''
+        video: ''
     });
 
     const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +31,7 @@ export function GiphyKeyboard(props) {
     //connect gif keyboard to chat channel 
     const sendGif = (item) => {
         setClipboard({ video: item});
-        console.log(clipboard.img)
+        console.log(item.embed_url)
         toggleGifKeyboard();
     }
 
@@ -64,7 +64,7 @@ export function GiphyKeyboard(props) {
                         { mq: "1024px", columns: 3, imageWidth: 110, gutter: 5}
                     ]}
                     className={isOpen ? "gif-keyboard-open" : "gif-keyboard-closed"}
-                    gifListHeight='125px'
+                    gifListHeight='15vh'
                 />
                 : 
                 <div>

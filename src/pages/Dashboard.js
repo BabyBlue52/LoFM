@@ -15,7 +15,7 @@ import { loadUser } from '../_redux/actions/authAction';
 import gif from '../img/gif/chilledCow.gif';
 
 export default function Dashboard(props){
-    const [isOpen, setIsOpen] = useState(true)
+    const [isOpen, setIsOpen] = useState(false)
     const channel = <marquee>"Bob, do something"</marquee>
     const openNotification = () => {
         notification.open({

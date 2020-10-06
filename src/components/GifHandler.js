@@ -32,29 +32,6 @@ export function GifHandler(props) {
     )
 }
 
-export function SongHandler(props) {
-
-    return (
-        <>
-           <Row type="flex">
-                <Col span={20} offset={2} style={{display:'block',paddingTop:"20px"}}>
-                    <h3>Currently Playing </h3>
-                    <marquee behavior="scroll" scrollamount="2.5">
-                        <span style={{'marginRight':'10px'}}>
-                            {props.artist}
-                        </span>
-                        -
-                        <span style={{'marginLeft':'10px'}}>
-                            {props.title}
-                        </span>
-                    </marquee>
-                </Col>
-           </Row>
-           
-        </>
-    )
-}
-
 export function GifHandlerDesktop(props) {
     return (
         <>

@@ -225,6 +225,7 @@ $tablet: 1024px;
         // React Gif Keyboard
         .es_componentWrapper__1-bJI {
             overflow-x: hidden;
+            overflow-y: hidden;
             position: absolute;
             bottom: 50px;
             left: -10px;
@@ -235,6 +236,9 @@ $tablet: 1024px;
             padding-top: 2px;
             font-family: "Spartan", sans-serif;
             background: #0e0e0e; }
+    }
+    .es_listWrapper__4792f > div > div{
+        min-height: 15vh !important;
     }
 
     #app {
