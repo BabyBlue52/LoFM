@@ -5,14 +5,17 @@ import { Link } from 'react-router-dom';
 import Logo from '../img/logo.svg';
 
 import 'swiper/swiper.scss';
-import { HeartFilled } from '@ant-design/icons';
+
 
 export default function MobileDashboard(){
+    const [state, setState] = useState({
+        displayName: null
+    })
 
     const [channels, setChannels] = useState([
         {
             id:"1",
-            name:"Steezyazfuck sdf",
+            name:"Steezyazfuck",
             thumbnail:"",
             followers:23
         },
@@ -38,8 +41,26 @@ export default function MobileDashboard(){
 
         console.log(i)
     }
+    const welcomeNotification = () => {
+        notification.open({
+          message: `Welcome back, ${state.displayName}`,
+          className: 'lo-welcome',
+          placement: 'topRight',
+          duration: 4.5,
+        });
+      };
+
     useEffect(()=> {
-        console.log('Make API request')
+        console.log('Make API request');
+                
+        if(state.displayName !== null) {
+            setState(state.displayName = state.displayName)
+            setTimeout(function(){
+                welcomeNotification();
+            }, 2500);
+        } else {
+            setState(state.displayName = 'Anonymous');
+        }
     },[])
     
     return (

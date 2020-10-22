@@ -15,7 +15,7 @@ import store from '../_redux/createStore';
 export function DashboardContent(props) {
     const [currentPage, setCurrentPage] = useState(0)
     const first = 1
-    const [channels,setChannels] = useState([
+  
         {},
         {
             id: 1,
@@ -164,6 +164,7 @@ export function DashboardContent(props) {
                                 />
                             </Col>
                             <Col span={16} className="d-inline" style={{"overflowX":"hidden","overflowY":"scroll","paddingRight":"10px"}}>
+                                
                                 {/** Channel Bio */}
                                 <ChannelBio
                                     bio={channels[currentPage].bio}

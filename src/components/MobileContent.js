@@ -4,21 +4,25 @@ import { Frame, Page } from "framer";
 import { motion }from 'framer-motion';
 import ReactPlayer from 'react-player';
 
-import { Chat } from '../../components/Chat';
-import { ChatButton, PlayButton } from '../../components/Button';
-import ChannelLinks from '../../components/ChannelLinks';
-import { ChannelPlaylist } from '../../components/ChannelPlaylist';
-import { ChannelUploads } from '../../components/ChannelUploads';
-import ChannelBio from '../../components/ChannelBio';
-import { GifHandler } from '../../components/GifHandler';
+import { Chat } from './Chat';
+import { ChatButton, PlayButton } from './Button';
+import ChannelLinks from './ChannelLinks';
+import { ChannelPlaylist } from './ChannelPlaylist';
+import { ChannelUploads } from './ChannelUploads';
+import ChannelBio from './ChannelBio';
+import { GifHandler } from './GifHandler';
 
 import gif from '../../img/gif/chilledCow.gif';
-import config from '../../apis';
+import config from '../apis';
+import { current } from 'immer';
 
 
 export function BootlegBoy(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [hasError, setHasError] = useState(false);
+    const [currentPage, setCurrentPage] = useState(0)
+    const [channels,setChannels] = useState([
+
     const [live,setLive] = useState({
         videoId: null,
         song:'',
@@ -50,8 +54,10 @@ export function BootlegBoy(props) {
     function handlePlay(){
         setIsPlaying(!isPlaying);
     }
+
     const { api_key, channel_id_1 } = config;
     const width = window.innerWidth
+    
     //api calls
     useEffect(() => {
         const urls = [
@@ -96,15 +102,21 @@ export function BootlegBoy(props) {
                 directionLock={true}
                 dragEnabled={true}
                 contentWidth={300}
-                //className={( 768 < window.width && window.width < 1024 )? "_adjustKit": "" }
             >       
+                <Frame>
+                    <Row className="justify-center">
+                        
+                    </Row>
+                </Frame>
                 {/* Spotify Playlists */}
                 <Frame size={width}>
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
                         <div className="spacer"></div>
                         <h3>Spotify Playlists</h3>
-                        <ChannelPlaylist/>
+                        <ChannelPlaylist
+                            station={channels[currentPage].spotify}
+                        />
                         </Col>
                     </Row>  
                 </Frame>        
@@ -116,15 +128,15 @@ export function BootlegBoy(props) {
                         <div className="spacer"></div>
                         <h3>Latest Uploads</h3>
                         <div className="vid-scroller">
-                            {uploads.videos.map((data, i) => {
+                            {channels[currentPage].videos.map((data, i) => {
                                 return(
                                     <div className="vid-card" key={i}>
                                         <ChannelUploads
-                                            videoThumbnail={data.snippet.thumbnails.medium.url}
-                                            videoTitle={data.snippet.title}
-                                            videoViews={data.snippet.views}
-                                            publishedAt={data.snippet.publishedAt}
-                                            link={data.id.videoId}
+                                            videoThumbnail={data.videoThumbnail}
+                                            videoTitle={data.videoTitle}
+                                            videoViews={data.views}
+                                            publishedAt={datapublishedAt}
+                                            link={data.videoId}
                                         /> 
                                     </div>
                                 )
@@ -148,14 +160,14 @@ export function BootlegBoy(props) {
                         youtube={links.youtube}
                         artist={song.artist}
                         title={song.title}
-                        thumbnail={profile.thumbnail}
+                        thumbnail={channels[currentPage]thumbnail}
                         id={profile.id}
                         videoId={live.videoId}
+                        viewers={channels[currentPage].view}
                     />
                     <ChannelBio
-                        name={profile.name}
+                        name={channels[currentPage].name}
                         bio={profile.bio}
-                        viewers={uploads.view}
                     />
                     {/* Play Content */}
                     <Row className="justify-center">

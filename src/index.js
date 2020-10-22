@@ -47,7 +47,7 @@ function App() {
                   <div id="app">
                     <div className="sunset-skin">
                       <Route exact path="/" component={MobileDashboard} />
-                      <Route exact path="/radio" component={RadioTuner} />
+                      <Route exact path="/radio/*" component={RadioTuner} />
                       <Route exact path="/login" component={LoginPage} />
                       <Route exact path="/sign-up" component={SignUpPage}/>
                       <PrivateRoute exact path="/chat" component={Chat}/>
