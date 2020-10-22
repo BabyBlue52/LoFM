@@ -16,6 +16,7 @@ export function DashboardContent(props) {
     const [currentPage, setCurrentPage] = useState(0)
     const first = 1
     const [channels,setChannels] = useState([
+        {},
         {
             id: 1,
             title:'The Bootleg Boy',
@@ -83,9 +84,9 @@ export function DashboardContent(props) {
     const handleClick = i => e => {
         if (i < 1 ) {
             console.log(i);
-            setCurrentPage(currentPage = first);
+            setCurrentPage(1)
         }
-        setCurrentPage(i)
+        setCurrentPage(i++)
     }
     
 
@@ -110,6 +111,9 @@ export function DashboardContent(props) {
                     
                         <Row justify="start" className={props.row}>
                         {channels.map((item, i) => {
+                            if (i === 0){
+                                //Do Nothing
+                            } else {
                             return (
                                 <Col span={props.span} style={{'flexDirection':'start'}} >
                                     <div key={i} id={item.id} className="artist-card _dropShadow" onClick={handleClick(i)}>
@@ -130,7 +134,7 @@ export function DashboardContent(props) {
                                     </div>
                                 </Col>
                             )
-                        })}
+                        }})}
                         </Row>
                     
                     <div className="super-spacer"></div>
@@ -170,7 +174,7 @@ export function DashboardContent(props) {
                                 <div className="vid-scroller">
                                 <h3>Latest Uploads</h3>
                                     <Row align="left">
-                                    {channels[0].videos.map((data, i) => {
+                                    {channels[1].videos.map((data, i) => {
                                         return(
                                             <Col span={12}>
                                                 <motion.div className="vid-card" key={i}>
@@ -190,7 +194,7 @@ export function DashboardContent(props) {
                                 <div className="spacer"></div>
                                 {/** Spotify Uploads*/}
                                  <ChannelPlaylist
-                                    station={channels[0].spotify}
+                                    station={channels[1].spotify}
                                 />
                             </Col>
                         </Row>
