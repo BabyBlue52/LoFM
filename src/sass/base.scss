@@ -1,6 +1,8 @@
 @import './variables/colors.scss';
 @import './variables/fonts.scss';
 
+$smooth: all 350ms ease-in-out;
+
 html {
     overflow: hidden;
 }
@@ -66,7 +68,9 @@ marquee {
         font-size: 1.2rem;
     }
 }
-
+a, div {
+    transition: $smooth;
+}
 /* Storybook Edits */
 .story-container {
     overflow: hidden;

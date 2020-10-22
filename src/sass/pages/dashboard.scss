@@ -160,6 +160,8 @@ h1.channel-header {
     overflow:hidden;
     overflow-y: auto;
     max-height: 70vh;
+    max-width: 500px;
+    margin: 0 auto;
     padding: 20px 0px;
     
     h1 {
@@ -173,7 +175,8 @@ h1.channel-header {
         min-height: 150px;
         max-height: max-content;
         min-width: 100px;
-        margin: 10px;
+        max-width: 120px;
+        margin: 10px 20px;
         a {
             height: inherit;
             width: inherit;
@@ -182,9 +185,16 @@ h1.channel-header {
         img {
             height: 120px;
             width: inherit;
+            max-width: 120px;
             outline: none;
             background: url('https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png');
             background-size: cover;
+            transition: $smooth;
+
+            &:hover, &:focus {
+                transform: scale(0.95);
+                transition: $smooth;
+            }
         }
 
         p {
