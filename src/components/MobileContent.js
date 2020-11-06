@@ -10,18 +10,15 @@ import ChannelLinks from './ChannelLinks';
 import { ChannelPlaylist } from './ChannelPlaylist';
 import { ChannelUploads } from './ChannelUploads';
 import ChannelBio from './ChannelBio';
-import { GifHandler } from './GifHandler';
 
-import gif from '../../img/gif/chilledCow.gif';
 import config from '../apis';
-import { current } from 'immer';
 
 
 export function BootlegBoy(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [hasError, setHasError] = useState(false);
     const [currentPage, setCurrentPage] = useState(0)
-    const [channels,setChannels] = useState([
+    const [channels,setChannels] = useState([])
 
     const [live,setLive] = useState({
         videoId: null,
@@ -135,7 +132,7 @@ export function BootlegBoy(props) {
                                             videoThumbnail={data.videoThumbnail}
                                             videoTitle={data.videoTitle}
                                             videoViews={data.views}
-                                            publishedAt={datapublishedAt}
+                                            publishedAt={data.publishedAt}
                                             link={data.videoId}
                                         /> 
                                     </div>
@@ -160,7 +157,7 @@ export function BootlegBoy(props) {
                         youtube={links.youtube}
                         artist={song.artist}
                         title={song.title}
-                        thumbnail={channels[currentPage]thumbnail}
+                        thumbnail={channels[currentPage].thumbnail}
                         id={profile.id}
                         videoId={live.videoId}
                         viewers={channels[currentPage].view}
