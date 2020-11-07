@@ -193,6 +193,7 @@
 .broadcast {
     max-height: calc(100vh - 50px);
     width: 100%;
+    overflow-y: auto;
 }
 
 .chat-gif {
@@ -202,6 +203,7 @@
 .drawer-closed {
     transition: ease-in-out 300ms;
 }
+
 
 // Specialty Keyboard
 .gif-keyboard-open {
@@ -256,4 +258,35 @@
 
 .SearchForm_form__2QcwN {
     padding: 15px 0px 10px 0;
+}
+
+@media screen and (min-width: $mobile) and (max-width: $tablet) {
+    .chat-mobile {
+        background: $darker;
+        height: 100vh;
+
+        .broadcast {
+            position: relative;
+            bottom: 20px;
+            width: 95vw;
+            max-height: calc(100vh - 180px);
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .chat-header {
+            display:flex;
+            justify-content: center;
+            height: 60px;
+            padding: 20px;
+        }
+        .message-container {
+            background: $darker;
+        }
+        .sent.message-container .post {
+            justify-content: start;
+        }
+        .post .post-content p {
+            font-size: 15.5px;
+      }
+    }
 }

@@ -50,7 +50,8 @@ function App() {
                       <Route exact path="/radio/*" component={RadioTuner} />
                       <Route exact path="/login" component={LoginPage} />
                       <Route exact path="/sign-up" component={SignUpPage}/>
-                      <PrivateRoute exact path="/chat" component={Chat}/>
+                      <Route exact path="/chat" component={Chat}/>
+                      {/* <PrivateRoute exact path="/chat" component={Chat}/> */}
                       <Route exact path="/support-us" component={SupportPage}/>
                     </div> 
                   </div>

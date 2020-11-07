@@ -5,7 +5,6 @@ import { PortalWithState } from 'react-portal';
 import { connect, useDispatch } from 'react-redux';
 
 import SearchPage from '../pages/Search';
-import InboxPage from '../pages/Inbox';
 import FavePage from '../pages/Favorites';
 import SupportPage from '../pages/Support';
 import { logout, loadUser } from '../_redux/actions/authAction';
@@ -87,26 +86,20 @@ export function PushMenu(props) {
                         </Col>
                     </Row>
                         
-                    {/* Inbox Portal */}
+                    {/* Chat Portal */}
                     <Row>
                         <Col>
                             <p>Messages</p>
                         </Col>
+                       
                         <Col onClick={closeDrawer}>
-                            <PortalWithState closeOnOutsideClick closeOnEsc>
-                            {({ openPortal, closePortal, isOpen, portal }) => (
-                                <React.Fragment>
-                                    <button className="menu-round" onClick={openPortal}>
-                                        <Badge dot={props}>
-                                            <AiOutlineInbox/>
-                                        </Badge>            
-                                    </button>
-                                    {portal(
-                                        <InboxPage onCloseInbox={closePortal}/>
-                                    )}
-                                </React.Fragment>
-                            )}
-                            </PortalWithState> 
+                            <button className="menu-round" >
+                                <a href="/chat">
+                                    <Badge dot={props}>
+                                        <AiOutlineInbox/>
+                                    </Badge>
+                                </a>            
+                            </button>
                         </Col>
                     </Row>
                     

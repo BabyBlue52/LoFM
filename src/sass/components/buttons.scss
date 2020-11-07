@@ -424,3 +424,13 @@ button.gif-btn {
 button.send {
     background: none;
 }
+button.back-btn {
+    position: absolute;
+    left: 10px;
+
+    svg {
+        fill: $offWhite;
+        height: 24px;
+        width: 24px;
+    }
+}

@@ -4,8 +4,9 @@ import { MdSend } from 'react-icons/md';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { ChatBubble } from './ChatBubble';
+import { BackButton } from './Button';
 import { GiphyKeyboard } from './GiphyKeyboard';
 import firebaseConfig from '../config';
 
@@ -59,17 +60,24 @@ export function Chat(props) {
 
     if (window.innerWidth < 400 ) {
         return (
-            <>  
+            <div className="chat-mobile">  
                 <Row style={{'width':'100%'}}>
-                    <Col span={24} className="justify-center">
+                    <Col span={24} className="chat-header">
+                        <button className="back-btn">
+                            <AiOutlineArrowLeft/>
+                        </button>
+                    
                         <h3 className="chat-title">{props.snippet} chat</h3>
                     </Col>
                 </Row>
                 {/* Chat API Body */}        
-                <Row style={{'width':'90%','margin':'0 auto'}}>
+                <Row className="broadcast">
+                    {messages && messages.map(msg => 
                     <Col span={24}>
-                        <div className="temps"></div>   
+                            <ChatBubble  key={msg.id} message={msg} content={props.text} userName={user.userName}/>
                     </Col>
+                    )}
+                    <div className="spacer"></div>
                 </Row>
                 <Row style={{'width':'90%','margin':'0 auto'}}>
                     <Col span={24} className="chat-modifier">
@@ -90,7 +98,7 @@ export function Chat(props) {
                         
                     </Col>
                 </Row>
-            </>
+            </div>
         )
     }
     else { 
