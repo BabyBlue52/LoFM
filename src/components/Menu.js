@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {Row, Col, Badge, Drawer} from 'antd';
 import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiOutlineMenu, AiOutlineClose, AiOutlineUser } from 'react-icons/ai';
+import { BsFillChatSquareFill } from 'react-icons/bs';
 import { PortalWithState } from 'react-portal';
 import { connect, useDispatch } from 'react-redux';
 
@@ -96,7 +97,7 @@ export function PushMenu(props) {
                             <button className="menu-round" >
                                 <a href="/chat">
                                     <Badge dot={props}>
-                                        <AiOutlineInbox/>
+                                        <BsFillChatSquareFill stroke="white"/>
                                     </Badge>
                                 </a>            
                             </button>
@@ -150,19 +151,13 @@ export function PushMenu(props) {
                         <Col>
                             <p>Support Us</p>
                         </Col>
+                         
                         <Col onClick={closeDrawer}>
-                            <PortalWithState closeOnOutsideClick closeOnEsc>
-                            {({ openPortal, closePortal, isOpen, portal }) => (
-                                <React.Fragment>
-                                    <button className="support-round" onClick={openPortal}>
-                                        <AiOutlineSmile />
-                                    </button>     
-                                    {portal(
-                                        <SupportPage onCloseSupport={closePortal}/>
-                                    )}
-                                </React.Fragment>
-                            )}
-                            </PortalWithState> 
+                            <a href="/support">
+                                <button className="support-round">
+                                    <AiOutlineSmile />
+                                </button>  
+                            </a>
                         </Col>
                     </Row>
         
