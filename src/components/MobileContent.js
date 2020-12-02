@@ -57,33 +57,7 @@ export function BootlegBoy(props) {
     
     //api calls
     useEffect(() => {
-        const urls = [
-            `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channel_id_1}&key=${api_key}`,
-            `https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=${channel_id_1}&maxResults=2&key=${api_key}`,
-            `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channel_id_1}&eventType=live&maxResults=1&type=video&key=${api_key}`
-        ]
-        
-        Promise.all(urls.map(url =>
-            fetch(url)
-            .then(res => res.json()))
-        )           
-        .then(data => {
-            setProfile({
-                name: data[0].items[0].snippet.title,
-                bio: data[0].items[0].snippet.description,
-                thumbnail: data[0].items[0].snippet.thumbnails.default.url,
-                videos: data.items
-            })
-            setUploads({
-                videos: data[1].items
-            })
-            setLive({
-                videoId: data[2].items[0].id.videoId
-            })
-        })   
-        .catch(
-            <h1>Error</h1>
-        )
+
         console.log(width)
     }, [ api_key ]);
 

@@ -39,12 +39,17 @@ export function LoginPage(props) {
     // Handle Login dispatch
     const handleLogin = function(e) {
       e.preventDefault();
-      dispatch(login(formik.values.email, formik.values.password));
-      setTimeout(() => {
-        checkLogin();
-      }, 500)
+      if (formik.values.email == "" || formik.values.password == "") {
+        setTimeout(() => {
+          loginFail();
+        }, 500)
+      } else {
+        dispatch(login(formik.values.email, formik.values.password));
+        setTimeout(() => {
+          checkLogin();
+        }, 500)
+      }
     }
-
     const checkLogin = () => {
         if ( store.getState().auth.token !== null ) {
           setTimeout(function(){

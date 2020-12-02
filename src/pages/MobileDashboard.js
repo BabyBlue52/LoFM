@@ -7,40 +7,23 @@ import Logo from '../img/logo.svg';
 import 'swiper/swiper.scss';
 
 
+
 export default function MobileDashboard(){
+    const [channels, setChannels] = useState([]);
     const [state, setState] = useState({
         displayName: null
     })
 
-    const [channels, setChannels] = useState([
-        {
-            id:"1",
-            name:"Steezyazfuck",
-            thumbnail:"",
-            followers:23
-        },
-        {
-            id:"2",
-            name:"The Bootleg Boy",
-            thumbnail:""
-        },
-        {
-            id:"3",
-            name:"Ryan Celsius Sounds",
-            thumbnail:""
-        },
-        {
-            id:"71231",
-            name:"Rare",
-            thumbnail:""
-        },
-    ]) 
     const adjustable = 3
+    const url = "https://dev.lofifm.com/api/creators"
 
     const channelSelect = i => e => {
-
         console.log(i)
     }
+    
+    let channelLoop = []
+
+
     const welcomeNotification = () => {
         notification.open({
           message: `Welcome back, ${state.displayName}`,
@@ -51,8 +34,9 @@ export default function MobileDashboard(){
       };
 
     useEffect(()=> {
-        console.log('Make API request');
-                
+        
+        fetchAPI(url);
+
         if(state.displayName !== null) {
             setState(state.displayName = state.displayName)
             setTimeout(function(){
@@ -62,7 +46,22 @@ export default function MobileDashboard(){
             setState(state.displayName = 'Anonymous');
         }
     },[])
-    
+
+
+    const fetchAPI = (url) => {
+         fetch(url)
+        .then(function(response) {
+            // The response is a Response instance.
+            // You parse the data into a useable format using `.json()`
+            return response.json();
+        }).then(function(data) {
+            // `data` is the parsed version of the JSON returned from the above endpoint.
+            setChannels(data.data)
+        })
+    }
+
+
+  
     return (
         <React.Fragment>
             <Row>
@@ -71,7 +70,7 @@ export default function MobileDashboard(){
             </Row>
             <div className="mobile-dashboard">
                 
-                {/** Most Popular */}
+                {/** Most Popular */} 
                 <Row>
                     <h1>Most Popular</h1>
                 </Row>
@@ -79,23 +78,25 @@ export default function MobileDashboard(){
                     spaceBetween={10}
                     slidesPerView={adjustable}
                 >
-                    <SwiperSlide className="starter"></SwiperSlide>
-                    {channels.slice(0, 9).map((channel, i) => {
+                    <SwiperSlide className="starter">
+            
+                    </SwiperSlide>
+                    {channels.map((item) => {
                         return(
-                            <SwiperSlide key={i} className="channel-cover">
-                                <Link to={`/radio/${channel.id}`} >
-                                    <img src={channel.thumbnail} />
-                                    <p>{channel.name}</p>
+                            <SwiperSlide  className="channel-cover">
+                                <Link to={`/radio/${item.id}`} >
+                                    <img src={item.thumbnail} />
+                                    <p>{item.creator_name}</p>
                                     <p className="followers">
-                                        {channel.followers}
+                                        {item.followers}
                                         <span>followers</span>
                                     </p>
                                 </Link>
                             </SwiperSlide>
                         )
-                    })}
+                    })}   
                 </Swiper>
-                    <div className="spacer"></div>
+                <div className="spacer"></div>
                 
                 {/** Trending */}
                 <Row>
@@ -105,21 +106,20 @@ export default function MobileDashboard(){
                     spaceBetween={10}
                     slidesPerView={adjustable}
                 >
-                    <SwiperSlide className="starter"></SwiperSlide>
-                    {channels.slice(0, 9).map((channel, i) => {
-                        return(
-                            <SwiperSlide key={i} className="channel-cover">
-                                <Link to={`/radio/${channel.id}`}>
-                                    <img src={channel.thumbnail} />
-                                    <p>{channel.name}</p>
-                                    <p className="followers">
-                                        {channel.followers}
-                                        <span>followers</span>
-                                    </p>
-                                </Link>
-                            </SwiperSlide>
-                        )
-                    })}
+                       {channels.map((item, i) => {
+                    return(
+                        <SwiperSlide key={i} className="channel-cover">
+                            <Link to={`/radio/${item.id}`} >
+                                <img src={item.thumbnail} />
+                                <p>{item.creator_name}</p>
+                                <p className="followers">
+                                    {item.followers}
+                                    <span>followers</span>
+                                </p>
+                            </Link>
+                        </SwiperSlide>
+                    )
+                })}
                 </Swiper>
                 <div className="spacer"></div>
             </div>
