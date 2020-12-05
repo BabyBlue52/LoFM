@@ -57,7 +57,7 @@ export function BootlegBoy(props) {
     
     //api calls
     useEffect(() => {
-
+        
         console.log(width)
     }, [ api_key ]);
 

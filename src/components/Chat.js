@@ -111,8 +111,8 @@ export function Chat(props) {
             </Row>
             <Row className="broadcast">
                 {messages && messages.map(msg => 
-                <Col span={24}>
-                        <ChatBubble  key={msg.id} message={msg} content={props.text} userName={user.userName}/>
+                <Col span={24} key={msg.id}>
+                        <ChatBubble  message={msg} content={props.text} userName={user.userName}/>
                 </Col>
                 )}
             </Row>

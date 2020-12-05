@@ -97,7 +97,8 @@ h1.channel-header {
 /** Favorites **/
 .favorite-dash {
     position: relative;
-    left: 255px;
+    left: 205px;
+    width: max-content;
     transform: scale(1.2);
 
 }
@@ -230,4 +231,10 @@ h1.mobile-header {
     text-transform: capitalize;
     font-size: 1.3rem;
     font-weight: $superHeavy;
+}
+.channel-page {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 10px;
+    padding-left: 30px;
 }

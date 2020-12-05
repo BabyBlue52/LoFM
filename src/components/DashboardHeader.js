@@ -39,7 +39,7 @@ export function DashboardHeader(props){
     return (
         <React.Fragment>
             <Row className="dashboard-header">
-                <Col span={6} style={{'justifyContent':'end'}}>
+                <Col span={6} offset={1} style={{'justifyContent':'end'}}>
                     <button className="profile-icon">
                         <AiOutlineSmile/>
                     </button>
@@ -53,7 +53,7 @@ export function DashboardHeader(props){
                 <Col span={12}>
                     <Input className="dashboard-search" prefix={<AiOutlineSearch/>} size="middle" />
                 </Col>
-                <Col span={5} style={{'justifyContent':'flex-end'}}>
+                <Col span={4} style={{'justifyContent':'flex-end'}}>
                     <Link to="/support-us">
                     <button className="support-btn">
                         <p>Support Us</p>    
