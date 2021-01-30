@@ -38,7 +38,7 @@ export default function Dashboard(props){
             openNotification()
           }, 2500);
 
-        axios.get('https://dev.lofifm.com/api/info',{
+        axios.get('http://localhost/api/info',{
             header: { Authorization: "Bearer " }
         })
         .then( res => {

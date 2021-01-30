@@ -22,7 +22,7 @@ export default function RadioTuner() {
     useEffect(() => {    
         store.dispatch(loadUser());
         console.log(store.getState())
-        axios.get('https://dev.lofifm.com/api/info',{
+        axios.get('http://localhost/api/info',{
             header: { Authorization: "Bearer " }
         })
         .then( res => {

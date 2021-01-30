@@ -15,7 +15,7 @@ export default function MobileDashboard(){
     })
 
     const adjustable = 3
-    const url = "https://dev.lofifm.com/api/creators"
+    const url = "http://localhost/api/creators"
 
     const channelSelect = i => e => {
         console.log(i)

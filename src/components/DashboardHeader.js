@@ -14,7 +14,7 @@ export function DashboardHeader(props){
 
     useEffect(() => {
         store.dispatch(loadUser());
-        axios.get('https://dev.lofifm.com/api/info',{
+        axios.get('http://localhost/api/info',{
             header: { Authorization: "Bearer " }
         })
         .then( res => {
@@ -39,7 +39,7 @@ export function DashboardHeader(props){
     return (
         <React.Fragment>
             <Row className="dashboard-header">
-                <Col span={6} offset={1} style={{'justifyContent':'end'}}>
+                <Col span={6} offset={1}>
                     <button className="profile-icon">
                         <AiOutlineSmile/>
                     </button>

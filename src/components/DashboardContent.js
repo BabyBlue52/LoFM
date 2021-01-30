@@ -17,7 +17,7 @@ export function DashboardContent(props) {
     const [channels,setChannels] = useState([])
     const [favorite,setFavorite] = useState(false);
     
-    const url = "https://dev.lofifm.com/api/creators"
+    const url = "http://localhost/api/creators"
 
     useEffect(()=> {
                 

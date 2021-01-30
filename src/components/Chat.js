@@ -27,6 +27,7 @@ export function Chat(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [formValue, setFormValue] = useState('');
 
+    const [isDisabled, setDisabled] = useState(true);
     const messagesRef = firestore.collection('messages');
     const query = messagesRef.orderBy('createdAt').limit(25); 
 
@@ -71,7 +72,7 @@ export function Chat(props) {
                     </Col>
                 </Row>
                 {/* Chat API Body */}        
-                <Row className="broadcast">
+                <Row className={ isDisabled ? "broadcast" : "_disabled"}>
                     {messages && messages.map(msg => 
                     <Col span={24}>
                             <ChatBubble  key={msg.id} message={msg} content={props.text} userName={user.userName}/>
@@ -104,11 +105,22 @@ export function Chat(props) {
     else { 
         return (
         <div > 
+            { isDisabled ? 
+            <Row>
+                <div className="_disabled">
+                    
+                    <h1> Chat Function<span>coming soon</span> </h1>
+                </div>
+            </Row> 
+            :
+
+            <div>
             <Row>
                 <Col span={24} className="justify-center">
                     <h3 className="chat-title">{props.channelName} chat</h3>
                 </Col>
             </Row>
+            
             <Row className="broadcast">
                 {messages && messages.map(msg => 
                 <Col span={24} key={msg.id}>
@@ -116,7 +128,7 @@ export function Chat(props) {
                 </Col>
                 )}
             </Row>
-
+        
             <Row >
                 <Col span={props.animate} className={isOpen ? "open chat-modifier" : "chat-modifier"}>
                     <div className="chat-gif">
@@ -139,6 +151,8 @@ export function Chat(props) {
                     </button>
                 </Col>
             </Row>
+            </div>
+            }
         </div>
         )
     }
