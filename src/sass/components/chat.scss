@@ -264,12 +264,22 @@
 ._disabled {
     height: 100vh;
     width: 100%;
-    padding: 25% 0;
+    padding: 50% 0;
+    background: rgba($darker, 50%);
+    img {
+        height: 120px;
+        width: 100%;
+        padding-bottom: 20px;
+        opacity: 0.8;
+    }
     h1 {
-
-        span {
-            font-size: 8px;
-        }
+        font-weight: $superHeavy;
+        margin-bottom: 0;
+    }   
+    p {
+        text-align: center;
+        font-size: 0.8rem;
+        background: none;
     }
 }
 

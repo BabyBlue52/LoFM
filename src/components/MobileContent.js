@@ -57,11 +57,24 @@ export function BootlegBoy(props) {
     
     //api calls
     useEffect(() => {
-        
+        fetchAPI(info)
         console.log(width)
     }, [ api_key ]);
 
     
+    const fetchAPI = (info) => {
+        fetch(url)
+       .then(function(response) {
+           // The response is a Response instance.
+           // You parse the data into a useable format using `.json()`
+           return response.json();
+       }).then(function(data) {
+           // `data` is the parsed version of the JSON returned from the above endpoint.
+           setChannels(data.data)
+       })
+   }
+
+    const info = `http://localhost/api/creator/youtube/{}`
     const url = `http://youtube.com/watch?v=${live.videoId}`
     return(
         <>  
@@ -80,7 +93,7 @@ export function BootlegBoy(props) {
                     </Row>
                 </Frame>
                 {/* Spotify Playlists */}
-                <Frame size={width}>
+                {/* <Frame size={width}>
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
                         <div className="spacer"></div>
@@ -90,7 +103,7 @@ export function BootlegBoy(props) {
                         />
                         </Col>
                     </Row>  
-                </Frame>        
+                </Frame>         */}
                  
                 {/* Recent Uploads */}
                 <Frame size={width}>
@@ -99,7 +112,7 @@ export function BootlegBoy(props) {
                         <div className="spacer"></div>
                         <h3>Latest Uploads</h3>
                         <div className="vid-scroller">
-                            {channels[currentPage].videos.map((data, i) => {
+                            {/* {channels[currentPage].videos.map((data, i) => {
                                 return(
                                     <div className="vid-card" key={i}>
                                         <ChannelUploads
@@ -111,7 +124,7 @@ export function BootlegBoy(props) {
                                         /> 
                                     </div>
                                 )
-                            })}
+                            })} */}
                         </div>
                         </Col>
                     </Row>  
@@ -131,13 +144,13 @@ export function BootlegBoy(props) {
                         youtube={links.youtube}
                         artist={song.artist}
                         title={song.title}
-                        thumbnail={channels[currentPage].thumbnail}
+                       //thumbnail={channels[currentPage].thumbnail}
                         id={profile.id}
                         videoId={live.videoId}
-                        viewers={channels[currentPage].view}
+                       // viewers={channels[currentPage].view}
                     />
                     <ChannelBio
-                        name={channels[currentPage].name}
+                       // name={channels[currentPage].name}
                         bio={profile.bio}
                     />
                     {/* Play Content */}
