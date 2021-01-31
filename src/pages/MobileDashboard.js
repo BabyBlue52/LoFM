@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, notification } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Logo from '../img/logo.svg';
 
 import 'swiper/swiper.scss';
@@ -20,9 +20,6 @@ export default function MobileDashboard(){
     const channelSelect = i => e => {
         console.log(i)
     }
-    
-    let channelLoop = []
-
 
     const welcomeNotification = () => {
         notification.open({
@@ -57,6 +54,7 @@ export default function MobileDashboard(){
         }).then(function(data) {
             // `data` is the parsed version of the JSON returned from the above endpoint.
             setChannels(data.data)
+
         })
     }
 
@@ -82,7 +80,10 @@ export default function MobileDashboard(){
                     {channels.map((item) => {
                         return(
                             <SwiperSlide  className="channel-cover">
-                                <Link to={`/radio/${item.id}`} >
+                                <Link to={{
+                                    pathname: `/radio/${item.id}`,
+                                    state: {id: item.id}
+                                    }} >
                                     <img src={item.thumbnail} />
                                     <p>{item.creator_name}</p>
                                     <p className="followers">
@@ -109,7 +110,10 @@ export default function MobileDashboard(){
                        {channels.map((item, i) => {
                     return(
                         <SwiperSlide key={i} className="channel-cover">
-                            <Link to={`/radio/${item.id}`} >
+                            <Link to={{
+                                pathname: `/radio/${item.id}`,
+                                state: {id: item.id}
+                                }}>
                                 <img src={item.thumbnail} />
                                 <p>{item.creator_name}</p>
                                 <p className="followers">
