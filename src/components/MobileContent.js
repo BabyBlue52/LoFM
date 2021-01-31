@@ -98,7 +98,7 @@ export function MobileContent(props) {
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
-                currentPage={1}
+                currentPage={2}
                 direction="horizontal"
                 directionLock={true}
                 dragEnabled={true}
@@ -161,13 +161,13 @@ export function MobileContent(props) {
                         youtube={links.youtube}
                         artist={song.artist}
                         title={song.title}
-                        thumbnail={uploads[currentPage].thumbnail}
+                        thumbnail={uploads[currentPage]}
                         id={profile.id}
                         videoId={live.videoId}
-                        viewers={uploads[currentPage].view}
+                        viewers={uploads[currentPage]}
                     />
                     <ChannelBio
-                        name={uploads[currentPage].name}
+                        name={uploads[currentPage]}
                         bio={profile.bio}
                     />
                     {/* Play Content */}
