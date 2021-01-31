@@ -3,12 +3,9 @@ import { Page, Frame } from 'framer';
 import axios from 'axios';
 
 import { IoMdArrowRoundUp, IoMdArrowRoundDown } from 'react-icons/io';
-import { BootlegBoy } from '../components/MobileContent';
+import { MobileContent } from '../components/MobileContent';
 import store from '../_redux/createStore';
 import { loadUser } from '../_redux/actions/authAction';
-
-import Celcius from '../img/stamp/celcius-stamp.png';
-import BootLeg from '../img/stamp/bootleg-stamp.png';
 
 export default function RadioTuner() {
 
@@ -43,18 +40,8 @@ export default function RadioTuner() {
                 direction="vertical"
                 directionLock={true}
             >
-                <BootlegBoy />
-                <Page>
-                    {/** Interstitial Frame */}
-                    <Frame className="stamp">
-                        <IoMdArrowRoundUp/>
-                        <h1>{stations[0]}</h1>
-                        <img src={BootLeg} />                        
-                        <img src={Celcius}/> 
-                        <h1>{stations[1]}</h1>  
-                        <IoMdArrowRoundDown/>                       
-                    </Frame>   
-                </Page>
+                <MobileContent />
+           
             </Page>
         </div>
     )

@@ -3,6 +3,7 @@ import { Row, Col, Spin } from 'antd';
 import { Frame, Page } from "framer";
 import { motion }from 'framer-motion';
 import ReactPlayer from 'react-player';
+import { Link, useLocation } from 'react-router-dom'
 
 import { Chat } from './Chat';
 import { ChatButton, PlayButton } from './Button';
@@ -13,24 +14,22 @@ import ChannelBio from './ChannelBio';
 
 import config from '../apis';
 
+let vids = []
+let url = ""
 
-export function BootlegBoy(props) {
+export function MobileContent(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [hasError, setHasError] = useState(false);
-    const [currentPage, setCurrentPage] = useState(0)
-    const [channels,setChannels] = useState([])
+    const [currentPage, setCurrentPage] = useState(0);
+    const location = useLocation()
 
     const [live,setLive] = useState({
         videoId: null,
         song:'',
         artist:'',
     });
-    const [uploads, setUploads] = useState({
-        title:"",
-        artist:"",
-        videos:[],
-        bio:"",
-    });
+    const [uploads, setUploads] = useState([]);
+
     const [profile, setProfile] = useState({
             id: {channel:'The BootLeg Boy',id: 1},
             name:'loading',
@@ -57,18 +56,49 @@ export function BootlegBoy(props) {
     
     //api calls
     useEffect(() => {
+        console.log(location.state.id)
+        fetchAPI(videos)
         
-        console.log(width)
+        refreshVideos()
+        
     }, [ api_key ]);
 
     
-    const url = `http://youtube.com/watch?v=${live.videoId}`
+    
+    const fetchAPI = (videos) => {
+        fetch(videos)
+       .then(function(response) {
+           // The response is a Response instance.
+           // You parse the data into a useable format using `.json()`
+           return response.json();
+       }).then(function(data){
+           // `data` is the parsed version of the JSON returned from the above endpoint.
+
+            setUploads(data.data.items)
+       }).then(() => {
+            // console.log(uploads)
+            // uploads.data.forEach((data) => {
+            //     vids.push(data)
+            // })
+            // console.log(vids)
+       })
+       
+   }
+
+    const videos = `http://localhost/api/creator/youtube/${location.state.id}`
+    
+    const info = `http://localhost/`
+    console.log(uploads)
+
+    async function refreshVideos() {
+     
+    }
     return(
         <>  
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
-                currentPage={3}
+                currentPage={1}
                 direction="horizontal"
                 directionLock={true}
                 dragEnabled={true}
@@ -85,9 +115,9 @@ export function BootlegBoy(props) {
                         <Col span={20} style={{'flexDirection':'column'}}>
                         <div className="spacer"></div>
                         <h3>Spotify Playlists</h3>
-                        <ChannelPlaylist
+                        {/* <ChannelPlaylist
                             station={channels[currentPage].spotify}
-                        />
+                        /> */}
                         </Col>
                     </Row>  
                 </Frame>        
@@ -99,9 +129,9 @@ export function BootlegBoy(props) {
                         <div className="spacer"></div>
                         <h3>Latest Uploads</h3>
                         <div className="vid-scroller">
-                            {channels[currentPage].videos.map((data, i) => {
+                             {uploads.map((data) => {
                                 return(
-                                    <div className="vid-card" key={i}>
+                                    <div className="vid-card">
                                         <ChannelUploads
                                             videoThumbnail={data.videoThumbnail}
                                             videoTitle={data.videoTitle}
@@ -131,13 +161,13 @@ export function BootlegBoy(props) {
                         youtube={links.youtube}
                         artist={song.artist}
                         title={song.title}
-                        thumbnail={channels[currentPage].thumbnail}
+                        thumbnail={uploads[currentPage].thumbnail}
                         id={profile.id}
                         videoId={live.videoId}
-                        viewers={channels[currentPage].view}
+                        viewers={uploads[currentPage].view}
                     />
                     <ChannelBio
-                        name={channels[currentPage].name}
+                        name={uploads[currentPage].name}
                         bio={profile.bio}
                     />
                     {/* Play Content */}
