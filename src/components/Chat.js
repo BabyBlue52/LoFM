@@ -11,6 +11,7 @@ import { GiphyKeyboard } from './GiphyKeyboard';
 import firebaseConfig from '../config';
 
 import construction from '../img/construction.svg';
+import { Link } from 'react-router-dom';
 
 firebase.initializeApp(firebaseConfig)
 
@@ -64,6 +65,12 @@ export function Chat(props) {
     if (window.innerWidth < 400 ) {
         return (
             <div className="chat-mobile">
+                <Link to="/">
+                    <button className="back-btn">
+                        <AiOutlineArrowLeft/> 
+                        <h4>Back</h4>
+                    </button>
+                </Link>
                 {isDisabled ?
                 <Row>
                     <div className="_disabled">
