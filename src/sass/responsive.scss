@@ -155,7 +155,7 @@ $tablet: 1024px;
         .vid-scroller {
             overflow: hidden;
             width: 100%;
-            max-width: 100%;
+            max-width: inherit;
             max-height: 100%;
             margin: 0;
             margin-top: 25px;
@@ -183,7 +183,6 @@ $tablet: 1024px;
                 margin: 0;
                 margin-right: 10px;
                 padding-bottom: 50px;
-                
             }
 
             .vid-thumbnail {
@@ -193,7 +192,7 @@ $tablet: 1024px;
         }
 
         .playlist-container {
-            width: 100%;
+            max-width: inherit;
             margin: 0;
 
             h3 {
@@ -204,6 +203,7 @@ $tablet: 1024px;
             }
             .playlist-card {
                 max-width: 250px;
+                margin: 0 auto;
 
                 h3.playlist-title {
                     padding: 0;

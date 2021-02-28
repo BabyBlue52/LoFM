@@ -10,6 +10,9 @@ import { BackButton } from './Button';
 import { GiphyKeyboard } from './GiphyKeyboard';
 import firebaseConfig from '../config';
 
+import construction from '../img/construction.svg';
+import { Link } from 'react-router-dom';
+
 firebase.initializeApp(firebaseConfig)
 
 const firestore = firebase.firestore();
@@ -61,26 +64,42 @@ export function Chat(props) {
 
     if (window.innerWidth < 400 ) {
         return (
-            <div className="chat-mobile">  
-                <Row style={{'width':'100%'}}>
-                    <Col span={24} className="chat-header">
-                        <button className="back-btn">
-                            <AiOutlineArrowLeft/>
-                        </button>
-                    
-                        <h3 className="chat-title">{props.snippet} chat</h3>
-                    </Col>
-                </Row>
-                {/* Chat API Body */}        
-                <Row className={ isDisabled ? "broadcast" : "_disabled"}>
-                    {messages && messages.map(msg => 
-                    <Col span={24}>
-                            <ChatBubble  key={msg.id} message={msg} content={props.text} userName={user.userName}/>
-                    </Col>
-                    )}
-                    <div className="spacer"></div>
-                </Row>
-                <Row style={{'width':'90%','margin':'0 auto'}}>
+            <div className="chat-mobile">
+                <Link to="/">
+                    <button className="back-btn">
+                        <AiOutlineArrowLeft/> 
+                        <h4>Back</h4>
+                    </button>
+                </Link>
+                {isDisabled ?
+                <Row>
+                    <div className="_disabled">
+                        <img src={construction}/>
+                        <h1> Chat Feature </h1>
+                        <p> coming soon</p>
+                    </div>
+                </Row> 
+                : 
+                <div>   
+                    <Row style={{'width':'100%'}}>
+                        <Col span={24} className="chat-header">
+                            <button className="back-btn">
+                                <AiOutlineArrowLeft/>
+                            </button>
+                        
+                            <h3 className="chat-title">{props.snippet} chat</h3>
+                        </Col>
+                    </Row>
+                    {/* Chat API Body */}        
+                    <Row className={ isDisabled ? "broadcast" : "_disabled"}>
+                        {messages && messages.map(msg => 
+                        <Col span={24}>
+                                <ChatBubble  key={msg.id} message={msg} content={props.text} userName={user.userName}/>
+                        </Col>
+                        )}
+                        <div className="spacer"></div>
+                    </Row>
+                    <Row style={{'width':'90%','margin':'0 auto'}}>
                     <Col span={24} className="chat-modifier">
                         <div className="chat-gif">
                             <GiphyKeyboard sendGif/>
@@ -98,7 +117,9 @@ export function Chat(props) {
                         </button>
                         
                     </Col>
-                </Row>
+                    </Row> 
+                </div> 
+                }
             </div>
         )
     }
@@ -108,8 +129,9 @@ export function Chat(props) {
             { isDisabled ? 
             <Row>
                 <div className="_disabled">
-                    
-                    <h1> Chat Function<span>coming soon</span> </h1>
+                    <img src={construction}/>
+                    <h1> Chat Feature </h1>
+                    <p> coming soon</p>
                 </div>
             </Row> 
             :

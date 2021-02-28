@@ -76,9 +76,7 @@ export default function MobileDashboard(){
                     spaceBetween={10}
                     slidesPerView={adjustable}
                 >
-                    <SwiperSlide className="starter">
-            
-                    </SwiperSlide>
+                    <SwiperSlide className="starter"></SwiperSlide>
                     {channels.map((item) => {
                         return(
                             <SwiperSlide  className="channel-cover">
@@ -107,6 +105,8 @@ export default function MobileDashboard(){
                     spaceBetween={10}
                     slidesPerView={adjustable}
                 >
+
+                <SwiperSlide className="starter"></SwiperSlide>
                        {channels.map((item, i) => {
                     return(
                         <SwiperSlide key={i} className="channel-cover">

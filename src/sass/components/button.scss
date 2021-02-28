@@ -425,9 +425,15 @@ button.send {
     background: none;
 }
 button.back-btn {
+    display: flex;
     position: absolute;
     left: 10px;
-
+    top: 20px;
+    h4 {
+        margin-top: 2px;
+        padding-left: 10px;
+        color: $offWhite;
+    }
     svg {
         fill: $offWhite;
         height: 24px;

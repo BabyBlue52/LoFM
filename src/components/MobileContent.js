@@ -21,6 +21,7 @@ export function MobileContent(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [hasError, setHasError] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
+    const [channelId,setChannelId] = useState("");
     const location = useLocation()
 
     const [live,setLive] = useState({
@@ -98,7 +99,7 @@ export function MobileContent(props) {
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
-                currentPage={2}
+                currentPage={1}
                 direction="horizontal"
                 directionLock={true}
                 dragEnabled={true}
@@ -110,18 +111,18 @@ export function MobileContent(props) {
                     </Row>
                 </Frame>
                 {/* Spotify Playlists */}
-                <Frame size={width}>
+                {/* <Frame size={width}>
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
                         <div className="spacer"></div>
                         <h3>Spotify Playlists</h3>
                         {/* <ChannelPlaylist
                             station={channels[currentPage].spotify}
-                        /> */}
+                        /> 
                         </Col>
-                    </Row>  
+                    </Row>   
                 </Frame>        
-                 
+            */}
                 {/* Recent Uploads */}
                 <Frame size={width}>
                     <Row className="justify-center">
@@ -161,13 +162,13 @@ export function MobileContent(props) {
                         youtube={links.youtube}
                         artist={song.artist}
                         title={song.title}
-                        thumbnail={uploads[currentPage]}
+                       //thumbnail={channels[currentPage].thumbnail}
                         id={profile.id}
                         videoId={live.videoId}
-                        viewers={uploads[currentPage]}
+                       // viewers={channels[currentPage].view}
                     />
                     <ChannelBio
-                        name={uploads[currentPage]}
+                       // name={channels[currentPage].name}
                         bio={profile.bio}
                     />
                     {/* Play Content */}
