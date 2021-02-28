@@ -73,6 +73,9 @@
     div.ant-col {
         transition: 300ms ease-in-out;
     }
+    .ant-col-1 {
+        max-width: 50px;
+    }
 }
 
 .page-container {

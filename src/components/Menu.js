@@ -88,7 +88,7 @@ export function PushMenu(props) {
                     </Row>
                         
                     {/* Chat Portal */}
-                    <Row>
+                    {/* <Row>
                         <Col>
                             <p>Messages</p>
                         </Col>
@@ -102,7 +102,7 @@ export function PushMenu(props) {
                                 </a>            
                             </button>
                         </Col>
-                    </Row>
+                    </Row> */}
                     
                     {/* Search Portal */}
                     <Row > 
@@ -126,7 +126,7 @@ export function PushMenu(props) {
                     </Row>
 
                     {/* Favorites Playlist */}
-                    <Row>
+                    {/* <Row>
                         <Col>
                             <p>Favorites</p>
                         </Col>
@@ -144,7 +144,7 @@ export function PushMenu(props) {
                         )}
                         </PortalWithState> 
                     </Col>
-                    </Row>
+                    </Row> */}
                 
                     {/* Support the Troops */}
                     <Row>  
