@@ -27,7 +27,8 @@ export default function Dashboard(props){
         });
       };
 
-    const toggleChatDrawer = () => {
+    const toggleChatDrawer = (e) => {
+        e.preventDefault();
         setIsOpen(!isOpen);
     }
 
@@ -62,13 +63,12 @@ export default function Dashboard(props){
                         <Col span={6} className="static-content"> 
                             <div className="channel-container">
                                 <h1 className="channel-header">#Channels</h1>
-                                <div className="favorites-container">
+                                <div className="favorites-container _dropShadow">
                                     <div className="favorites-list">
                                         <h2>Bang</h2>
                                         <h2>Bang</h2>
                                         <h2>Bang</h2>
                                         <h2>Bang</h2>
-
                                         <h2>Bang</h2>
                                         <h2>Bang</h2>
                                         <h2>Bang</h2>
@@ -87,7 +87,7 @@ export default function Dashboard(props){
                             </div>
                         </Col>
                         <Col span={18} className="static-content-center">
-                            <DashboardContent span={isOpen ? 15 : 9} row={isOpen ? '': 'left-marg'}/>   
+                            <DashboardContent span={isOpen ? 15 : 10} row={isOpen ? '': 'left-marg'}/>   
                         </Col>
                     </Row>
                 </Col>
