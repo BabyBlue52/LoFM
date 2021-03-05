@@ -42,8 +42,15 @@ function HomeButton(props) {
         </>
     )
 }
+
 // Back Button 
 function BackButton() {
+    if(window.location.pathname === '/login') {
+        return null;
+    }
+    if(window.location.pathname === '/sign-up') {
+        return null;
+    } else 
     return(
         <>
             <a href="/">
