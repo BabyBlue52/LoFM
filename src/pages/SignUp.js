@@ -6,7 +6,7 @@ import { AiOutlineMail, AiOutlineLock, AiOutlineSmile } from 'react-icons/ai';
 import { connect, useDispatch } from 'react-redux';
 
 import Logo from '../img/logo.svg';
-import { SignInButton, BackButton } from '../components/Button';
+import { SignInButton, HomeButton } from '../components/Button';
 import { register } from '../_redux/actions/authAction';
 import { returnErrors } from '../_redux/actions/messageAction';
 import store from '../_redux/createStore';
@@ -94,7 +94,7 @@ export function SignUpPage(props) {
     }
     return (
         <div className="form-container"> 
-            <BackButton label="Return Home" />
+            <HomeButton label="Return Home" />
             <form onSubmit={handleSignUp} className="login">
                 <Row>
                 <Col span={24}>

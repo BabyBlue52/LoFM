@@ -127,7 +127,7 @@ export function DashboardContent(props) {
                         <div className="super-spacer"></div>
                         <Row>
                             <Col span={24}>
-                            <button onClick={goBack} className="back-btn">
+                            <button onClick={goBack} className="page-back-btn">
                                 <p><AiOutlineArrowLeft/><span>Return</span></p>
                             </button>
                             </Col>

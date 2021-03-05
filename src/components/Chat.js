@@ -6,7 +6,7 @@ import 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { ChatBubble } from './ChatBubble';
-import { BackButton } from './Button';
+import { HomeButton } from './Button';
 import { GiphyKeyboard } from './GiphyKeyboard';
 import firebaseConfig from '../config';
 
@@ -65,12 +65,6 @@ export function Chat(props) {
     if (window.innerWidth < 400 ) {
         return (
             <div className="chat-mobile">
-                <Link to="/">
-                    <button className="back-btn">
-                        <AiOutlineArrowLeft/> 
-                        <h4>Back</h4>
-                    </button>
-                </Link>
                 {isDisabled ?
                 <Row>
                     <div className="_disabled">

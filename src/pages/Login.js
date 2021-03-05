@@ -8,7 +8,7 @@ import { connect, useDispatch } from 'react-redux';
 import * as Yup from "yup";
 
 import Logo from '../img/logo.svg';
-import { SignInButton, BackButton } from '../components/Button';
+import { SignInButton, HomeButton } from '../components/Button';
 import { Loader } from '../components/animation';
 import { login } from '../_redux/actions/authAction';
 import { returnErrors } from '../_redux/actions/messageAction';
@@ -90,7 +90,7 @@ export function LoginPage(props) {
     }
     return (
       <div className="form-container"> 
-        <BackButton label="Return Home" />
+        <HomeButton label="Return Home" />
             <form className="login" onSubmit={handleLogin}>
               <Row>
                 <Col span={24}>

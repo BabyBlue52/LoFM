@@ -40,6 +40,9 @@ $tablet: 1024px;
         .chat-modifier {
             bottom: 110px;
         }
+        ._disabled {
+            margin-top: 0px;
+        }
     }
 
     #app-desktop {
@@ -80,7 +83,6 @@ $tablet: 1024px;
 
         /* Centered Form */
         form.login {
-            top: 40%;
             background: $offWhite;
             max-height: 600px;
             border: .5px solid rgba(15, 15, 15, 0.1);

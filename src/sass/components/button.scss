@@ -440,3 +440,8 @@ button.back-btn {
         width: 24px;
     }
 }
+button.page-back-btn {
+    @extend button.back-btn;
+    top: 0;
+    left: 0;
+}

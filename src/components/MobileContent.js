@@ -104,12 +104,12 @@ export function MobileContent(props) {
                 directionLock={true}
                 dragEnabled={true}
                 contentWidth={300}
-            >       
+            >    
+                  
                 <Frame>
-                    <Row className="justify-center">
-                        
-                    </Row>
+                    <Row className="justify-center"></Row>
                 </Frame>
+
                 {/* Spotify Playlists */}
                 {/* <Frame size={width}>
                     <Row className="justify-center">
@@ -121,13 +121,14 @@ export function MobileContent(props) {
                         /> 
                         </Col>
                     </Row>   
-                </Frame>        
-            */}
+                </Frame> */}
+
                 {/* Recent Uploads */}
                 <Frame size={width}>
+                    
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
-                        <div className="spacer"></div>
+                        <div className="super-spacer"></div>
                         <h3>Latest Uploads</h3>
                         <div className="vid-scroller">
                              {uploads.map((data) => {
@@ -150,7 +151,8 @@ export function MobileContent(props) {
 
                 {/* Main Page */}
                 <Frame size={width}>
-                    <div className="spacer"></div>
+                    
+                    <div className="super-spacer"></div>
                     <Row className="justify-center">
                         <Col className="justify-center" >
                             <ChatButton/>
@@ -191,9 +193,8 @@ export function MobileContent(props) {
                 
                 {/* Chat Feature */}
                 <Frame size={width}>
-                    <div style={{"paddingTop": "40px"}} >
-                        <Chat/>
-                    </div>
+                    
+                    <Chat/>
                 </Frame>
             </Page>
         </>

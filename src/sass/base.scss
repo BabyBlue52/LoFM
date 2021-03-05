@@ -146,6 +146,11 @@ marquee {
     background: rgba(white, 0.5);
 }
 
+.error-input {
+    border: 1px solid $red !important;
+    animation: 300ms ease-in-out shakeOff !important;
+}
+
 ._dropShadow {
     -webkit-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.2);
@@ -155,11 +160,6 @@ marquee {
 ._blank {
     background: none;
     text-align: center;
-}
-
-.error-input {
-    border: 1px solid $red !important;
-    animation: 300ms ease-in-out shakeOff !important;
 }
 
 ._noBorder {
@@ -178,7 +178,7 @@ marquee {
     background: transparent !important;
 
     .ant-row {
-        margin: 0px 5px;
+        margin: 0;
     }
 }
 

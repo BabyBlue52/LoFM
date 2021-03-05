@@ -16,7 +16,8 @@ import Dashboard from './pages/Dashboard';
 import { LoginPage } from './pages/Login';
 import { SignUpPage } from './pages/SignUp';
 import SupportPage from './pages/Support';
-import { Chat } from './components/Chat'
+import { Chat } from './components/Chat';
+import { BackButton } from './components/Button';
 
 import 'antd/dist/antd.css';
 import './style.scss';
@@ -58,12 +59,13 @@ function App() {
                 </Switch>
               </Router>
               <PushMenu/>
+              <BackButton/>
             </AuthContext.Provider>
           </Mobile>
         
           {/* Desktop Size */}
           <Desktop>
-          <Router>
+              <Router>
                 <Switch>
                   <div id="app-desktop">
                     <div className="sunset-skin">
@@ -75,7 +77,7 @@ function App() {
                   </div>
                 </Switch>
               </Router>
-        </Desktop>
+          </Desktop>
         </Provider>
       </React.Fragment>
     )

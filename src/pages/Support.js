@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col } from 'antd';
 import { MdClose } from 'react-icons/md'
-import { BackButton } from '../components/Button';
+import { HomeButton } from '../components/Button';
 import Logo from '../img/logo.svg';
 
 export default function SupportPage(props) {
@@ -27,7 +27,7 @@ export default function SupportPage(props) {
     }
     return (
         <div className="white-out">
-            <BackButton label="Return Home"/>
+            <HomeButton label="Return Home"/>
             <div className="support-header">
                <h3> Go Back</h3>
             </div>
