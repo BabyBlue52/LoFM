@@ -40,11 +40,12 @@ export function DashboardHeader(props){
         <React.Fragment>
             <Row className="dashboard-header">
                 <Col span={6} offset={1}>
-                    <button className="profile-icon">
-                        <a herf="/account">
+                    <a herf="/account">
+                        <button className="profile-icon">          
                             <AiOutlineSmile/>
-                        </a>                    
-                    </button>
+                        </button>
+                    </a>                    
+                    
                     <a href="/login" style={{'marginRight':'20px'}}>
                         <Button name="Log In"></Button>
                     </a>
