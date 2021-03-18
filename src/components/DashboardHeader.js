@@ -41,7 +41,9 @@ export function DashboardHeader(props){
             <Row className="dashboard-header">
                 <Col span={6} offset={1}>
                     <button className="profile-icon">
-                        <AiOutlineSmile/>
+                        <a herf="/account">
+                            <AiOutlineSmile/>
+                        </a>                    
                     </button>
                     <a href="/login" style={{'marginRight':'20px'}}>
                         <Button name="Log In"></Button>

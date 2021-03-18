@@ -62,10 +62,8 @@ export default function MobileDashboard(){
   
     return (
         <React.Fragment>
-            <Row>
-                <h1 className='mobile-header'>Who's Playing</h1>
-                <div className="spacer"></div>
-            </Row>
+            <div className="super-spacer"></div>
+            
             <div className="mobile-dashboard">
                 
                 {/** Most Popular */} 
