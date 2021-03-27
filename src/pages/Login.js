@@ -37,7 +37,7 @@ export function LoginPage(props) {
     });
 
     // Handle Login dispatch
-    const handleLogin = function(e) {
+    const handleLogin = (e) => {
       e.preventDefault();
       if (formik.values.email == "" || formik.values.password == "") {
         setTimeout(() => {
@@ -72,7 +72,7 @@ export function LoginPage(props) {
       notification.open({
         message: 'Wrong Email/Password',
         className: 'lo-error',
-        placement: 'bottomRight',
+        placement: 'bottomLeft',
         duration: 4.5
       })
     }

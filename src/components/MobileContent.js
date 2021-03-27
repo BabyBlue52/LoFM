@@ -48,7 +48,7 @@ export function MobileContent(props) {
         artist:'Bob'
     }
 
-    function handlePlay(){
+    const handlePlay = () => {
         setIsPlaying(!isPlaying);
     }
 

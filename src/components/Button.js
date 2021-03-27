@@ -33,12 +33,11 @@ function SignInButton(props) {
 function HomeButton(props) {
     return(
         <>
-            <button className="home-btn">
-                <a href="/">
-                <AiFillHome/><p>{props.label}</p>
-                </a>
-            </button>
-            
+            <a href="/">
+                <button className="home-btn">
+                    <AiFillHome/><p>{props.label}</p>
+                </button>
+            </a>
         </>
     )
 }

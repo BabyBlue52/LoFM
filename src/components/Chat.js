@@ -54,7 +54,7 @@ export function Chat(props) {
           
         }
     }
-    function toggleOpen() {
+    const toggleOpen = () => {
         setIsOpen(!isOpen);
     }
     useEffect(() => {    

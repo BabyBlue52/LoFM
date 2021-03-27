@@ -16,7 +16,7 @@ button.default-btn {
     justify-content: center;
     max-width: 280px;
     max-height: 35px;
-    margin: 0px;
+    margin: 0px 5px;
     padding: 12px 20px;
     background: $purple;
     border: none;
@@ -185,18 +185,13 @@ button.close {
 }
 
 button.home-btn {
-    display: inline;
+    display: inline-flex;
     position: absolute;
-    top: 30px;
-    left: 20px;
     color: $black;
+    border-radius: 5px; 
+    background: white;
+    padding: 10px 20px 0 20px;
     z-index: 99;
-
-    a {
-        display: inline-flex;
-        color: $black;
-        opacity: 0.5;
-    }
 
     svg {
         fill: $black;
@@ -205,11 +200,6 @@ button.home-btn {
         padding-right: 10px;
         transform: scale(1.67);
         transition: 300ms ease-in-out;
-
-        &:hover,
-        &:active {
-            fill: $purple;
-        }
     }
 
     p {
@@ -217,6 +207,12 @@ button.home-btn {
         padding: 0;
         margin-top: 2.5px;
         font-size: 0.8rem;
+        font-weight: $superHeavy;
+    }
+    &:hover, &:active {
+        background: rgba($purple, 0.5);
+        a {color: $darker}
+        svg {fill: $darker}
     }
 }
 
@@ -330,6 +326,11 @@ button.playlist-btn {
 button.support-btn {
     @extend button.default-btn;
     background: $green;
+    p {
+        text-transform: uppercase;
+        color: $black !important;
+    }
+    
     max-width: 150px !important;
     margin-right: 15px; 
     &:active {
@@ -444,4 +445,63 @@ button.page-back-btn {
     @extend button.back-btn;
     top: 0;
     left: 0;
+}
+button.delete-btn {
+    @extend button.default-btn;
+    position: relative;
+    left: 20px; 
+    background: $red;
+    &:active {
+        background: darken($red, 10%)
+    }    
+}
+
+button.camera-btn {
+    position: relative;
+    top: 75px;
+    right: 20px;
+
+    background: $purple;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    
+    svg {
+        fill: white;
+        height: 20px;
+        width: 20px;
+        margin-top: 4px;
+    }
+    input[type="file"] {
+        position: relative;
+        top: -30px;
+        left: -4px;
+        width: 30px;
+        height: 30px;
+        opacity: 0;
+        cursor: pointer;
+    }
+}
+
+button.save-btn {
+    @extend button.default-btn;
+    min-width: max-content;
+    background: $green;
+    p {
+        color: $black !important;
+    }
+    
+
+    &:active {
+        background: $black;
+        
+        color: $green;
+        transform: scale(0.95);
+        transition: $smooth;
+    }
+}
+
+.column {
+    flex-direction: column;
+    text-align: left;
 }

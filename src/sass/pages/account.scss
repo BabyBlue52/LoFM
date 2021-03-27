@@ -1,0 +1,97 @@
+.account-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background: transparent;
+    z-index: 9; 
+
+    animation-name: slideUp; 
+    animation-duration: 1000ms ;
+    .account-settings {
+        position: relative;
+        top: 20%;
+        min-height: 350px;
+        width: 500px;
+        max-width: 50%;
+        min-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 40px 20px 40px;
+        border-radius: 10px;
+        background: rgba(0,0,0,0.45);
+
+            h1 {
+                text-align: left;
+                font-size: 1.75rem;
+                font-weight: $superHeavy;
+                padding-bottom: 40px;
+            }
+            h2 {
+                color: white;
+                font-weight: $heavy;
+                font-size: 1.25rem;
+                font-family: $spartan;
+            }
+            p {
+                color: white;
+                margin:0;
+            }
+            .borderline {
+                // margin-right: 10px;
+                border: 1px solid white;
+                border-radius: 20px;
+                padding: 10px 10px 10px 20px;
+            }
+            
+            .account-delete {
+                width: 100%;
+                margin-top: 20px; 
+                border: 5px solid $red;
+                border-radius: 5px;
+                padding: 20px;
+            }
+            input[type="radio"] {
+                width: 0;  
+            }
+            label {
+                margin: 0 5px 0 0;
+                border: 3px solid white;
+                border-radius: 3px;
+                padding: 5px 10px 3px 10px;
+                font-family: $spartan;
+                font-size: 0.8rem;
+                transition: $smooth;
+                &:hover {
+                    background: $offWhite;
+                    transition: $smooth;
+                }
+            }
+            .user-avatar {
+                height: 100px;
+                width: 100px;
+                border-radius: 50%;
+                background: white;
+                svg {
+                    fill: $black;
+                    height: inherit;
+                    width: inherit;
+                }
+                img {
+                    height: inherit;
+                    width: inherit;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    border: 5px solid $offWhite;
+                }
+                
+            }
+            .confirm-delete {
+                display: flex;
+                margin-left: -30px;
+                margin-top: 20px;
+                p {
+                    
+                }
+            }
+    }
+
+}
