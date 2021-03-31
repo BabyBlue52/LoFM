@@ -14,6 +14,7 @@ button {
 button.default-btn {
     display: flex;
     justify-content: center;
+    width: 100%;
     max-width: 280px;
     max-height: 35px;
     margin: 0px 5px;
@@ -449,7 +450,6 @@ button.page-back-btn {
 button.delete-btn {
     @extend button.default-btn;
     position: relative;
-    left: 20px; 
     background: $red;
     &:active {
         background: darken($red, 10%)
@@ -486,12 +486,13 @@ button.camera-btn {
 button.save-btn {
     @extend button.default-btn;
     min-width: max-content;
+    width: 100%;
+    margin-bottom: 15px;
     background: $green;
     p {
         color: $black !important;
     }
     
-
     &:active {
         background: $black;
         
@@ -499,9 +500,4 @@ button.save-btn {
         transform: scale(0.95);
         transition: $smooth;
     }
-}
-
-.column {
-    flex-direction: column;
-    text-align: left;
 }

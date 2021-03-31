@@ -85,6 +85,11 @@ marquee {
     display: inline !important;
 }
 
+.column {
+    flex-direction: column;
+    text-align: left;
+}
+
 .justify-center {
     display: flex;
     justify-content: center;

@@ -9,7 +9,7 @@
     animation-duration: 1000ms ;
     .account-settings {
         position: relative;
-        top: 20%;
+        top: 17.5%;
         min-height: 350px;
         width: 500px;
         max-width: 50%;
@@ -19,79 +19,115 @@
         border-radius: 10px;
         background: rgba(0,0,0,0.45);
 
-            h1 {
-                text-align: left;
-                font-size: 1.75rem;
-                font-weight: $superHeavy;
-                padding-bottom: 40px;
+        h1 {
+            text-align: left;
+            font-size: 1.75rem;
+            font-weight: $superHeavy;
+            padding-bottom: 40px;
+            span {
+                position: relative;
+                top: -6px;
+                margin-right: 2px;
+                opacity: 0.85;
             }
-            h2 {
-                color: white;
-                font-weight: $heavy;
-                font-size: 1.25rem;
-                font-family: $spartan;
-            }
-            p {
-                color: white;
-                margin:0;
-            }
-            .borderline {
-                // margin-right: 10px;
-                border: 1px solid white;
-                border-radius: 20px;
-                padding: 10px 10px 10px 20px;
-            }
-            
-            .account-delete {
-                width: 100%;
-                margin-top: 20px; 
-                border: 5px solid $red;
-                border-radius: 5px;
-                padding: 20px;
-            }
-            input[type="radio"] {
-                width: 0;  
-            }
-            label {
-                margin: 0 5px 0 0;
-                border: 3px solid white;
-                border-radius: 3px;
-                padding: 5px 10px 3px 10px;
-                font-family: $spartan;
-                font-size: 0.8rem;
+        }
+        h2 {
+            color: white;
+            font-weight: $heavy;
+            font-size: 1.25rem;
+            font-family: $spartan;
+        }
+        p {
+            color: white;
+            margin:0;
+        }
+        .borderline {
+            border: 1px solid white;
+            border-radius: 20px;
+            padding: 10px 10px 10px 20px;
+        }
+        
+        input[type="radio"] {
+            width: 0;  
+        }
+        label {
+            margin: 0 5px 0 0;
+            border: 3px solid white;
+            border-radius: 3px;
+            padding: 5px 10px 3px 10px;
+            font-family: $spartan;
+            font-size: 0.8rem;
+            transition: $smooth;
+            &:hover {
+                background: $offWhite;
                 transition: $smooth;
-                &:hover {
-                    background: $offWhite;
-                    transition: $smooth;
-                }
             }
-            .user-avatar {
-                height: 100px;
-                width: 100px;
-                border-radius: 50%;
-                background: white;
-                svg {
-                    fill: $black;
-                    height: inherit;
-                    width: inherit;
-                }
-                img {
-                    height: inherit;
-                    width: inherit;
-                    object-fit: cover;
-                    border-radius: 50%;
-                    border: 5px solid $offWhite;
-                }
-                
-            }
-            .confirm-delete {
-                display: flex;
-                margin-left: -30px;
-                margin-top: 20px;
-                p {
-                    
-                }
-            }
+        }
+            
     }
 
+}
+
+.account-mobile {
+    height: 100vh;
+    background: $black;
+    padding-top: 60px;
+    h1, h2  {
+        width: 100%;
+        margin-bottom: 20px;
+        color: $offWhite;
+        font-weight: $heavy;
+        text-align: center;
+        text-overflow: ellipsis;
+        span {
+            margin-right: 5px;
+        }
+    }
+    h2 {
+        max-width: 300px;
+        text-align: left;
+    }
+    .container-mobile {
+        overflow-y: scroll;
+        height: 80%;
+        padding: 0 40px 40px 40px;
+    }
+}
+
+.account-delete {
+    width: 100%;
+    margin-top: 20px; 
+    border: 5px solid $red;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.user-avatar {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background: white;
+    svg {
+        fill: $black;
+        height: inherit;
+        width: inherit;
+    }
+    img {
+        height: inherit;
+        width: inherit;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid $offWhite;
+    }
+    
+}
+
+.confirm-delete {
+    display: flex;
+    // margin-left: -30px;
+    margin-top: 20px;
+    button {
+        min-width: 100%;  
+        margin-bottom: 10px;  
+    }
 }

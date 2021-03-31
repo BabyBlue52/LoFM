@@ -16,7 +16,9 @@ import gif from '../img/gif/chilledCow.gif';
 
 export default function Dashboard(props){
     const [isOpen, setIsOpen] = useState(false)
+    const [width, setWidth] = useState(8)
     const channel = <marquee>"Bob, do something"</marquee>
+    
     const openNotification = () => {
         notification.open({
             className: "lo-playing",
@@ -30,6 +32,14 @@ export default function Dashboard(props){
     const toggleChatDrawer = (e) => {
         e.preventDefault();
         setIsOpen(!isOpen);
+    }
+
+    const isLargeDesktop = () => {
+        if (window.innerWidth > 1400) {
+            setWidth(8)
+        } else {
+            setWidth(10)
+        }
     }
 
     useEffect(() => {
@@ -48,6 +58,7 @@ export default function Dashboard(props){
         .catch(err => {
             console.log(err);
         })
+        isLargeDesktop();
     }, [])
 
     return(
@@ -87,7 +98,7 @@ export default function Dashboard(props){
                             </div>
                         </Col>
                         <Col span={18} className="static-content-center">
-                            <DashboardContent span={isOpen ? 15 : 10} row={isOpen ? '': 'left-marg'}/>   
+                            <DashboardContent span={isOpen ? 15 : width} row={isOpen ? '': 'left-marg'}/>   
                         </Col>
                     </Row>
                 </Col>
