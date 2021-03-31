@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {Row, Col, Badge, Drawer} from 'antd';
-import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiOutlineMenu, AiOutlineClose, AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineSmile, AiFillHeart, AiOutlineSearch, AiOutlineInbox, AiOutlineMenu, AiOutlineClose, AiOutlineUser, AiOutlineDollar } from 'react-icons/ai';
 import { BsFillChatSquareFill } from 'react-icons/bs';
 import { PortalWithState } from 'react-portal';
 import { connect, useDispatch } from 'react-redux';
@@ -49,6 +49,9 @@ export function PushMenu(props) {
         return null;
     }
     if(window.location.pathname === '/sign-up') {
+        return null;
+    }
+    if(window.location.pathname === '/account') {
         return null;
     } else 
         return (
@@ -145,6 +148,21 @@ export function PushMenu(props) {
                         </PortalWithState> 
                     </Col>
                     </Row> */}
+
+                    {/* User Account */}
+                    <Row>  
+                        <Col>
+                            <p>Account</p>
+                        </Col>
+                         
+                        <Col onClick={closeDrawer}>
+                            <a href="/account">
+                                <button className="account-round">
+                                    <AiOutlineSmile />
+                                </button>  
+                            </a>
+                        </Col>
+                    </Row>
                 
                     {/* Support the Troops */}
                     <Row>  
@@ -155,12 +173,11 @@ export function PushMenu(props) {
                         <Col onClick={closeDrawer}>
                             <a href="/support">
                                 <button className="support-round">
-                                    <AiOutlineSmile />
+                                    <AiOutlineDollar />
                                 </button>  
                             </a>
                         </Col>
                     </Row>
-        
                 </Row>
             </Drawer>
         </React.Fragment>

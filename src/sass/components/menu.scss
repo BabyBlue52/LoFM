@@ -40,6 +40,7 @@
     p {
         margin: auto 0;
         padding: 0;
+        padding-top: 10px;
         background: none;
         text-shadow: 1px 1px 1px $black;
     }
@@ -47,9 +48,10 @@
 .support-round {
     @extend .menu-round; 
     background: $green;
-
     svg{
-        fill: white;
+        fill: $black;
+        height: 50px;
+        width: 50px;
     }
     &:hover, &:active {
         background: darken($green, 0.15);
@@ -66,4 +68,14 @@
         background: darken(white, 0.05)
     }
 }
-
+.account-round {
+    @extend .menu-round; 
+    svg{
+        fill: $black;
+        height: 50px;
+        width: 52px;
+    }
+    &:hover, &:active {
+        background: darken(white, 0.15);
+    }
+}
