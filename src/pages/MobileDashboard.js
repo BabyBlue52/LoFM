@@ -15,7 +15,7 @@ export default function MobileDashboard(){
     })
 
     const adjustable = 3
-    const url = "http://localhost/api/creators"
+    const url = `${process.env.REACT_APP_BASE_URL}/api/creators`
 
     const channelSelect = i => e => {
         console.log(i)

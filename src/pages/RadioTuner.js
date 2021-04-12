@@ -15,11 +15,10 @@ export default function RadioTuner() {
         'The Chilled Cow'
     ])
 
-    
     useEffect(() => {    
         store.dispatch(loadUser());
         console.log(store.getState())
-        axios.get('http://localhost/api/info',{
+        axios.get(`${process.env.REACT_APP_BASE_URL}/api/info`,{
             header: { Authorization: "Bearer " }
         })
         .then( res => {
@@ -30,6 +29,7 @@ export default function RadioTuner() {
         })
        
     }, []);
+    
     return( 
         <div>
             <Page 

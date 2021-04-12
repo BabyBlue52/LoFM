@@ -9,7 +9,7 @@ export const loadUser = () => (dispatch, getState) => {
     dispatch({ type: actionTypes.USER_LOADING });
   
      axios
-      .get('http://localhost/api/info', tokenConfig(getState))
+      .get(`${process.env.REACT_APP_BASE_URL}/api/info`, tokenConfig(getState))
       .then((res) => {
         dispatch({
           type: actionTypes.USER_LOADED,
@@ -41,7 +41,7 @@ export const login = (email, password) => (dispatch) => {
       password: password
     }
     axios
-      .post('http://localhost/api/login', body, config)
+      .post(`${process.env.REACT_APP_BASE_URL}/api/login`, body, config)
       .then(console.log(body))
       .then((res) => {
         if ( res.status === 200 ) {
@@ -80,7 +80,7 @@ export const register = ({ username, password, email }) => (dispatch) => {
     };
   
     axios
-      .post('http://localhost/api/user/create', body, config)
+      .post(`${process.env.REACT_APP_BASE_URL}/api/user/create`, body, config)
       .then((res) => {
         if ( res.status === 201 ) {
           dispatch({
@@ -102,7 +102,7 @@ export const register = ({ username, password, email }) => (dispatch) => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
     axios
-      .post('http://localhost/api/auth/logout/', null, tokenConfig(getState))
+      .post(`${process.env.REACT_APP_BASE_URL}/api/auth/logout/`, null, tokenConfig(getState))
       .then((res) => {
         dispatch({ type: 'CLEAR_LEADS' });
         dispatch({

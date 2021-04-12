@@ -14,7 +14,7 @@ export function DashboardHeader(props){
 
     useEffect(() => {
         store.dispatch(loadUser());
-        axios.get('http://localhost/api/info',{
+        axios.get(`${process.env.REACT_APP_BASE_URL}/api/info`,{
             header: { Authorization: "Bearer " }
         })
         .then( res => {

@@ -86,9 +86,9 @@ export function MobileContent(props) {
        
    }
 
-    const videos = `http://localhost/api/creator/youtube/${location.state.id}`
+    const videos = `${process.env.REACT_APP_BASE_URL}/api/creator/youtube/${location.state.id}`
     
-    const info = `http://localhost/`
+    const info = `${process.env.REACT_APP_BASE_URL}/`
     console.log(uploads)
 
     async function refreshVideos() {

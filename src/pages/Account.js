@@ -17,7 +17,8 @@ export function AccountPage(props) {
         hasAvatar: false,
         emailError: false,
         passwordError: false,
-        isLoading: false,       
+        isLoading: false,
+        isAuthenticated: true,       
     })
     const [isLoading, setIsLoading] = useState(false);
     const [hasAvatar, setHasAvatar] = useState(false);
@@ -98,11 +99,29 @@ export function AccountPage(props) {
         deleteNotification();
         window.location = "/"
     }
-    
+    if (state.isAuthenticated) {
+        return  (
+            <>
+            <HomeButton label="Return Home" />
+            <div className="account-container">     
+                <div className="account-settings _dropShadow">
+                    <Row >
+                        <div className="super-spacer"/>
+                        <Col span={24} offset={2}>
+                        <h1>please Log in to change account settings</h1>
+                        
+                        </Col>
+                    </Row>
+                </div>
+            </div>
+            </>
+        );
+    }
     if (window.innerWidth < 1024) {
         return (
             <div className="account-mobile">
                 <h1>Account Settings</h1>
+        
                 <div className="container-mobile">
                     <form onSubmit={onSubmit}>    
                         <Row>
@@ -123,6 +142,7 @@ export function AccountPage(props) {
                         {/* Username */}
                         <Row className="d-flex column">
                             <Col><h3>Username</h3></Col>
+                            {process.env.REACT_APP_BASE_URL}
                             <Col><h2><span>@</span>Some_Donkus</h2></Col>
                         </Row>
                         

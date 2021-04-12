@@ -17,7 +17,7 @@ export function DashboardContent(props) {
     const [favorite,setFavorite] = useState(false);
     let pageSize = 4
     
-    const url = "http://localhost/api/creators"
+    const url = `${process.env.REACT_APP_BASE_URL}/api/creators`
 
     useEffect(()=> {
         
