@@ -286,3 +286,9 @@ marquee {
     transition: opacity 0.3s linear, height 0s ease 0.3s;
     z-index: 1;
 }
+
+.ant-spin {
+    position: relative;
+    top: -4px;
+    color: $black;
+}

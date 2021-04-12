@@ -140,6 +140,15 @@ function Loader() {
 }
 
 
-const Spinner = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
+function Spinner() {
+  const antIcon = <LoadingOutlined style={{ fontSize: 20 }} spin />
+  return (
+    <>
+    <Spin indicator={antIcon}/>
+    </>
+  )
+}
+
 
 export { SoundWave, Loader, Spinner };

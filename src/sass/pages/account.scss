@@ -37,19 +37,24 @@
             font-size: 1.25rem;
             font-family: $spartan;
         }
+        h3 {
+            margin-top: 10PX;
+            text-align: left;
+        }
         p {
             color: white;
             margin:0;
         }
-        .borderline {
-            border: 1px solid white;
-            border-radius: 20px;
-            padding: 10px 10px 10px 20px;
-        }
         
-        input[type="radio"] {
-            width: 0;  
+        input[type=password].account, input[type=email].account {
+            background: transparent;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid $offWhite;
+            font-size:1.25rem;
+            cursor: pointer;
         }
+
         label {
             margin: 0 5px 0 0;
             border: 3px solid white;
@@ -129,5 +134,33 @@
     button {
         min-width: 100%;  
         margin-bottom: 10px;  
+    }
+}
+
+.account-change {
+    h4 {
+        color: white;
+    }
+    p {
+        font-size: 2rem;
+        line-height: 1.3rem;
+    }
+    button {
+        margin-left: 10px;
+        line-height: 1.3rem;
+        color: $grey;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: $smooth;
+        &:active, &:hover{
+            color: $purple;
+            border-bottom: 2px solid $purple;
+            transition: $smooth;
+        }
+    }
+    button.open {
+        color: $purple;
+        border-bottom: 2px solid $purple;
+        transition: $smooth;   
     }
 }

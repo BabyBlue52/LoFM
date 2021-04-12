@@ -5,32 +5,47 @@ import { Row, Col, notification } from 'antd';
 import { AiOutlineMail, AiOutlineLock, AiOutlineSmile, AiOutlineCamera} from 'react-icons/ai';
 import { connect, useDispatch } from 'react-redux';
 
-import * as Yup from "yup";
-
-import Logo from '../img/logo.svg';
 import { SignInButton, HomeButton } from '../components/Button';
-import { Loader } from '../components/animation';
-import { login } from '../_redux/actions/authAction';
+import { Spinner } from '../components/animation';
 import { returnErrors } from '../_redux/actions/messageAction';
 import store from '../_redux/createStore';
-import { has } from 'lodash';
 
 
 export function AccountPage(props) {
     const [state, setState] = useState({
         isChecked: false,
-        hasAvatar: false 
+        hasAvatar: false,
+        emailError: false,
+        passwordError: false,
+        isLoading: false,       
     })
-    const [hasAvatar, setHasAvatar] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+    const [hasAvatar, setHasAvatar] = useState(false);
     const [showWarning, setShowWarning] = useState(false);
+    const [email, setEmail] = useState(false);
+    const [password, setPassword] = useState(false);
+
     // Hook for formik 
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
+            password2: '',
         }
     });
 
+    const checkPassword = () => {
+        if (formik.values.password === formik.values.password2) {
+            const updateUser = {
+                email: formik.values.email,
+                password: formik.values.password 
+            }
+        } else {
+            state.passwordError(true)
+        }
+    }
+
+    // Preview Thumbnail Avatar
     const previewImage = () => {
         let oFReader = new FileReader();
         oFReader.readAsDataURL(document.getElementById("uploader").files[0]);
@@ -44,8 +59,11 @@ export function AccountPage(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log("Account Saved")
-        saveNotification();
+        setIsLoading(true)
+        setTimeout(function(){
+            saveNotification();   
+            setIsLoading(false)
+        }, 1750)
     }
 
     const saveNotification = () => {
@@ -69,10 +87,18 @@ export function AccountPage(props) {
         setShowWarning(!showWarning)
     }
 
+    const toggleEmail = () => {
+        setEmail(!email)
+    }
+
+    const togglePassword = () => {
+        setPassword(!password)
+    }
     const deleteUser = () => {
         deleteNotification();
         window.location = "/"
     }
+    
     if (window.innerWidth < 1024) {
         return (
             <div className="account-mobile">
@@ -110,7 +136,7 @@ export function AccountPage(props) {
                         <Col span={24}>
                             <Row className="account-delete">
                                 <h2>Delete Account?</h2>
-                                <p> This action will delete all information that you have given LoFM, including email, name, password, playlists, and user settings</p>
+                                <p> This action will delete all information that you have given LoFM, including email, username, password, playlists, and user settings</p>
                                 <Col span={24}>
                                     <button type="button" className="delete-btn" onClick={toggleWarning}><p>Delete Account</p></button>
                                 </Col>
@@ -170,44 +196,84 @@ export function AccountPage(props) {
                             </button>
                         </Col>
                         <Col offset={1} span={18} className="column">
-                            
+                            <Row>
                             <div className="d-flex column">
-                                <h3 style={{"text-align":"left"}}>username</h3>
+                                <h3>username</h3>
                                 <h1><span>@</span>SomeDonkus</h1>
                             </div>
+                            </Row>
                             
-                            <div className="d-flex column">
-                                <h3 style={{"text-align":"left"}}>email</h3>
-                                <p>name@email.com</p>
-                            </div>
+                            <Row>
+                                <Col span={12}>
+                                    <div className="d-flex column">
+                                        <h3>email</h3>
+                                        <div className="account-change d-flex">
+                                            <h4>name@email.com</h4>
+                                            <button type="button" onClick={toggleEmail} className={email ? 'open' : null}> change?</button>
+                                        </div>
+                                        { email ? 
+                                            <>
+                                                <h3>New Email</h3>
+                                                <input 
+                                                    type="email" 
+                                                    name="email" 
+                                                    onChange={formik.handleChange} 
+                                                    value={formik.values.email}
+                                                    className={state.emailError ? 'error-input' : 'account'}
+                                                />
+                                            </>
+                                            : null
+                                        }
+                                        
+                                    </div>
+                                </Col>
+                                <Col span={12}>
+                                    <div className="d-flex column">
+                                        <h3>password</h3>
+                                        <div className="account-change d-flex">
+                                            <p>·········</p>
+                                            <button type="button" onClick={togglePassword} className={password ? 'open' : null}> change?</button>
+                                        </div>
+                                        { password ? 
+                                            <>
+                                                <h3>New Passowrd</h3>
+                                                <input 
+                                                    name="password" 
+                                                    type="password" 
+                                                    onChange={formik.handleChange} 
+                                                    value={formik.values.password}
+                                                    className="account" 
+                                                />
+                                                <h3 style={{"marginTop":"20px"}}>Confirm Passowrd</h3>
+                                                <input 
+                                                    name="password2" 
+                                                    type="password" 
+                                                    onChange={formik.handleChange} 
+                                                    value={formik.values.password2} 
+                                                    className={state.passwordError ? 'error-input' : 'account'}
+                                                />
+                                            </>
+                                            : null
+                                        }
+                                    
+                                    </div>    
+                                </Col>
+                            </Row>
                         </Col>
-                        
-                    <Col span={6}>
-                        <div className="circle"></div>
-                    </Col>
-                    <div className="spacer"/>
-                    {/* <Col span={24}>
-                        <h2>Notifications:</h2>
-                    </Col>
-                    <Col span={24}>    
-                        <Row>    
-                        <p>Some Setting the user can change</p>          
-                            <input type="radio" value="option1" name="settings"/> <label className={ state.isChecked ? "checked" : ""}>Option 1</label>
-                            <input type="radio" value="option2" name="settings"/> <label>Option 2</label>
-                        </Row>
-                    </Col> */}
-                    
-                        <Col span={18}>
+                        <div className="spacer"/>
+    
+                        {/* Delete Account */}
+                        <Col span={18} offset={4}>
                             <Row className="account-delete">
                             <h2>Delete Account?</h2>
-                            <p> This action will delete all information that you have given LoFM, including email, name, password, playlists, and user settings</p>
-                                <Col span={4} offset={17}>
+                            <p> This action will delete all information that you have given LoFM, including email, username, password, playlists, and user settings</p>
+                                <Col span={6} offset={17}>
                                     <button type="button" className="delete-btn" onClick={toggleWarning}><p>Delete Account</p></button>
                                 </Col>
                                 { showWarning ?
                                     <div>
                                         <p>This action cannot be undone</p>
-                                        <Col span={24} className="confirm-delete">
+                                        <Col span={20} className="confirm-delete">
                                             <button type="button" className="delete-btn" style={{"marginRight":"30px"}} onClick={deleteUser}><p> Yes, I'm Sure</p></button>
                                             <button type="button" className="default-btn"><p onClick={toggleWarning}> No, take me back</p></button>
                                         </Col>
@@ -221,8 +287,16 @@ export function AccountPage(props) {
                     </Row>
                     <div className="spacer"/>
                     <Row>
-                        <Col span={4} offset={17}>
-                            <button type="submit" className="save-btn"> <p>Save Settings</p> </button>
+                        <Col span={4} offset={16}>
+                        <button type="submit" className="save-btn">
+                                     <p>
+                            {isLoading ? 
+                                <Spinner/>
+                            : 
+                                'Save Settings' 
+                            }</p> 
+                                </button>
+                            
                             <a href="/">
                                 <button type="button"className="default-btn"><p> Cancel</p> </button>
                             </a>                        

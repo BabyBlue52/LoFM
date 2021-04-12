@@ -485,8 +485,7 @@ button.camera-btn {
 
 button.save-btn {
     @extend button.default-btn;
-    min-width: max-content;
-    width: 100%;
+    width: max-content;
     margin-bottom: 15px;
     background: $green;
     p {
@@ -495,9 +494,11 @@ button.save-btn {
     
     &:active {
         background: $black;
-        
         color: $green;
         transform: scale(0.95);
         transition: $smooth;
+        p {
+            color: $green !important;
+        }
     }
 }
