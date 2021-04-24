@@ -99,7 +99,7 @@ export function AccountPage(props) {
         deleteNotification();
         window.location = "/"
     }
-    if (state.isAuthenticated) {
+    if (state.isAuthenticated === false) {
         return  (
             <>
             <HomeButton label="Return Home" />
@@ -108,8 +108,7 @@ export function AccountPage(props) {
                     <Row >
                         <div className="super-spacer"/>
                         <Col span={24} offset={2}>
-                        <h1>please Log in to change account settings</h1>
-                        
+                            <h1>please Log in to change account settings</h1>
                         </Col>
                     </Row>
                 </div>
@@ -142,7 +141,6 @@ export function AccountPage(props) {
                         {/* Username */}
                         <Row className="d-flex column">
                             <Col><h3>Username</h3></Col>
-                            {process.env.REACT_APP_BASE_URL}
                             <Col><h2><span>@</span>Some_Donkus</h2></Col>
                         </Row>
                         

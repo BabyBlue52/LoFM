@@ -188,6 +188,8 @@ button.close {
 button.home-btn {
     display: inline-flex;
     position: absolute;
+    top: 10px;
+    left: 10px;
     color: $black;
     border-radius: 5px; 
     background: white;
@@ -485,7 +487,7 @@ button.camera-btn {
 
 button.save-btn {
     @extend button.default-btn;
-    width: max-content;
+    min-width: max-content;
     margin-bottom: 15px;
     background: $green;
     p {

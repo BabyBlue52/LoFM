@@ -12,16 +12,24 @@
 .search-container {
     background: rgba(0,0,0, 0.75);
     height: 100%;
+    h1 {
+        font-family: $spartan;
+        font-weight: $superHeavy;
+        text-transform: capitalize;
+    }
+    .suggestion {
+        margin-top: 10px;
+    }
 }
-
+/* Ant Changes */
 .ant-select {
     position: relative;
     display: inline-block;
     width: 90%;
     margin: 0;
     padding: 0;
-    background: transparent;
-    color: white;
+    background: white;
+    color: $black;
     font-size: 1.5rem;
     font-variant: tabular-nums;
     font-feature-settings: 'tnum', "tnum";
@@ -48,7 +56,8 @@
 .ant-select-selection-placeholder {
     line-height: 55px !important;
     font-family: $spartan;
-    font-weight: $light;
+    font-weight: $heavy;
+    font-size: 0.9rem;
 }
 
 .ant-input-affix-wrapper>input.ant-input {
@@ -63,7 +72,7 @@
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid white;
+    // border-bottom: 1px solid white;
 }
 
 .ant-input-suffix {
@@ -87,7 +96,7 @@
 }
 
 .ant-select-dropdown {
-    background: rgba($black, 0.5);
+    background: $black;
     color: white;
     font-family: $spartan;
     font-size: 1rem;
