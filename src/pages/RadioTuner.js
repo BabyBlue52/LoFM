@@ -1,33 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Page, Frame } from 'framer';
+import { Page } from 'framer';
 import axios from 'axios';
 
-import { IoMdArrowRoundUp, IoMdArrowRoundDown } from 'react-icons/io';
 import { MobileContent } from '../components/MobileContent';
 import store from '../_redux/createStore';
 import { loadUser } from '../_redux/actions/authAction';
 
 export default function RadioTuner() {
 
-    const [stations, setStations] = useState([
-        'The Bootleg Boy',
-        'Ryan Celcius',
-        'The Chilled Cow'
-    ])
-
     useEffect(() => {    
-        store.dispatch(loadUser());
-        console.log(store.getState())
-        axios.get(`${process.env.REACT_APP_BASE_URL}/api/info`,{
-            header: { Authorization: "Bearer " }
-        })
-        .then( res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-       
+        // Check if user is signed in 
+        if (store.getState().auth.user != null) {
+            store.dispatch(loadUser());
+            axios.get(`${process.env.REACT_APP_BASE_URL}/api/info`,{
+                header: { Authorization: "Bearer " }
+            })
+            .then( res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        } else {
+            console.log("Not Signed In");
+        }
+               
     }, []);
     
     return( 

@@ -7,7 +7,7 @@ import actionTypes from '../actionTypes';
 export const loadUser = () => (dispatch, getState) => {
     // User Loading
     dispatch({ type: actionTypes.USER_LOADING });
-  
+      
      axios
       .get(`${process.env.REACT_APP_BASE_URL}/api/info`, tokenConfig(getState))
       .then((res) => {

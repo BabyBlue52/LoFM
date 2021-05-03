@@ -43,21 +43,27 @@ export default function Dashboard(props){
     }
 
     useEffect(() => {
-        store.dispatch(loadUser());
+         // Check if user is signed in 
+         if (store.getState().auth.user != null) {
+            store.dispatch(loadUser());
+            axios.get(`${process.env.REACT_APP_BASE_URL}/api/info`,{
+                header: { Authorization: "Bearer " }
+            })
+            .then( res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        } else {
+            console.log("Not Signed In");
+        }
 
         setTimeout(function(){
             openNotification()
           }, 2500);
 
-        axios.get(`${process.env.REACT_APP_BASE_URL}/api/info`,{
-            header: { Authorization: "Bearer " }
-        })
-        .then( res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+       
         isLargeDesktop();
     }, [])
 

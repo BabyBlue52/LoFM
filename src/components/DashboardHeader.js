@@ -13,17 +13,22 @@ export function DashboardHeader(props){
     const [state,setState] = useState({})
 
     useEffect(() => {
-        store.dispatch(loadUser());
-        axios.get(`${process.env.REACT_APP_BASE_URL}/api/info`,{
-            header: { Authorization: "Bearer " }
-        })
-        .then( res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-        console.log(store.getState());
+
+        if (store.getState().auth.user != null) {
+            store.dispatch(loadUser());
+            axios.get(`${process.env.REACT_APP_BASE_URL}/api/info`,{
+                header: { Authorization: "Bearer " }
+            })
+            .then( res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        } else {
+            console.log("Not Signed In");
+        } 
+
     }, [])   
 
     const favoriteNotification = () => {

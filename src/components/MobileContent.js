@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Spin } from 'antd';
 import { Frame, Page } from 'framer';
-import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { Link, useLocation } from 'react-router-dom'
 
@@ -68,7 +67,7 @@ export function MobileContent(props) {
         
         refreshVideos()
         
-    }, [ api_key ]);
+    }, []);
 
     
     
@@ -163,7 +162,7 @@ export function MobileContent(props) {
                     <Row className="justify-center">
                         <Col className="justify-center" >
                             <div onClick={handleChat}>
-                                <ChatButton name={channels.name}/>
+                                <ChatButton/>
                             </div>
                         </Col>
                     </Row> 
@@ -171,8 +170,8 @@ export function MobileContent(props) {
                         soundcloud={links.soundcloud} 
                         spotify={links.spotify}
                         youtube={links.youtube}
-                        artist={song.artist}
-                        title={song.title}
+                        // artist={song.artist}
+                        // title={song.title}
                        //thumbnail={channels[currentPage].thumbnail}
                         id={profile.id}
                         videoId={live.videoId}
