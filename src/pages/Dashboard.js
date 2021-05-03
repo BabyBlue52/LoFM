@@ -16,7 +16,9 @@ import gif from '../img/gif/chilledCow.gif';
 
 export default function Dashboard(props){
     const [isOpen, setIsOpen] = useState(false)
+    const [width, setWidth] = useState(8)
     const channel = <marquee>"Bob, do something"</marquee>
+    
     const openNotification = () => {
         notification.open({
             className: "lo-playing",
@@ -27,8 +29,17 @@ export default function Dashboard(props){
         });
       };
 
-    const toggleChatDrawer = () => {
+    const toggleChatDrawer = (e) => {
+        e.preventDefault();
         setIsOpen(!isOpen);
+    }
+
+    const isLargeDesktop = () => {
+        if (window.innerWidth > 1400) {
+            setWidth(8)
+        } else {
+            setWidth(10)
+        }
     }
 
     useEffect(() => {
@@ -38,7 +49,7 @@ export default function Dashboard(props){
             openNotification()
           }, 2500);
 
-        axios.get('https://dev.lofifm.com/api/info',{
+        axios.get(`${process.env.REACT_APP_BASE_URL}/api/info`,{
             header: { Authorization: "Bearer " }
         })
         .then( res => {
@@ -47,6 +58,7 @@ export default function Dashboard(props){
         .catch(err => {
             console.log(err);
         })
+        isLargeDesktop();
     }, [])
 
     return(
@@ -62,13 +74,12 @@ export default function Dashboard(props){
                         <Col span={6} className="static-content"> 
                             <div className="channel-container">
                                 <h1 className="channel-header">#Channels</h1>
-                                <div className="favorites-container">
+                                <div className="favorites-container _dropShadow">
                                     <div className="favorites-list">
                                         <h2>Bang</h2>
                                         <h2>Bang</h2>
                                         <h2>Bang</h2>
                                         <h2>Bang</h2>
-
                                         <h2>Bang</h2>
                                         <h2>Bang</h2>
                                         <h2>Bang</h2>
@@ -87,7 +98,7 @@ export default function Dashboard(props){
                             </div>
                         </Col>
                         <Col span={18} className="static-content-center">
-                            <DashboardContent span={isOpen ? 15 : 9} row={isOpen ? '': 'left-marg'}/>   
+                            <DashboardContent span={isOpen ? 15 : width} row={isOpen ? '': 'left-marg'}/>   
                         </Col>
                     </Row>
                 </Col>

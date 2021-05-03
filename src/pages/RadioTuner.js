@@ -3,12 +3,9 @@ import { Page, Frame } from 'framer';
 import axios from 'axios';
 
 import { IoMdArrowRoundUp, IoMdArrowRoundDown } from 'react-icons/io';
-import { BootlegBoy } from '../components/MobileContent';
+import { MobileContent } from '../components/MobileContent';
 import store from '../_redux/createStore';
 import { loadUser } from '../_redux/actions/authAction';
-
-import Celcius from '../img/stamp/celcius-stamp.png';
-import BootLeg from '../img/stamp/bootleg-stamp.png';
 
 export default function RadioTuner() {
 
@@ -18,11 +15,10 @@ export default function RadioTuner() {
         'The Chilled Cow'
     ])
 
-    
     useEffect(() => {    
         store.dispatch(loadUser());
         console.log(store.getState())
-        axios.get('https://dev.lofifm.com/api/info',{
+        axios.get(`${process.env.REACT_APP_BASE_URL}/api/info`,{
             header: { Authorization: "Bearer " }
         })
         .then( res => {
@@ -31,11 +27,9 @@ export default function RadioTuner() {
         .catch(err => {
             console.log(err);
         })
-
-
-        
        
     }, []);
+    
     return( 
         <div>
             <Page 
@@ -43,7 +37,8 @@ export default function RadioTuner() {
                 direction="vertical"
                 directionLock={true}
             >
- 
+                <MobileContent />
+           
             </Page>
         </div>
     )

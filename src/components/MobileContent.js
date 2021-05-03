@@ -3,8 +3,7 @@ import { Row, Col, Spin } from 'antd';
 import { Frame, Page } from 'framer';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { MdRadio } from 'react-icons/md';
+import { Link, useLocation } from 'react-router-dom'
 
 import { Chat } from './Chat';
 import { ChatButton, PlayButton } from './Button';
@@ -14,18 +13,30 @@ import { ChannelUploads } from './ChannelUploads';
 import ChannelBio from './ChannelBio';
 
 
+let vids = []
+let url = ""
+
 export function MobileContent(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [hasError, setHasError] = useState(false);
-    const [currentPage, setCurrentPage] = useState(3)
-    const [channels,setChannels] = useState([])
+    const [currentPage, setCurrentPage] = useState(0);
+    const [channelId,setChannelId] = useState("");
+    const location = useLocation()
 
     const [live,setLive] = useState({
         videoId: null,
         song:'',
         artist:'',
     });
+    const [uploads, setUploads] = useState([]);
 
+    const [profile, setProfile] = useState({
+            id: {channel:'The BootLeg Boy',id: 1},
+            name:'loading',
+            thumbnail:'https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png',
+            bio:'Loading...',
+            videos:[]
+    });
     const links ={
         spotify:'https://open.spotify.com/playlist/71019EDcRamfMmOEEoTdEu?si=XePP-REWQDSuzJT6-SXwSQ',
         soundcloud: 'https://soundcloud.com/dabootlegboy',
@@ -35,7 +46,7 @@ export function MobileContent(props) {
     let home = 3
     let chat = 4
 
-    function handlePlay(){
+    const handlePlay = () => {
         setIsPlaying(!isPlaying);
     }
     
@@ -52,53 +63,84 @@ export function MobileContent(props) {
 
     //api calls
     useEffect(() => {
-
-        console.log(width)
-    }, []);
-
+        console.log(location.state.id)
+        fetchAPI(videos)
+        
+        refreshVideos()
+        
+    }, [ api_key ]);
 
     
-    const url = `http://youtube.com/watch?v=${live.videoId}`
     
+    const fetchAPI = (videos) => {
+        fetch(videos)
+       .then(function(response) {
+           // The response is a Response instance.
+           // You parse the data into a useable format using `.json()`
+           return response.json();
+       }).then(function(data){
+           // `data` is the parsed version of the JSON returned from the above endpoint.
+
+            setUploads(data.data.items)
+       }).then(() => {
+            // console.log(uploads)
+            // uploads.data.forEach((data) => {
+            //     vids.push(data)
+            // })
+            // console.log(vids)
+       })
+       
+   }
+
+    const videos = `${process.env.REACT_APP_BASE_URL}/api/creator/youtube/${location.state.id}`
+    
+    const info = `${process.env.REACT_APP_BASE_URL}/`
+    console.log(uploads)
+
+    async function refreshVideos() {
+     
+    }
     return(
         <>  
             
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
-                currentPage={currentPage}
+                currentPage={1}
                 direction="horizontal"
                 directionLock={true}
                 dragEnabled={true}
                 contentWidth={300}
-                momentum={false}
-            >       
+            >    
+                  
                 <Frame>
-                    <Row className="justify-center">
-                        
-                    </Row>
+                    <Row className="justify-center"></Row>
                 </Frame>
+
                 {/* Spotify Playlists */}
-                <Frame size={width}>
-                    <Row className="justify-center">
-                        <Col span={20} style={{'flexDirection':'column'}}>
-                            <div className="spacer"></div>
-                            <h3>Spotify Playlists</h3>
-                    
-                        </Col>
-                    </Row>  
-                </Frame>        
-                 
-                {/* Recent Uploads */}
-                <Frame size={width}>
+                {/* <Frame size={width}>
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
                         <div className="spacer"></div>
+                        <h3>Spotify Playlists</h3>
+                        {/* <ChannelPlaylist
+                            station={channels[currentPage].spotify}
+                        /> 
+                        </Col>
+                    </Row>   
+                </Frame> */}
+
+                {/* Recent Uploads */}
+                <Frame size={width}>
+                    
+                    <Row className="justify-center">
+                        <Col span={20} style={{'flexDirection':'column'}}>
+                        <div className="super-spacer"></div>
                         <h3>Latest Uploads</h3>
                         <div className="vid-scroller">
-                            {/* {channels[currentPage].videos.map((data, i) => {
+                           {/*  {uploads.map((data) => {
                                 return(
-                                    <div className="vid-card" key={i}>
+                                    <div className="vid-card">
                                         <ChannelUploads
                                             videoThumbnail={data.videoThumbnail}
                                             videoTitle={data.videoTitle}
@@ -116,7 +158,8 @@ export function MobileContent(props) {
 
                 {/* Main Page */}
                 <Frame size={width}>
-                    <div className="spacer"></div>
+                    
+                    <div className="super-spacer"></div>
                     <Row className="justify-center">
                         <Col className="justify-center" >
                             <div onClick={handleChat}>
@@ -128,17 +171,17 @@ export function MobileContent(props) {
                         soundcloud={links.soundcloud} 
                         spotify={links.spotify}
                         youtube={links.youtube}
-                        artist={channels.name}
-                        title={channels.title}
-                        thumbnail={channels.thumbnail}
-                        id={channels.id}
-                        videoId={channels.videoId}
-                        // viewers={channels[currentPage].view}
+                        artist={song.artist}
+                        title={song.title}
+                       //thumbnail={channels[currentPage].thumbnail}
+                        id={profile.id}
+                        videoId={live.videoId}
+                       // viewers={channels[currentPage].view}
                     />
-                    {/* <ChannelBio
-                        name={channels[currentPage].name}
-                        bio={channels.bio}
-                    /> */}
+                    <ChannelBio
+                       // name={channels[currentPage].name}
+                        bio={profile.bio}
+                    />
                     {/* Play Content */}
                     <Row className="justify-center">
                         <Col span={18} className="justify-center">
@@ -160,10 +203,7 @@ export function MobileContent(props) {
                 {/* Chat Feature */}
                 <Frame size={width}>
                     
-                        <button className="back-btn" onClick={handleReturn}>
-                            <AiOutlineArrowLeft/>
-                        </button>
-                        <Chat />
+                    <Chat/>
                 </Frame>
             </Page>
         </>

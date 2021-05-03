@@ -40,8 +40,8 @@ $tablet: 1024px;
         .chat-modifier {
             bottom: 110px;
         }
-        .back-btn {
-            top: 15px;
+        ._disabled {
+            margin-top: 0px;
         }
     }
 
@@ -83,7 +83,6 @@ $tablet: 1024px;
 
         /* Centered Form */
         form.login {
-            top: 40%;
             background: $offWhite;
             max-height: 600px;
             border: .5px solid rgba(15, 15, 15, 0.1);
@@ -159,7 +158,7 @@ $tablet: 1024px;
         .vid-scroller {
             overflow: hidden;
             width: 100%;
-            max-width: 100%;
+            max-width: inherit;
             max-height: 100%;
             margin: 0;
             margin-top: 25px;
@@ -187,7 +186,6 @@ $tablet: 1024px;
                 margin: 0;
                 margin-right: 10px;
                 padding-bottom: 50px;
-                
             }
 
             .vid-thumbnail {
@@ -197,7 +195,7 @@ $tablet: 1024px;
         }
 
         .playlist-container {
-            width: 100%;
+            max-width: inherit;
             margin: 0;
 
             h3 {
@@ -208,6 +206,7 @@ $tablet: 1024px;
             }
             .playlist-card {
                 max-width: 250px;
+                margin: 0 auto;
 
                 h3.playlist-title {
                     padding: 0;

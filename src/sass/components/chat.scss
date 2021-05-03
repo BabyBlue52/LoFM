@@ -1,6 +1,7 @@
 /* Chat */
 .chat-container {
-    display: inline;
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 69px;
     right: -1px;
@@ -11,7 +12,7 @@
 
 .chat-header {
     width: 100%;
-    height: 50px;
+    height: 52px;
 }
 
 .chat-box-open {
@@ -259,6 +260,39 @@
 
 .SearchForm_form__2QcwN {
     padding: 15px 0px 10px 0;
+}
+
+/* Disabled Chat */
+._disabled {
+    height: 100vh;
+    width: 100%;
+    margin-top: 55px;
+    padding: 50% 0;
+    background: rgba($darker, 50%);
+    img {
+        height: 120px;
+        width: 100%;
+        padding-bottom: 20px;
+        opacity: 0.8;
+    }
+    h1 {
+        font-weight: $superHeavy;
+        margin-bottom: 0;
+    }   
+    p {
+        text-align: center;
+        font-size: 0.8rem;
+        background: none;
+    } 
+    a {
+        display: block;
+        position: relative;
+        top: -15px;
+        width: 100%;
+        text-align: center;
+        font-size: 0.67em;
+        
+    }
 }
 
 @media screen and (min-width: $mobile) and (max-width: $tablet) {

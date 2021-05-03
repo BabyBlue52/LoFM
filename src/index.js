@@ -15,12 +15,13 @@ import { MobileContent } from './components/MobileContent';
 import Dashboard from './pages/Dashboard';
 import { LoginPage } from './pages/Login';
 import { SignUpPage } from './pages/SignUp';
+import { AccountPage } from './pages/Account';
 import SupportPage from './pages/Support';
-import { Chat } from './components/Chat'
+import { Chat } from './components/Chat';
+import { BackButton } from './components/Button';
 
 import 'antd/dist/antd.css';
 import './style.scss';
-
 
 const Desktop = ({ children }) => {
   const isDesktop = useMediaQuery({ minWidth: 1024 })
@@ -30,7 +31,7 @@ const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 1023 })
   return isMobile ? children : null
 }
-  
+
 function App() {
    useEffect(() => {
     store.dispatch(loadUser());
@@ -51,6 +52,7 @@ function App() {
                       <Route exact path="/login" component={LoginPage} />
                       <Route exact path="/sign-up" component={SignUpPage}/>
                       <Route exact path="/chat" component={Chat}/>
+                      <Route exact path="/account" component={AccountPage}/>
                       {/* <PrivateRoute exact path="/chat" component={Chat}/> */}
                       <Route exact path="/support-us" component={SupportPage}/>
                     </div> 
@@ -58,24 +60,26 @@ function App() {
                 </Switch>
               </Router>
               <PushMenu/>
+              <BackButton/>
             </AuthContext.Provider>
           </Mobile>
         
           {/* Desktop Size */}
           <Desktop>
-          <Router>
+              <Router>
                 <Switch>
                   <div id="app-desktop">
                     <div className="sunset-skin">
                       <Route exact path="/" component={Dashboard} />
-                      <Route exact path="/login" component={LoginPage} />
+                      <Route exact path="/login" component={LoginPage}/>
+                      <Route exact path="/account" component={AccountPage}/>
                       <Route exact path="/sign-up" component={SignUpPage}/>
                       <Route exact path="/support-us" component={SupportPage}/>
                     </div> 
                   </div>
                 </Switch>
               </Router>
-        </Desktop>
+          </Desktop>
         </Provider>
       </React.Fragment>
     )

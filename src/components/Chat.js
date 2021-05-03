@@ -6,9 +6,12 @@ import 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { ChatBubble } from './ChatBubble';
-import { BackButton } from './Button';
+import { HomeButton } from './Button';
 import { GiphyKeyboard } from './GiphyKeyboard';
 import firebaseConfig from '../config';
+
+import construction from '../img/construction.svg';
+import { Link } from 'react-router-dom';
 
 firebase.initializeApp(firebaseConfig)
 
@@ -27,6 +30,7 @@ export function Chat(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [formValue, setFormValue] = useState('');
 
+    const [isDisabled, setDisabled] = useState(true);
     const messagesRef = firestore.collection('messages');
     const query = messagesRef.orderBy('createdAt').limit(25); 
 
@@ -50,7 +54,7 @@ export function Chat(props) {
           
         }
     }
-    function toggleOpen() {
+    const toggleOpen = () => {
         setIsOpen(!isOpen);
     }
     useEffect(() => {    
@@ -60,24 +64,37 @@ export function Chat(props) {
 
     if (window.innerWidth < 400 ) {
         return (
-            <div className="chat-mobile">  
-                <Row style={{'width':'100%'}}>
-                    <Col span={24} className="chat-header">
- 
-                    
-                        <h3 className="chat-title">{props.snippet} chat</h3>
-                    </Col>
-                </Row>
-                {/* Chat API Body */}        
-                <Row className="broadcast">
-                    {messages && messages.map((msg, i) => 
-                    <Col span={24} key= {i}>
-                            <ChatBubble  key={msg.id} message={msg} content={props.text} userName={user.userName}/>
-                    </Col>
-                    )}
-                    <div className="spacer"></div>
-                </Row>
-                <Row style={{'width':'90%','margin':'0 auto'}}>
+            <div className="chat-mobile">
+                {isDisabled ?
+                <Row>
+                    <div className="_disabled">
+                        <img src={construction}/>
+                        <a href="https://www.vecteezy.com/free-vector/vector">Vector Vectors by Vecteezy</a>
+                        <h1> Chat Feature </h1>
+                        <p> coming soon</p>
+                    </div>
+                </Row> 
+                : 
+                <div>   
+                    <Row style={{'width':'100%'}}>
+                        <Col span={24} className="chat-header">
+                            <button className="back-btn">
+                                <AiOutlineArrowLeft/>
+                            </button>
+                        
+                            <h3 className="chat-title">{props.snippet} chat</h3>
+                        </Col>
+                    </Row>
+                    {/* Chat API Body */}        
+                    <Row className={ isDisabled ? "broadcast" : "_disabled"}>
+                        {messages && messages.map(msg => 
+                        <Col span={24}>
+                                <ChatBubble  key={msg.id} message={msg} content={props.text} userName={user.userName}/>
+                        </Col>
+                        )}
+                        <div className="spacer"></div>
+                    </Row>
+                    <Row style={{'width':'90%','margin':'0 auto'}}>
                     <Col span={24} className="chat-modifier">
                         <div className="chat-gif">
                             <GiphyKeyboard sendGif/>
@@ -95,18 +112,33 @@ export function Chat(props) {
                         </button>
                         
                     </Col>
-                </Row>
+                    </Row> 
+                </div> 
+                }
             </div>
         )
     }
     else { 
         return (
         <div > 
+            { isDisabled ? 
+            <Row>
+                <div className="_disabled">
+                    <img src={construction}/>
+                    <a href="https://www.vecteezy.com/free-vector/vector">Vector Vectors by Vecteezy</a>
+                    <h1> Chat Feature </h1>
+                    <p> coming soon</p>
+                </div>
+            </Row> 
+            :
+
+            <div>
             <Row>
                 <Col span={24} className="justify-center">
                     <h3 className="chat-title">{props.channelName} chat</h3>
                 </Col>
             </Row>
+            
             <Row className="broadcast">
                 {messages && messages.map(msg => 
                 <Col span={24} key={msg.id}>
@@ -114,7 +146,7 @@ export function Chat(props) {
                 </Col>
                 )}
             </Row>
-
+        
             <Row >
                 <Col span={props.animate} className={isOpen ? "open chat-modifier" : "chat-modifier"}>
                     <div className="chat-gif">
@@ -137,6 +169,8 @@ export function Chat(props) {
                     </button>
                 </Col>
             </Row>
+            </div>
+            }
         </div>
         )
     }

@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { MdChatBubble } from 'react-icons/md';
 import { Tooltip } from "antd";
 import { FaPlay, FaPlus, FaCheck } from 'react-icons/fa';
-import { AiFillHome } from 'react-icons/ai';
+import { AiFillHome, AiOutlineArrowLeft } from 'react-icons/ai';
 import {PortalWithState } from 'react-portal';
-
 import config from '../apis';
 import { SoundWave } from './animation';
 
@@ -30,19 +29,36 @@ function SignInButton(props) {
     )
 }
 
-//Back Button
-function BackButton(props) {
+//Home Button
+function HomeButton(props) {
     return(
         <>
-            <button className="home-btn">
-                <a href="/">
-                <AiFillHome/><p>{props.label}</p>
-                </a>
-            </button>
+            <a href="/">
+                <button className="home-btn">
+                    <AiFillHome/><p>{props.label}</p>
+                </button>
+            </a>
         </>
     )
 }
 
+// Back Button 
+function BackButton() {
+    if(window.location.pathname === '/login' || 
+       window.location.pathname === '/sign-up' ) {
+        return null;
+    } else 
+    return(
+        <>
+            <a href="/">
+                <button className="back-btn">
+                    <AiOutlineArrowLeft/> 
+                    <h4>Back</h4>
+                </button>
+            </a>
+        </>
+    )
+}
 // Chat button
 function ChatButton(props) {
     return ( 
@@ -112,4 +128,4 @@ function FavoriteButton() {
 }
 
 
-export { Button, BackButton, SignInButton, ChatButton, PlayButton, FavoriteButton, PlaylistButton };
+export { Button, HomeButton, BackButton, SignInButton, ChatButton, PlayButton, FavoriteButton, PlaylistButton };

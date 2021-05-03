@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import { AiOutlineCheck, AiOutlinePlus, AiOutlineArrowLeft, AiOutlineInbox } from 'react-icons/ai';
 import { Page } from 'framer';
-import { motion } from 'framer-motion';
 import _ from 'lodash';
 import { connect, useDispatch } from 'react-redux';
 
@@ -16,18 +15,22 @@ export function DashboardContent(props) {
     const [currentPage, setCurrentPage] = useState(0)
     const [channels,setChannels] = useState([])
     const [favorite,setFavorite] = useState(false);
+    let pageSize = 4
     
-    const url = "https://dev.lofifm.com/api/creators"
+    const url = `${process.env.REACT_APP_BASE_URL}/api/creators`
 
     useEffect(()=> {
-                
-        fetchAPI(url);
-        channels.unshift({})
-
-        console.log(store)
-        console.log(channels)
-    },[])
+        
+        fetchAPI(url) 
+    },[]);
     
+    channels.unshift({});
+
+    // Workaround from the unshift fix later
+    if (channels.length > pageSize){
+        channels.shift();
+    }
+
     // Properly load dispatch REDUX
     const dispatch = useDispatch();
 
@@ -37,16 +40,24 @@ export function DashboardContent(props) {
        .then(function(response) {
            // The response is a Response instance.
            // You parse the data into a useable format using `.json()`
-           return response.json();
+            return response.json();
        }).then(function(data) {
            // `data` is the parsed version of the JSON returned from the above endpoint.
             setChannels(data.data)
-           
        })
+    }
+
+    // Populate an empty object first in array
+    const unShift = () => {  
+        let newArray = _.uniqBy(channels, "id")
+        console.log([newArray])
+        newArray.shift();
+        setChannels(newArray)
     }
 
     const goBack = () => {
         setCurrentPage(0);
+        unShift();   
     }
 
     const handleClick = i => e => {
@@ -56,8 +67,6 @@ export function DashboardContent(props) {
         }
         setCurrentPage(i++)
     }
-    
-
 
     const toggleFavorite = () => {
         setFavorite(!favorite);
@@ -118,7 +127,7 @@ export function DashboardContent(props) {
                         <div className="super-spacer"></div>
                         <Row>
                             <Col span={24}>
-                            <button onClick={goBack} className="back-btn">
+                            <button onClick={goBack} className="page-back-btn">
                                 <p><AiOutlineArrowLeft/><span>Return</span></p>
                             </button>
                             </Col>

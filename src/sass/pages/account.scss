@@ -1,0 +1,169 @@
+.account-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background: transparent;
+    z-index: 9; 
+    overflow: auto;
+
+    animation-name: slideUp; 
+    animation-duration: 1000ms;
+
+    .account-settings {
+        position: relative;
+        top: 17.5%;
+        min-height: 350px;
+        width: 500px;
+        max-width: 50%;
+        min-width: 1000px;
+        margin: 0 auto;
+        margin-bottom: 200px;
+        padding: 40px 40px 20px 40px;
+        border-radius: 10px;
+        background: rgba(0,0,0,0.45);
+        
+        h1 {
+            text-align: left;
+            font-size: 1.75rem;
+            font-weight: $superHeavy;
+            padding-bottom: 40px;
+            span {
+                position: relative;
+                top: -6px;
+                margin-right: 2px;
+                opacity: 0.85;
+            }
+        }
+        h2 {
+            color: white;
+            font-weight: $heavy;
+            font-size: 1.25rem;
+            font-family: $spartan;
+        }
+        h3 {
+            margin-top: 10PX;
+            text-align: left;
+        }
+        p {
+            color: white;
+            margin:0;
+        }
+        
+        input[type=password].account, input[type=email].account {
+            background: transparent;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid $offWhite;
+            font-size:1.25rem;
+            cursor: pointer;
+        }
+
+        label {
+            margin: 0 5px 0 0;
+            border: 3px solid white;
+            border-radius: 3px;
+            padding: 5px 10px 3px 10px;
+            font-family: $spartan;
+            font-size: 0.8rem;
+            transition: $smooth;
+            &:hover {
+                background: $offWhite;
+                transition: $smooth;
+            }
+        }
+            
+    }
+
+}
+
+.account-mobile {
+    height: 100vh;
+    background: $black;
+    padding-top: 60px;
+    h1, h2  {
+        width: 100%;
+        margin-bottom: 20px;
+        color: $offWhite;
+        font-weight: $heavy;
+        text-align: center;
+        text-overflow: ellipsis;
+        span {
+            margin-right: 5px;
+        }
+    }
+    h2 {
+        max-width: 300px;
+        text-align: left;
+    }
+    .container-mobile {
+        overflow-y: scroll;
+        height: 80%;
+        padding: 0 40px 40px 40px;
+    }
+}
+
+.account-delete {
+    width: 100%;
+    margin-top: 20px; 
+    border: 5px solid $red;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.user-avatar {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background: white;
+    svg {
+        fill: $black;
+        height: inherit;
+        width: inherit;
+    }
+    img {
+        height: inherit;
+        width: inherit;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid $offWhite;
+    }
+    
+}
+
+.confirm-delete {
+    display: flex;
+    // margin-left: -30px;
+    margin-top: 20px;
+    button {
+        min-width: 100%;  
+        margin-bottom: 10px;  
+    }
+}
+
+.account-change {
+    h4 {
+        color: white;
+    }
+    p {
+        font-size: 2rem;
+        line-height: 1.3rem;
+    }
+    button {
+        margin-left: 10px;
+        line-height: 1.3rem;
+        color: $grey;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: $smooth;
+        &:active, &:hover{
+            color: $purple;
+            border-bottom: 2px solid $purple;
+            transition: $smooth;
+        }
+    }
+    button.open {
+        color: $purple;
+        border-bottom: 2px solid $purple;
+        transition: $smooth;   
+    }
+}

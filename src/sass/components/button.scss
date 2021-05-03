@@ -14,9 +14,10 @@ button {
 button.default-btn {
     display: flex;
     justify-content: center;
+    width: 100%;
     max-width: 280px;
     max-height: 35px;
-    margin: 0px;
+    margin: 0px 5px;
     padding: 12px 20px;
     background: $purple;
     border: none;
@@ -185,18 +186,15 @@ button.close {
 }
 
 button.home-btn {
-    display: inline;
+    display: inline-flex;
     position: absolute;
-    top: 30px;
-    left: 20px;
+    top: 10px;
+    left: 10px;
     color: $black;
+    border-radius: 5px; 
+    background: white;
+    padding: 10px 20px 0 20px;
     z-index: 99;
-
-    a {
-        display: inline-flex;
-        color: $black;
-        opacity: 0.5;
-    }
 
     svg {
         fill: $black;
@@ -205,11 +203,6 @@ button.home-btn {
         padding-right: 10px;
         transform: scale(1.67);
         transition: 300ms ease-in-out;
-
-        &:hover,
-        &:active {
-            fill: $purple;
-        }
     }
 
     p {
@@ -217,6 +210,12 @@ button.home-btn {
         padding: 0;
         margin-top: 2.5px;
         font-size: 0.8rem;
+        font-weight: $superHeavy;
+    }
+    &:hover, &:active {
+        background: rgba($purple, 0.5);
+        a {color: $darker}
+        svg {fill: $darker}
     }
 }
 
@@ -330,6 +329,11 @@ button.playlist-btn {
 button.support-btn {
     @extend button.default-btn;
     background: $green;
+    p {
+        text-transform: uppercase;
+        color: $black !important;
+    }
+    
     max-width: 150px !important;
     margin-right: 15px; 
     &:active {
@@ -425,34 +429,78 @@ button.send {
     background: none;
 }
 button.back-btn {
+    display: flex;
     position: absolute;
     left: 10px;
-    z-index: 99;
+    top: 20px;
+    h4 {
+        margin-top: 2px;
+        padding-left: 10px;
+        color: $offWhite;
+    }
     svg {
         fill: $offWhite;
         height: 24px;
         width: 24px;
     }
 }
-button.home-btn-mobile {
-   
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    background: white; 
+button.page-back-btn {
+    @extend button.back-btn;
+    top: 0;
+    left: 0;
+}
+button.delete-btn {
+    @extend button.default-btn;
+    position: relative;
+    background: $red;
+    &:active {
+        background: darken($red, 10%)
+    }    
+}
+
+button.camera-btn {
+    position: relative;
+    top: 75px;
+    right: 20px;
+
+    background: $purple;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    
     svg {
-        height: 24px;
-        width: 24px;
-        margin-top: 5px;
-        fill: $black;
+        fill: white;
+        height: 20px;
+        width: 20px;
+        margin-top: 4px;
     }
+    input[type="file"] {
+        position: relative;
+        top: -30px;
+        left: -4px;
+        width: 30px;
+        height: 30px;
+        opacity: 0;
+        cursor: pointer;
+    }
+}
+
+button.save-btn {
+    @extend button.default-btn;
+    min-width: max-content;
+    margin-bottom: 15px;
+    background: $green;
     p {
-        margin-top: 8px;
-        padding-left: 10px;
-        background:none;
-        color: $black;
-        font-weight: $superHeavy;
-        font-size: $small;
-        
+        color: $black !important;
+    }
+    
+    &:active {
+        background: $black;
+        color: $green;
+        transform: scale(0.95);
+        transition: $smooth;
+        p {
+            color: $green !important;
+        }
     }
 }

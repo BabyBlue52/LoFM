@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, notification } from 'antd';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Logo from '../img/logo.svg';
 
 import 'swiper/swiper.scss';
@@ -14,12 +14,11 @@ export default function MobileDashboard(){
     })
 
     const adjustable = 3
-    const url = "https://dev.lofifm.com/api/creators"
+    const url = `${process.env.REACT_APP_BASE_URL}/api/creators`
 
     const channelSelect = i => e => {
         console.log(i)
     }
-    
 
     const welcomeNotification = () => {
         notification.open({
@@ -54,6 +53,7 @@ export default function MobileDashboard(){
         }).then(function(data) {
             // `data` is the parsed version of the JSON returned from the above endpoint.
             setChannels(data.data)
+
         })
     }
 
@@ -61,10 +61,8 @@ export default function MobileDashboard(){
   
     return (
         <React.Fragment>
-            <Row>
-                <h1 className='mobile-header'>Who's Playing</h1>
-                <div className="spacer"></div>
-            </Row>
+            <div className="super-spacer"></div>
+            
             <div className="mobile-dashboard">
                 
                 {/** Most Popular */} 
@@ -75,11 +73,14 @@ export default function MobileDashboard(){
                     spaceBetween={10}
                     slidesPerView={adjustable}
                 >
-                    <SwiperSlide className="starter" />
-                    {channels.map((item, i) => {
+                    <SwiperSlide className="starter"></SwiperSlide>
+                    {channels.map((item) => {
                         return(
-                            <SwiperSlide key={i} className="channel-cover">
-                                <Link to={`/radio/${item.id}`} >
+                            <SwiperSlide  className="channel-cover">
+                                <Link to={{
+                                    pathname: `/radio/${item.id}`,
+                                    state: {id: item.id}
+                                    }} >
                                     <img src={item.thumbnail} />
                                     <p>{item.creator_name}</p>
                                     <p className="followers">
@@ -101,11 +102,15 @@ export default function MobileDashboard(){
                     spaceBetween={10}
                     slidesPerView={adjustable}
                 >
-                    <SwiperSlide className="starter" />
+
+                <SwiperSlide className="starter"></SwiperSlide>
                        {channels.map((item, i) => {
                     return(
                         <SwiperSlide key={i} className="channel-cover">
-                            <Link to={`/radio/${item.id}`} >
+                            <Link to={{
+                                pathname: `/radio/${item.id}`,
+                                state: {id: item.id}
+                                }}>
                                 <img src={item.thumbnail} />
                                 <p>{item.creator_name}</p>
                                 <p className="followers">
