@@ -11,7 +11,7 @@ import store from './_redux/createStore';
 import { loadUser } from './_redux/actions/authAction';
 
 import MobileDashboard from './pages/MobileDashboard';
-import RadioTuner from './pages/RadioTuner';
+import { MobileContent } from './components/MobileContent';
 import Dashboard from './pages/Dashboard';
 import { LoginPage } from './pages/Login';
 import { SignUpPage } from './pages/SignUp';
@@ -47,7 +47,7 @@ function App() {
                   <div id="app">
                     <div className="sunset-skin">
                       <Route exact path="/" component={MobileDashboard} />
-                      <Route exact path="/radio/*" component={RadioTuner} />
+                      <Route exact path="/radio/*" component={MobileContent} />
                       <Route exact path="/login" component={LoginPage} />
                       <Route exact path="/sign-up" component={SignUpPage}/>
                       <Route exact path="/chat" component={Chat}/>

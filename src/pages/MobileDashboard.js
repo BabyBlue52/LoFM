@@ -7,7 +7,6 @@ import Logo from '../img/logo.svg';
 import 'swiper/swiper.scss';
 
 
-
 export default function MobileDashboard(){
     const [channels, setChannels] = useState([]);
     const [state, setState] = useState({
@@ -21,8 +20,6 @@ export default function MobileDashboard(){
         console.log(i)
     }
     
-    let channelLoop = []
-
 
     const welcomeNotification = () => {
         notification.open({
@@ -78,12 +75,10 @@ export default function MobileDashboard(){
                     spaceBetween={10}
                     slidesPerView={adjustable}
                 >
-                    <SwiperSlide className="starter">
-            
-                    </SwiperSlide>
-                    {channels.map((item) => {
+                    <SwiperSlide className="starter" />
+                    {channels.map((item, i) => {
                         return(
-                            <SwiperSlide  className="channel-cover">
+                            <SwiperSlide key={i} className="channel-cover">
                                 <Link to={`/radio/${item.id}`} >
                                     <img src={item.thumbnail} />
                                     <p>{item.creator_name}</p>
@@ -106,6 +101,7 @@ export default function MobileDashboard(){
                     spaceBetween={10}
                     slidesPerView={adjustable}
                 >
+                    <SwiperSlide className="starter" />
                        {channels.map((item, i) => {
                     return(
                         <SwiperSlide key={i} className="channel-cover">

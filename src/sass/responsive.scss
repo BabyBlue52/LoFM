@@ -40,6 +40,9 @@ $tablet: 1024px;
         .chat-modifier {
             bottom: 110px;
         }
+        .back-btn {
+            top: 15px;
+        }
     }
 
     #app-desktop {
@@ -111,6 +114,7 @@ $tablet: 1024px;
         }
 
         button.back-btn {
+            top: 15px;
             svg {
                 height: 20px;
                 width: 20px;

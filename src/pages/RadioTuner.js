@@ -43,18 +43,7 @@ export default function RadioTuner() {
                 direction="vertical"
                 directionLock={true}
             >
-                <BootlegBoy />
-                <Page>
-                    {/** Interstitial Frame */}
-                    <Frame className="stamp">
-                        <IoMdArrowRoundUp/>
-                        <h1>{stations[0]}</h1>
-                        <img src={BootLeg} />                        
-                        <img src={Celcius}/> 
-                        <h1>{stations[1]}</h1>  
-                        <IoMdArrowRoundDown/>                       
-                    </Frame>   
-                </Page>
+ 
             </Page>
         </div>
     )

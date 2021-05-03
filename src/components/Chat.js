@@ -63,17 +63,15 @@ export function Chat(props) {
             <div className="chat-mobile">  
                 <Row style={{'width':'100%'}}>
                     <Col span={24} className="chat-header">
-                        <button className="back-btn">
-                            <AiOutlineArrowLeft/>
-                        </button>
+ 
                     
                         <h3 className="chat-title">{props.snippet} chat</h3>
                     </Col>
                 </Row>
                 {/* Chat API Body */}        
                 <Row className="broadcast">
-                    {messages && messages.map(msg => 
-                    <Col span={24}>
+                    {messages && messages.map((msg, i) => 
+                    <Col span={24} key= {i}>
                             <ChatBubble  key={msg.id} message={msg} content={props.text} userName={user.userName}/>
                     </Col>
                     )}

@@ -427,10 +427,32 @@ button.send {
 button.back-btn {
     position: absolute;
     left: 10px;
-
+    z-index: 99;
     svg {
         fill: $offWhite;
         height: 24px;
         width: 24px;
+    }
+}
+button.home-btn-mobile {
+   
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: white; 
+    svg {
+        height: 24px;
+        width: 24px;
+        margin-top: 5px;
+        fill: $black;
+    }
+    p {
+        margin-top: 8px;
+        padding-left: 10px;
+        background:none;
+        color: $black;
+        font-weight: $superHeavy;
+        font-size: $small;
+        
     }
 }

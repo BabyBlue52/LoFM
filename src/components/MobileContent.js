@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Spin } from 'antd';
-import { Frame, Page } from "framer";
-import { motion }from 'framer-motion';
+import { Frame, Page } from 'framer';
+import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { MdRadio } from 'react-icons/md';
 
 import { Chat } from './Chat';
 import { ChatButton, PlayButton } from './Button';
@@ -11,13 +13,11 @@ import { ChannelPlaylist } from './ChannelPlaylist';
 import { ChannelUploads } from './ChannelUploads';
 import ChannelBio from './ChannelBio';
 
-import config from '../apis';
 
-
-export function BootlegBoy(props) {
+export function MobileContent(props) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [hasError, setHasError] = useState(false);
-    const [currentPage, setCurrentPage] = useState(0)
+    const [currentPage, setCurrentPage] = useState(3)
     const [channels,setChannels] = useState([])
 
     const [live,setLive] = useState({
@@ -25,54 +25,53 @@ export function BootlegBoy(props) {
         song:'',
         artist:'',
     });
-    const [uploads, setUploads] = useState({
-        title:"",
-        artist:"",
-        videos:[],
-        bio:"",
-    });
-    const [profile, setProfile] = useState({
-            id: {channel:'The BootLeg Boy',id: 1},
-            name:'loading',
-            thumbnail:'https://d1u1amw606tzwl.cloudfront.net/assets/users/avatar-default-96007ee5610cdc5a9eed706ec0889aec2257a3937d0fbb747cf335f8915f09b2.png',
-            bio:'Loading...',
-            videos:[]
-    });
+
     const links ={
         spotify:'https://open.spotify.com/playlist/71019EDcRamfMmOEEoTdEu?si=XePP-REWQDSuzJT6-SXwSQ',
         soundcloud: 'https://soundcloud.com/dabootlegboy',
         youtube: `https://www.youtube.com/channel/UC0fiLCwTmAukotCXYnqfj0A`
     };
-    const song = {
-        title:'Do Something',
-        artist:'Bob'
-    }
+
+    let home = 3
+    let chat = 4
 
     function handlePlay(){
         setIsPlaying(!isPlaying);
     }
-
-    const { api_key, channel_id_1 } = config;
-    const width = window.innerWidth
     
+    function handleChat(){
+        setCurrentPage(chat)
+    }
+    
+    function handleReturn() {
+        console.log("GO home roger")
+        setCurrentPage(home)
+    }
+
+    const width = window.innerWidth
+
     //api calls
     useEffect(() => {
-        
+
         console.log(width)
-    }, [ api_key ]);
+    }, []);
+
 
     
     const url = `http://youtube.com/watch?v=${live.videoId}`
+    
     return(
         <>  
+            
             <Page 
                 alignment="center"
                 defaultEffect={"none"}
-                currentPage={3}
+                currentPage={currentPage}
                 direction="horizontal"
                 directionLock={true}
                 dragEnabled={true}
                 contentWidth={300}
+                momentum={false}
             >       
                 <Frame>
                     <Row className="justify-center">
@@ -83,11 +82,9 @@ export function BootlegBoy(props) {
                 <Frame size={width}>
                     <Row className="justify-center">
                         <Col span={20} style={{'flexDirection':'column'}}>
-                        <div className="spacer"></div>
-                        <h3>Spotify Playlists</h3>
-                        <ChannelPlaylist
-                            station={channels[currentPage].spotify}
-                        />
+                            <div className="spacer"></div>
+                            <h3>Spotify Playlists</h3>
+                    
                         </Col>
                     </Row>  
                 </Frame>        
@@ -99,7 +96,7 @@ export function BootlegBoy(props) {
                         <div className="spacer"></div>
                         <h3>Latest Uploads</h3>
                         <div className="vid-scroller">
-                            {channels[currentPage].videos.map((data, i) => {
+                            {/* {channels[currentPage].videos.map((data, i) => {
                                 return(
                                     <div className="vid-card" key={i}>
                                         <ChannelUploads
@@ -111,7 +108,7 @@ export function BootlegBoy(props) {
                                         /> 
                                     </div>
                                 )
-                            })}
+                            })} */}
                         </div>
                         </Col>
                     </Row>  
@@ -122,24 +119,26 @@ export function BootlegBoy(props) {
                     <div className="spacer"></div>
                     <Row className="justify-center">
                         <Col className="justify-center" >
-                            <ChatButton/>
+                            <div onClick={handleChat}>
+                                <ChatButton name={channels.name}/>
+                            </div>
                         </Col>
                     </Row> 
                     <ChannelLinks
                         soundcloud={links.soundcloud} 
                         spotify={links.spotify}
                         youtube={links.youtube}
-                        artist={song.artist}
-                        title={song.title}
-                        thumbnail={channels[currentPage].thumbnail}
-                        id={profile.id}
-                        videoId={live.videoId}
-                        viewers={channels[currentPage].view}
+                        artist={channels.name}
+                        title={channels.title}
+                        thumbnail={channels.thumbnail}
+                        id={channels.id}
+                        videoId={channels.videoId}
+                        // viewers={channels[currentPage].view}
                     />
-                    <ChannelBio
+                    {/* <ChannelBio
                         name={channels[currentPage].name}
-                        bio={profile.bio}
-                    />
+                        bio={channels.bio}
+                    /> */}
                     {/* Play Content */}
                     <Row className="justify-center">
                         <Col span={18} className="justify-center">
@@ -160,9 +159,11 @@ export function BootlegBoy(props) {
                 
                 {/* Chat Feature */}
                 <Frame size={width}>
-                    <div style={{"paddingTop": "40px"}} >
-                        <Chat/>
-                    </div>
+                    
+                        <button className="back-btn" onClick={handleReturn}>
+                            <AiOutlineArrowLeft/>
+                        </button>
+                        <Chat />
                 </Frame>
             </Page>
         </>

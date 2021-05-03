@@ -47,12 +47,12 @@ function BackButton(props) {
 function ChatButton(props) {
     return ( 
         <React.Fragment>
-            <a href="/chat">
+   
             <button className="chat-btn">
                 <MdChatBubble className="chat-bubble"/>
-                <p>Join Chat</p>
+    <p>Join {props.name}Chat</p>
             </button>
-            </a>
+
         </React.Fragment>
     )
 }

@@ -97,7 +97,7 @@ export function PushMenu(props) {
                             <button className="menu-round" >
                                 <a href="/chat">
                                     <Badge dot={props}>
-                                        <BsFillChatSquareFill stroke="white"/>
+                                        <BsFillChatSquareFill stroke="white" class="chat-icon" />
                                     </Badge>
                                 </a>            
                             </button>
