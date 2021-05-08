@@ -17,9 +17,10 @@ export function PushMenu(props) {
     const [placement,setPlacement] = useState('bottom');
     const [login, setLogin] = useState(false);
     const [load, setLoad] = useState(false);
+    
     // Using Redux
     const dispatch = useDispatch();
-    var token = localStorage.getItem("token")
+    var token = sessionStorage.getItem("token")
 
     function openDrawer(){
         setMenuOpen(true)

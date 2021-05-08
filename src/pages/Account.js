@@ -61,6 +61,20 @@ export function AccountPage(props) {
         console.log(state.hasAvatar)
     } 
 
+    // Delete Account
+    const confirmDelete = () => {
+        if (store.getState().auth.token !== null ) {
+            setTimeout(function(){
+                dispatch(deleteUser);
+                deleteNotification();
+                window.location = "/"
+            }, 2000);
+        } else {
+            console.log("You aren't logged in")
+        }
+        
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true)
@@ -100,11 +114,6 @@ export function AccountPage(props) {
         setPassword(!password)
     }
 
-    const confirmDelete = () => {
-        dispatch(deleteUser);
-        deleteNotification();
-        window.location = "/"
-    }
     if (state.isAuthenticated === false) {
         return  (
             <>

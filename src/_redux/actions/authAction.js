@@ -114,7 +114,7 @@ export const logout = () => (dispatch, getState) => {
   };
   
 // DELETE USER
-export const deleteUser = ({ userid}) => (dispatch, getState) => {
+export const deleteUser = ({ userid }) => (dispatch, getState) => {
    // Headers
    const config = {
     headers: {
@@ -130,7 +130,7 @@ export const deleteUser = ({ userid}) => (dispatch, getState) => {
   };  
 
   axios
-      .post(`${process.env.REACT_APP_BASE_URL}/api/delete`, body, config)
+      .post(`${process.env.REACT_APP_BASE_URL}/api/auth/delete`, body, config)
       .then((res) => {
         dispatch({
           type: actionTypes.DELETE_USER,

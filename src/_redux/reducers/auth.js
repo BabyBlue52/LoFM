@@ -1,7 +1,7 @@
 import actionTypes from '../actionTypes';
 
 const initialState = {
-    token: localStorage.getItem('token'),
+    token: sessionStorage.getItem('token'),
     isAuthenticated: null,
     isLoading: false,
     user: null,
@@ -25,7 +25,7 @@ const initialState = {
 
       case actionTypes.LOGIN_SUCCESS:
       case actionTypes.REGISTER_SUCCESS:
-        localStorage.setItem('token', action.payload.token);
+        sessionStorage.setItem('token', action.payload.token);
         return {
           ...state,
           ...action.payload,
@@ -38,7 +38,7 @@ const initialState = {
       case actionTypes.LOGOUT_SUCCESS:
       case actionTypes.REGISTER_FAIL:
       case actionTypes.DELETE_USER:
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         return {
           ...state,
           token: null,

@@ -50,7 +50,7 @@ export function LoginPage(props) {
         }, 500)
       }
     }
-    
+
     const checkLogin = () => {
         if ( store.getState().auth.token !== null ) {
           setTimeout(function(){
@@ -77,7 +77,8 @@ export function LoginPage(props) {
         duration: 4.5
       })
     }
-
+    
+    //Loading Animation
     if ( state.isLoading ) {
       return (
         <div className="form-container">
