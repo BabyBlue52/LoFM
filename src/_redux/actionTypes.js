@@ -14,4 +14,6 @@ export default  {
 
     GET_ERRORS: 'GET_ERRORS',
     CREATE_MESSAGE: 'CREATE_MESSAGE',
+
+    DELETE_USER: 'DELETE_USER',
 }

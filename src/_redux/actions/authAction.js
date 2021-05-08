@@ -104,9 +104,36 @@ export const logout = () => (dispatch, getState) => {
     axios
       .post(`${process.env.REACT_APP_BASE_URL}/api/auth/logout/`, null, tokenConfig(getState))
       .then((res) => {
-        dispatch({ type: 'CLEAR_LEADS' });
         dispatch({
           type: actionTypes.LOGOUT_SUCCESS,
+        });
+      })
+      .catch((err) => {
+        dispatch(returnErrors(err.response.data, err.response.status));
+      });
+  };
+  
+// DELETE USER
+export const deleteUser = ({ userid}) => (dispatch, getState) => {
+   // Headers
+   const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "*",
+      Accept: "application/json"
+    },
+  };
+
+  // Request Body
+  const body = { 
+    user: userid 
+  };  
+
+  axios
+      .post(`${process.env.REACT_APP_BASE_URL}/api/delete`, body, config)
+      .then((res) => {
+        dispatch({
+          type: actionTypes.DELETE_USER,
         });
       })
       .catch((err) => {

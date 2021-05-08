@@ -50,6 +50,7 @@ export function LoginPage(props) {
         }, 500)
       }
     }
+    
     const checkLogin = () => {
         if ( store.getState().auth.token !== null ) {
           setTimeout(function(){

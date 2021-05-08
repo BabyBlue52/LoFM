@@ -37,6 +37,7 @@ const initialState = {
       case actionTypes.LOGIN_FAIL:
       case actionTypes.LOGOUT_SUCCESS:
       case actionTypes.REGISTER_FAIL:
+      case actionTypes.DELETE_USER:
         localStorage.removeItem('token');
         return {
           ...state,

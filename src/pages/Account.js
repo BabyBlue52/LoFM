@@ -7,7 +7,7 @@ import { connect, useDispatch } from 'react-redux';
 
 import { SignInButton, HomeButton } from '../components/Button';
 import { Spinner } from '../components/animation';
-import { returnErrors } from '../_redux/actions/messageAction';
+import { deleteUser } from '../_redux/actions/authAction';
 import store from '../_redux/createStore';
 
 
@@ -25,6 +25,9 @@ export function AccountPage(props) {
     const [showWarning, setShowWarning] = useState(false);
     const [email, setEmail] = useState(false);
     const [password, setPassword] = useState(false);
+    
+    // Properly load dispatch REDUX
+    const dispatch = useDispatch();
 
     // Hook for formik 
     const formik = useFormik({
@@ -84,6 +87,7 @@ export function AccountPage(props) {
             duration: 4.5
           })
     }
+
     const toggleWarning = () => {
         setShowWarning(!showWarning)
     }
@@ -95,7 +99,9 @@ export function AccountPage(props) {
     const togglePassword = () => {
         setPassword(!password)
     }
-    const deleteUser = () => {
+
+    const confirmDelete = () => {
+        dispatch(deleteUser);
         deleteNotification();
         window.location = "/"
     }
@@ -168,7 +174,7 @@ export function AccountPage(props) {
                                 <div className="account-delete">
                                     <p>This action cannot be undone</p>
                                     <Col span={24} className="confirm-delete column" style={{"marginLeft":"-5px"}}>
-                                        <button type="button" className="delete-btn" onClick={deleteUser}><p> Yes, I'm Sure</p></button>
+                                        <button type="button" className="delete-btn" onClick={confirmDelete}><p> Yes, I'm Sure</p></button>
                                     {/* </Col>
                                     <Col span={24} className="confirm-delete"> */}
                                         <button type="button" className="default-btn"><p onClick={toggleWarning}> No, take me back</p></button>
