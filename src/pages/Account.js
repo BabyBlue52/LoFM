@@ -13,11 +13,8 @@ import store from '../_redux/createStore';
 
 export function AccountPage(props) {
     const [state, setState] = useState({
-        isChecked: false,
-        hasAvatar: false,
         emailError: false,
         passwordError: false,
-        isLoading: false,
         isAuthenticated: true,       
     })
     const [isLoading, setIsLoading] = useState(false);
@@ -58,7 +55,7 @@ export function AccountPage(props) {
             document.getElementById("upload-preview").src = oFREvent.target.result;
         };
         setHasAvatar(true)
-        console.log(state.hasAvatar)
+        
     } 
 
     // Delete Account
