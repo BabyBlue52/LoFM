@@ -40,7 +40,7 @@ function ChannelLinks(props){
                 <Row type="flex">
                     <Col span={8} className="justify-center" style={{"margin":"0 auto"}}>
                         <div className="channel-gradient _dropShadow">
-                            <img src={props.thumbnail} className="channel-default"/>
+                            <img src={props.thumbnail} className="channel-default" loading="lazy" />
                         </div>
                     </Col>
                 </Row>
@@ -87,7 +87,7 @@ function ChannelLinks(props){
                             {/* Channel Profile */}
                             <div>
                                 <div className="channel-gradient _dropShadow" style={{"margin":"0 auto  0 20px"}}>
-                                    <img src={props.thumbnail} className="channel-default"/>
+                                    <img src={props.thumbnail} className="channel-default" loading="lazy" />
                                 </div>
                                 <div onClick={handleFavorite} className="favorite-dash">
                                     <FavoriteButton channelName={props.id}/>

@@ -13,7 +13,7 @@ export function GifHandler(props) {
                     <PlayButton/>
                 </Col>
                 <Col span={2} offset={1}>
-                    <img src={props.gif} className="gif-holder _dropShadow"/>
+                    <img src={props.gif} className="gif-holder _dropShadow" loading="lazy" />
                 </Col>
                 <Col span={10} offset={8} style={{'display':'block','paddingTop':"20px"}}>
                     <h3>Currently Playing </h3>
@@ -37,7 +37,7 @@ export function GifHandlerDesktop(props) {
         <>
            <Row className="gif-player-desktop">
                 <Col>
-                    <img src={props.gif} className="gif-holder-desktop _dropShadow"/>
+                    <img src={props.gif} className="gif-holder-desktop _dropShadow" loading="lazy" />
                 </Col>
             </Row>
         </>

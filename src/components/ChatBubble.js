@@ -12,7 +12,7 @@ export function ChatBubble(props) {
                 <Col span={24}>
                     <div className={`post ${messageClass}`}>
                         <div className="op">
-                            <img src={props.thumbnail} alt="" style={{'borderColor':`${props.color}`}}/>
+                            <img src={props.thumbnail} alt="" style={{'borderColor':`${props.color}`}} loading="lazy" />
                         </div>
                         <div className="post-content">
                             <p style={{'color':`${props.color}`}}>{props.userName}
@@ -45,7 +45,7 @@ export function ChatBubble(props) {
                         </div> 
                     </div> 
                     <div className="op">
-                        <img src={props.thumbnail} alt="" style={{'borderColor':`${props.color}`}}/>
+                        <img src={props.thumbnail} alt="" style={{'borderColor':`${props.color}`}} loading="lazy" />
                     </div>
                 </div>
             </Col>

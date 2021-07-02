@@ -102,7 +102,7 @@ export function DashboardContent(props) {
                                                     </button>
                                                 </Col>
                                                 <Col offset={17} span={4}>
-                                                    <img src={item.thumbnail} className="card-default" alt=""/>
+                                                    <img src={item.thumbnail} className="card-default" alt="" loading="lazy" />
                                                 </Col>
                                             </Row>
                                                 <h2>{item.creator_name}</h2>

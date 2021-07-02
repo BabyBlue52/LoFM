@@ -68,7 +68,7 @@ export function Chat(props) {
                 {isDisabled ?
                 <Row>
                     <div className="_disabled">
-                        <img src={construction}/>
+                        <img src={construction} loading="lazy" />
                         <a href="https://www.vecteezy.com/free-vector/vector">Vector Vectors by Vecteezy</a>
                         <h1> Chat Feature </h1>
                         <p> coming soon</p>
@@ -124,7 +124,7 @@ export function Chat(props) {
             { isDisabled ? 
             <Row>
                 <div className="_disabled">
-                    <img src={construction}/>
+                    <img src={construction} loading="lazy" />
                     <a href="https://www.vecteezy.com/free-vector/vector">Vector Vectors by Vecteezy</a>
                     <h1> Chat Feature </h1>
                     <p> coming soon</p>

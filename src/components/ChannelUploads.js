@@ -12,7 +12,7 @@ export function ChannelUploads(props) {
                     <Row>
                         <Col span={24} className="justify-center">
                             <a href={videoAnchor} className="overlay">
-                                <img className="vid-thumbnail _dropShadow" src={props.videoThumbnail} alt=""/>
+                                <img className="vid-thumbnail _dropShadow" src={props.videoThumbnail} alt="" loading="lazy" />
                             </a>
                         </Col>
                     </Row>
@@ -33,7 +33,7 @@ export function ChannelUploads(props) {
                 <Row>
                     <Col>
                         <a href={videoAnchor} className="overlay">
-                            <img className="vid-thumbnail _dropShadow" src={props.videoThumbnail} alt=""/>
+                            <img className="vid-thumbnail _dropShadow" src={props.videoThumbnail} alt="" loading="lazy" />
                         </a>
                     </Col>
                     <Col span={24}>

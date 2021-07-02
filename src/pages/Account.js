@@ -217,7 +217,7 @@ export function AccountPage(props) {
                         <Col span={3}>
                             <img />
                             <div className="user-avatar">
-                                { hasAvatar ?  <img id="upload-preview" /> : <AiOutlineSmile/> }
+                                { hasAvatar ?  <img id="upload-preview" loading="lazy" /> : <AiOutlineSmile/> }
 
                             </div>
                             <button className="camera-btn" type="button">

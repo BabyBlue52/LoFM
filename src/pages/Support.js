@@ -37,7 +37,7 @@ export default function SupportPage(props) {
             <p>To keep the lights on around here, we rely on solely donations.</p><p>We appreciate our the chill nature of our audience and the lovely content creators. Becasue of this we do not run ads on our platform.</p>
             <a id="support" href='https://ko-fi.com/H2H223K32' target='_blank'><img height='36' style={{'border':'0px','height':'36px'}} src={link} alt='Support us at ko-fi.com' /></a>
             </div>
-            <img src={Logo} className="lofm-stamp"/>
+            <img src={Logo} className="lofm-stamp" loading="lazy"/>
         </div>
     )
 }

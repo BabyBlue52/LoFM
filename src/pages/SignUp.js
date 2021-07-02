@@ -98,7 +98,7 @@ export function SignUpPage(props) {
             <form onSubmit={handleSignUp} className="login">
                 <Row>
                 <Col span={24}>
-                    <img src={Logo} className="lofm-small" style={{'width':'100px'}}/>
+                    <img src={Logo} className="lofm-small" style={{'width':'100px'}} loading="lazy" />
                 </Col>
                 <Col span={24}>
                     <h1 className="welcome">Sign Up</h1>

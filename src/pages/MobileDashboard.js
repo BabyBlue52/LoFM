@@ -81,7 +81,7 @@ export default function MobileDashboard(){
                                     pathname: `/radio/${item.id}`,
                                     state: {id: item.id}
                                     }} >
-                                    <img src={item.thumbnail} />
+                                    <img src={item.thumbnail} loading="lazy"/>
                                     <p>{item.creator_name}</p>
                                     <p className="followers">
                                         {item.followers}
@@ -111,7 +111,7 @@ export default function MobileDashboard(){
                                 pathname: `/radio/${item.id}`,
                                 state: {id: item.id}
                                 }}>
-                                <img src={item.thumbnail} />
+                                <img src={item.thumbnail} loading="lazy" />
                                 <p>{item.creator_name}</p>
                                 <p className="followers">
                                     {item.followers}

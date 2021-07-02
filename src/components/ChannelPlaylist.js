@@ -36,7 +36,7 @@ export function ChannelPlaylist(props) {
                 <div className="playlist-container">
                     <Row >
                         <Col span={24}>
-                        <img className="playlist-thumbnail"/>
+                        <img className="playlist-thumbnail"  loading="lazy"/>
                         </Col>
                         <Col span={24}>
                             <h3>Bob, Do Something</h3>
@@ -53,7 +53,7 @@ export function ChannelPlaylist(props) {
               <div className="playlist-container">
                 <Row className="playlist-card">
                     <Col span={24}>
-                    <img className="playlist-thumbnail"/>
+                    <img className="playlist-thumbnail" loading="lazy" />
                     </Col>
                     <Col span={24}>
                         <h3 className="playlist-title">Bob, Do Something</h3>

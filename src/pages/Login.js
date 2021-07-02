@@ -96,7 +96,7 @@ export function LoginPage(props) {
             <form className="login" onSubmit={handleLogin}>
               <Row>
                 <Col span={24}>
-                  <img src={Logo} className="lofm-small" alt="logo"/>
+                  <img src={Logo} className="lofm-small" alt="logo" loading="lazy" />
                 </Col>
                 <Col span={24}>
                     <h1 className="welcome">Login</h1>

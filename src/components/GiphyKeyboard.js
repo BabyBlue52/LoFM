@@ -42,7 +42,7 @@ export function GiphyKeyboard(props) {
                 <button onClick={toggleGifKeyboard} className="gif-btn _dropLight">
                     {!isOpen ? 
                         <div className="gif-icon">
-                            <img src={giphy}/>
+                            <img src={giphy} loading="lazy" />
                         </div>
                         : 
                         <div className="keyboard-icon">
