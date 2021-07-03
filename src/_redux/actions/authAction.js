@@ -50,13 +50,16 @@ export const login = (email, password) => (dispatch) => {
             payload: res.data,
           })
           return res
-        } else {
+        } else if (res.status == 403){
+          return
+        }
+        else {
           console.log(res)
           dispatch(returnErrors(res.data, res.status))
           dispatch({
             type: actionTypes.LOGIN_FAIL,
           })
-          return res
+          return 
         }
       }) 
 };
@@ -88,7 +91,10 @@ export const register = ({ username, password, email }) => (dispatch) => {
             payload: res.data,
           });
           return res
-        } else {
+        } else if( res.status === 401) {
+          console.log(res.error)
+        }
+        else {
           console.log(res)
           dispatch(returnErrors(res.data, res.status));
           dispatch({

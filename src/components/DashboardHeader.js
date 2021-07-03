@@ -27,6 +27,7 @@ export function DashboardHeader(props){
             })
         } else {
             console.log("Not Signed In");
+            console.log(store.getState);
         } 
 
     }, [])   
@@ -58,7 +59,7 @@ export function DashboardHeader(props){
                         <Button name="Sign Up"></Button>
                     </a>
                 </Col>
-                <Col span={12}>
+                <Col span={10} offset={2}>
                     <Input className="dashboard-search" prefix={<AiOutlineSearch/>} size="middle" />
                 </Col>
                 <Col span={4} style={{'justifyContent':'flex-end'}}>
