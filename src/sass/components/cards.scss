@@ -11,8 +11,8 @@
     min-width: 300px;
     width: 95%;
     max-width: 500px;
-    height: 160px;
-    margin: 5px auto 20px auto;
+    height: 125px;
+    margin: 5px auto 15px auto;
     border-radius: 15px;
     background: lighten($black, 15%);
 
@@ -66,5 +66,5 @@
 /* Correction class for ANT DESIGN transition */
 .left-marg {
     max-width: 66vw;
-    margin-left: 100px !important;
+    margin-left: 70px !important;
 }

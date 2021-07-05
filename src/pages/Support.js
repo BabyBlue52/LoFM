@@ -31,7 +31,9 @@ export default function SupportPage(props) {
             <div className="support-header">
                <h3> Go Back</h3>
             </div>
-            <div className='support-gif _noBorder'></div>
+            <div className='support-gif _noBorder'>
+                <img src="https://thumbs.gfycat.com/IncredibleNimbleDore-size_restricted.gif" loading="lazy"/>
+            </div>
             <div className="support-desktop">
             <h3> Thanks for the support</h3>
             <p>To keep the lights on around here, we rely on solely donations.</p><p>We appreciate our the chill nature of our audience and the lovely content creators. Becasue of this we do not run ads on our platform.</p>

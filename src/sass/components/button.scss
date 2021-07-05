@@ -31,7 +31,7 @@ button.default-btn {
         letter-spacing: .25px;
         font-family: $spartan;
         font-weight: $superHeavy;
-        font-size: $small;
+        font-size: $paragraph;
         color: white;
         background: none;
     }
@@ -90,18 +90,20 @@ button.add-btn {
 button.spotify {
     fill: white;
     display: block;
-    height: 3rem;
+    height: 2rem;
     width: max-content;
     border-radius: 50%;
     border: none;
     transition: 300ms ease-in-out;
     cursor: pointer;
-
+    svg {
+        height: 26px;
+    }
     h3 {
         display: inline-flex;
         font-size: $paragraph;
         text-transform: none;
-        padding-left: 20px;
+        padding-left: 10px;
         position: relative;
         top: -10px;
     }
@@ -304,7 +306,7 @@ button.menu-btn-closed {
 button.playlist-btn {
     min-width: 220px;
     max-width: 220px;
-    margin: 10px auto;
+    margin: 10px auto 20px auto;
     padding: 10px;
     border-radius: 25px;
     background: $deepPurple;
@@ -366,7 +368,7 @@ button.chat-toggle {
         margin-top: 8px;
         background: none;
         font-weight: $superHeavy;
-        font-size: $small;
+        font-size: $paragraph;
         span {
             padding-left: 5px;
             svg {
@@ -446,6 +448,7 @@ button.back-btn {
 }
 button.page-back-btn {
     @extend button.back-btn;
+    position: relative;
     top: 0;
     left: 0;
 }

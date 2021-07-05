@@ -43,13 +43,13 @@
     }
 }
 
-.support-gif {
+.support-gif img {
     position: absolute;
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 180px 300px;
-    background: url('https://thumbs.gfycat.com/IncredibleNimbleDore-size_restricted.gif');
+    max-height: 400px;
+    background: url('');
     background-size: contain;
     background-repeat: no-repeat;
 }

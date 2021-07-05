@@ -105,7 +105,7 @@ $tablet: 1024px;
         .channel-gradient {
             transform: scale(1.25);
             position: relative;
-            left: 80px;
+            
         }
 
         button.spotify {
@@ -195,7 +195,7 @@ $tablet: 1024px;
         }
 
         .playlist-container {
-            max-width: inherit;
+            max-width: 100%;
             margin: 0;
 
             h3 {
@@ -218,9 +218,9 @@ $tablet: 1024px;
                     margin: 5px auto 15px auto;
                 }
 
-                button {
-                    margin: 10px auto;
-                }
+                // button {
+                //     margin: 10px auto;
+                // }
             }
 
         }
@@ -278,7 +278,7 @@ $tablet: 1024px;
 @media screen and (min-width: 767px) {
     #clear-fix {
         position: absolute;
-        left: -250px;
+        left: -300px;
         max-width: calc(100% - 410px);
     }
 

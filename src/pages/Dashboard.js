@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, notification } from 'antd';
-import { MdClose } from 'react-icons/md';
-import { BsFillChatSquareFill } from 'react-icons/bs'
+import { MdClose,  } from 'react-icons/md';
+import { BsFillChatSquareFill, BsHeartFill } from 'react-icons/bs'
 import axios from 'axios';
 
 import { PlayButton } from '../components/Button';
@@ -18,6 +18,8 @@ export default function Dashboard(props){
     const [isOpen, setIsOpen] = useState(false)
     const [width, setWidth] = useState(8)
     const channel = <marquee>"Bob, do something"</marquee>
+    
+    const favorites = ['Bang', 'Bang', 'Bang','Bang', 'Bang', 'Bang','Bang', 'Bang', 'Bang','Bang', 'Bang', 'Bang','Bang', 'Bang', 'Bang',];
     
     const openNotification = () => {
         notification.open({
@@ -36,7 +38,7 @@ export default function Dashboard(props){
 
     const isLargeDesktop = () => {
         if (window.innerWidth > 1400) {
-            setWidth(8)
+            setWidth(7)
         } else {
             setWidth(10)
         }
@@ -60,13 +62,17 @@ export default function Dashboard(props){
         }
 
         setTimeout(function(){
-            openNotification()
+            // openNotification()
           }, 2500);
 
        
         isLargeDesktop();
     }, [])
+    
+    
+      
 
+      
     return(
         <React.Fragment>
             {/** Header bar */}
@@ -77,34 +83,25 @@ export default function Dashboard(props){
             <Row className="dashboard-container">
                 <Col span={isOpen ? 23 : 16}>
                     <Row>
-                        <Col span={6} className="static-content"> 
-                            <div className="channel-container">
+                        <Col span={2} className="static-content"> 
+                            <div className="channel-container d-flex">
                                 <h1 className="channel-header">#Channels</h1>
-                                <div className="favorites-container _dropShadow">
-                                    <div className="favorites-list">
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                        <h2>Bang</h2>
-                                    </div>
+                                <div className="favorites-container">
+                                {/**  Playlist Loop */}
+                                <div className="favorites-list">                                                  
+                                    {favorites.map((name, i) => {
+                                        return (
+                                            <h2 key={i}>{name}</h2>           
+                                        )  
+                                    })}
+                                </div>       
                                 </div>
                                 <GifHandlerDesktop gif={gif} />
+                                <div className="player d-flex centered" style={{'width':'100%'}}><PlayButton/></div>
                             </div>
                         </Col>
-                        <Col span={18} className="static-content-center">
-                            <DashboardContent span={isOpen ? 15 : width} row={isOpen ? '': 'left-marg'}/>   
+                        <Col span={20} offset={4} className="static-content-center">
+                            <DashboardContent span={isOpen ? 13 : width} row={isOpen ? 'flex-start': 'left-marg space-around'} />   
                         </Col>
                     </Row>
                 </Col>

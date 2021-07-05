@@ -88,12 +88,13 @@
     max-width: 900px;
     width: 100%;
     height: calc(90vh - 70px);
-    //border: 2px solid white;
     z-index: 9;
 }
 
 h1.channel-header {
     margin-bottom: 2px;
+    padding-left: 20px;
+    padding-bottom: 5px;
     font-size: $header;
     font-weight: $superHeavy;
     text-align: left;
@@ -103,7 +104,7 @@ h1.channel-header {
 /** Favorites **/
 .favorite-dash {
     position: relative;
-    left: 205px;
+    left: 125px;
     width: max-content;
     transform: scale(1.2);
 
@@ -111,26 +112,36 @@ h1.channel-header {
 
 .favorites-container {
     overflow-y: auto;
-    height: 40%;
+    height: calc(100% - 300px);
     max-height: 450px;
     width: 100%;
-    padding: 5px 20px;
+    margin-bottom: 20px;
+    padding: 5px 0 0 0;
     border-radius: 2px;
-    background: rgba(#1b1b1b, 1);
+    background: $black;
 }
 
 .favorites-list {
+    // background: $darker;
+    min-height: 100%;
     h2 {
+        width: 100%;
+        margin: 0;
+        padding: 5px 20px 5px 30px;
         color: white;
+        font-size: 0.95rem;
+        opacity: 0.4;
+        &:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
     }
 }
 
 .gif-player-desktop {
-    position: fixed;
-    bottom: 125px;
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-bottom: 0px;
 }
 
 .gif-holder-desktop {
@@ -142,22 +153,22 @@ h1.channel-header {
 }
 
 .channel-container {
+    flex-direction: column;
     width: 100%;
     height: 100%;
-    padding: 40px 20px;
+    padding: 40px 0px;
+    background: $black;
 }
 
 .static-content {
     position: fixed;
     left: 0;
-    width: 100%;
-    max-width: 300px;
+    max-width: 250px;
     height: 100%;
 }
 
 .static-content-center {
     position: fixed;
-    left: 300px;
     height: 100%;
     max-width: calc(100% - 300px);
 }

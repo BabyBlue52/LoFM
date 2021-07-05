@@ -113,7 +113,7 @@ export function DashboardContent(props) {
                             )
                         }})}
                         </Row>
-                    
+                        
                     <div className="super-spacer"></div>
                 </div>
                 </Page>
@@ -124,7 +124,7 @@ export function DashboardContent(props) {
                 >
                     
                     <div id="clear-fix" className="page-container">
-                        <div className="super-spacer"></div>
+                        <div className="spacer"></div>
                         <Row>
                             <Col span={24}>
                             <button onClick={goBack} className="page-back-btn">
@@ -134,12 +134,12 @@ export function DashboardContent(props) {
                         </Row>
                         <div className="spacer"></div>
                         <Row>
-                            <Col span={8}>
+                            <Col span={4}>
                                 <ChannelLinks                                  
                                      thumbnail={channels[currentPage]} 
                                 />
                             </Col>
-                            <Col span={16} className="d-inline channel-page">
+                            <Col span={18} offset={1} className="d-inline channel-page">
                                 {/** Channel Bio */}
                                 <ChannelBio
                                     // bio={channels[currentPage].bio}
